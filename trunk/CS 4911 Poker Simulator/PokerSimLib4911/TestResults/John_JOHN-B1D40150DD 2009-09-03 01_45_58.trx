@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<TestRun id="6e8ca296-b110-4fd5-b07d-871364ede288" name="John@JOHN-B1D40150DD 2009-09-03 01:45:58" runUser="JOHN-B1D40150DD\John" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2006">
+  <TestRunConfiguration name="Local Test Run" id="ed059666-6410-4ffd-886b-fa389ceac4c3">
+    <Description>This is a default test run configuration for a local test run.</Description>
+    <Deployment runDeploymentRoot="C:\Documents and Settings\John\My Documents\Visual Studio 2008\Projects\PokerSimLib4911\TestResults\John_JOHN-B1D40150DD 2009-09-03 01_45_58">
+      <DeploymentItem filename="C:\Documents and Settings\John\My Documents\Visual Studio 2008\Projects\PokerSimLib4911\PokerSimLib4911\bin\Debug\PokerSimLib4911.dll" />
+    </Deployment>
+    <TestTypeSpecific />
+  </TestRunConfiguration>
+  <ResultSummary outcome="Inconclusive">
+    <Counters total="1" executed="1" error="0" failed="0" timeout="0" aborted="0" inconclusive="1" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" passed="0" completed="0" inProgress="0" pending="0" />
+  </ResultSummary>
+  <Times creation="2009-09-03T01:45:58.4531250-04:00" queuing="2009-09-03T01:45:59.8750000-04:00" start="2009-09-03T01:46:00.2656250-04:00" finish="2009-09-03T01:47:47.2187500-04:00" />
+  <TestDefinitions>
+    <UnitTest name="DeckConstructorTest" storage="c:\documents and settings\john\my documents\visual studio 2008\projects\pokersimlib4911\testprojectpokersimlib4911\bin\debug\testprojectpokersimlib4911.dll" id="1e00fb0b-192b-f5ea-dc57-e29ed74ab224">
+      <Css projectStructure="" iteration="" />
+      <Owners>
+        <Owner name="" />
+      </Owners>
+      <Execution id="97cb0f8d-d646-4c90-b572-9326971951fe" />
+      <TestMethod codeBase="C:\Documents and Settings\John\My Documents\Visual Studio 2008\Projects\PokerSimLib4911\TestProjectPokerSimLib4911\bin\Debug\TestProjectPokerSimLib4911.dll" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="TestProjectPokerSimLib4911.DeckTest, TestProjectPokerSimLib4911" name="DeckConstructorTest" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <TestEntries>
+    <TestEntry testId="1e00fb0b-192b-f5ea-dc57-e29ed74ab224" executionId="97cb0f8d-d646-4c90-b572-9326971951fe" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <Results>
+    <UnitTestResult executionId="97cb0f8d-d646-4c90-b572-9326971951fe" testId="1e00fb0b-192b-f5ea-dc57-e29ed74ab224" testName="DeckConstructorTest" computerName="JOHN-B1D40150DD" duration="00:01:46.0471463" startTime="2009-09-03T01:46:00.5468750-04:00" endTime="2009-09-03T01:47:47.0468750-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Inconclusive" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d">
+      <Output>
+        <StdOut>Added TWO of CLUBs to deck.
+Added THREE of CLUBs to deck.
+Added FOUR of CLUBs to deck.
+Added FIVE of CLUBs to deck.
+Added SIX of CLUBs to deck.
+Added SEVEN of CLUBs to deck.
+Added EIGHT of CLUBs to deck.
+Added NINE of CLUBs to deck.
+Added TEN of CLUBs to deck.
+Added JACK of CLUBs to deck.
+Added QUEEN of CLUBs to deck.
+Added KING of CLUBs to deck.
+Added ACE of CLUBs to deck.
+Added TWO of DIAMONDs to deck.
+Added THREE of DIAMONDs to deck.
+Added FOUR of DIAMONDs to deck.
+Added FIVE of DIAMONDs to deck.
+Added SIX of DIAMONDs to deck.
+Added SEVEN of DIAMONDs to deck.
+Added EIGHT of DIAMONDs to deck.
+Added NINE of DIAMONDs to deck.
+Added TEN of DIAMONDs to deck.
+Added JACK of DIAMONDs to deck.
+Added QUEEN of DIAMONDs to deck.
+Added KING of DIAMONDs to deck.
+Added ACE of DIAMONDs to deck.
+Added TWO of HEARTs to deck.
+Added THREE of HEARTs to deck.
+Added FOUR of HEARTs to deck.
+Added FIVE of HEARTs to deck.
+Added SIX of HEARTs to deck.
+Added SEVEN of HEARTs to deck.
+Added EIGHT of HEARTs to deck.
+Added NINE of HEARTs to deck.
+Added TEN of HEARTs to deck.
+Added JACK of HEARTs to deck.
+Added QUEEN of HEARTs to deck.
+Added KING of HEARTs to deck.
+Added ACE of HEARTs to deck.
+Added TWO of SPADEs to deck.
+Added THREE of SPADEs to deck.
+Added FOUR of SPADEs to deck.
+Added FIVE of SPADEs to deck.
+Added SIX of SPADEs to deck.
+Added SEVEN of SPADEs to deck.
+Added EIGHT of SPADEs to deck.
+Added NINE of SPADEs to deck.
+Added TEN of SPADEs to deck.
+Added JACK of SPADEs to deck.
+Added QUEEN of SPADEs to deck.
+Added KING of SPADEs to deck.
+Added ACE of SPADEs to deck.</StdOut>
+        <ErrorInfo>
+          <Message>Assert.Inconclusive failed. TODO: Implement code to verify target</Message>
+          <StackTrace>   at TestProjectPokerSimLib4911.DeckTest.DeckConstructorTest() in C:\Documents and Settings\John\My Documents\Visual Studio 2008\Projects\PokerSimLib4911\TestProjectPokerSimLib4911\DeckTest.cs:line 72
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+  </Results>
+</TestRun>
