@@ -1,0 +1,10 @@
+C:\Documents and Settings\John\My Documents\Visual Studio 2008\Projects\PokerSimLib4911\PokerSimLib4911\obj\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\John\My Documents\Visual Studio 2008\Projects\PokerSimLib4911\PokerSimLib4911\bin\Debug\PokerSimLib4911.dll
+C:\Documents and Settings\John\My Documents\Visual Studio 2008\Projects\PokerSimLib4911\PokerSimLib4911\bin\Debug\PokerSimLib4911.pdb
+C:\Documents and Settings\John\My Documents\Visual Studio 2008\Projects\PokerSimLib4911\PokerSimLib4911\obj\Debug\PokerSimLib4911.dll
+C:\Documents and Settings\John\My Documents\Visual Studio 2008\Projects\PokerSimLib4911\PokerSimLib4911\obj\Debug\PokerSimLib4911.pdb
+C:\Documents and Settings\John\My Documents\Visual Studio 2008\Projects\CS 4911 Poker Simulator\PokerSimLib4911\PokerSimLib4911\obj\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\John\My Documents\Visual Studio 2008\Projects\CS 4911 Poker Simulator\PokerSimLib4911\PokerSimLib4911\obj\Debug\PokerSimLib4911.dll
+C:\Documents and Settings\John\My Documents\Visual Studio 2008\Projects\CS 4911 Poker Simulator\PokerSimLib4911\PokerSimLib4911\bin\Debug\PokerSimLib4911.dll
+C:\Documents and Settings\John\My Documents\Visual Studio 2008\Projects\CS 4911 Poker Simulator\PokerSimLib4911\PokerSimLib4911\bin\Debug\PokerSimLib4911.pdb
+C:\Documents and Settings\John\My Documents\Visual Studio 2008\Projects\CS 4911 Poker Simulator\PokerSimLib4911\PokerSimLib4911\obj\Debug\PokerSimLib4911.pdb

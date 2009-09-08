@@ -1,0 +1,14 @@
+C:\Documents and Settings\John\My Documents\Visual Studio 2008\Projects\PokerSimLib4911\TestProjectPokerSimLib4911\bin\Debug\TestProjectPokerSimLib4911.dll
+C:\Documents and Settings\John\My Documents\Visual Studio 2008\Projects\PokerSimLib4911\TestProjectPokerSimLib4911\bin\Debug\TestProjectPokerSimLib4911.pdb
+C:\Documents and Settings\John\My Documents\Visual Studio 2008\Projects\PokerSimLib4911\TestProjectPokerSimLib4911\bin\Debug\PokerSimLib4911.dll
+C:\Documents and Settings\John\My Documents\Visual Studio 2008\Projects\PokerSimLib4911\TestProjectPokerSimLib4911\bin\Debug\PokerSimLib4911.pdb
+C:\Documents and Settings\John\My Documents\Visual Studio 2008\Projects\PokerSimLib4911\TestProjectPokerSimLib4911\obj\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\John\My Documents\Visual Studio 2008\Projects\PokerSimLib4911\TestProjectPokerSimLib4911\obj\Debug\TestProjectPokerSimLib4911.dll
+C:\Documents and Settings\John\My Documents\Visual Studio 2008\Projects\PokerSimLib4911\TestProjectPokerSimLib4911\obj\Debug\TestProjectPokerSimLib4911.pdb
+C:\Documents and Settings\John\My Documents\Visual Studio 2008\Projects\CS 4911 Poker Simulator\PokerSimLib4911\TestProjectPokerSimLib4911\obj\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\John\My Documents\Visual Studio 2008\Projects\CS 4911 Poker Simulator\PokerSimLib4911\TestProjectPokerSimLib4911\obj\Debug\TestProjectPokerSimLib4911.dll
+C:\Documents and Settings\John\My Documents\Visual Studio 2008\Projects\CS 4911 Poker Simulator\PokerSimLib4911\TestProjectPokerSimLib4911\bin\Debug\TestProjectPokerSimLib4911.dll
+C:\Documents and Settings\John\My Documents\Visual Studio 2008\Projects\CS 4911 Poker Simulator\PokerSimLib4911\TestProjectPokerSimLib4911\bin\Debug\TestProjectPokerSimLib4911.pdb
+C:\Documents and Settings\John\My Documents\Visual Studio 2008\Projects\CS 4911 Poker Simulator\PokerSimLib4911\TestProjectPokerSimLib4911\bin\Debug\PokerSimLib4911.dll
+C:\Documents and Settings\John\My Documents\Visual Studio 2008\Projects\CS 4911 Poker Simulator\PokerSimLib4911\TestProjectPokerSimLib4911\bin\Debug\PokerSimLib4911.pdb
+C:\Documents and Settings\John\My Documents\Visual Studio 2008\Projects\CS 4911 Poker Simulator\PokerSimLib4911\TestProjectPokerSimLib4911\obj\Debug\TestProjectPokerSimLib4911.pdb
