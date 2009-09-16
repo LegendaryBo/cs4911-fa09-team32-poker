@@ -288,4 +288,67 @@ namespace PokerSimLib4911
         KING,
         ACE
     }
+
+    public class HandGenerator
+    {
+        //Royal Flush
+        static public Hand genRF()
+        {
+            return null;
+        }
+
+        //Straigh Flush
+        static public Hand genSF()
+        {
+            return null;
+        }
+
+        //Four of a Kind
+        static public Hand genFK()
+        {
+            return null;
+        }
+
+        //Full House
+        static public Hand genFH()
+        {
+            return null;
+        }
+
+        //Flush
+        static public Hand genFL()
+        {
+            return null;
+        }
+
+        //Straight
+        static public Hand genST()
+        {
+            return null;
+        }
+
+        //Three of a Kind
+        static public Hand genTK()
+        {
+            return null;
+        }
+
+        //Two Pair
+        static public Hand genTP()
+        {
+            return null;
+        }
+
+        //One Pair
+        static public Hand genOP()
+        {
+            return null;
+        }
+
+        //High Card
+        static public Hand genHC()
+        {
+            return null;
+        }
+    }
 }
