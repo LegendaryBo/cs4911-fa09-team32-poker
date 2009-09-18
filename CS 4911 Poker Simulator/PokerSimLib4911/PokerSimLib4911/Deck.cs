@@ -297,16 +297,47 @@ namespace PokerSimLib4911
             return null;
         }
 
-        //Straigh Flush
+        //Straight Flush//JSS
         static public Hand genSF()
         {
+            
+            //pick a suit
+            //pick a 7, 8, or 9 - must always include at least one of these
+            //remove that card
+            //choose ascending or descending order
+            //fill the rest of the cards in the SF
+            //random two cards
             return null;
         }
 
-        //Four of a Kind
+        //Four of a Kind//JSS
         static public Hand genFK()
         {
-            return null;
+            //pick the rank of the FK
+            int rank = 0;
+            Random rand = new Random();
+            rank = rand.Next(0, 12);
+            //Card card1 = Deck.RemoveCard(new Card((Suit)0, (Rank)rank);  //NEED INSTANCE OF DECK
+            //Card card2 = Deck.RemoveCard(new Card((Suit)1, (RANK)rank);  //NEED INSTANCE OF DECK
+            //Card card3 = Deck.RemoveCard(new Card((Suit)2, (RANK)rank);  //NEED INSTANCE OF DECK
+            //Card card4 = Deck.RemoveCard(new Card((Suit)3, (RANK)rank);  //NEED INSTANCE OF DECK
+
+            //random 3 cards
+            int suit = 0;
+
+            rank = rand.Next(0, 12);
+            suit = rand.Next(0, 3);
+            //Card card5 = Deck.RemoveCard(new Card((Suit)suit, (RANK)rank);  //NEED INSTANCE OF DECK
+            rank = rand.Next(0, 12);
+            suit = rand.Next(0, 3);
+            //Card card6 = Deck.RemoveCard(new Card((Suit)suit, (RANK)rank);  //NEED INSTANCE OF DECK
+            rank = rand.Next(0, 12);
+            suit = rand.Next(0, 3);
+            //Card card7 = Deck.RemoveCard(new Card((Suit)suit, (RANK)rank);  //NEED INSTANCE OF DECK
+
+            //Card[] cards = { card1, card2, card3, card4, card5, card6, card7 }; //NEED CARDS
+            //return new Hand(cards); //NEED cards
+            return null; //remove later
         }
 
         //Full House
@@ -315,10 +346,44 @@ namespace PokerSimLib4911
             return null;
         }
 
-        //Flush
+        //Flush//JSS
         static public Hand genFL()
         {
-            return null;
+            //pick the suit of the FL
+            int suit = 0;
+            int rank = 0;
+            Random rand = new Random();
+            suit = rand.Next(0, 3);
+
+            //choose five cards of that suit
+            rank = rand.Next(0, 12);
+            //Card card1 = Deck.RemoveCard(new Card((Suit)suit, (RANK)rank);  //NEED INSTANCE OF DECK
+            rank = rand.Next(0, 12);
+            //Card card2 = Deck.RemoveCard(new Card((Suit)suit, (RANK)rank);  //NEED INSTANCE OF DECK
+            rank = rand.Next(0, 12);
+            //Card card3 = Deck.RemoveCard(new Card((Suit)suit, (RANK)rank);  //NEED INSTANCE OF DECK
+            rank = rand.Next(0, 12);
+            //Card card4 = Deck.RemoveCard(new Card((Suit)suit, (RANK)rank);  //NEED INSTANCE OF DECK
+            rank = rand.Next(0, 12);
+            //Card card5 = Deck.RemoveCard(new Card((Suit)suit, (RANK)rank);  //NEED INSTANCE OF DECK
+
+
+            //random 2 cards NOT OF THAT SUIT
+            int suit2 = 0;
+            do
+            {
+                suit2 = rand.Next(0, 2);
+            }while(suit2 == suit);
+
+            rank = rand.Next(0, 12);
+            //Card card6 = Deck.RemoveCard(new Card((Suit)suit2, (RANK)rank);  //NEED INSTANCE OF DECK
+            rank = rand.Next(0, 12);
+            //Card card7 = Deck.RemoveCard(new Card((Suit)suit2, (RANK)rank);  //NEED INSTANCE OF DECK
+
+
+            //Card[] cards = { card1, card2, card3, card4, card5, card6, card7 }; //NEED CARDS
+            //return new Hand(cards); //NEED cards
+            return null; //remove later
         }
 
         //Straight
@@ -327,9 +392,22 @@ namespace PokerSimLib4911
             return null;
         }
 
-        //Three of a Kind
+        //Three of a Kind//JSS
         static public Hand genTK()
         {
+            //pick the rank of the TK
+            int rank = 0;
+            Random rand = new Random();
+            rank = rand.Next(0, 12);
+
+            //pick three of the four cards of that rank
+            int suit = 0;
+            suit = rand.Next(0, 3);
+            for (int i = 0; i < 4; i++)
+                //////stopped here///////////////////////////
+
+            //random 4 cards NOT OF THAT RANK
+
             return null;
         }
 
@@ -339,9 +417,12 @@ namespace PokerSimLib4911
             return null;
         }
 
-        //One Pair
+        //One Pair//JSS
         static public Hand genOP()
         {
+            //pick the rank of the OP
+            //pick two of the four cards of that rank
+            //random 5 cards NOT OF THAT RANK
             return null;
         }
 
