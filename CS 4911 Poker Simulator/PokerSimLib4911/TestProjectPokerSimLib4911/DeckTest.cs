@@ -1,11 +1,11 @@
 ﻿using PokerSimLib4911;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
+using System.IO;
+using System;
 
 namespace TestProjectPokerSimLib4911
 {
-    
-    
     /// <summary>
     ///This is a test class for DeckTest and is intended
     ///to contain all DeckTest Unit Tests
@@ -13,8 +13,6 @@ namespace TestProjectPokerSimLib4911
     [TestClass()]
     public class DeckTest
     {
-
-
         private TestContext testContextInstance;
 
         /// <summary>
@@ -63,41 +61,141 @@ namespace TestProjectPokerSimLib4911
         //
         #endregion
 
-        ///// <summary>
-        /////A test for OrderHand
-        /////</summary>
-        //[TestMethod()]
-        //public void OrderHandTest()
-        //{
-        //    List<Card> hand = new List<Card>();
-        //    List<Card> expected = new List<Card>();
+        /// <summary>
+        ///A test for MakeFreshDeck
+        ///</summary>
+        [TestMethod()]
+        public void MakeFreshDeckTest()
+        {
+            Card[] deckArray;
+            Card[] defaultDeck = this.GetDefaultDeck();
 
-        //    // create an un-ordered hand
-        //    hand.Add(new Card(Suit.CLUB, Rank.ACE));
-        //    hand.Add(new Card(Suit.CLUB, Rank.TEN));
-        //    hand.Add(new Card(Suit.CLUB, Rank.TWO));
-        //    hand.Add(new Card(Suit.CLUB, Rank.THREE));
-        //    hand.Add(new Card(Suit.CLUB, Rank.KING));
-        //    hand.Add(new Card(Suit.CLUB, Rank.SEVEN));
-        //    hand.Add(new Card(Suit.CLUB, Rank.FIVE));
+            Deck.Instance.Shuffle();
+            Deck.Instance.MakeFreshDeck();
+            deckArray = Deck.Instance.ToArray();
 
-        //    // create the ordered hand
-        //    expected.Add(new Card(Suit.CLUB, Rank.TWO));
-        //    expected.Add(new Card(Suit.CLUB, Rank.THREE));
-        //    expected.Add(new Card(Suit.CLUB, Rank.FIVE));
-        //    expected.Add(new Card(Suit.CLUB, Rank.SEVEN));
-        //    expected.Add(new Card(Suit.CLUB, Rank.TEN));
-        //    expected.Add(new Card(Suit.CLUB, Rank.KING));
-        //    expected.Add(new Card(Suit.CLUB, Rank.ACE));        // notice that the ACE is the highest ranking card
+            for (int i = 0; i < 52; ++i)
+            {
+                Assert.AreEqual(defaultDeck[i], deckArray[i]);
+            }
+        }
 
-        //    // order the un-ordered hand
-        //    Deck.OrderHandAscending(ref hand);
+        private Card[] GetDefaultDeck()
+        {
+            Card[] cards = new Card[52];
+            
+            // outer loop for suits
+            for (int i = 0; i < 4; ++i)
+            {
+                //inner loop for ranks
+                for (int j = 0; j < 13; ++j)
+                {
+                    cards[i*13 + j] = new Card((Suit)i, (Rank)j);
+                    Console.WriteLine((Rank)j + " of " + (Suit)i);
+                }
+            }
 
-        //    for (int i = 0; i < hand.Count; i++)
-        //    {
-        //        Assert.AreEqual(hand[i].Suit, expected[i].Suit);
-        //        Assert.AreEqual(hand[i].Rank, expected[i].Rank);
-        //    }
-        //}
+            return cards;
+        }
+
+        /// <summary>
+        ///A test for MakeShuffledDeck
+        ///</summary>
+        [TestMethod()]
+        public void MakeShuffledDeckTest()
+        {
+            Card[] shuffledDeckArray;
+            Card[] defaultDeck = this.GetDefaultDeck();
+            int matches = 0;
+
+            Deck.Instance.MakeShuffledDeck();
+            shuffledDeckArray = Deck.Instance.ToArray();
+
+            Assert.AreEqual(52, shuffledDeckArray.Length);
+            for (int i = 0; i < 52; ++i)
+            {
+                if (defaultDeck[i] == shuffledDeckArray[i])
+                {
+                    matches++;
+                }
+            }
+
+            if (matches > 3)
+            {
+                Assert.Inconclusive("The shuffled deck contained at least three cards in their natural positions.");
+            }
+        }
+
+        /// <summary>
+        ///A test for InsertCards
+        ///</summary>
+        [TestMethod()]
+        public void InsertCardsTest()
+        {
+            Card[] cards = { new Card(Suit.CLUBS, Rank.UNKNOWN), new Card(Suit.DIAMONDS, Rank.UNKNOWN) };
+            Deck.Instance.InsertCards(cards);
+            Assert.AreEqual(true, Deck.Instance.Contains(new Card(Suit.CLUBS, Rank.UNKNOWN)));
+            Assert.AreEqual(true, Deck.Instance.Contains(new Card(Suit.DIAMONDS, Rank.UNKNOWN)));
+            Deck.Instance.InsertCards(new Card(Suit.HEARTS, Rank.UNKNOWN));
+            Assert.AreEqual(true, Deck.Instance.Contains(new Card(Suit.HEARTS, Rank.UNKNOWN)));
+            Assert.AreEqual(false, Deck.Instance.Contains(new Card(Suit.SPADES, Rank.UNKNOWN)));
+        }
+
+        /// <summary>
+        ///A test for RemoveCard
+        ///</summary>
+        [TestMethod()]
+        public void RemoveCardTest()
+        {
+            Card card = new Card(Suit.SPADES, Rank.ACE);
+            bool actual;
+            actual = Deck.Instance.RemoveCard(card);
+            Assert.AreEqual(true, actual);
+            actual = Deck.Instance.RemoveCard(new Card(Suit.UNKNOWN, Rank.UNKNOWN));
+            Assert.AreEqual(false, actual);
+        }
+
+        /// <summary>
+        ///A test for DealCard
+        ///</summary>
+        [TestMethod()]
+        public void DealCardTest()
+        {
+            Card expected = new Card(Suit.CLUBS, Rank.TWO);
+            Card actual;
+            actual = Deck.Instance.DealCard();
+            Assert.AreEqual(expected, actual);
+            Assert.AreEqual(false, Deck.Instance.Contains(expected));
+        }
+
+        /// <summary>
+        ///A test for Contains
+        ///</summary>
+        [TestMethod()]
+        public void ContainsTest()
+        {
+            Card invalid = new Card(Suit.UNKNOWN, Rank.ACE);
+            Card valid = new Card(Suit.CLUBS, Rank.ACE);
+            bool actual;
+            actual = Deck.Instance.Contains(valid);
+            Assert.AreEqual(true, actual);
+            actual = Deck.Instance.Contains(invalid);
+            Assert.AreEqual(false, actual);
+        }
+
+        /// <summary>
+        ///A test for HasBeenDealt
+        ///</summary>
+        [TestMethod()]
+        public void HasBeenDealtTest()
+        {
+            Card card = new Card(Suit.CLUBS, Rank.TWO);
+            bool actual;
+            actual = Deck.Instance.HasBeenDealt(card);
+            Assert.AreEqual(false, actual);
+            Deck.Instance.DealCard();
+            actual = Deck.Instance.HasBeenDealt(card);
+            Assert.AreEqual(true, actual);
+        }
     }
 }

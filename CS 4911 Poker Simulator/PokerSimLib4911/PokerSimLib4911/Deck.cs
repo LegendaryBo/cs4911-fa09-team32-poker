@@ -10,9 +10,10 @@ namespace PokerSimLib4911
     {
         private static Deck _instance;
         private List<Card> _cards = new List<Card>();
+        private List<Card> _dealtCards = new List<Card>();
 
-        public static readonly int NUMBER_OF_RANKS = 4;
-        public static readonly int NUMBER_OF_SUITS = 13;
+        public static readonly int NUMBER_OF_RANKS = 13;
+        public static readonly int NUMBER_OF_SUITS = 4;
 
         public static Deck Instance
         {
@@ -31,9 +32,9 @@ namespace PokerSimLib4911
             }
         }
 
-        private Deck() : this(Deck.NUMBER_OF_RANKS, Deck.NUMBER_OF_SUITS) { }
+        private Deck() : this(Deck.NUMBER_OF_SUITS, Deck.NUMBER_OF_RANKS) { }
 
-        private Deck(int numberOfRanks, int numberOfSuits)
+        private Deck(int numberOfSuits, int numberOfRanks)
         {
             // construct the deck
             // outer loop is for suit
@@ -78,19 +79,20 @@ namespace PokerSimLib4911
             _cards = tempCards;
         }
 
-        public Card RemoveCard(Card card)
+        public bool RemoveCard(Card card)
         {
             if (_cards.Remove(card))
             {
-                return card;
+                _dealtCards.Add(card);
+                return true;
             }
             else
             {
-                return null;
+                return false;
             }
         }
 
-        public void ReplaceCards(params Card[] cards)
+        public void InsertCards(params Card[] cards)
         {
             foreach (Card c in cards)
             {
@@ -109,6 +111,7 @@ namespace PokerSimLib4911
             {
                 returnCard = _cards[0];
                 _cards.RemoveAt(0);
+                _dealtCards.Add(returnCard);
             }
             else
             {
@@ -117,23 +120,120 @@ namespace PokerSimLib4911
 
             return returnCard;
         }
+
+        public Card[] ToArray()
+        {
+            return _cards.ToArray();
+        }
+
+        public override string ToString()
+        {
+            StringBuilder deckString = new StringBuilder();
+
+            deckString.Append("Deck Cards: ");
+            for (int i = 0; i < _cards.Count; ++i)
+            {
+                if (i != 0)
+                {
+                    deckString.Append(", ");
+                }
+                deckString.Append(_cards.ElementAt(i));
+            }
+
+            deckString.Append("Dealt Cards: ");
+            for (int i = 0; i < _dealtCards.Count; ++i)
+            {
+                if (i != 0)
+                {
+                    deckString.Append(", ");
+                }
+                deckString.Append(_dealtCards.ElementAt(i));
+            }
+
+            return deckString.ToString();
+        }
+
+        public bool Contains(Card card)
+        {
+            return _cards.Contains(card);
+        }
+
+        public bool HasBeenDealt(Card card)
+        {
+            return _dealtCards.Contains(card);
+        }
     }
 
+    /// <summary>
+    /// A card has a certain suit and rank, or is a wild card.
+    /// </summary>
     public class Card
     {
         public Suit Suit { get; internal set; }
         public Rank Rank { get; internal set; }
+        public bool IsWild
+        {
+            get
+            {
+                return (Suit == Suit.UNKNOWN || Rank == Rank.UNKNOWN);
+            }
+        }
 
         public Card(Suit suit, Rank rank)
         {
             Suit = suit;
             Rank = rank;
         }
+
+        public override string ToString()
+        {
+            return Rank.ToString() + " of " + Suit.ToString();
+        }
+
+        public override bool Equals(object obj)
+        {
+            return obj != null && GetType() == obj.GetType() && (this == (Card)obj);
+        }
+
+        public override int GetHashCode()
+        {
+            return (base.GetHashCode() |
+                    Suit.GetHashCode() |
+                    Rank.GetHashCode());
+        }
+
+        public static bool operator ==(Card x, Card y)
+        {
+            if ((Object)x == null && (Object)y == null)
+            {
+                return true;
+            }
+            else if ((Object)x == null || (Object)y == null)
+            {
+                return false;
+            }
+
+            return (x.Rank == y.Rank &&
+                    x.Suit == y.Suit);
+        }
+
+        public static bool operator !=(Card x, Card y)
+        {
+            return !(x == y);
+        }
     }
 
     public class Hand
     {
-        List<Card> _hand;
+        private List<Card> _hand;
+
+        public bool IsEmpty
+        {
+            get
+            {
+                return (_hand.Count == 0);
+            }
+        }
 
         public Hand() : this(null) { }
 
@@ -145,6 +245,24 @@ namespace PokerSimLib4911
             {
                 _hand.Add(c);
             }
+
+            _hand.DefaultIfEmpty(null);
+        }
+
+        public override string ToString()
+        {
+            StringBuilder handString = new StringBuilder();
+
+            for (int i = 0; i < _hand.Count; ++i)
+            {
+                if (i != 0)
+                {
+                    handString.Append(", ");
+                }
+                handString.Append(_hand.ElementAt(i));
+            }
+
+            return handString.ToString();
         }
 
         public bool Contains(Card card)
@@ -170,6 +288,26 @@ namespace PokerSimLib4911
             return false;
         }
 
+        public void InsertCard(Card card)
+        {
+            _hand.Add(card);
+        }
+
+        public bool RemoveCard(Card card)
+        {
+            return _hand.Remove(card);
+        }
+
+        /// <summary>
+        /// Determines the number of cards of a given suit within the hand.
+        /// </summary>
+        /// <param name="rank">
+        /// The suit of the cards the method should count.
+        /// </param>
+        /// <returns>
+        /// The number of cards of the given suit within the hand.  If no cards of the given
+        /// suit are held in the hand, then the method returns 0.
+        /// </returns>
         public int CountOf(Suit suit)
         {
             int count = 0;
@@ -185,6 +323,16 @@ namespace PokerSimLib4911
             return count;
         }
 
+        /// <summary>
+        /// Determines the number of cards of a given rank within the hand.
+        /// </summary>
+        /// <param name="rank">
+        /// The rank of the cards the method should count.
+        /// </param>
+        /// <returns>
+        /// The number of cards of the given rank within the hand.  If no cards of the given
+        /// rank are held in the hand, then the method returns 0.
+        /// </returns>
         public int CountOf(Rank rank)
         {
             int count = 0;
@@ -201,13 +349,16 @@ namespace PokerSimLib4911
         }
 
         /// <summary>
-        /// 
+        /// Orders the hand in ascending rank.
         /// </summary>
         public void OrderAscending()
         {
             _hand = _hand.OrderBy<Card, int>((card) => (int)card.Rank).ToList<Card>();
         }
 
+        /// <summary>
+        /// Orders the hand in descending rank.
+        /// </summary>
         public void OrderDescending()
         {
             _hand = _hand.OrderByDescending<Card, int>((card) => (int)card.Rank).ToList<Card>();
@@ -253,6 +404,16 @@ namespace PokerSimLib4911
             return false;
         }
 
+        public Card PeekHighCard()
+        {
+            this.OrderAscending();
+            return _hand.LastOrDefault();
+        }
+
+        public Card[] ToArray()
+        {
+            return _hand.ToArray();
+        }
     }
 
     /// <summary>
@@ -260,10 +421,11 @@ namespace PokerSimLib4911
     /// </summary>
     public enum Suit
     {
-        CLUB,
-        DIAMOND,
-        HEART,
-        SPADE
+        CLUBS,
+        DIAMONDS,
+        HEARTS,
+        SPADES,
+        UNKNOWN
     }
 
     /// <summary>
@@ -286,7 +448,8 @@ namespace PokerSimLib4911
         JACK,
         QUEEN,
         KING,
-        ACE
+        ACE,
+        UNKNOWN
     }
 
     public class HandGenerator
@@ -294,7 +457,43 @@ namespace PokerSimLib4911
         //Royal Flush
         static public Hand genRF()
         {
-            return null;
+            int randomSuit = new Random().Next(Deck.NUMBER_OF_SUITS);
+            return GetRoyalFlushHand((Suit)randomSuit);
+        }
+
+        //Royal Flush
+        static public Hand GetRoyalFlushHand(Suit suit)
+        {
+            // first, create a new + shuffled deck
+            Deck.Instance.MakeShuffledDeck();
+            Hand royalFlush = new Hand();
+
+            // a royal flush contains the cards ten through ace, all of the same suit
+            Card ace = new Card(suit, Rank.ACE);
+            Card king = new Card(suit, Rank.KING);
+            Card queen = new Card(suit, Rank.QUEEN);
+            Card jack = new Card(suit, Rank.JACK);
+            Card ten = new Card(suit, Rank.TEN);
+
+            // normally, the return value of RemoveCard would have to be checked,
+            // but we know the deck is brand new and has all cards because it was
+            // re-instantiated and shuffled at the beginning of this method
+            Deck.Instance.RemoveCard(ace);
+            royalFlush.InsertCard(ace);
+
+            Deck.Instance.RemoveCard(king);
+            royalFlush.InsertCard(king);
+
+            Deck.Instance.RemoveCard(queen);
+            royalFlush.InsertCard(queen);
+
+            Deck.Instance.RemoveCard(jack);
+            royalFlush.InsertCard(jack);
+
+            Deck.Instance.RemoveCard(ten);
+            royalFlush.InsertCard(ten);
+
+            return royalFlush;
         }
 
         //Straight Flush//JSS
@@ -403,7 +602,7 @@ namespace PokerSimLib4911
             //pick three of the four cards of that rank
             int suit = 0;
             suit = rand.Next(0, 3);
-            for (int i = 0; i < 4; i++)
+            //for (int i = 0; i < 4; i++)
                 //////stopped here///////////////////////////
 
             //random 4 cards NOT OF THAT RANK
