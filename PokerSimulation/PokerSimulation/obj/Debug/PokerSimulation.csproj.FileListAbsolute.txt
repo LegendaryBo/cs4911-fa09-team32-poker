@@ -1,9 +1,0 @@
-C:\Users\EJ\Documents\Visual Studio 2008\Projects\PokerSimulation\PokerSimulation\bin\Debug\PokerSimulation.exe
-C:\Users\EJ\Documents\Visual Studio 2008\Projects\PokerSimulation\PokerSimulation\bin\Debug\PokerSimulation.pdb
-C:\Users\EJ\Documents\Visual Studio 2008\Projects\PokerSimulation\PokerSimulation\obj\Debug\ResolveAssemblyReference.cache
-C:\Users\EJ\Documents\Visual Studio 2008\Projects\PokerSimulation\PokerSimulation\obj\Debug\PokerSimulation.Properties.Resources.resources
-C:\Users\EJ\Documents\Visual Studio 2008\Projects\PokerSimulation\PokerSimulation\obj\Debug\PokerSimulation.StartForm.resources
-C:\Users\EJ\Documents\Visual Studio 2008\Projects\PokerSimulation\PokerSimulation\obj\Debug\PokerSimulation.csproj.GenerateResource.Cache
-C:\Users\EJ\Documents\Visual Studio 2008\Projects\PokerSimulation\PokerSimulation\obj\Debug\PokerSimulation.exe
-C:\Users\EJ\Documents\Visual Studio 2008\Projects\PokerSimulation\PokerSimulation\obj\Debug\PokerSimulation.pdb
-C:\Users\EJ\Documents\Visual Studio 2008\Projects\PokerSimulation\PokerSimulation\obj\Debug\PokerSimulation.BoardControl.resources
