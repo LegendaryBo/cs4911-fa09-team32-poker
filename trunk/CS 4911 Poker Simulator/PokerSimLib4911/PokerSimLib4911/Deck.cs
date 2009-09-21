@@ -187,7 +187,32 @@ namespace PokerSimLib4911
 
         public override string ToString()
         {
-            return Rank.ToString() + " of " + Suit.ToString();
+            string s = Suit.ToString().Substring(0, 1);
+            string r;
+
+            switch((int)Rank)
+            {
+                case 8:
+                    r = "T";
+                    break;
+                case 9:
+                    r = "J";
+                    break;
+                case 10:
+                    r = "Q";
+                    break;
+                case 11:
+                    r = "K";
+                    break;
+                case 12:
+                    r = "A";
+                    break;
+                default:
+                    r = ((int)Rank + 2).ToString().Substring(0, 1);
+                    break;
+            }
+
+            return r + s;
         }
 
         public override bool Equals(object obj)
@@ -241,9 +266,12 @@ namespace PokerSimLib4911
         {
             _hand = new List<Card>();
 
-            foreach (Card c in cards)
+            if (cards != null)
             {
-                _hand.Add(c);
+                foreach (Card c in cards)
+                {
+                    _hand.Add(c);
+                }
             }
 
             _hand.DefaultIfEmpty(null);
@@ -296,6 +324,21 @@ namespace PokerSimLib4911
         public bool RemoveCard(Card card)
         {
             return _hand.Remove(card);
+        }
+
+        public int CountOf(Card card)
+        {
+            int count = 0;
+
+            foreach (Card c in _hand)
+            {
+                if (c.Suit == card.Suit && c.Rank == card.Rank)
+                {
+                    ++count;
+                }
+            }
+
+            return count;
         }
 
         /// <summary>
@@ -413,6 +456,34 @@ namespace PokerSimLib4911
         public Card[] ToArray()
         {
             return _hand.ToArray();
+        }
+
+        public Hand GetClubs()
+        {
+            Hand clubs = new Hand();
+
+            return clubs;
+        }
+
+        public Hand GetDiamonds()
+        {
+            Hand diamonds = new Hand();
+
+            return diamonds;
+        }
+
+        public Hand GetHearts()
+        {
+            Hand hearts = new Hand();
+
+            return hearts;
+        }
+
+        public Hand GetSpades()
+        {
+            Hand spades = new Hand();
+
+            return spades;
         }
     }
 
