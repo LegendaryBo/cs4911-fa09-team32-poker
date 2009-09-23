@@ -189,6 +189,7 @@ namespace TestProjectPokerSimLib4911
         [TestMethod()]
         public void HasBeenDealtTest()
         {
+            Deck.Instance.MakeFreshDeck();
             Card card = new Card(Suit.CLUBS, Rank.TWO);
             bool actual;
             actual = Deck.Instance.HasBeenDealt(card);
