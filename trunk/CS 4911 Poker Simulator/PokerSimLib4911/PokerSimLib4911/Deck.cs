@@ -92,6 +92,20 @@ namespace PokerSimLib4911
             }
         }
 
+        public bool ReturnCard(Card card)
+        {
+            if (_dealtCards.Remove(card))
+            {
+                _cards.Add(card);
+                this.Shuffle();
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
         public void InsertCards(params Card[] cards)
         {
             foreach (Card c in cards)
@@ -99,6 +113,28 @@ namespace PokerSimLib4911
                 if (!_cards.Contains(c))
                 {
                     _cards.Add(c);
+                }
+            }
+        }
+
+        public void RemoveCards(params Card[] cards)
+        {
+            foreach (Card c in cards)
+            {
+                if (_cards.Contains(c))
+                {
+                    this.RemoveCard(c);
+                }
+            }
+        }
+
+        public void ReturnCards(params Card[] cards)
+        {
+            foreach (Card c in cards)
+            {
+                if (_dealtCards.Contains(c))
+                {
+                    this.ReturnCard(c);
                 }
             }
         }
@@ -849,26 +885,21 @@ namespace PokerSimLib4911
 
     public class HandGenerator
     {
-        //Royal Flush
+        //Royal Flush//JC
         static public Hand genRF()
         {
-            int randomSuit = new Random().Next(Deck.NUMBER_OF_SUITS);
-            return GetRoyalFlushHand((Suit)randomSuit);
-        }
+            int suit = new Random().Next(Deck.NUMBER_OF_SUITS);
 
-        //Royal Flush
-        static public Hand GetRoyalFlushHand(Suit suit)
-        {
             // first, create a new + shuffled deck
             Deck.Instance.MakeShuffledDeck();
             Hand royalFlush = new Hand();
 
             // a royal flush contains the cards ten through ace, all of the same suit
-            Card ace = new Card(suit, Rank.ACE);
-            Card king = new Card(suit, Rank.KING);
-            Card queen = new Card(suit, Rank.QUEEN);
-            Card jack = new Card(suit, Rank.JACK);
-            Card ten = new Card(suit, Rank.TEN);
+            Card ace = new Card((Suit)suit, Rank.ACE);
+            Card king = new Card((Suit)suit, Rank.KING);
+            Card queen = new Card((Suit)suit, Rank.QUEEN);
+            Card jack = new Card((Suit)suit, Rank.JACK);
+            Card ten = new Card((Suit)suit, Rank.TEN);
 
             // normally, the return value of RemoveCard would have to be checked,
             // but we know the deck is brand new and has all cards because it was
@@ -934,10 +965,52 @@ namespace PokerSimLib4911
             return null; //remove later
         }
 
-        //Full House
+        //Full House//Ruslan
         static public Hand genFH()
         {
-            return null;
+            Deck deck = Deck.Instance;
+            Hand hand = new Hand();
+            Random r = new Random();
+
+            deck.MakeShuffledDeck();
+
+            Card[] c = new Card[]{deck.DealCard(), deck.DealCard()};
+            while (c[0].Rank == c[1].Rank)
+            {
+                deck.ReturnCard(c[1]);
+                c[1] = deck.DealCard();
+            }
+
+            Suit[,] suits = {{ Suit.CLUBS, Suit.DIAMONDS, Suit.HEARTS, Suit.SPADES },
+                            { Suit.CLUBS, Suit.DIAMONDS, Suit.HEARTS, Suit.SPADES }};
+            int[] suitLast = {3, 3};
+
+            int rank = c.Rank;
+
+            hand.InsertCards(c);
+
+            for (int i = 0; i < 4; i++)
+            {
+                for (int a = 0; a > 2; a++)
+                {
+                    int index = r.Next(0, suitLast[a]);
+                    Suit suit = suits[a, index];
+                    suits[a, index] = suits[a, suitLast[a]];
+                    suits[a, suitLast[a]] = suit;
+                    suitLast[a] = suitLast[a] - 1;
+
+                    c[a] = new Card((Suit)suit, (Rank)rank);
+                }
+
+                if (i < 2) hand.InsertCards(c);
+                if (i == 2) hand.InsertCards(c[0]);
+                deck.RemoveCards(c);
+            }
+
+            for (int i = 0; i < 2; i++)
+                hand.InsertCard(deck.DealCard());
+
+            return hand;
         }
 
         //Flush//JSS
@@ -980,10 +1053,37 @@ namespace PokerSimLib4911
             return null; //remove later
         }
 
-        //Straight
+        //Straight//Ruslan
         static public Hand genST()
         {
-            return null;
+            Random r = new Random();
+            Deck deck = Deck.Instance;
+            Hand hand = null;
+
+            deck.MakeShuffledDeck();
+
+            Rank rank = (Rank)r.Next(3, 12);
+            Boolean invalid = false;
+
+            do
+            {
+                if (hand != null) deck.ReturnCards(hand.ToArray());
+                hand = new Hand();
+
+                for (int i = 0; i < 5; i++)
+                {
+                    Rank cardRank = rank - i;
+                    if ((Rank)rank == Rank.FIVE) cardRank = Rank.ACE;
+
+                    hand.InsertCard(new Card((Suit)r.Next(0, 3), cardRank));
+                };
+
+                deck.RemoveCards(hand.ToArray());
+
+                invalid = hand.HasFlush();
+            } while (invalid);
+
+            return hand;
         }
 
         //Three of a Kind//JSS
@@ -1005,10 +1105,62 @@ namespace PokerSimLib4911
             return null;
         }
 
-        //Two Pair
+        //Two Pair//Ruslan
         static public Hand genTP()
         {
-            return null;
+            Deck deck = Deck.Instance;
+            Hand hand = new Hand();
+            Random r = new Random();
+
+            deck.MakeShuffledDeck();
+
+            Card[] c = new Card[] { deck.DealCard(), deck.DealCard() };
+            while (c[0].Rank == c[1].Rank)
+            {
+                deck.ReturnCard(c[1]);
+                c[1] = deck.DealCard();
+            }
+
+            Suit[,] suits = {{ Suit.CLUBS, Suit.DIAMONDS, Suit.HEARTS, Suit.SPADES },
+                            { Suit.CLUBS, Suit.DIAMONDS, Suit.HEARTS, Suit.SPADES }};
+            int[] suitLast = { 3, 3 };
+
+            int rank = c.Rank;
+
+            hand.InsertCards(c);
+
+            for (int i = 0; i < 4; i++)
+            {
+                for (int a = 0; a > 2; a++)
+                {
+                    int index = r.Next(0, suitLast[a]);
+                    Suit suit = suits[a, index];
+                    suits[a, index] = suits[a, suitLast[a]];
+                    suits[a, suitLast[a]] = suit;
+                    suitLast[a] = suitLast[a] - 1;
+
+                    c[a] = new Card((Suit)suit, (Rank)rank);
+                }
+
+                if (i < 2) hand.InsertCards(c);
+                deck.RemoveCards(c);
+            }
+
+            Hand randHand = null;
+            Boolean invalid = false;
+
+            do{
+                if (randHand != null) deck.ReturnCards(randHand.ToArray());
+                randHand = new Hand(hand.ToArray());
+
+                for (int i = 0; i < 3; i++)
+                    randHand.InsertCard(deck.DealCard());
+
+                invalid = randHand.HasStraight() || randHand.HasFlush();
+
+            } while(invalid);
+
+            return hand;
         }
 
         //One Pair//JSS
@@ -1020,10 +1172,35 @@ namespace PokerSimLib4911
             return null;
         }
 
-        //High Card
+        //High Card//Ruslan
         static public Hand genHC()
         {
-            return null;
+            Hand hand;
+            Deck deck = Deck.Instance;
+            Boolean invalid = false;
+
+            do{
+
+                deck.MakeShuffledDeck();
+
+                hand = new Hand();
+
+                for (int i = 0; i < 5; i++) hand.InsertCard(deck.DealCard());
+
+                Boolean hasPair = false;
+                for (int i = 0; i < 13; i++)
+                {
+                    if (hand.CountOf((Rank)i) > 1)
+                    {
+                        hasPair = true;
+                        break;
+                    }
+                }
+
+                invalid = hand.HasFlush() || hand.HasStraight() || hasPair;
+            } while (invalid);
+
+            return hand;
         }
     }
 }
