@@ -36,6 +36,7 @@
             this.entryTimerSplit = new System.Windows.Forms.SplitContainer();
             this.answerEntryText = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.responseDisplayText = new System.Windows.Forms.TextBox();
             this.reactionDisplayText = new System.Windows.Forms.TextBox();
             this.timerLabel = new System.Windows.Forms.Label();
             this.BoardPanel = new System.Windows.Forms.Panel();
@@ -44,7 +45,6 @@
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.responseDisplayText = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.buttonsSplit.Panel1.SuspendLayout();
             this.buttonsSplit.Panel2.SuspendLayout();
@@ -132,6 +132,7 @@
             this.optionsButton.TabIndex = 0;
             this.optionsButton.Text = "Click Here For Options";
             this.optionsButton.UseVisualStyleBackColor = true;
+            this.optionsButton.Click += new System.EventHandler(this.optionsButton_Click);
             // 
             // entryTimerSplit
             // 
@@ -168,6 +169,13 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(468, 37);
             this.panel1.TabIndex = 0;
+            // 
+            // responseDisplayText
+            // 
+            this.responseDisplayText.Location = new System.Drawing.Point(284, -1);
+            this.responseDisplayText.Name = "responseDisplayText";
+            this.responseDisplayText.Size = new System.Drawing.Size(100, 20);
+            this.responseDisplayText.TabIndex = 2;
             // 
             // reactionDisplayText
             // 
@@ -242,13 +250,6 @@
             this.pictureBox1.Size = new System.Drawing.Size(62, 102);
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
-            // 
-            // responseDisplayText
-            // 
-            this.responseDisplayText.Location = new System.Drawing.Point(284, -1);
-            this.responseDisplayText.Name = "responseDisplayText";
-            this.responseDisplayText.Size = new System.Drawing.Size(100, 20);
-            this.responseDisplayText.TabIndex = 2;
             // 
             // StartForm
             // 
