@@ -1210,6 +1210,7 @@ namespace PokerSimulation
 
             do
             {
+                invalid = false;
                 if (randHand != null) Deck.Instance.ReturnCards(randHand.ToArray());
                 randHand = new Hand(threeKind.ToArray());
 
@@ -1345,6 +1346,7 @@ namespace PokerSimulation
 
             do
             {
+                invalid = false;
                 if (randHand != null) Deck.Instance.ReturnCards(randHand.ToArray());
                 randHand = new Hand(onePair.ToArray());
 
