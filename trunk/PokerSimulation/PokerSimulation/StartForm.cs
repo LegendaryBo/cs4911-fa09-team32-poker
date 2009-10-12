@@ -45,23 +45,30 @@ namespace PokerSimulation
         public void setupCards()
         {
             boardCards = new List<Card>(3);
-            boardCards.Add(new Card());
-            boardCards.Add(new Card("Ace_Club"));
-            boardCards.Add(new Card("Five_Spade"));
+            //boardCards.Add(new Card());
+            //boardCards.Add(new Card("Ace_Club"));
+            //boardCards.Add(new Card("Five_Spade"));
+
             
         }
         public void drawOnBoard()
         {
             
-            pictureBox1.Image = (Image)boardCards[0].Image;
-            pictureBox2.Image = (Image)boardCards[1].Image;
-            pictureBox3.Image = (Image)boardCards[2].Image;
+            //pictureBox1.Image = (Image)boardCards[0].Image;
+            //pictureBox2.Image = (Image)boardCards[1].Image;
+            //pictureBox3.Image = (Image)boardCards[2].Image;
             debugText = boardCards.ToString();
             answerEntryText.Text = debugText;
             
                 
         }
         #endregion
+
+        private void optionsButton_Click(object sender, EventArgs e)
+        {
+            TestingForm form = new TestingForm();
+            form.Show();
+        }
 
         
 
