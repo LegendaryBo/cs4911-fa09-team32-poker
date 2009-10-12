@@ -130,7 +130,7 @@
             this.optionsButton.Name = "optionsButton";
             this.optionsButton.Size = new System.Drawing.Size(350, 41);
             this.optionsButton.TabIndex = 0;
-            this.optionsButton.Text = "Click Here For Options";
+            this.optionsButton.Text = "Click Here for Testing Form";
             this.optionsButton.UseVisualStyleBackColor = true;
             this.optionsButton.Click += new System.EventHandler(this.optionsButton_Click);
             // 
