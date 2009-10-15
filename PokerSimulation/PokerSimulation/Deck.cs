@@ -423,6 +423,25 @@ namespace PokerSimulation
             }
         }
 
+        public void Shuffle()
+        {
+            List<Card> tempCards = new List<Card>();
+            Random rand = new Random();
+
+            while (_hand.Count > 0)
+            {
+                // select a card from the cards left in the hand
+                int randomIndex = rand.Next(_hand.Count);
+                // add the selected card to the temp hand
+                tempCards.Add(_hand[randomIndex]);
+                // remove the selected card from the current hand
+                _hand.RemoveAt(randomIndex);
+            }
+
+            // set the current hand to the shuffled hand
+            _hand = tempCards;
+        }
+
         public bool RemoveCard(Card card)
         {
             return _hand.Remove(card);
@@ -890,8 +909,20 @@ namespace PokerSimulation
 
         }
 
+        private const int RF = 0;
+        private const int SF = 1;
+        private const int FK = 2;
+        private const int FH = 3;
+        private const int FL = 4;
+        private const int ST = 5;
+        private const int TK = 6;
+        private const int TP = 7;
+        private const int OP = 8;
+
+        private static int[] REQ_CARDS = {5, 5, 4, 5, 5, 5, 3, 4, 2};
+
         //Royal Flush//JC
-        static public Hand genRF()
+        static public Hand genRF(int numCards)
         {
             int suit = new Random().Next(Deck.NUMBER_OF_SUITS);
 
@@ -900,104 +931,51 @@ namespace PokerSimulation
             Hand royalFlush = new Hand();
 
             // a royal flush contains the cards ten through ace, all of the same suit
-            Card ace = new Card((Suit)suit, Rank.ACE);
-            Card king = new Card((Suit)suit, Rank.KING);
-            Card queen = new Card((Suit)suit, Rank.QUEEN);
-            Card jack = new Card((Suit)suit, Rank.JACK);
-            Card ten = new Card((Suit)suit, Rank.TEN);
+            for (int i = 0; i < REQ_CARDS[RF]; i++)
+                royalFlush.InsertCard(new Card((Suit)suit, Rank.TEN + i));
 
-            // normally, the return value of RemoveCard would have to be checked,
-            // but we know the deck is brand new and has all cards because it was
-            // re-instantiated and shuffled at the beginning of this method
-            Deck.Instance.RemoveCard(ace);
-            royalFlush.InsertCard(ace);
+            Deck.Instance.RemoveCards(royalFlush.ToArray());
 
-            Deck.Instance.RemoveCard(king);
-            royalFlush.InsertCard(king);
+            for (int i = 0; i < numCards - REQ_CARDS[RF]; i++)
+                royalFlush.InsertCard(Deck.Instance.DealCard());
 
-            Deck.Instance.RemoveCard(queen);
-            royalFlush.InsertCard(queen);
-
-            Deck.Instance.RemoveCard(jack);
-            royalFlush.InsertCard(jack);
-
-            Deck.Instance.RemoveCard(ten);
-            royalFlush.InsertCard(ten);
-
+            royalFlush.Shuffle();
             return royalFlush;
         }
 
         //Straight Flush//JSS
-        static public Hand genSF()
+        static public Hand genSF(int numCards)
         {
-            
-            //pick a suit
-            //pick a 5, 6, 7, 8, or 9 - must always include at least one of these
-            //remove that card
-            //choose ascending or descending order
-            //fill the rest of the cards in the SF
-            //random two cards
+            Random r = new Random();
+            Deck deck = Deck.Instance;
+            Hand hand = null;
 
-            //Added by EJ
-            Deck.Instance.MakeShuffledDeck();
-            Hand straightFlush = new Hand();
+            deck.MakeShuffledDeck();
 
-            //pick the suit of the Straight Flush
-            int suit = 0;
-            Random rand = new Random();
-            suit = rand.Next(0, 3);
+            Rank rank = (Rank)r.Next(3, 11);
+            Suit suit = (Suit)r.Next(0, 3);
 
-            //pick a 5, 6, 7, 8, or 9 
-            int rank = 0;
-            rank = rand.Next(5, 9);
-            Card card1 = new Card((Suit)suit, (Rank)rank);
-            straightFlush.InsertCard(card1);
+            hand = new Hand();
 
-            //pick ascending or descending order, where ascending = 1, descending = 0;
-            int direction = 0;
-            direction = rand.Next(0, 1);
-
-            Card sfCard = null;
-
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < REQ_CARDS[SF]; i++)
             {
-                if (direction == 1)
-                {
-                    sfCard = new Card((Suit)suit, (Rank)rank + i);
-                    straightFlush.InsertCard(sfCard);
-                }
-                else
-                {
-                    sfCard = new Card((Suit)suit, (Rank)rank - i);
-                    straightFlush.InsertCard(sfCard);
-                }
+                Rank cardRank = rank - i;
+                if (cardRank < 0) cardRank = Rank.ACE;
+
+                hand.InsertCard(new Card(suit, cardRank));
             }
 
-            //fill the rest of the cards in the SF
-            //Can be any cards except for a card of the same suit, 1 higher than the highest card in the hand.
-            //Could also be done by removing all cards of the chosen suit.
+            deck.RemoveCards(hand.ToArray());
 
-            //Remove cards from deck of the same suit.
-            for (int i = 0; i < 12; i++)
-            {
-                if (Deck.Instance.Contains(new Card((Suit)suit, (Rank)i)))
-                {
-                    Card card = new Card((Suit)suit, (Rank)i);
-                    Deck.Instance.RemoveCard(card);
-                }
-            }
+            for (int i = 0; i < numCards - REQ_CARDS[SF]; i++)
+                hand.InsertCard(deck.DealCard());
 
-            //Deal 2 random cards, as they can no longer be of the same suit as the first 5 cards.
-            Card card6 = Deck.Instance.DealCard();
-            straightFlush.InsertCard(card6);
-            Card card7 = Deck.Instance.DealCard();
-            straightFlush.InsertCard(card7);
-
-            return straightFlush;
+            hand.Shuffle();
+            return hand;
         }
 
         //Four of a Kind//JSS
-        static public Hand genFK()
+        static public Hand genFK(int numCards)
         {
             //Added by EJ
             Deck.Instance.MakeShuffledDeck();
@@ -1008,39 +986,27 @@ namespace PokerSimulation
             Random rand = new Random();
             rank = rand.Next(0, 12);
 
-            Card card1 = new Card((Suit)0, (Rank)rank);
-            Card card2 = new Card((Suit)1, (Rank)rank);
-            Card card3 = new Card((Suit)2, (Rank)rank);
-            Card card4 = new Card((Suit)3, (Rank)rank);
+            for (int i = 0; i < REQ_CARDS[FK]; i++)
+                fourKind.InsertCard(new Card((Suit)i, (Rank)rank));
 
-            Deck.Instance.RemoveCard(card1);
-            fourKind.InsertCard(card1);
-            Deck.Instance.RemoveCard(card2);
-            fourKind.InsertCard(card2);
-            Deck.Instance.RemoveCard(card3);
-            fourKind.InsertCard(card3);
-            Deck.Instance.RemoveCard(card4);
-            fourKind.InsertCard(card4);
-
+            Deck.Instance.RemoveCards(fourKind.ToArray());
 
             //random 3 cards
             //can be random because no cards that are dealt will make the hand better than a 4-Kind
-            
-            Card card5 = Deck.Instance.DealCard();
-            fourKind.InsertCard(card5);
-            Card card6 = Deck.Instance.DealCard();
-            fourKind.InsertCard(card6);
-            Card card7 = Deck.Instance.DealCard();
-            fourKind.InsertCard(card7);
 
+            for (int i = 0; i < numCards - REQ_CARDS[FK]; i++)
+                fourKind.InsertCard(Deck.Instance.DealCard());
+
+            fourKind.Shuffle();
             return fourKind; //return completed hand
         }
 
         //Full House//Ruslan
-        static public Hand genFH()
+        static public Hand genFH(int numCards)
         {
             Deck deck = Deck.Instance;
             Hand hand = new Hand();
+            Card[] dealBack = new Card[2];
             Random r = new Random();
 
             deck.MakeShuffledDeck();
@@ -1054,38 +1020,40 @@ namespace PokerSimulation
 
             Suit[,] suits = {{ Suit.CLUBS, Suit.DIAMONDS, Suit.HEARTS, Suit.SPADES },
                             { Suit.CLUBS, Suit.DIAMONDS, Suit.HEARTS, Suit.SPADES }};
-            int[] suitLast = {3, 3};
-
-            int rank = c.Rank;
-
-            hand.InsertCards(c);
+            int suitLast = 3;
+            Rank[] ranks = {c[0].Rank, c[1].Rank};
 
             for (int i = 0; i < 4; i++)
             {
-                for (int a = 0; a > 2; a++)
+                for (int a = 0; a < 2; a++)
                 {
-                    int index = r.Next(0, suitLast[a]);
+                    int index = r.Next(0, suitLast);
                     Suit suit = suits[a, index];
-                    suits[a, index] = suits[a, suitLast[a]];
-                    suits[a, suitLast[a]] = suit;
-                    suitLast[a] = suitLast[a] - 1;
+                    suits[a, index] = suits[a, suitLast];
+                    suits[a, suitLast] = suit;
 
-                    c[a] = new Card((Suit)suit, (Rank)rank);
+                    c[a] = new Card((Suit)suit, ranks[a]);
                 }
 
+                suitLast--;
+
                 if (i < 2) hand.InsertCards(c);
-                if (i == 2) hand.InsertCards(c[0]);
+                else dealBack[i - 2] = c[1];
+                if (i == 2) hand.InsertCard(c[0]);
                 deck.RemoveCards(c);
             }
 
-            for (int i = 0; i < 2; i++)
+            deck.ReturnCard(dealBack[r.Next(0, 1)]);
+
+            for (int i = 0; i < numCards - REQ_CARDS[FH]; i++)
                 hand.InsertCard(deck.DealCard());
 
+            hand.Shuffle();
             return hand;
         }
 
         //Flush//JSS
-        static public Hand genFL()
+        static public Hand genFL(int numCards)
         {
             //Added by EJ
             Deck.Instance.MakeShuffledDeck();
@@ -1093,51 +1061,41 @@ namespace PokerSimulation
 
             //pick the suit of the FL
             int suit = 0;
-            int rank = 0;
             Random rand = new Random();
             suit = rand.Next(0, 3);
+            Boolean invalid = false;
 
-            //choose five cards of that suit
-            //get the first card in the flush
-            rank = rand.Next(0, 12);
-            Card card = new Card((Suit)suit, (Rank)rank);
-            flushHand.InsertCard(card);
-            Deck.Instance.RemoveCard(card);
-            
-            do//Gets the other 4 cards of the flush
-            {
-                rank = rand.Next(0, 12);
-                card = new Card((Suit)suit, (Rank)rank);
-                if(!flushHand.Contains(card))
+            Card card;
+
+            do{
+                if (flushHand != null) Deck.Instance.ReturnCards(flushHand.ToArray());
+                flushHand = new Hand();
+
+                for (int i = 0; i < REQ_CARDS[FL]; i++)
                 {
+                    //choose five cards of that suit
+                    do
+                    {
+                        card = new Card((Suit)suit, (Rank)rand.Next(0, 12));
+                    } while (flushHand.Contains(card));
+
                     flushHand.InsertCard(card);
-                    Deck.Instance.RemoveCard(card);
                 }
 
-            } while (flushHand.Count < 5);
-            //while your flush Hand has 5 or less cards in it.
+                Deck.Instance.RemoveCards(flushHand.ToArray());
 
-            //Remove cards from deck of the same suit.
-            for(int i = 0; i < 12; i++)
-            {
-                if (Deck.Instance.Contains(new Card((Suit)suit, (Rank)i)))
-                {
-                    card = new Card((Suit)suit, (Rank)i);
-                    Deck.Instance.RemoveCard(card);
-                }
-            }
+                for (int i = 0; i < numCards - REQ_CARDS[FL]; i++)
+                    flushHand.InsertCard(Deck.Instance.DealCard());
 
-            //Deal 2 random cards, as they can no longer be of the same suit as the first 5 cards.
-            Card card6 = Deck.Instance.DealCard();
-            flushHand.InsertCard(card6);
-            Card card7 = Deck.Instance.DealCard();
-            flushHand.InsertCard(card7);
+                invalid = flushHand.HasStraight();
+            } while(invalid);
 
+            flushHand.Shuffle();
             return flushHand; //remove later
         }
 
         //Straight//Ruslan
-        static public Hand genST()
+        static public Hand genST(int numCards)
         {
             Random r = new Random();
             Deck deck = Deck.Instance;
@@ -1153,28 +1111,33 @@ namespace PokerSimulation
                 if (hand != null) deck.ReturnCards(hand.ToArray());
                 hand = new Hand();
 
-                for (int i = 0; i < 5; i++)
+                for (int i = 0; i < REQ_CARDS[ST]; i++)
                 {
                     Rank cardRank = rank - i;
-                    if ((Rank)rank == Rank.FIVE) cardRank = Rank.ACE;
+                    if (cardRank < 0) cardRank = Rank.ACE;
 
                     hand.InsertCard(new Card((Suit)r.Next(0, 3), cardRank));
-                };
+                }
 
                 deck.RemoveCards(hand.ToArray());
+
+                for (int i = 0; i < numCards - REQ_CARDS[ST]; i++)
+                    hand.InsertCard(deck.DealCard());
 
                 invalid = hand.HasFlush();
             } while (invalid);
 
+            hand.Shuffle();
             return hand;
         }
 
         //Three of a Kind//JSS
-        static public Hand genTK()
+        static public Hand genTK(int numCards)
         {
             //Added by EJ
             Deck.Instance.MakeShuffledDeck();
             Hand threeKind = new Hand();
+            Card card;
 
             //pick the rank of the TK
             int rank = 0;
@@ -1184,23 +1147,12 @@ namespace PokerSimulation
             //Get all four cards of that rank, and randomly choose one to remove from the hand.
             //This takes care of finding that card later to remove it from the deck so you won't
             //end up with a 4-Kind.
-            int suit = 0;
-            suit = rand.Next(0, 3);
-
-            Card card1 = new Card((Suit)0, (Rank)rank);
-            threeKind.InsertCard(card1);
-            Deck.Instance.RemoveCard(card1);
-            Card card2 = new Card((Suit)1, (Rank)rank);
-            threeKind.InsertCard(card2);
-            Deck.Instance.RemoveCard(card2);
-            Card card3 = new Card((Suit)2, (Rank)rank);
-            threeKind.InsertCard(card3);
-            Deck.Instance.RemoveCard(card3);
-            Card card4 = new Card((Suit)3, (Rank)rank);
-            threeKind.InsertCard(card4);
-            Deck.Instance.RemoveCard(card4);
-            
-            threeKind.RemoveCard(new Card((Suit)suit, (Rank)rank));
+            for (int i = 0; i < REQ_CARDS[TK] + 1; i++)
+            {
+                card = new Card((Suit)i, (Rank)rank);
+                if (i < 3) threeKind.InsertCard(card);
+                Deck.Instance.RemoveCard(card);
+            }
 
             //Generate 4 cards, knowing that a Full House, 4-Kind of a different rank, straight, flush,
             //Straight flush and Royal Flush will beat 3-Kind.
@@ -1213,11 +1165,10 @@ namespace PokerSimulation
                 invalid = false;
                 if (randHand != null) Deck.Instance.ReturnCards(randHand.ToArray());
                 randHand = new Hand(threeKind.ToArray());
+                Deck.Instance.RemoveCards(randHand.ToArray());
 
-                for (int i = 0; i < 4; i++)
-                {
+                for (int i = 0; i < numCards - REQ_CARDS[TK]; i++)
                     randHand.InsertCard(Deck.Instance.DealCard());
-                }
 
                 //checks to see how many of each rank are in the hand.
                 for (int j = 0; j < 12; j++)
@@ -1228,21 +1179,24 @@ namespace PokerSimulation
                         invalid = true;
                     }
                 }
+
                 //checks for Straight and Flush in hand
                 if(invalid == false)
                     invalid = randHand.HasStraight() || randHand.HasFlush(3);
 
             } while (invalid);
 
+            randHand.Shuffle();
             return randHand;
         }
 
         //Two Pair//Ruslan
-        static public Hand genTP()
+        static public Hand genTP(int numCards)
         {
             Deck deck = Deck.Instance;
             Hand hand = new Hand();
             Random r = new Random();
+            Card[] dealBack = new Card[2];
 
             deck.MakeShuffledDeck();
 
@@ -1255,24 +1209,24 @@ namespace PokerSimulation
 
             Suit[,] suits = {{ Suit.CLUBS, Suit.DIAMONDS, Suit.HEARTS, Suit.SPADES },
                             { Suit.CLUBS, Suit.DIAMONDS, Suit.HEARTS, Suit.SPADES }};
-            int[] suitLast = { 3, 3 };
 
-            int rank = c.Rank;
+            int suitLast = 3;
 
-            hand.InsertCards(c);
+            Rank[] ranks = new Rank[]{c[0].Rank, c[1].Rank};
 
             for (int i = 0; i < 4; i++)
             {
-                for (int a = 0; a > 2; a++)
+                for (int a = 0; a < 2; a++)
                 {
-                    int index = r.Next(0, suitLast[a]);
+                    int index = r.Next(0, suitLast);
                     Suit suit = suits[a, index];
-                    suits[a, index] = suits[a, suitLast[a]];
-                    suits[a, suitLast[a]] = suit;
-                    suitLast[a] = suitLast[a] - 1;
+                    suits[a, index] = suits[a, suitLast];
+                    suits[a, suitLast] = suit;
 
-                    c[a] = new Card((Suit)suit, (Rank)rank);
+                    c[a] = new Card((Suit)suit, (Rank)ranks[a]);
                 }
+
+                suitLast--;
 
                 if (i < 2) hand.InsertCards(c);
                 deck.RemoveCards(c);
@@ -1284,19 +1238,21 @@ namespace PokerSimulation
             do{
                 if (randHand != null) deck.ReturnCards(randHand.ToArray());
                 randHand = new Hand(hand.ToArray());
+                deck.RemoveCards(hand.ToArray());
 
-                for (int i = 0; i < 3; i++)
+                for (int i = 0; i < numCards - REQ_CARDS[TP]; i++)
                     randHand.InsertCard(deck.DealCard());
 
                 invalid = randHand.HasStraight() || randHand.HasFlush();
 
             } while(invalid);
 
-            return hand;
+            randHand.Shuffle();
+            return randHand;
         }
 
         //One Pair//JSS
-        static public Hand genOP()
+        static public Hand genOP(int numCards)
         {
             //pick the rank of the OP
             //pick two of the four cards of that rank
@@ -1305,12 +1261,11 @@ namespace PokerSimulation
 
             //Added by EJ
             Deck.Instance.MakeShuffledDeck();
-            Hand onePair = new Hand();  
+            Hand onePair = new Hand();
 
             //pick the rank of the TK
-            int rank = 0;
             Random rand = new Random();
-            rank = rand.Next(0, 12);
+            int rank = rand.Next(0, 12);
 
             //Get all four cards of that rank, and randomly choose twp to remove from the hand.
             //This takes care of finding those cards later to remove them from the deck so you won't
@@ -1322,24 +1277,18 @@ namespace PokerSimulation
                 suit2 = rand.Next(0, 3);
             } while (suit2 == suit);
 
-            Card card1 = new Card((Suit)0, (Rank)rank);
-            onePair.InsertCard(card1);
-            Deck.Instance.RemoveCard(card1);
-            Card card2 = new Card((Suit)1, (Rank)rank);
-            onePair.InsertCard(card2);
-            Deck.Instance.RemoveCard(card2);
-            Card card3 = new Card((Suit)2, (Rank)rank);
-            onePair.InsertCard(card3);
-            Deck.Instance.RemoveCard(card3);
-            Card card4 = new Card((Suit)3, (Rank)rank);
-            onePair.InsertCard(card4);
-            Deck.Instance.RemoveCard(card4);
+
+
+            for (int i = 0; i < REQ_CARDS[OP] + 2; i++)
+                onePair.InsertCard(new Card((Suit)i, (Rank)rank));
+
+            Deck.Instance.RemoveCards(onePair.ToArray());
 
             onePair.RemoveCard(new Card((Suit)suit, (Rank)rank));
             onePair.RemoveCard(new Card((Suit)suit2, (Rank)rank));
 
-            //Generate 4 cards, knowing that a Full House, 4-Kind of a different rank, straight, flush,
-            //Straight flush and Royal Flush will beat 3-Kind.
+            //Generate 5 cards, knowing that a Full House, 4-Kind of a different rank, straight, flush,
+            //Straight flush and Royal Flush will beat 2-Kind.
 
             Hand randHand = null;
             Boolean invalid = false;
@@ -1349,11 +1298,10 @@ namespace PokerSimulation
                 invalid = false;
                 if (randHand != null) Deck.Instance.ReturnCards(randHand.ToArray());
                 randHand = new Hand(onePair.ToArray());
+                Deck.Instance.RemoveCards(randHand.ToArray());
 
-                for (int i = 0; i < 5; i++)
-                {
+                for (int i = 0; i < numCards - REQ_CARDS[OP]; i++)
                     randHand.InsertCard(Deck.Instance.DealCard());
-                }
 
                 //checks to see how many of each rank are in the hand.
                 for (int j = 0; j < 12; j++)
@@ -1370,11 +1318,12 @@ namespace PokerSimulation
 
             } while (invalid);
 
+            randHand.Shuffle();
             return randHand;
         }
 
         //High Card//Ruslan
-        static public Hand genHC()
+        static public Hand genHC(int numCards)
         {
             Hand hand;
             Deck deck = Deck.Instance;
@@ -1386,7 +1335,7 @@ namespace PokerSimulation
 
                 hand = new Hand();
 
-                for (int i = 0; i < 5; i++) hand.InsertCard(deck.DealCard());
+                for (int i = 0; i < numCards; i++) hand.InsertCard(deck.DealCard());
 
                 Boolean hasPair = false;
                 for (int i = 0; i < 13; i++)
