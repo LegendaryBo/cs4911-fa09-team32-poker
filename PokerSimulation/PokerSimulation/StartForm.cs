@@ -32,7 +32,10 @@ namespace PokerSimulation
 
         private void beginButton_Click(object sender, EventArgs e)
         {
-            drawOnBoard();
+            GuessForm form = new GuessForm();
+            form.Show();
+
+            //drawOnBoard();
             //timer = new System.Timers.Timer();
             //timer.Start();
             //timer.Stop();
