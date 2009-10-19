@@ -221,6 +221,84 @@ namespace PokerSimLib4911
             Rank = rank;
         }
 
+        //assumes two character input; Rank first, then Suit.
+        public Card(char cardCodeRank, char cardCodeSuit)
+        {
+            //check for rank
+            if (cardCodeRank == 'A')
+            {
+                Rank = Rank.ACE;
+            }
+            else if (cardCodeRank == '2')
+            {
+                Rank = Rank.TWO;
+            }
+            else if (cardCodeRank == '3')
+            {
+                Rank = Rank.THREE;
+            }
+            else if (cardCodeRank == '4')
+            {
+                Rank = Rank.FOUR;
+            }
+            else if (cardCodeRank == '5')
+            {
+                Rank = Rank.FIVE;
+            }
+            else if (cardCodeRank == '6')
+            {
+                Rank = Rank.SIX;
+            }
+            else if (cardCodeRank == '7')
+            {
+                Rank = Rank.SEVEN;
+            }
+            else if (cardCodeRank == '8')
+            {
+                Rank = Rank.EIGHT;
+            }
+            else if (cardCodeRank == '9')
+            {
+                Rank = Rank.NINE;
+            }
+            else if (cardCodeRank == '0')
+            {
+                Rank = Rank.TEN;
+            }
+            else if (cardCodeRank == 'J')
+            {
+                Rank = Rank.JACK;
+            }
+            else if (cardCodeRank == 'Q')
+            {
+                Rank = Rank.QUEEN;
+            }
+            else if (cardCodeRank == 'K')
+            {
+                Rank = Rank.KING;
+            }
+            else{Rank = Rank.UNKNOWN;}
+
+            //check for suit
+            if (cardCodeSuit == 'H')
+            {
+                Suit = Suit.HEARTS;
+            }
+            else if (cardCodeSuit == 'S')
+            {
+                Suit = Suit.SPADES;
+            }
+            else if (cardCodeSuit == 'D')
+            {
+                Suit = Suit.DIAMONDS;
+            }
+            else if (cardCodeSuit == 'C')
+            {
+                Suit = Suit.CLUBS;
+            }
+            else { Rank = Rank.UNKNOWN; }
+        }
+
         public override string ToString()
         {
             string s = Suit.ToString().Substring(0, 1);
