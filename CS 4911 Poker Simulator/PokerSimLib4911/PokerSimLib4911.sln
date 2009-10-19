@@ -11,11 +11,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		PokerSimLib4911.vsmdi = PokerSimLib4911.vsmdi
 		PokerSimLib49111.vsmdi = PokerSimLib49111.vsmdi
 		PokerSimLib49112.vsmdi = PokerSimLib49112.vsmdi
+		PokerSimLib49113.vsmdi = PokerSimLib49113.vsmdi
 	EndProjectSection
 EndProject
 Global
 	GlobalSection(TestCaseManagementSettings) = postSolution
-		CategoryFile = PokerSimLib49112.vsmdi
+		CategoryFile = PokerSimLib49113.vsmdi
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
