@@ -858,15 +858,17 @@ namespace PokerSimLib4911
 
         public Card PeekHighCard()
         {
-            List<Card> ordered = new List<Card>();
-            ordered.DefaultIfEmpty(null);
+            Hand ordered = new Hand(_hand.ToArray());
+            ordered.OrderAscending();
 
-            foreach (Card c in _hand)
+            if (ordered.Count > 0)
             {
-                ordered.Add(c);
+                return ordered.ToArray()[ordered.Count - 1];
             }
-
-            return ordered.LastOrDefault();
+            else
+            {
+                return null;
+            }
         }
 
         public Card[] ToArray()
