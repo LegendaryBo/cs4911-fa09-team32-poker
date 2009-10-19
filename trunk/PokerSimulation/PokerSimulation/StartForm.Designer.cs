@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.pokerSimulationLabel = new System.Windows.Forms.Label();
             this.buttonsSplit = new System.Windows.Forms.SplitContainer();
             this.beginButton = new System.Windows.Forms.Button();
             this.optionsButton = new System.Windows.Forms.Button();
@@ -45,6 +44,7 @@
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pokerSimulationLabel = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.buttonsSplit.Panel1.SuspendLayout();
             this.buttonsSplit.Panel2.SuspendLayout();
@@ -69,10 +69,10 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 11.39971F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 88.60029F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 70F));
-            this.tableLayoutPanel1.Controls.Add(this.pokerSimulationLabel, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.buttonsSplit, 1, 2);
             this.tableLayoutPanel1.Controls.Add(this.entryTimerSplit, 0, 3);
             this.tableLayoutPanel1.Controls.Add(this.BoardPanel, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.pokerSimulationLabel, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -83,17 +83,6 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 42F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(714, 508);
             this.tableLayoutPanel1.TabIndex = 0;
-            // 
-            // pokerSimulationLabel
-            // 
-            this.pokerSimulationLabel.AutoSize = true;
-            this.pokerSimulationLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pokerSimulationLabel.Location = new System.Drawing.Point(3, 0);
-            this.pokerSimulationLabel.Name = "pokerSimulationLabel";
-            this.pokerSimulationLabel.Size = new System.Drawing.Size(708, 49);
-            this.pokerSimulationLabel.TabIndex = 0;
-            this.pokerSimulationLabel.Text = "Poker Simulation";
-            this.pokerSimulationLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // buttonsSplit
             // 
@@ -250,6 +239,17 @@
             this.pictureBox1.Size = new System.Drawing.Size(62, 102);
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
+            // 
+            // pokerSimulationLabel
+            // 
+            this.pokerSimulationLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.pokerSimulationLabel.AutoSize = true;
+            this.pokerSimulationLabel.Location = new System.Drawing.Point(314, 18);
+            this.pokerSimulationLabel.Name = "pokerSimulationLabel";
+            this.pokerSimulationLabel.Size = new System.Drawing.Size(86, 13);
+            this.pokerSimulationLabel.TabIndex = 0;
+            this.pokerSimulationLabel.Text = "Poker Simulation";
+            this.pokerSimulationLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // StartForm
             // 
