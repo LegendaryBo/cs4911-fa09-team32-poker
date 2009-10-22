@@ -1039,7 +1039,7 @@ namespace PokerSimLib4911
 
             Card sfCard = null;
 
-            for (int i = 0; i < 4; i++)
+            for (int i = 1; i < 5; i++)
             {
                 if (direction == 1)
                 {
