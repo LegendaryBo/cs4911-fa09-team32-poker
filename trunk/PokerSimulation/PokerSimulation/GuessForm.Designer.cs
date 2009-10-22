@@ -41,6 +41,9 @@
             this.timerTextBox = new System.Windows.Forms.TextBox();
             this.guessTimer = new System.Windows.Forms.Timer(this.components);
             this.timerLabel = new System.Windows.Forms.Label();
+            this.feedbackLabel = new System.Windows.Forms.Label();
+            this.feedbackTextBox = new System.Windows.Forms.TextBox();
+            this.reactionTextBox = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // cardsListBox
@@ -132,10 +135,10 @@
             // 
             // timerTextBox
             // 
-            this.timerTextBox.Location = new System.Drawing.Point(104, 232);
+            this.timerTextBox.Location = new System.Drawing.Point(165, 232);
             this.timerTextBox.Name = "timerTextBox";
             this.timerTextBox.ReadOnly = true;
-            this.timerTextBox.Size = new System.Drawing.Size(100, 20);
+            this.timerTextBox.Size = new System.Drawing.Size(107, 20);
             this.timerTextBox.TabIndex = 9;
             // 
             // guessTimer
@@ -146,17 +149,45 @@
             // timerLabel
             // 
             this.timerLabel.AutoSize = true;
-            this.timerLabel.Location = new System.Drawing.Point(58, 235);
+            this.timerLabel.Location = new System.Drawing.Point(9, 235);
             this.timerLabel.Name = "timerLabel";
             this.timerLabel.Size = new System.Drawing.Size(33, 13);
             this.timerLabel.TabIndex = 10;
             this.timerLabel.Text = "Time:";
             // 
+            // feedbackLabel
+            // 
+            this.feedbackLabel.AutoSize = true;
+            this.feedbackLabel.Location = new System.Drawing.Point(9, 259);
+            this.feedbackLabel.Name = "feedbackLabel";
+            this.feedbackLabel.Size = new System.Drawing.Size(58, 13);
+            this.feedbackLabel.TabIndex = 11;
+            this.feedbackLabel.Text = "Feedback:";
+            // 
+            // feedbackTextBox
+            // 
+            this.feedbackTextBox.Location = new System.Drawing.Point(73, 256);
+            this.feedbackTextBox.Name = "feedbackTextBox";
+            this.feedbackTextBox.ReadOnly = true;
+            this.feedbackTextBox.Size = new System.Drawing.Size(199, 20);
+            this.feedbackTextBox.TabIndex = 12;
+            // 
+            // reactionTextBox
+            // 
+            this.reactionTextBox.Location = new System.Drawing.Point(73, 232);
+            this.reactionTextBox.Name = "reactionTextBox";
+            this.reactionTextBox.ReadOnly = true;
+            this.reactionTextBox.Size = new System.Drawing.Size(86, 20);
+            this.reactionTextBox.TabIndex = 13;
+            // 
             // GuessForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 264);
+            this.ClientSize = new System.Drawing.Size(284, 284);
+            this.Controls.Add(this.reactionTextBox);
+            this.Controls.Add(this.feedbackTextBox);
+            this.Controls.Add(this.feedbackLabel);
             this.Controls.Add(this.timerLabel);
             this.Controls.Add(this.timerTextBox);
             this.Controls.Add(this.sessionLabel);
@@ -190,5 +221,8 @@
         private System.Windows.Forms.TextBox timerTextBox;
         private System.Windows.Forms.Timer guessTimer;
         private System.Windows.Forms.Label timerLabel;
+        private System.Windows.Forms.Label feedbackLabel;
+        private System.Windows.Forms.TextBox feedbackTextBox;
+        private System.Windows.Forms.TextBox reactionTextBox;
     }
 }

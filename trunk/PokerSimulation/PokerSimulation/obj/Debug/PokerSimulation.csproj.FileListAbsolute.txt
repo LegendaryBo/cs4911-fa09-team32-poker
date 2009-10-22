@@ -19,3 +19,4 @@ C:\Users\EJ\Documents\Visual Studio 2008\Projects\4\bin\Debug\PokerSimulation.pd
 C:\Users\EJ\Documents\Visual Studio 2008\Projects\4\obj\Debug\PokerSimulation.TestingForm.resources
 C:\SeniorDesign\PokerSimulation\PokerSimulation\obj\Debug\PokerSimulation.exe
 C:\SeniorDesign\PokerSimulation\PokerSimulation\obj\Debug\PokerSimulation.pdb
+C:\Users\EJ\Documents\Visual Studio 2008\Projects\4\obj\Debug\PokerSimulation.GuessForm.resources
