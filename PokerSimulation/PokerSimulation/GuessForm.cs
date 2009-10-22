@@ -13,13 +13,18 @@ namespace PokerSimulation
     public partial class GuessForm : Form
     {
         Hand testHand = new Hand();
-        Random rand = new Random(10);
-        Random rand2 = new Random(2);
+        Random rand = new Random();
+        Random rand2 = new Random();
         int randNum;
         int numOfCards;
-        int time = 0;
+        double time = 0;
+        TimeSpan reactionTime;
+        DateTime startTime;
+        DateTime stopTime;
+        bool reactionPressed = false;
 
-        string generatedText = "";
+        string generatedHand = "";
+        string feedbackText = "";
         int handCount = 0;
         string id = "";
         string session = "";
@@ -47,10 +52,14 @@ namespace PokerSimulation
                 //Make sure that the guess TextBox is not empty
                 if (guessTextBox.Text != "")
                 {
+                    //Feedback generated here because we are asking about the last hand that was generated.
+                    feedbackText = writeFeedback();
+
                     enableTextBoxes();
                     cardsListBox.Items.Clear();
                     testHand = generateHand();
                     startTimer();
+                    reactionPressed = false;
 
                     if (testHand.Count != 0)
                     {
@@ -70,33 +79,43 @@ namespace PokerSimulation
             {
                 case 0:
                     testHand = PokerSimulation.HandGenerator.genHC(numOfCards);
+                    generatedHand = "HC";
                     break;
                 case 1:
                     testHand = PokerSimulation.HandGenerator.genOP(numOfCards);
+                    generatedHand = "OP";
                     break;
                 case 2:
                     testHand = PokerSimulation.HandGenerator.genTP(numOfCards);
+                    generatedHand = "TP";
                     break;
                 case 3:
                     testHand = PokerSimulation.HandGenerator.genTK(numOfCards);
+                    generatedHand = "TK";
                     break;
                 case 4:
                     testHand = PokerSimulation.HandGenerator.genST(numOfCards);
+                    generatedHand = "ST";
                     break;
                 case 5:
                     testHand = PokerSimulation.HandGenerator.genFL(numOfCards);
+                    generatedHand = "FL";
                     break;
                 case 6:
                     testHand = PokerSimulation.HandGenerator.genFH(numOfCards);
+                    generatedHand = "FH";
                     break;
                 case 7:
                     testHand = PokerSimulation.HandGenerator.genSF(numOfCards);
+                    generatedHand = "SF";
                     break;
                 case 8:
                     testHand = PokerSimulation.HandGenerator.genFK(numOfCards);
+                    generatedHand = "FK";
                     break;
                 case 9:
                     testHand = PokerSimulation.HandGenerator.genRF(numOfCards);
+                    generatedHand = "RF";
                     break;
             }
             handCount++;
@@ -182,8 +201,9 @@ namespace PokerSimulation
                 }
                 else
                 {
-                    tw.WriteLine("Guess: " + guessTextBox.Text);
-                    tw.WriteLine("Time: " + timerTextBox.Text);
+                    tw.WriteLine("Guess: " + guessTextBox.Text.ToUpper());
+                    tw.WriteLine("Feedback: " + feedbackText);
+                    tw.WriteLine("Reaction Time: " + reactionTime.TotalSeconds + ", Response Time: " + timerTextBox.Text);
                     tw.WriteLine();
                     tw.WriteLine("Trial " + handCount);
                     tw.WriteLine("Hand: " + testHand.ToString());
@@ -198,10 +218,33 @@ namespace PokerSimulation
             tw.WriteLine("End " + id);
         }
 
+        private string writeFeedback()
+        {
+            string guess = guessTextBox.Text;
+            string feedback = "Incorrect. The correct answer was ";
+
+            if(generatedHand.Equals(""))
+            {
+                feedback = "Feedback posted here.";
+            }
+            else if (guess.ToUpper().Equals(generatedHand))
+            {
+                feedback = "Correct";
+            }
+            else
+            {
+                feedback += generatedHand;
+            }
+
+            feedbackTextBox.Text = feedback;
+            return feedback;
+        }
+
         private void startTimer()
         {
             time = 0;
             guessTimer.Start();
+            startTime = DateTime.Now;
         }
 
         private void enableTextBoxes()
@@ -225,8 +268,8 @@ namespace PokerSimulation
 
         private void guessTimer_Tick(object sender, EventArgs e)
         {
-            time++;
-            timerTextBox.Text = "" + time;
+            time += 1;
+            timerTextBox.Text = time.ToString("00.00"); ;
         }
 
         private void GuessForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -270,6 +313,13 @@ namespace PokerSimulation
 
         private void guessTextBox_KeyDown(object sender, KeyEventArgs e)
         {
+            if (!reactionPressed)
+            {
+                stopTime = DateTime.Now;
+                reactionTime = stopTime - startTime;
+                reactionPressed = true;
+                reactionTextBox.Text = "" + reactionTime.TotalSeconds;
+            }
             if (e.KeyCode == Keys.Enter)
             {
                 generateTrial();

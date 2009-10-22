@@ -184,8 +184,7 @@ namespace PokerSimulation
 
         private void closeButton_Click(object sender, EventArgs e)
         {
-            TestingForm.ActiveForm.Close();
-            StartForm.ActiveForm.Close();
+            this.Close();
         }
 
         private void idTextBox_Click(object sender, EventArgs e)
