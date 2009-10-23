@@ -44,6 +44,8 @@
             this.feedbackLabel = new System.Windows.Forms.Label();
             this.feedbackTextBox = new System.Windows.Forms.TextBox();
             this.reactionTextBox = new System.Windows.Forms.TextBox();
+            this.inputButton = new System.Windows.Forms.Button();
+            this.inputLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // cardsListBox
@@ -56,10 +58,10 @@
             // 
             // generateButton
             // 
-            this.generateButton.Location = new System.Drawing.Point(104, 152);
+            this.generateButton.Location = new System.Drawing.Point(197, 179);
             this.generateButton.Name = "generateButton";
             this.generateButton.Size = new System.Drawing.Size(75, 23);
-            this.generateButton.TabIndex = 1;
+            this.generateButton.TabIndex = 4;
             this.generateButton.Text = "Next Hand";
             this.generateButton.UseVisualStyleBackColor = true;
             this.generateButton.Click += new System.EventHandler(this.generateButton_Click);
@@ -67,19 +69,19 @@
             // guessLabel
             // 
             this.guessLabel.AutoSize = true;
-            this.guessLabel.Location = new System.Drawing.Point(58, 213);
+            this.guessLabel.Location = new System.Drawing.Point(9, 213);
             this.guessLabel.Name = "guessLabel";
             this.guessLabel.Size = new System.Drawing.Size(40, 13);
-            this.guessLabel.TabIndex = 2;
+            this.guessLabel.TabIndex = 13;
             this.guessLabel.Text = "Guess:";
             // 
             // guessTextBox
             // 
-            this.guessTextBox.Location = new System.Drawing.Point(104, 210);
+            this.guessTextBox.Location = new System.Drawing.Point(73, 210);
             this.guessTextBox.Name = "guessTextBox";
             this.guessTextBox.ReadOnly = true;
-            this.guessTextBox.Size = new System.Drawing.Size(100, 20);
-            this.guessTextBox.TabIndex = 3;
+            this.guessTextBox.Size = new System.Drawing.Size(86, 20);
+            this.guessTextBox.TabIndex = 5;
             this.guessTextBox.Text = "Enter Text";
             this.guessTextBox.Click += new System.EventHandler(this.guessTextBox_Click);
             this.guessTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.guessTextBox_KeyDown);
@@ -87,10 +89,10 @@
             // 
             // finishButton
             // 
-            this.finishButton.Location = new System.Drawing.Point(104, 181);
+            this.finishButton.Location = new System.Drawing.Point(197, 203);
             this.finishButton.Name = "finishButton";
             this.finishButton.Size = new System.Drawing.Size(75, 23);
-            this.finishButton.TabIndex = 4;
+            this.finishButton.TabIndex = 6;
             this.finishButton.Text = "Finish";
             this.finishButton.UseVisualStyleBackColor = true;
             this.finishButton.Click += new System.EventHandler(this.finishButton_Click);
@@ -100,7 +102,7 @@
             this.idTextBox.Location = new System.Drawing.Point(12, 31);
             this.idTextBox.Name = "idTextBox";
             this.idTextBox.Size = new System.Drawing.Size(100, 20);
-            this.idTextBox.TabIndex = 5;
+            this.idTextBox.TabIndex = 1;
             this.idTextBox.Text = "ID#";
             this.idTextBox.Click += new System.EventHandler(this.idTextBox_Click);
             this.idTextBox.Leave += new System.EventHandler(this.idTextBox_Leave);
@@ -110,7 +112,7 @@
             this.sessionTextBox.Location = new System.Drawing.Point(12, 80);
             this.sessionTextBox.Name = "sessionTextBox";
             this.sessionTextBox.Size = new System.Drawing.Size(100, 20);
-            this.sessionTextBox.TabIndex = 6;
+            this.sessionTextBox.TabIndex = 2;
             this.sessionTextBox.Text = "Session#";
             this.sessionTextBox.Click += new System.EventHandler(this.sessionTextBox_Click);
             this.sessionTextBox.Leave += new System.EventHandler(this.sessionTextBox_Leave);
@@ -139,7 +141,7 @@
             this.timerTextBox.Name = "timerTextBox";
             this.timerTextBox.ReadOnly = true;
             this.timerTextBox.Size = new System.Drawing.Size(107, 20);
-            this.timerTextBox.TabIndex = 9;
+            this.timerTextBox.TabIndex = 8;
             // 
             // guessTimer
             // 
@@ -170,7 +172,7 @@
             this.feedbackTextBox.Name = "feedbackTextBox";
             this.feedbackTextBox.ReadOnly = true;
             this.feedbackTextBox.Size = new System.Drawing.Size(199, 20);
-            this.feedbackTextBox.TabIndex = 12;
+            this.feedbackTextBox.TabIndex = 9;
             // 
             // reactionTextBox
             // 
@@ -178,13 +180,34 @@
             this.reactionTextBox.Name = "reactionTextBox";
             this.reactionTextBox.ReadOnly = true;
             this.reactionTextBox.Size = new System.Drawing.Size(86, 20);
-            this.reactionTextBox.TabIndex = 13;
+            this.reactionTextBox.TabIndex = 7;
+            // 
+            // inputButton
+            // 
+            this.inputButton.Location = new System.Drawing.Point(12, 123);
+            this.inputButton.Name = "inputButton";
+            this.inputButton.Size = new System.Drawing.Size(75, 23);
+            this.inputButton.TabIndex = 3;
+            this.inputButton.Text = "Find File...";
+            this.inputButton.UseVisualStyleBackColor = true;
+            this.inputButton.Click += new System.EventHandler(this.inputButton_Click);
+            // 
+            // inputLabel
+            // 
+            this.inputLabel.AutoSize = true;
+            this.inputLabel.Location = new System.Drawing.Point(12, 107);
+            this.inputLabel.Name = "inputLabel";
+            this.inputLabel.Size = new System.Drawing.Size(76, 13);
+            this.inputLabel.TabIndex = 15;
+            this.inputLabel.Text = "Find Input File:";
             // 
             // GuessForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 284);
+            this.Controls.Add(this.inputLabel);
+            this.Controls.Add(this.inputButton);
             this.Controls.Add(this.reactionTextBox);
             this.Controls.Add(this.feedbackTextBox);
             this.Controls.Add(this.feedbackLabel);
@@ -224,5 +247,7 @@
         private System.Windows.Forms.Label feedbackLabel;
         private System.Windows.Forms.TextBox feedbackTextBox;
         private System.Windows.Forms.TextBox reactionTextBox;
+        private System.Windows.Forms.Button inputButton;
+        private System.Windows.Forms.Label inputLabel;
     }
 }
