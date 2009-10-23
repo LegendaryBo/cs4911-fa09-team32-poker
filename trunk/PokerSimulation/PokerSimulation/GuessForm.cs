@@ -13,6 +13,8 @@ namespace PokerSimulation
     public partial class GuessForm : Form
     {
         Hand testHand = new Hand();
+        List<Hand> handList = new List<Hand>();
+        List<string> handStringList = new List<string>();
         Random rand = new Random();
         Random rand2 = new Random();
         int randNum;
@@ -32,14 +34,14 @@ namespace PokerSimulation
         string lastFilename = "";
         int lastFileCount = 0;
         bool newFile = false;
+        bool inputFile = false;
         TextWriter tw;
+        TextReader tr;
 
         public GuessForm()
         {
             InitializeComponent();
             Deck.Instance.MakeShuffledDeck();
-            if(tw == null)
-                tw = new StreamWriter("hand.txt");
         }
 
         #region Methods
@@ -54,16 +56,29 @@ namespace PokerSimulation
                 {
                     //Feedback generated here because we are asking about the last hand that was generated.
                     feedbackText = writeFeedback();
-
                     enableTextBoxes();
                     cardsListBox.Items.Clear();
-                    testHand = generateHand();
+                    //If we're reading from an input file
+                    if (inputFile)
+                    {
+                        testHand = returnHandFromHandList(handList);
+                    }
+                    else
+                    {
+                        testHand = generateHand();
+                    }
                     startTimer();
                     reactionPressed = false;
 
                     if (testHand.Count != 0)
                     {
                         cardsListBox.Items.AddRange(testHand.ToArray());
+                       
+                    }
+                    else
+                    {
+                        MessageBox.Show("Finished");
+                        generateButton.Enabled = false;
                     }
 
                     writeHandToFile();
@@ -120,6 +135,92 @@ namespace PokerSimulation
             }
             handCount++;
 
+            return testHand;
+        }
+
+        private string chooseInputFile()
+        {
+            OpenFileDialog dialog = new OpenFileDialog();
+            dialog.Filter = "txt files (*.txt)|*.txt";
+            dialog.Title = "Select a text Input File";
+
+            return (dialog.ShowDialog() == DialogResult.OK) ? dialog.FileName : null;
+
+        }
+
+        private List<Hand> compileHandList(string inputFile)
+        {
+            //Initialize StreamReader
+            tr = new StreamReader(inputFile);
+
+            //Intialize handList
+            List<Hand> handList = new List<Hand>();
+            string hand = "";
+            string line = tr.ReadLine().Trim();
+
+            while(line != "end")
+            {
+                hand = line;
+                handStringList.Add(hand.Substring(0, 2));
+                handList.Add(generateHandFromInputFile(hand));
+                line = tr.ReadLine().Trim();
+            }
+
+            handList.Add(new Hand());
+            handStringList.Add("");
+            tr.Close();
+            return handList;
+        }
+
+        private Hand generateHandFromInputFile(string hand)
+        {
+            Hand returnHand = new Hand();
+
+            //This assumes that the hand from the file will look like: 
+            //"[2-letter Hand][Number of cards to generate (5-7)]"
+            //Ex. FL6 for a flush hand of 6 cards.
+            switch (hand.Substring(0,2).ToUpper())
+            {
+                case "HC":
+                    returnHand = PokerSimulation.HandGenerator.genHC(int.Parse(hand.Substring(2,1)));
+                    break;
+                case "OP":
+                    returnHand = PokerSimulation.HandGenerator.genOP(int.Parse(hand.Substring(2, 1)));
+                    break;
+                case "TP":
+                    returnHand = PokerSimulation.HandGenerator.genTP(int.Parse(hand.Substring(2, 1)));
+                    break;
+                case "TK":
+                    returnHand = PokerSimulation.HandGenerator.genTK(int.Parse(hand.Substring(2, 1)));
+                    break;
+                case "ST":
+                    returnHand = PokerSimulation.HandGenerator.genST(int.Parse(hand.Substring(2, 1)));
+                    break;
+                case "FL":
+                    returnHand = PokerSimulation.HandGenerator.genFL(int.Parse(hand.Substring(2, 1)));
+                    break;
+                case "FH":
+                    returnHand = PokerSimulation.HandGenerator.genFH(int.Parse(hand.Substring(2, 1)));
+                    break;
+                case "SF":
+                    returnHand = PokerSimulation.HandGenerator.genSF(int.Parse(hand.Substring(2, 1)));
+                    break;
+                case "FK":
+                    returnHand = PokerSimulation.HandGenerator.genFK(int.Parse(hand.Substring(2, 1)));
+                    break;
+                case "RF":
+                    returnHand = PokerSimulation.HandGenerator.genRF(int.Parse(hand.Substring(2, 1)));
+                    break;
+            }
+            return returnHand;
+        }
+
+        private Hand returnHandFromHandList(List<Hand> handList)
+        {
+            //handList.Add(new Hand());
+            testHand = handList.ElementAt(handCount);
+            generatedHand = handStringList.ElementAt(handCount);    
+            handCount++;
             return testHand;
         }
 
@@ -205,17 +306,23 @@ namespace PokerSimulation
                     tw.WriteLine("Feedback: " + feedbackText);
                     tw.WriteLine("Reaction Time: " + reactionTime.TotalSeconds + ", Response Time: " + timerTextBox.Text);
                     tw.WriteLine();
-                    tw.WriteLine("Trial " + handCount);
-                    tw.WriteLine("Hand: " + testHand.ToString());
+                    if (testHand.Count != 0)
+                    {
+                        tw.WriteLine("Trial " + handCount);
+                        tw.WriteLine("Hand: " + testHand.ToString());
+                    }
                 }
             }
         }
 
         private void writeFileClosing()
         {
-            tw.WriteLine();
-            tw.WriteLine("End Session " + session);
-            tw.WriteLine("End " + id);
+            if (tw != null)
+            {
+                tw.WriteLine();
+                tw.WriteLine("End Session " + session);
+                tw.WriteLine("End " + id);
+            }
         }
 
         private string writeFeedback()
@@ -230,6 +337,10 @@ namespace PokerSimulation
             else if (guess.ToUpper().Equals(generatedHand))
             {
                 feedback = "Correct";
+            }
+            else if (generatedHand.Equals("finished"))
+            {
+                feedback = "Finished";
             }
             else
             {
@@ -275,7 +386,8 @@ namespace PokerSimulation
         private void GuessForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             // close the stream
-            tw.Close();
+            if(tw != null)
+                tw.Close();
         }
 
         private void guessTextBox_Click(object sender, EventArgs e)
@@ -325,6 +437,13 @@ namespace PokerSimulation
                 generateTrial();
                 guessTextBox.Clear();
             }
+        }
+
+        private void inputButton_Click(object sender, EventArgs e)
+        {
+            inputFile = true;
+            handList = compileHandList(chooseInputFile());
+            inputButton.Enabled = false;
         }
     }
 
