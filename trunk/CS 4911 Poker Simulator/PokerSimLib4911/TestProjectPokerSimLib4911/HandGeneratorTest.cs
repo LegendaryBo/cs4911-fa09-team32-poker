@@ -55,7 +55,7 @@ namespace TestProjectPokerSimLib4911
         {
             Hand hand = new Hand();
 
-            Hand testHand = HandGenerator.genRF();
+            Hand testHand = HandGenerator.genRF(5);
             //Hand testHand5 = HandGenerator.genFL();
             //Hand testHand6 = HandGenerator.genST();
             //Hand testHand7 = HandGenerator.genTK();
@@ -74,7 +74,7 @@ namespace TestProjectPokerSimLib4911
         {
             Hand hand = new Hand();
 
-            Hand testHand = HandGenerator.genSF();
+            Hand testHand = HandGenerator.genSF(5);
 
             Assert.IsTrue( 
                 testHand.HasStraightFlush(5, Rank.TEN, Suit.CLUBS, ref hand) || 
@@ -130,7 +130,7 @@ namespace TestProjectPokerSimLib4911
         {
             Hand hand = new Hand();
 
-            Hand testHand3 = HandGenerator.genFK();
+            Hand testHand3 = HandGenerator.genFK(5);
 
             Assert.IsTrue(
                 testHand3.HasFourOfAKind(Rank.ACE, ref hand)||
@@ -154,7 +154,7 @@ namespace TestProjectPokerSimLib4911
         {
             Hand hand = new Hand();
 
-            Hand testHand4 = HandGenerator.genFH();
+            Hand testHand4 = HandGenerator.genFH(5);
 
             Assert.IsTrue(
                 testHand4.HasFullHouse(Rank.ACE, Rank.KING, ref hand)||
