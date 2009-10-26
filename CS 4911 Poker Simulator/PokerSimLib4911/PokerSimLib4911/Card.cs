@@ -99,6 +99,26 @@ namespace PokerSimLib4911
         /// <param name="suit">A single character representing the card's suit.</param>
         public Card(char rank, char suit) : this(rank.ToString(), suit.ToString()) { }
 
+        public Card(string rankAndSuit)
+        {
+            if (rankAndSuit.Length != 2)
+            {
+                throw new ArgumentException("A string of length " + rankAndSuit.Length + " is an invalid argument to the Card constructor.");
+            }
+            else
+            {
+                try
+                {
+                    SetRankAndSuit(rankAndSuit.Substring(0, 1), rankAndSuit.Substring(1, 1));
+                }
+                catch (ArgumentException)
+                {
+                    Logger.Instance.WriteCritical("Card constructor failed with argument:(" + rankAndSuit + ").");
+                    throw;
+                }
+            }
+        }
+
         /// <summary>
         /// Constructor for a Card.
         /// </summary>
@@ -106,12 +126,27 @@ namespace PokerSimLib4911
         /// <param name="suit">The card's suit as a string.</param>
         public Card(string rank, string suit)
         {
+            try
+            {
+                SetRankAndSuit(rank, suit);
+            }
+            catch (ArgumentException)
+            {
+                Logger.Instance.WriteCritical("Card constructor failed with arguments:(" + rank + ", " + suit + ").");
+                throw;
+            }
+        }
+
+        #endregion
+
+        private void SetRankAndSuit(string rank, string suit)
+        {
             rank = rank.ToUpper();
             suit = suit.ToUpper();
 
             if (!_rankMappings.ContainsKey(rank))
             {
-                throw new ArgumentException("The rank string {" + rank + "} specified for the Card constructor is invalid.");
+                throw new ArgumentException("The rank string {" + rank + "} is an invalid argument.");
             }
             else
             {
@@ -120,15 +155,13 @@ namespace PokerSimLib4911
 
             if (!_suitMappings.ContainsKey(suit))
             {
-                throw new ArgumentException("The suit string {" + suit + "} specified for the Card constructor is invalid.");
+                throw new ArgumentException("The suit string {" + suit + "} is an invalid argument.");
             }
             else
             {
                 Suit = _suitMappings[suit];
             }
         }
-
-        #endregion
 
         /// <summary>
         /// Retrieves the valid string representations for a Card's rank.
