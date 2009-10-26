@@ -43,7 +43,7 @@ namespace PokerSimLib4911
                 // inner loop is for rank
                 for (int j = 0; j < numberOfRanks; j++)
                 {
-                    Card c = new Card((Suit)i, (Rank)j);
+                    Card c = new Card((Rank)j, (Suit)i);
                     _cards.Add(c);
                 }
             }

@@ -84,9 +84,9 @@ namespace PokerSimLib4911
         /// <summary>
         /// Constructor for a Card.
         /// </summary>
-        /// <param name="suit">The Suit of the card.</param>
         /// <param name="rank">The Rank of the card.</param>
-        public Card(Suit suit, Rank rank)
+        /// <param name="suit">The Suit of the card.</param>
+        public Card(Rank rank, Suit suit)
         {
             Suit = suit;
             Rank = rank;
@@ -133,19 +133,19 @@ namespace PokerSimLib4911
         /// <summary>
         /// Retrieves the valid string representations for a Card's rank.
         /// </summary>
-        /// <returns>An array of valid strings for a Card's Rank.</returns>
-        public string[] ValidRankStrings()
+        /// <returns>A List of valid strings for a Card's Rank.</returns>
+        public static List<string> ValidRankStrings()
         {
-            return _rankMappings.Keys.ToArray();
+            return _rankMappings.Keys.ToList<string>();
         }
 
         /// <summary>
         /// Retrieves the valid string representations for a Card's suit.
         /// </summary>
-        /// <returns>An array of valid strings for a Card's Suit.</returns>
-        public string[] ValidSuitStrings()
+        /// <returns>A List of valid strings for a Card's Suit.</returns>
+        public static List<string> ValidSuitStrings()
         {
-            return _suitMappings.Keys.ToArray();
+            return _suitMappings.Keys.ToList<string>();
         }
 
         /// <summary>

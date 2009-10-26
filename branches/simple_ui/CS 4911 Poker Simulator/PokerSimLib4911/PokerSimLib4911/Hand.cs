@@ -112,7 +112,7 @@ namespace PokerSimLib4911
 
         public bool Contains(Suit suit, Rank rank)
         {
-            return Contains(new Card(suit, rank));
+            return Contains(new Card(rank, suit));
         }
 
         public bool Contains(Rank rank)
@@ -351,7 +351,7 @@ namespace PokerSimLib4911
             }
             else if (numberOfWildcards > 0)
             {
-                matchedHand.InsertCard(new Card(Suit.UNKNOWN, Rank.UNKNOWN));
+                matchedHand.InsertCard(new Card(Rank.UNKNOWN, Suit.UNKNOWN));
                 if (minimumNumberOfCards > 1)
                 {
                     return this.HasStraightHelper(minimumNumberOfCards - 1, startingWithRank + 1, numberOfWildcards - 1, ref matchedHand);
