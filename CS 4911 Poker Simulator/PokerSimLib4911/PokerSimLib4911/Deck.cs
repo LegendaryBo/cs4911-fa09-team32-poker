@@ -51,12 +51,14 @@ namespace PokerSimLib4911
 
         public void MakeFreshDeck()
         {
+            // If the Deck _instance is null, the Deck.Instance property will re-create an
+            // unshuffled standard deck the next time Deck.Instance is accessed
             _instance = null;
         }
 
         public void MakeShuffledDeck()
         {
-            _instance = null;
+            MakeFreshDeck();
             Deck.Instance.Shuffle();
         }
 
@@ -79,11 +81,23 @@ namespace PokerSimLib4911
             _cards = tempCards;
         }
 
-        public bool RemoveCard(Card card)
+        public bool DealCard(Card card)
         {
             if (_cards.Remove(card))
             {
                 _dealtCards.Add(card);
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public bool RemoveCard(Card card)
+        {
+            if (_cards.Remove(card))
+            {
                 return true;
             }
             else
@@ -117,13 +131,13 @@ namespace PokerSimLib4911
             }
         }
 
-        public void RemoveCards(params Card[] cards)
+        public void DealCards(params Card[] cards)
         {
             foreach (Card c in cards)
             {
                 if (_cards.Contains(c))
                 {
-                    this.RemoveCard(c);
+                    this.DealCard(c);
                 }
             }
         }

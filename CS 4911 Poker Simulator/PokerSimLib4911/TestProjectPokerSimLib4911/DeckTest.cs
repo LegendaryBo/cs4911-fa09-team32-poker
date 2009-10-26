@@ -134,25 +134,25 @@ namespace TestProjectPokerSimLib4911
         {
             Card[] cards = { new Card(Rank.UNKNOWN, Suit.CLUBS), new Card(Rank.UNKNOWN, Suit.DIAMONDS) };
             Deck.Instance.InsertCards(cards);
-            Assert.AreEqual(true, Deck.Instance.Contains(new Card(Rank.UNKNOWN, Suit.CLUBS)));
-            Assert.AreEqual(true, Deck.Instance.Contains(new Card(Rank.UNKNOWN, Suit.DIAMONDS)));
+            Assert.IsTrue(Deck.Instance.Contains(new Card(Rank.UNKNOWN, Suit.CLUBS)));
+            Assert.IsTrue(Deck.Instance.Contains(new Card(Rank.UNKNOWN, Suit.DIAMONDS)));
             Deck.Instance.InsertCards(new Card(Rank.UNKNOWN, Suit.HEARTS));
-            Assert.AreEqual(true, Deck.Instance.Contains(new Card(Rank.UNKNOWN, Suit.HEARTS)));
-            Assert.AreEqual(false, Deck.Instance.Contains(new Card(Rank.UNKNOWN, Suit.SPADES)));
+            Assert.IsTrue(Deck.Instance.Contains(new Card(Rank.UNKNOWN, Suit.HEARTS)));
+            Assert.IsFalse(Deck.Instance.Contains(new Card(Rank.UNKNOWN, Suit.SPADES)));
         }
 
         /// <summary>
-        ///A test for RemoveCard
+        ///A test for DealCard
         ///</summary>
         [TestMethod()]
         public void RemoveCardTest()
         {
             Card card = new Card(Rank.ACE, Suit.SPADES);
             bool actual;
-            actual = Deck.Instance.RemoveCard(card);
-            Assert.AreEqual(true, actual);
-            actual = Deck.Instance.RemoveCard(new Card(Rank.UNKNOWN, Suit.UNKNOWN));
-            Assert.AreEqual(false, actual);
+            actual = Deck.Instance.DealCard(card);
+            Assert.IsTrue(actual);
+            actual = Deck.Instance.DealCard(new Card(Rank.UNKNOWN, Suit.UNKNOWN));
+            Assert.IsFalse(actual);
         }
 
         /// <summary>
@@ -166,7 +166,7 @@ namespace TestProjectPokerSimLib4911
             Card actual;
             actual = Deck.Instance.DealCard();
             Assert.AreEqual(expected, actual);
-            Assert.AreEqual(false, Deck.Instance.Contains(expected));
+            Assert.IsFalse(Deck.Instance.Contains(expected));
         }
 
         /// <summary>
@@ -179,9 +179,9 @@ namespace TestProjectPokerSimLib4911
             Card valid = new Card(Rank.ACE, Suit.CLUBS);
             bool actual;
             actual = Deck.Instance.Contains(valid);
-            Assert.AreEqual(true, actual);
+            Assert.IsTrue(actual);
             actual = Deck.Instance.Contains(invalid);
-            Assert.AreEqual(false, actual);
+            Assert.IsFalse(actual);
         }
 
         /// <summary>
@@ -194,10 +194,10 @@ namespace TestProjectPokerSimLib4911
             Card card = new Card(Rank.TWO, Suit.CLUBS);
             bool actual;
             actual = Deck.Instance.HasBeenDealt(card);
-            Assert.AreEqual(false, actual);
+            Assert.IsFalse(actual);
             Deck.Instance.DealCard();
             actual = Deck.Instance.HasBeenDealt(card);
-            Assert.AreEqual(true, actual);
+            Assert.IsTrue(actual);
         }
     }
 }

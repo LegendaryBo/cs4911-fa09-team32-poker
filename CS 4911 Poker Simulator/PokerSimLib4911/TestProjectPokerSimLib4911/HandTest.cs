@@ -81,7 +81,7 @@ namespace TestProjectPokerSimLib4911
         }
 
         /// <summary>
-        ///A test for RemoveCard
+        ///A test for DealCard
         ///</summary>
         [TestMethod()]
         public void RemoveCardTest()

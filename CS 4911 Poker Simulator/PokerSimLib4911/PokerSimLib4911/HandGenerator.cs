@@ -34,7 +34,7 @@ namespace PokerSimLib4911
             for (int i = 0; i < REQ_CARDS[RF]; i++)
                 royalFlush.InsertCard(new Card(Rank.TEN + i, (Suit)suit));
 
-            Deck.Instance.RemoveCards(royalFlush.ToArray());
+            Deck.Instance.DealCards(royalFlush.ToArray());
 
             for (int i = 0; i < numCards - REQ_CARDS[RF]; i++)
                 royalFlush.InsertCard(Deck.Instance.DealCard());
@@ -65,7 +65,7 @@ namespace PokerSimLib4911
                 hand.InsertCard(new Card(cardRank, suit));
             }
 
-            deck.RemoveCards(hand.ToArray());
+            deck.DealCards(hand.ToArray());
 
             for (int i = 0; i < numCards - REQ_CARDS[SF]; i++)
                 hand.InsertCard(deck.DealCard());
@@ -89,7 +89,7 @@ namespace PokerSimLib4911
             for (int i = 0; i < REQ_CARDS[FK]; i++)
                 fourKind.InsertCard(new Card((Rank)rank, (Suit)i));
 
-            Deck.Instance.RemoveCards(fourKind.ToArray());
+            Deck.Instance.DealCards(fourKind.ToArray());
 
             //random 3 cards
             //can be random because no cards that are dealt will make the hand better than a 4-Kind
@@ -140,7 +140,7 @@ namespace PokerSimLib4911
                 if (i < 2) hand.InsertCards(c);
                 else dealBack[i - 2] = c[1];
                 if (i == 2) hand.InsertCard(c[0]);
-                deck.RemoveCards(c);
+                deck.DealCards(c);
             }
 
             deck.ReturnCard(dealBack[r.Next(0, 1)]);
@@ -183,7 +183,7 @@ namespace PokerSimLib4911
                     flushHand.InsertCard(card);
                 }
 
-                Deck.Instance.RemoveCards(flushHand.ToArray());
+                Deck.Instance.DealCards(flushHand.ToArray());
 
                 for (int i = 0; i < numCards - REQ_CARDS[FL]; i++)
                     flushHand.InsertCard(Deck.Instance.DealCard());
@@ -220,7 +220,7 @@ namespace PokerSimLib4911
                     hand.InsertCard(new Card(cardRank, (Suit)r.Next(0, 3)));
                 }
 
-                deck.RemoveCards(hand.ToArray());
+                deck.DealCards(hand.ToArray());
 
                 for (int i = 0; i < numCards - REQ_CARDS[ST]; i++)
                     hand.InsertCard(deck.DealCard());
@@ -252,7 +252,7 @@ namespace PokerSimLib4911
             {
                 card = new Card((Rank)rank, (Suit)i);
                 if (i < 3) threeKind.InsertCard(card);
-                Deck.Instance.RemoveCard(card);
+                Deck.Instance.DealCard(card);
             }
 
             //Generate 4 cards, knowing that a Full House, 4-Kind of a different rank, straight, flush,
@@ -266,7 +266,7 @@ namespace PokerSimLib4911
                 invalid = false;
                 if (randHand != null) Deck.Instance.ReturnCards(randHand.ToArray());
                 randHand = new Hand(threeKind.ToArray());
-                Deck.Instance.RemoveCards(randHand.ToArray());
+                Deck.Instance.DealCards(randHand.ToArray());
 
                 for (int i = 0; i < numCards - REQ_CARDS[TK]; i++)
                     randHand.InsertCard(Deck.Instance.DealCard());
@@ -330,7 +330,7 @@ namespace PokerSimLib4911
                 suitLast--;
 
                 if (i < 2) hand.InsertCards(c);
-                deck.RemoveCards(c);
+                deck.DealCards(c);
             }
 
             Hand randHand = null;
@@ -340,7 +340,7 @@ namespace PokerSimLib4911
             {
                 if (randHand != null) deck.ReturnCards(randHand.ToArray());
                 randHand = new Hand(hand.ToArray());
-                deck.RemoveCards(hand.ToArray());
+                deck.DealCards(hand.ToArray());
 
                 for (int i = 0; i < numCards - REQ_CARDS[TP]; i++)
                     randHand.InsertCard(deck.DealCard());
@@ -384,7 +384,7 @@ namespace PokerSimLib4911
             for (int i = 0; i < REQ_CARDS[OP] + 2; i++)
                 onePair.InsertCard(new Card((Rank)rank, (Suit)i));
 
-            Deck.Instance.RemoveCards(onePair.ToArray());
+            Deck.Instance.DealCards(onePair.ToArray());
 
             onePair.RemoveCard(new Card((Rank)rank, (Suit)suit));
             onePair.RemoveCard(new Card((Rank)rank, (Suit)suit2));
@@ -400,7 +400,7 @@ namespace PokerSimLib4911
                 invalid = false;
                 if (randHand != null) Deck.Instance.ReturnCards(randHand.ToArray());
                 randHand = new Hand(onePair.ToArray());
-                Deck.Instance.RemoveCards(randHand.ToArray());
+                Deck.Instance.DealCards(randHand.ToArray());
 
                 for (int i = 0; i < numCards - REQ_CARDS[OP]; i++)
                     randHand.InsertCard(Deck.Instance.DealCard());
