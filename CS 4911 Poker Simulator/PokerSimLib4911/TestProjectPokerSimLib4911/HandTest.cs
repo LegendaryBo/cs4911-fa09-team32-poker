@@ -74,7 +74,7 @@ namespace TestProjectPokerSimLib4911
             actual = target.ToString();
             Assert.AreEqual(expected, actual);
 
-            target = new Hand(new Card(Suit.SPADES, Rank.SIX), new Card(Suit.SPADES, Rank.FIVE), new Card(Suit.SPADES, Rank.ACE));
+            target = new Hand(new Card(Rank.SIX, Suit.SPADES), new Card(Rank.FIVE, Suit.SPADES), new Card(Rank.ACE, Suit.SPADES));
             actual = target.ToString();
             expected = "6S, 5S, AS";
             Assert.AreEqual(expected, actual);
@@ -93,8 +93,8 @@ namespace TestProjectPokerSimLib4911
             actual = target.RemoveCard(card);
             Assert.AreEqual(expected, actual);
 
-            target = new Hand(new Card(Suit.SPADES, Rank.SIX), new Card(Suit.SPADES, Rank.FIVE), new Card(Suit.SPADES, Rank.ACE));
-            card = new Card(Suit.SPADES, Rank.SIX);
+            target = new Hand(new Card(Rank.SIX, Suit.SPADES), new Card(Rank.FIVE, Suit.SPADES), new Card(Rank.ACE, Suit.SPADES));
+            card = new Card(Rank.SIX, Suit.SPADES);
             actual = target.RemoveCard(card);
             expected = true;
             Assert.AreEqual(expected, actual);
@@ -112,16 +112,16 @@ namespace TestProjectPokerSimLib4911
             actual = target.PeekHighCard();
             Assert.AreEqual(expected, actual);
 
-            target.InsertCard(new Card(Suit.SPADES, Rank.ACE));
-            target.InsertCard(new Card(Suit.DIAMONDS, Rank.EIGHT));
+            target.InsertCard(new Card(Rank.ACE, Suit.SPADES));
+            target.InsertCard(new Card(Rank.EIGHT, Suit.DIAMONDS));
 
             actual = target.PeekHighCard();
-            expected = new Card(Suit.SPADES, Rank.ACE);
+            expected = new Card(Rank.ACE, Suit.SPADES);
             Assert.AreEqual(expected, actual);
 
-            target.InsertCard(new Card(Suit.UNKNOWN, Rank.ACE));
+            target.InsertCard(new Card(Rank.ACE, Suit.UNKNOWN));
             actual = target.PeekHighCard();
-            expected = new Card(Suit.UNKNOWN, Rank.ACE);
+            expected = new Card(Rank.ACE, Suit.UNKNOWN);
             Assert.AreEqual(expected, actual);
         }
 
@@ -131,8 +131,8 @@ namespace TestProjectPokerSimLib4911
         [TestMethod()]
         public void OrderDescendingTest()
         {
-            Hand target = new Hand(new Card(Suit.SPADES, Rank.SIX), new Card(Suit.SPADES, Rank.FIVE), new Card(Suit.SPADES, Rank.ACE));
-            Hand expected = new Hand(new Card(Suit.SPADES, Rank.ACE), new Card(Suit.SPADES, Rank.SIX), new Card(Suit.SPADES, Rank.FIVE));
+            Hand target = new Hand(new Card(Rank.SIX, Suit.SPADES), new Card(Rank.FIVE, Suit.SPADES), new Card(Rank.ACE, Suit.SPADES));
+            Hand expected = new Hand(new Card(Rank.ACE, Suit.SPADES), new Card(Rank.SIX, Suit.SPADES), new Card(Rank.FIVE, Suit.SPADES));
 
             Card[] targetArray = target.ToArray();
             Card[] expectedArray = expected.ToArray();
@@ -159,8 +159,8 @@ namespace TestProjectPokerSimLib4911
         [TestMethod()]
         public void OrderAscendingTest()
         {
-            Hand target = new Hand(new Card(Suit.SPADES, Rank.SIX), new Card(Suit.SPADES, Rank.ACE), new Card(Suit.SPADES, Rank.FIVE));
-            Hand expected = new Hand(new Card(Suit.SPADES, Rank.FIVE), new Card(Suit.SPADES, Rank.SIX), new Card(Suit.SPADES, Rank.ACE));
+            Hand target = new Hand(new Card(Rank.SIX, Suit.SPADES), new Card(Rank.ACE, Suit.SPADES), new Card(Rank.FIVE, Suit.SPADES));
+            Hand expected = new Hand(new Card(Rank.FIVE, Suit.SPADES), new Card(Rank.SIX, Suit.SPADES), new Card(Rank.ACE, Suit.SPADES));
 
             Card[] targetArray = target.ToArray();
             Card[] expectedArray = expected.ToArray();
@@ -171,7 +171,7 @@ namespace TestProjectPokerSimLib4911
             }
 
             target.OrderAscending();
-            
+
             targetArray = target.ToArray();
             expectedArray = expected.ToArray();
 
@@ -187,12 +187,12 @@ namespace TestProjectPokerSimLib4911
         [TestMethod()]
         public void InsertCardTest()
         {
-            Hand target = new Hand(new Card(Suit.SPADES, Rank.ACE));
-            Card card = new Card(Suit.SPADES, Rank.ACE);
+            Hand target = new Hand(new Card(Rank.ACE, Suit.SPADES));
+            Card card = new Card(Rank.ACE, Suit.SPADES);
             target.InsertCard(card);
-            Assert.AreEqual(true, target.Contains(new Card(Suit.SPADES, Rank.ACE)));
-            Assert.AreEqual(false, target.Contains(new Card(Suit.CLUBS, Rank.ACE)));
-            Assert.AreEqual(2, target.CountOf(new Card(Suit.SPADES, Rank.ACE)));
+            Assert.AreEqual(true, target.Contains(new Card(Rank.ACE, Suit.SPADES)));
+            Assert.AreEqual(false, target.Contains(new Card(Rank.ACE, Suit.CLUBS)));
+            Assert.AreEqual(2, target.CountOf(new Card(Rank.ACE, Suit.SPADES)));
         }
 
         /// <summary>
@@ -201,7 +201,7 @@ namespace TestProjectPokerSimLib4911
         [TestMethod()]
         public void CountOfTest1()
         {
-            Hand target = new Hand(new Card(Suit.SPADES, Rank.ACE));
+            Hand target = new Hand(new Card(Rank.ACE, Suit.SPADES));
             Rank rank = Rank.EIGHT;
             int expected = 0;
             int actual;
@@ -214,12 +214,12 @@ namespace TestProjectPokerSimLib4911
             actual = target.CountOf(rank);
             Assert.AreEqual(expected, actual);
 
-            target.InsertCard(new Card(Suit.HEARTS, Rank.ACE));
+            target.InsertCard(new Card(Rank.ACE, Suit.HEARTS));
             expected = 2;
             actual = target.CountOf(rank);
             Assert.AreEqual(expected, actual);
 
-            target.RemoveCard(new Card(Suit.SPADES, Rank.ACE));
+            target.RemoveCard(new Card(Rank.ACE, Suit.SPADES));
             expected = 1;
             actual = target.CountOf(rank);
             Assert.AreEqual(expected, actual);
@@ -231,7 +231,7 @@ namespace TestProjectPokerSimLib4911
         [TestMethod()]
         public void CountOfTest()
         {
-            Hand target = new Hand(new Card(Suit.SPADES, Rank.ACE));
+            Hand target = new Hand(new Card(Rank.ACE, Suit.SPADES));
             Suit suit = Suit.HEARTS;
             int expected = 0;
             int actual;
@@ -243,12 +243,12 @@ namespace TestProjectPokerSimLib4911
             actual = target.CountOf(suit);
             Assert.AreEqual(expected, actual);
 
-            target.InsertCard(new Card(Suit.SPADES, Rank.QUEEN));
+            target.InsertCard(new Card(Rank.QUEEN, Suit.SPADES));
             expected = 2;
             actual = target.CountOf(suit);
             Assert.AreEqual(expected, actual);
 
-            target.RemoveCard(new Card(Suit.SPADES, Rank.ACE));
+            target.RemoveCard(new Card(Rank.ACE, Suit.SPADES));
             expected = 1;
             actual = target.CountOf(suit);
             Assert.AreEqual(expected, actual);
@@ -269,7 +269,7 @@ namespace TestProjectPokerSimLib4911
             Assert.AreEqual(expected, actual);
             suit = Suit.UNKNOWN;
             rank = Rank.UNKNOWN;
-            target = new Hand(new Card(suit, rank));
+            target = new Hand(new Card(rank, suit));
             expected = true;
             actual = target.Contains(suit, rank);
             Assert.AreEqual(expected, actual);
@@ -281,12 +281,12 @@ namespace TestProjectPokerSimLib4911
         [TestMethod()]
         public void HandConstructorTest()
         {
-            Card[] cards = { new Card(Suit.CLUBS, Rank.EIGHT), new Card(Suit.DIAMONDS, Rank.ACE), new Card(Suit.SPADES, Rank.ACE) };
+            Card[] cards = { new Card(Rank.EIGHT, Suit.CLUBS), new Card(Rank.ACE, Suit.DIAMONDS), new Card(Rank.ACE, Suit.SPADES) };
             Hand target = new Hand(cards);
-            Assert.AreEqual(true, target.Contains(new Card(Suit.SPADES, Rank.ACE)));
-            Assert.AreEqual(true, target.Contains(new Card(Suit.CLUBS, Rank.EIGHT)));
-            Assert.AreEqual(true, target.Contains(new Card(Suit.DIAMONDS, Rank.ACE)));
-            Assert.AreEqual(false, target.Contains(new Card(Suit.HEARTS, Rank.THREE)));
+            Assert.AreEqual(true, target.Contains(new Card(Rank.ACE, Suit.SPADES)));
+            Assert.AreEqual(true, target.Contains(new Card(Rank.EIGHT, Suit.CLUBS)));
+            Assert.AreEqual(true, target.Contains(new Card(Rank.ACE, Suit.DIAMONDS)));
+            Assert.AreEqual(false, target.Contains(new Card(Rank.THREE, Suit.HEARTS)));
         }
 
         /// <summary>
@@ -300,7 +300,7 @@ namespace TestProjectPokerSimLib4911
             actual = target.IsEmpty;
             Assert.AreEqual(true, actual);
 
-            target = new Hand(new Card(Suit.SPADES, Rank.ACE));
+            target = new Hand(new Card(Rank.ACE, Suit.SPADES));
             actual = target.IsEmpty;
             Assert.AreEqual(false, actual);
         }
@@ -314,18 +314,18 @@ namespace TestProjectPokerSimLib4911
             Hand target = new Hand();
             Suit suit = Suit.SPADES;
             Hand expected = new Hand();
-            Hand clubs = new Hand(new Card(Suit.CLUBS, Rank.JACK), new Card(Suit.CLUBS, Rank.FIVE), new Card(Suit.CLUBS, Rank.UNKNOWN));
+            Hand clubs = new Hand(new Card(Rank.JACK, Suit.CLUBS), new Card(Rank.FIVE, Suit.CLUBS), new Card(Rank.UNKNOWN, Suit.CLUBS));
             Hand diamonds = new Hand();
-            Hand hearts = new Hand(new Card(Suit.HEARTS, Rank.TWO), new Card(Suit.HEARTS, Rank.SEVEN), new Card(Suit.HEARTS, Rank.ACE));
-            Hand spades = new Hand(new Card(Suit.SPADES, Rank.NINE), new Card(Suit.SPADES, Rank.THREE));
-            Hand unknown = new Hand(new Card(Suit.UNKNOWN, Rank.QUEEN));
+            Hand hearts = new Hand(new Card(Rank.TWO, Suit.HEARTS), new Card(Rank.SEVEN, Suit.HEARTS), new Card(Rank.ACE, Suit.HEARTS));
+            Hand spades = new Hand(new Card(Rank.NINE, Suit.SPADES), new Card(Rank.THREE, Suit.SPADES));
+            Hand unknown = new Hand(new Card(Rank.QUEEN, Suit.UNKNOWN));
             Hand actual;
             actual = target.GetSuitCards(suit);
             Assert.AreEqual(expected.Count, actual.Count);
 
-            target = new Hand(new Card(Suit.CLUBS, Rank.JACK), new Card(Suit.HEARTS, Rank.TWO), new Card(Suit.SPADES, Rank.NINE),
-                              new Card(Suit.CLUBS, Rank.FIVE), new Card(Suit.HEARTS, Rank.SEVEN), new Card(Suit.SPADES, Rank.THREE),
-                              new Card(Suit.CLUBS, Rank.UNKNOWN), new Card(Suit.HEARTS, Rank.ACE), new Card(Suit.UNKNOWN, Rank.QUEEN));
+            target = new Hand(new Card(Rank.JACK, Suit.CLUBS), new Card(Rank.TWO, Suit.HEARTS), new Card(Rank.NINE, Suit.SPADES),
+                              new Card(Rank.FIVE, Suit.CLUBS), new Card(Rank.SEVEN, Suit.HEARTS), new Card(Rank.THREE, Suit.SPADES),
+                              new Card(Rank.UNKNOWN, Suit.CLUBS), new Card(Rank.ACE, Suit.HEARTS), new Card(Rank.QUEEN, Suit.UNKNOWN));
 
             actual = target.GetSuitCards(Suit.CLUBS);
             foreach (Card c in actual.ToArray())
@@ -372,9 +372,9 @@ namespace TestProjectPokerSimLib4911
             actual = target.HasStraight(minimumNumberOfCards, beginRank);
             Assert.AreEqual(expected, actual);
 
-            target = new Hand(new Card(Suit.CLUBS, Rank.JACK), new Card(Suit.DIAMONDS, Rank.TWO), new Card(Suit.HEARTS, Rank.FOUR),
-                              new Card(Suit.SPADES, Rank.FIVE), new Card(Suit.CLUBS, Rank.SIX), new Card(Suit.CLUBS, Rank.SEVEN),
-                              new Card(Suit.HEARTS, Rank.UNKNOWN));
+            target = new Hand(new Card(Rank.JACK, Suit.CLUBS), new Card(Rank.TWO, Suit.DIAMONDS), new Card(Rank.FOUR, Suit.HEARTS),
+                              new Card(Rank.FIVE, Suit.SPADES), new Card(Rank.SIX, Suit.CLUBS), new Card(Rank.SEVEN, Suit.CLUBS),
+                              new Card(Rank.UNKNOWN, Suit.HEARTS));
             expected = false;
             minimumNumberOfCards = 7;
             beginRank = Rank.TWO;
@@ -411,45 +411,45 @@ namespace TestProjectPokerSimLib4911
             actual = target.HasStraight(minimumNumberOfCards, beginRank);
             Assert.AreEqual(expected, actual);
 
-            target = new Hand(new Card(Suit.CLUBS, Rank.ACE), new Card(Suit.DIAMONDS, Rank.TWO), new Card(Suit.HEARTS, Rank.FOUR),
-                              new Card(Suit.SPADES, Rank.FIVE), new Card(Suit.CLUBS, Rank.SIX), new Card(Suit.CLUBS, Rank.SEVEN),
-                              new Card(Suit.HEARTS, Rank.UNKNOWN));
+            target = new Hand(new Card(Rank.ACE, Suit.CLUBS), new Card(Rank.TWO, Suit.DIAMONDS), new Card(Rank.FOUR, Suit.HEARTS),
+                              new Card(Rank.FIVE, Suit.SPADES), new Card(Rank.SIX, Suit.CLUBS), new Card(Rank.SEVEN, Suit.CLUBS),
+                              new Card(Rank.UNKNOWN, Suit.HEARTS));
             expected = true;
             minimumNumberOfCards = 7;
             beginRank = Rank.ACE;
             actual = target.HasStraight(minimumNumberOfCards, beginRank);
             Assert.AreEqual(expected, actual);
 
-            target = new Hand(new Card(Suit.CLUBS, Rank.ACE), new Card(Suit.DIAMONDS, Rank.TWO), new Card(Suit.HEARTS, Rank.FOUR),
-                              new Card(Suit.SPADES, Rank.FIVE), new Card(Suit.CLUBS, Rank.SIX), new Card(Suit.CLUBS, Rank.SEVEN),
-                              new Card(Suit.HEARTS, Rank.UNKNOWN), new Card(Suit.DIAMONDS, Rank.TEN), new Card(Suit.SPADES, Rank.JACK),
-                              new Card(Suit.HEARTS, Rank.KING));
+            target = new Hand(new Card(Rank.ACE, Suit.CLUBS), new Card(Rank.TWO, Suit.DIAMONDS), new Card(Rank.FOUR, Suit.HEARTS),
+                              new Card(Rank.FIVE, Suit.SPADES), new Card(Rank.SIX, Suit.CLUBS), new Card(Rank.SEVEN, Suit.CLUBS),
+                              new Card(Rank.UNKNOWN, Suit.HEARTS), new Card(Rank.TEN, Suit.DIAMONDS), new Card(Rank.JACK, Suit.SPADES),
+                              new Card(Rank.KING, Suit.HEARTS));
             expected = true;
             minimumNumberOfCards = 5;
             beginRank = Rank.TEN;
             actual = target.HasStraight(minimumNumberOfCards, beginRank);
             Assert.AreEqual(expected, actual);
 
-            target = new Hand(new Card(Suit.CLUBS, Rank.ACE), new Card(Suit.DIAMONDS, Rank.TWO), new Card(Suit.HEARTS, Rank.FOUR),
-                              new Card(Suit.SPADES, Rank.FIVE), new Card(Suit.CLUBS, Rank.SIX), new Card(Suit.CLUBS, Rank.SEVEN),
-                              new Card(Suit.HEARTS, Rank.UNKNOWN), new Card(Suit.DIAMONDS, Rank.TEN), new Card(Suit.SPADES, Rank.JACK),
-                              new Card(Suit.HEARTS, Rank.KING));
+            target = new Hand(new Card(Rank.ACE, Suit.CLUBS), new Card(Rank.TWO, Suit.DIAMONDS), new Card(Rank.FOUR, Suit.HEARTS),
+                              new Card(Rank.FIVE, Suit.SPADES), new Card(Rank.SIX, Suit.CLUBS), new Card(Rank.SEVEN, Suit.CLUBS),
+                              new Card(Rank.UNKNOWN, Suit.HEARTS), new Card(Rank.TEN, Suit.DIAMONDS), new Card(Rank.JACK, Suit.SPADES),
+                              new Card(Rank.KING, Suit.HEARTS));
             expected = false;
             minimumNumberOfCards = 5;
             beginRank = Rank.NINE;
             actual = target.HasStraight(minimumNumberOfCards, beginRank);
             Assert.AreEqual(expected, actual);
 
-            target = new Hand(new Card(Suit.CLUBS, Rank.ACE), new Card(Suit.DIAMONDS, Rank.TEN), new Card(Suit.SPADES, Rank.JACK),
-                              new Card(Suit.HEARTS, Rank.KING), new Card(Suit.UNKNOWN, Rank.QUEEN));
+            target = new Hand(new Card(Rank.ACE, Suit.CLUBS), new Card(Rank.TEN, Suit.DIAMONDS), new Card(Rank.JACK, Suit.SPADES),
+                              new Card(Rank.KING, Suit.HEARTS), new Card(Rank.QUEEN, Suit.UNKNOWN));
             expected = true;
             minimumNumberOfCards = 5;
             beginRank = Rank.TEN;
             actual = target.HasStraight(minimumNumberOfCards, beginRank);
             Assert.AreEqual(expected, actual);
 
-            target = new Hand(new Card(Suit.CLUBS, Rank.ACE), new Card(Suit.DIAMONDS, Rank.TWO), new Card(Suit.SPADES, Rank.THREE),
-                              new Card(Suit.HEARTS, Rank.FIVE), new Card(Suit.UNKNOWN, Rank.FOUR));
+            target = new Hand(new Card(Rank.ACE, Suit.CLUBS), new Card(Rank.TWO, Suit.DIAMONDS), new Card(Rank.THREE, Suit.SPADES),
+                              new Card(Rank.FIVE, Suit.HEARTS), new Card(Rank.FOUR, Suit.UNKNOWN));
             expected = true;
             minimumNumberOfCards = 5;
             beginRank = Rank.ACE;
@@ -469,42 +469,42 @@ namespace TestProjectPokerSimLib4911
             actual = target.HasStraight();
             Assert.AreEqual(expected, actual);
 
-            target = new Hand(new Card(Suit.CLUBS, Rank.JACK), new Card(Suit.DIAMONDS, Rank.TWO), new Card(Suit.HEARTS, Rank.FOUR),
-                              new Card(Suit.SPADES, Rank.FIVE), new Card(Suit.CLUBS, Rank.SIX), new Card(Suit.CLUBS, Rank.SEVEN),
-                              new Card(Suit.HEARTS, Rank.UNKNOWN));
+            target = new Hand(new Card(Rank.JACK, Suit.CLUBS), new Card(Rank.TWO, Suit.DIAMONDS), new Card(Rank.FOUR, Suit.HEARTS),
+                              new Card(Rank.FIVE, Suit.SPADES), new Card(Rank.SIX, Suit.CLUBS), new Card(Rank.SEVEN, Suit.CLUBS),
+                              new Card(Rank.UNKNOWN, Suit.HEARTS));
 
             expected = true;
             actual = target.HasStraight();
             Assert.AreEqual(expected, actual);
 
-            target = new Hand(new Card(Suit.SPADES, Rank.UNKNOWN), new Card(Suit.HEARTS, Rank.UNKNOWN), new Card(Suit.HEARTS, Rank.UNKNOWN),
-                              new Card(Suit.CLUBS, Rank.UNKNOWN), new Card(Suit.DIAMONDS, Rank.UNKNOWN));
+            target = new Hand(new Card(Rank.UNKNOWN, Suit.SPADES), new Card(Rank.UNKNOWN, Suit.HEARTS), new Card(Rank.UNKNOWN, Suit.HEARTS),
+                              new Card(Rank.UNKNOWN, Suit.CLUBS), new Card(Rank.UNKNOWN, Suit.DIAMONDS));
 
             expected = true;
             actual = target.HasStraight();
             Assert.AreEqual(expected, actual);
 
-            target = new Hand(new Card(Suit.SPADES, Rank.UNKNOWN), new Card(Suit.HEARTS, Rank.UNKNOWN), new Card(Suit.CLUBS, Rank.UNKNOWN),
-                              new Card(Suit.DIAMONDS, Rank.UNKNOWN));
+            target = new Hand(new Card(Rank.UNKNOWN, Suit.SPADES), new Card(Rank.UNKNOWN, Suit.HEARTS), new Card(Rank.UNKNOWN, Suit.CLUBS),
+                              new Card(Rank.UNKNOWN, Suit.DIAMONDS));
 
             expected = false;
             actual = target.HasStraight();
             Assert.AreEqual(expected, actual);
 
-            target = new Hand(new Card(Suit.HEARTS, Rank.UNKNOWN), new Card(Suit.DIAMONDS, Rank.TEN), new Card(Suit.SPADES, Rank.JACK),
-                              new Card(Suit.HEARTS, Rank.KING), new Card(Suit.SPADES, Rank.QUEEN));
+            target = new Hand(new Card(Rank.UNKNOWN, Suit.HEARTS), new Card(Rank.TEN, Suit.DIAMONDS), new Card(Rank.JACK, Suit.SPADES),
+                              new Card(Rank.KING, Suit.HEARTS), new Card(Rank.QUEEN, Suit.SPADES));
             expected = true;
             actual = target.HasStraight();
             Assert.AreEqual(expected, actual);
 
-            target = new Hand(new Card(Suit.HEARTS, Rank.UNKNOWN), new Card(Suit.DIAMONDS, Rank.TEN), new Card(Suit.SPADES, Rank.JACK),
-                              new Card(Suit.HEARTS, Rank.KING), new Card(Suit.SPADES, Rank.QUEEN));
+            target = new Hand(new Card(Rank.UNKNOWN, Suit.HEARTS), new Card(Rank.TEN, Suit.DIAMONDS), new Card(Rank.JACK, Suit.SPADES),
+                              new Card(Rank.KING, Suit.HEARTS), new Card(Rank.QUEEN, Suit.SPADES));
             expected = true;
             actual = target.HasStraight();
             Assert.AreEqual(expected, actual);
 
-            target = new Hand(new Card(Suit.HEARTS, Rank.UNKNOWN), new Card(Suit.DIAMONDS, Rank.EIGHT), new Card(Suit.SPADES, Rank.JACK),
-                              new Card(Suit.HEARTS, Rank.KING), new Card(Suit.SPADES, Rank.QUEEN));
+            target = new Hand(new Card(Rank.UNKNOWN, Suit.HEARTS), new Card(Rank.EIGHT, Suit.DIAMONDS), new Card(Rank.JACK, Suit.SPADES),
+                              new Card(Rank.KING, Suit.HEARTS), new Card(Rank.QUEEN, Suit.SPADES));
             expected = false;
             actual = target.HasStraight();
             Assert.AreEqual(expected, actual);
@@ -526,32 +526,32 @@ namespace TestProjectPokerSimLib4911
 
             minimumNumberOfCards = 5;
             suit = Suit.CLUBS;
-            target = new Hand(new Card(Suit.CLUBS, Rank.TWO), new Card(Suit.CLUBS, Rank.THREE), new Card(Suit.CLUBS, Rank.ACE),
-                              new Card(Suit.CLUBS, Rank.JACK), new Card(Suit.CLUBS, Rank.FIVE));
+            target = new Hand(new Card(Rank.TWO, Suit.CLUBS), new Card(Rank.THREE, Suit.CLUBS), new Card(Rank.ACE, Suit.CLUBS),
+                              new Card(Rank.JACK, Suit.CLUBS), new Card(Rank.FIVE, Suit.CLUBS));
             expected = true;
             actual = target.HasFlush(minimumNumberOfCards, suit);
             Assert.AreEqual(expected, actual);
 
             minimumNumberOfCards = 5;
             suit = Suit.CLUBS;
-            target = new Hand(new Card(Suit.CLUBS, Rank.TWO), new Card(Suit.CLUBS, Rank.THREE), new Card(Suit.CLUBS, Rank.ACE),
-                              new Card(Suit.CLUBS, Rank.JACK), new Card(Suit.DIAMONDS, Rank.FIVE));
+            target = new Hand(new Card(Rank.TWO, Suit.CLUBS), new Card(Rank.THREE, Suit.CLUBS), new Card(Rank.ACE, Suit.CLUBS),
+                              new Card(Rank.JACK, Suit.CLUBS), new Card(Rank.FIVE, Suit.DIAMONDS));
             expected = false;
             actual = target.HasFlush(minimumNumberOfCards, suit);
             Assert.AreEqual(expected, actual);
 
             minimumNumberOfCards = 5;
             suit = Suit.CLUBS;
-            target = new Hand(new Card(Suit.CLUBS, Rank.TWO), new Card(Suit.UNKNOWN, Rank.THREE), new Card(Suit.CLUBS, Rank.ACE),
-                              new Card(Suit.CLUBS, Rank.JACK), new Card(Suit.CLUBS, Rank.FIVE));
+            target = new Hand(new Card(Rank.TWO, Suit.CLUBS), new Card(Rank.THREE, Suit.UNKNOWN), new Card(Rank.ACE, Suit.CLUBS),
+                              new Card(Rank.JACK, Suit.CLUBS), new Card(Rank.FIVE, Suit.CLUBS));
             expected = true;
             actual = target.HasFlush(minimumNumberOfCards, suit);
             Assert.AreEqual(expected, actual);
 
             minimumNumberOfCards = 6;
             suit = Suit.CLUBS;
-            target = new Hand(new Card(Suit.CLUBS, Rank.TWO), new Card(Suit.CLUBS, Rank.THREE), new Card(Suit.CLUBS, Rank.ACE),
-                              new Card(Suit.CLUBS, Rank.JACK), new Card(Suit.CLUBS, Rank.FIVE));
+            target = new Hand(new Card(Rank.TWO, Suit.CLUBS), new Card(Rank.THREE, Suit.CLUBS), new Card(Rank.ACE, Suit.CLUBS),
+                              new Card(Rank.JACK, Suit.CLUBS), new Card(Rank.FIVE, Suit.CLUBS));
             expected = false;
             actual = target.HasFlush(minimumNumberOfCards, suit);
             Assert.AreEqual(expected, actual);
@@ -576,19 +576,19 @@ namespace TestProjectPokerSimLib4911
 
             minimumNumberOfCards = 5;
             suit = Suit.CLUBS;
-            target = new Hand(new Card(Suit.CLUBS, Rank.TWO), new Card(Suit.CLUBS, Rank.THREE), new Card(Suit.CLUBS, Rank.ACE),
-                              new Card(Suit.CLUBS, Rank.JACK), new Card(Suit.CLUBS, Rank.FIVE));
+            target = new Hand(new Card(Rank.TWO, Suit.CLUBS), new Card(Rank.THREE, Suit.CLUBS), new Card(Rank.ACE, Suit.CLUBS),
+                              new Card(Rank.JACK, Suit.CLUBS), new Card(Rank.FIVE, Suit.CLUBS));
             expected = true;
-            handExpected = new Hand(new Card(Suit.CLUBS, Rank.TWO), new Card(Suit.CLUBS, Rank.THREE), new Card(Suit.CLUBS, Rank.ACE),
-                                    new Card(Suit.CLUBS, Rank.JACK), new Card(Suit.CLUBS, Rank.FIVE));
+            handExpected = new Hand(new Card(Rank.TWO, Suit.CLUBS), new Card(Rank.THREE, Suit.CLUBS), new Card(Rank.ACE, Suit.CLUBS),
+                                    new Card(Rank.JACK, Suit.CLUBS), new Card(Rank.FIVE, Suit.CLUBS));
             actual = target.HasFlush(minimumNumberOfCards, suit, ref hand);
             Assert.AreEqual(handExpected, hand);
             Assert.AreEqual(expected, actual);
 
             minimumNumberOfCards = 5;
             suit = Suit.CLUBS;
-            target = new Hand(new Card(Suit.CLUBS, Rank.TWO), new Card(Suit.CLUBS, Rank.THREE), new Card(Suit.CLUBS, Rank.ACE),
-                              new Card(Suit.CLUBS, Rank.JACK), new Card(Suit.DIAMONDS, Rank.FIVE));
+            target = new Hand(new Card(Rank.TWO, Suit.CLUBS), new Card(Rank.THREE, Suit.CLUBS), new Card(Rank.ACE, Suit.CLUBS),
+                              new Card(Rank.JACK, Suit.CLUBS), new Card(Rank.FIVE, Suit.DIAMONDS));
             expected = false;
             handExpected = new Hand();
             actual = target.HasFlush(minimumNumberOfCards, suit, ref hand);
@@ -597,19 +597,19 @@ namespace TestProjectPokerSimLib4911
 
             minimumNumberOfCards = 5;
             suit = Suit.CLUBS;
-            target = new Hand(new Card(Suit.CLUBS, Rank.TWO), new Card(Suit.UNKNOWN, Rank.THREE), new Card(Suit.CLUBS, Rank.ACE),
-                              new Card(Suit.CLUBS, Rank.JACK), new Card(Suit.CLUBS, Rank.FIVE));
+            target = new Hand(new Card(Rank.TWO, Suit.CLUBS), new Card(Rank.THREE, Suit.UNKNOWN), new Card(Rank.ACE, Suit.CLUBS),
+                              new Card(Rank.JACK, Suit.CLUBS), new Card(Rank.FIVE, Suit.CLUBS));
             expected = true;
-            handExpected = new Hand(new Card(Suit.CLUBS, Rank.TWO), new Card(Suit.UNKNOWN, Rank.THREE), new Card(Suit.CLUBS, Rank.ACE),
-                              new Card(Suit.CLUBS, Rank.JACK), new Card(Suit.CLUBS, Rank.FIVE));
+            handExpected = new Hand(new Card(Rank.TWO, Suit.CLUBS), new Card(Rank.THREE, Suit.UNKNOWN), new Card(Rank.ACE, Suit.CLUBS),
+                              new Card(Rank.JACK, Suit.CLUBS), new Card(Rank.FIVE, Suit.CLUBS));
             actual = target.HasFlush(minimumNumberOfCards, suit, ref hand);
             Assert.AreEqual(handExpected, hand);
             Assert.AreEqual(expected, actual);
 
             minimumNumberOfCards = 6;
             suit = Suit.CLUBS;
-            target = new Hand(new Card(Suit.CLUBS, Rank.TWO), new Card(Suit.CLUBS, Rank.THREE), new Card(Suit.CLUBS, Rank.ACE),
-                              new Card(Suit.CLUBS, Rank.JACK), new Card(Suit.CLUBS, Rank.FIVE));
+            target = new Hand(new Card(Rank.TWO, Suit.CLUBS), new Card(Rank.THREE, Suit.CLUBS), new Card(Rank.ACE, Suit.CLUBS),
+                              new Card(Rank.JACK, Suit.CLUBS), new Card(Rank.FIVE, Suit.CLUBS));
             expected = false;
             handExpected = new Hand();
             actual = target.HasFlush(minimumNumberOfCards, suit, ref hand);
@@ -618,12 +618,12 @@ namespace TestProjectPokerSimLib4911
 
             minimumNumberOfCards = 5;
             suit = Suit.CLUBS;
-            target = new Hand(new Card(Suit.CLUBS, Rank.TWO), new Card(Suit.UNKNOWN, Rank.THREE), new Card(Suit.DIAMONDS, Rank.ACE),
-                              new Card(Suit.CLUBS, Rank.ACE), new Card(Suit.SPADES, Rank.UNKNOWN), new Card(Suit.DIAMONDS, Rank.SEVEN),
-                              new Card(Suit.CLUBS, Rank.JACK), new Card(Suit.CLUBS, Rank.FIVE));
+            target = new Hand(new Card(Rank.TWO, Suit.CLUBS), new Card(Rank.THREE, Suit.UNKNOWN), new Card(Rank.ACE, Suit.DIAMONDS),
+                              new Card(Rank.ACE, Suit.CLUBS), new Card(Rank.UNKNOWN, Suit.SPADES), new Card(Rank.SEVEN, Suit.DIAMONDS),
+                              new Card(Rank.JACK, Suit.CLUBS), new Card(Rank.FIVE, Suit.CLUBS));
             expected = true;
-            handExpected = new Hand(new Card(Suit.CLUBS, Rank.TWO), new Card(Suit.UNKNOWN, Rank.THREE), new Card(Suit.CLUBS, Rank.ACE),
-                              new Card(Suit.CLUBS, Rank.JACK), new Card(Suit.CLUBS, Rank.FIVE));
+            handExpected = new Hand(new Card(Rank.TWO, Suit.CLUBS), new Card(Rank.THREE, Suit.UNKNOWN), new Card(Rank.ACE, Suit.CLUBS),
+                              new Card(Rank.JACK, Suit.CLUBS), new Card(Rank.FIVE, Suit.CLUBS));
             actual = target.HasFlush(minimumNumberOfCards, suit, ref hand);
             Assert.AreEqual(handExpected, hand);
             Assert.AreEqual(expected, actual);
@@ -648,18 +648,18 @@ namespace TestProjectPokerSimLib4911
 
             minimumNumberOfCards = 1;
             suit = Suit.CLUBS;
-            target = new Hand(new Card(Suit.CLUBS, Rank.TWO), new Card(Suit.CLUBS, Rank.THREE), new Card(Suit.CLUBS, Rank.ACE),
-                              new Card(Suit.CLUBS, Rank.JACK), new Card(Suit.CLUBS, Rank.FIVE));
+            target = new Hand(new Card(Rank.TWO, Suit.CLUBS), new Card(Rank.THREE, Suit.CLUBS), new Card(Rank.ACE, Suit.CLUBS),
+                              new Card(Rank.JACK, Suit.CLUBS), new Card(Rank.FIVE, Suit.CLUBS));
             expected = true;
-            handExpected = new Hand(new Card(Suit.CLUBS, Rank.ACE));
+            handExpected = new Hand(new Card(Rank.ACE, Suit.CLUBS));
             actual = target.HasRoyalFlush(minimumNumberOfCards, suit, ref hand);
             Assert.AreEqual(handExpected, hand);
             Assert.AreEqual(expected, actual);
 
             minimumNumberOfCards = 5;
             suit = Suit.CLUBS;
-            target = new Hand(new Card(Suit.CLUBS, Rank.TWO), new Card(Suit.CLUBS, Rank.THREE), new Card(Suit.CLUBS, Rank.ACE),
-                              new Card(Suit.CLUBS, Rank.JACK), new Card(Suit.DIAMONDS, Rank.FIVE));
+            target = new Hand(new Card(Rank.TWO, Suit.CLUBS), new Card(Rank.THREE, Suit.CLUBS), new Card(Rank.ACE, Suit.CLUBS),
+                              new Card(Rank.JACK, Suit.CLUBS), new Card(Rank.FIVE, Suit.DIAMONDS));
             expected = false;
             handExpected = new Hand();
             actual = target.HasRoyalFlush(minimumNumberOfCards, suit, ref hand);
@@ -668,8 +668,8 @@ namespace TestProjectPokerSimLib4911
 
             minimumNumberOfCards = 5;
             suit = Suit.CLUBS;
-            target = new Hand(new Card(Suit.CLUBS, Rank.TWO), new Card(Suit.UNKNOWN, Rank.THREE), new Card(Suit.CLUBS, Rank.ACE),
-                              new Card(Suit.CLUBS, Rank.JACK), new Card(Suit.CLUBS, Rank.FIVE));
+            target = new Hand(new Card(Rank.TWO, Suit.CLUBS), new Card(Rank.THREE, Suit.UNKNOWN), new Card(Rank.ACE, Suit.CLUBS),
+                              new Card(Rank.JACK, Suit.CLUBS), new Card(Rank.FIVE, Suit.CLUBS));
             expected = false;
             handExpected = new Hand();
             actual = target.HasRoyalFlush(minimumNumberOfCards, suit, ref hand);
@@ -678,19 +678,19 @@ namespace TestProjectPokerSimLib4911
 
             minimumNumberOfCards = 5;
             suit = Suit.CLUBS;
-            target = new Hand(new Card(Suit.UNKNOWN, Rank.UNKNOWN), new Card(Suit.UNKNOWN, Rank.UNKNOWN), new Card(Suit.CLUBS, Rank.ACE),
-                              new Card(Suit.CLUBS, Rank.JACK), new Card(Suit.UNKNOWN, Rank.UNKNOWN));
+            target = new Hand(new Card(Rank.UNKNOWN, Suit.UNKNOWN), new Card(Rank.UNKNOWN, Suit.UNKNOWN), new Card(Rank.ACE, Suit.CLUBS),
+                              new Card(Rank.JACK, Suit.CLUBS), new Card(Rank.UNKNOWN, Suit.UNKNOWN));
             expected = true;
-            handExpected = new Hand(new Card(Suit.CLUBS, Rank.ACE), new Card(Suit.CLUBS, Rank.JACK), new Card(Suit.UNKNOWN, Rank.UNKNOWN),
-                                    new Card(Suit.UNKNOWN, Rank.UNKNOWN), new Card(Suit.UNKNOWN, Rank.UNKNOWN));
+            handExpected = new Hand(new Card(Rank.ACE, Suit.CLUBS), new Card(Rank.JACK, Suit.CLUBS), new Card(Rank.UNKNOWN, Suit.UNKNOWN),
+                                    new Card(Rank.UNKNOWN, Suit.UNKNOWN), new Card(Rank.UNKNOWN, Suit.UNKNOWN));
             actual = target.HasRoyalFlush(minimumNumberOfCards, suit, ref hand);
             Assert.AreEqual(handExpected, hand);
             Assert.AreEqual(expected, actual);
 
             minimumNumberOfCards = 6;
             suit = Suit.CLUBS;
-            target = new Hand(new Card(Suit.UNKNOWN, Rank.UNKNOWN), new Card(Suit.UNKNOWN, Rank.UNKNOWN), new Card(Suit.CLUBS, Rank.ACE),
-                              new Card(Suit.CLUBS, Rank.JACK), new Card(Suit.UNKNOWN, Rank.UNKNOWN));
+            target = new Hand(new Card(Rank.UNKNOWN, Suit.UNKNOWN), new Card(Rank.UNKNOWN, Suit.UNKNOWN), new Card(Rank.ACE, Suit.CLUBS),
+                              new Card(Rank.JACK, Suit.CLUBS), new Card(Rank.UNKNOWN, Suit.UNKNOWN));
             expected = false;
             handExpected = new Hand();
             actual = target.HasRoyalFlush(minimumNumberOfCards, suit, ref hand);
@@ -699,25 +699,25 @@ namespace TestProjectPokerSimLib4911
 
             minimumNumberOfCards = 8;
             suit = Suit.CLUBS;
-            target = new Hand(new Card(Suit.UNKNOWN, Rank.UNKNOWN), new Card(Suit.UNKNOWN, Rank.UNKNOWN), new Card(Suit.UNKNOWN, Rank.UNKNOWN),
-                              new Card(Suit.CLUBS, Rank.ACE), new Card(Suit.UNKNOWN, Rank.UNKNOWN), new Card(Suit.UNKNOWN, Rank.UNKNOWN),
-                              new Card(Suit.CLUBS, Rank.JACK), new Card(Suit.UNKNOWN, Rank.UNKNOWN));
+            target = new Hand(new Card(Rank.UNKNOWN, Suit.UNKNOWN), new Card(Rank.UNKNOWN, Suit.UNKNOWN), new Card(Rank.UNKNOWN, Suit.UNKNOWN),
+                              new Card(Rank.ACE, Suit.CLUBS), new Card(Rank.UNKNOWN, Suit.UNKNOWN), new Card(Rank.UNKNOWN, Suit.UNKNOWN),
+                              new Card(Rank.JACK, Suit.CLUBS), new Card(Rank.UNKNOWN, Suit.UNKNOWN));
             expected = true;
-            handExpected = new Hand(new Card(Suit.UNKNOWN, Rank.UNKNOWN), new Card(Suit.UNKNOWN, Rank.UNKNOWN), new Card(Suit.UNKNOWN, Rank.UNKNOWN),
-                              new Card(Suit.CLUBS, Rank.ACE), new Card(Suit.UNKNOWN, Rank.UNKNOWN), new Card(Suit.UNKNOWN, Rank.UNKNOWN),
-                              new Card(Suit.CLUBS, Rank.JACK), new Card(Suit.UNKNOWN, Rank.UNKNOWN));
+            handExpected = new Hand(new Card(Rank.UNKNOWN, Suit.UNKNOWN), new Card(Rank.UNKNOWN, Suit.UNKNOWN), new Card(Rank.UNKNOWN, Suit.UNKNOWN),
+                              new Card(Rank.ACE, Suit.CLUBS), new Card(Rank.UNKNOWN, Suit.UNKNOWN), new Card(Rank.UNKNOWN, Suit.UNKNOWN),
+                              new Card(Rank.JACK, Suit.CLUBS), new Card(Rank.UNKNOWN, Suit.UNKNOWN));
             actual = target.HasRoyalFlush(minimumNumberOfCards, suit, ref hand);
             Assert.AreEqual(handExpected, hand);
             Assert.AreEqual(expected, actual);
 
             minimumNumberOfCards = 4;
             suit = Suit.CLUBS;
-            target = new Hand(new Card(Suit.UNKNOWN, Rank.UNKNOWN), new Card(Suit.UNKNOWN, Rank.UNKNOWN), new Card(Suit.UNKNOWN, Rank.UNKNOWN),
-                              new Card(Suit.CLUBS, Rank.ACE), new Card(Suit.UNKNOWN, Rank.UNKNOWN), new Card(Suit.UNKNOWN, Rank.UNKNOWN),
-                              new Card(Suit.CLUBS, Rank.JACK), new Card(Suit.UNKNOWN, Rank.UNKNOWN));
+            target = new Hand(new Card(Rank.UNKNOWN, Suit.UNKNOWN), new Card(Rank.UNKNOWN, Suit.UNKNOWN), new Card(Rank.UNKNOWN, Suit.UNKNOWN),
+                              new Card(Rank.ACE, Suit.CLUBS), new Card(Rank.UNKNOWN, Suit.UNKNOWN), new Card(Rank.UNKNOWN, Suit.UNKNOWN),
+                              new Card(Rank.JACK, Suit.CLUBS), new Card(Rank.UNKNOWN, Suit.UNKNOWN));
             expected = true;
-            handExpected = new Hand(new Card(Suit.CLUBS, Rank.ACE), new Card(Suit.UNKNOWN, Rank.UNKNOWN), new Card(Suit.UNKNOWN, Rank.UNKNOWN),
-                                    new Card(Suit.CLUBS, Rank.JACK));
+            handExpected = new Hand(new Card(Rank.ACE, Suit.CLUBS), new Card(Rank.UNKNOWN, Suit.UNKNOWN), new Card(Rank.UNKNOWN, Suit.UNKNOWN),
+                                    new Card(Rank.JACK, Suit.CLUBS));
             actual = target.HasRoyalFlush(minimumNumberOfCards, suit, ref hand);
             Assert.AreEqual(handExpected, hand);
             Assert.AreEqual(expected, actual);
@@ -741,10 +741,10 @@ namespace TestProjectPokerSimLib4911
             Assert.AreEqual(handExpected, hand);
             Assert.AreEqual(expected, actual);
 
-            target = new Hand(new Card(Suit.SPADES, Rank.ACE), new Card(Suit.SPADES, Rank.TWO), new Card(Suit.SPADES, Rank.THREE),
-                            new Card(Suit.SPADES, Rank.FOUR), new Card(Suit.SPADES, Rank.FIVE));
-            handExpected = new Hand(new Card(Suit.SPADES, Rank.ACE), new Card(Suit.SPADES, Rank.TWO), new Card(Suit.SPADES, Rank.THREE),
-                                    new Card(Suit.SPADES, Rank.FOUR), new Card(Suit.SPADES, Rank.FIVE));
+            target = new Hand(new Card(Rank.ACE, Suit.SPADES), new Card(Rank.TWO, Suit.SPADES), new Card(Rank.THREE, Suit.SPADES),
+                            new Card(Rank.FOUR, Suit.SPADES), new Card(Rank.FIVE, Suit.SPADES));
+            handExpected = new Hand(new Card(Rank.ACE, Suit.SPADES), new Card(Rank.TWO, Suit.SPADES), new Card(Rank.THREE, Suit.SPADES),
+                                    new Card(Rank.FOUR, Suit.SPADES), new Card(Rank.FIVE, Suit.SPADES));
             startingWithRank = Rank.ACE;
             suit = Suit.SPADES;
             minimumNumberOfCards = 5;
@@ -753,8 +753,8 @@ namespace TestProjectPokerSimLib4911
             Assert.AreEqual(handExpected, hand);
             Assert.AreEqual(expected, actual);
 
-            target = new Hand(new Card(Suit.SPADES, Rank.ACE), new Card(Suit.SPADES, Rank.TWO), new Card(Suit.SPADES, Rank.THREE),
-                            new Card(Suit.SPADES, Rank.FOUR), new Card(Suit.SPADES, Rank.FIVE));
+            target = new Hand(new Card(Rank.ACE, Suit.SPADES), new Card(Rank.TWO, Suit.SPADES), new Card(Rank.THREE, Suit.SPADES),
+                            new Card(Rank.FOUR, Suit.SPADES), new Card(Rank.FIVE, Suit.SPADES));
             handExpected = new Hand();
             startingWithRank = Rank.ACE;
             suit = Suit.HEARTS;
@@ -773,10 +773,10 @@ namespace TestProjectPokerSimLib4911
             Assert.AreEqual(handExpected, hand);
             Assert.AreEqual(expected, actual);
 
-            target = new Hand(new Card(Suit.SPADES, Rank.ACE), new Card(Suit.SPADES, Rank.TWO), new Card(Suit.SPADES, Rank.THREE),
-                            new Card(Suit.SPADES, Rank.FOUR), new Card(Suit.UNKNOWN, Rank.UNKNOWN), new Card(Suit.SPADES, Rank.FIVE));
-            handExpected = new Hand(new Card(Suit.SPADES, Rank.ACE), new Card(Suit.SPADES, Rank.TWO), new Card(Suit.SPADES, Rank.THREE),
-                                    new Card(Suit.SPADES, Rank.FOUR), new Card(Suit.SPADES, Rank.FIVE), new Card(Suit.UNKNOWN, Rank.UNKNOWN));
+            target = new Hand(new Card(Rank.ACE, Suit.SPADES), new Card(Rank.TWO, Suit.SPADES), new Card(Rank.THREE, Suit.SPADES),
+                            new Card(Rank.FOUR, Suit.SPADES), new Card(Rank.UNKNOWN, Suit.UNKNOWN), new Card(Rank.FIVE, Suit.SPADES));
+            handExpected = new Hand(new Card(Rank.ACE, Suit.SPADES), new Card(Rank.TWO, Suit.SPADES), new Card(Rank.THREE, Suit.SPADES),
+                                    new Card(Rank.FOUR, Suit.SPADES), new Card(Rank.FIVE, Suit.SPADES), new Card(Rank.UNKNOWN, Suit.UNKNOWN));
             startingWithRank = Rank.ACE;
             suit = Suit.SPADES;
             minimumNumberOfCards = 6;
@@ -785,8 +785,8 @@ namespace TestProjectPokerSimLib4911
             Assert.AreEqual(handExpected, hand);
             Assert.AreEqual(expected, actual);
 
-            target = new Hand(new Card(Suit.SPADES, Rank.ACE), new Card(Suit.SPADES, Rank.TWO), new Card(Suit.SPADES, Rank.THREE),
-                            new Card(Suit.SPADES, Rank.FOUR), new Card(Suit.UNKNOWN, Rank.UNKNOWN), new Card(Suit.SPADES, Rank.FIVE));
+            target = new Hand(new Card(Rank.ACE, Suit.SPADES), new Card(Rank.TWO, Suit.SPADES), new Card(Rank.THREE, Suit.SPADES),
+                            new Card(Rank.FOUR, Suit.SPADES), new Card(Rank.UNKNOWN, Suit.UNKNOWN), new Card(Rank.FIVE, Suit.SPADES));
             handExpected = new Hand();
             startingWithRank = Rank.ACE;
             suit = Suit.SPADES;
@@ -796,11 +796,11 @@ namespace TestProjectPokerSimLib4911
             Assert.AreEqual(handExpected, hand);
             Assert.AreEqual(expected, actual);
 
-            target = new Hand(new Card(Suit.SPADES, Rank.ACE), new Card(Suit.UNKNOWN, Rank.UNKNOWN), new Card(Suit.SPADES, Rank.TWO),
-                              new Card(Suit.UNKNOWN, Rank.UNKNOWN), new Card(Suit.UNKNOWN, Rank.UNKNOWN), new Card(Suit.SPADES, Rank.THREE),
-                              new Card(Suit.SPADES, Rank.FOUR), new Card(Suit.UNKNOWN, Rank.UNKNOWN), new Card(Suit.SPADES, Rank.FIVE));
-            handExpected = new Hand(new Card(Suit.UNKNOWN, Rank.UNKNOWN), new Card(Suit.UNKNOWN, Rank.UNKNOWN), new Card(Suit.UNKNOWN, Rank.UNKNOWN),
-                                    new Card(Suit.UNKNOWN, Rank.UNKNOWN));
+            target = new Hand(new Card(Rank.ACE, Suit.SPADES), new Card(Rank.UNKNOWN, Suit.UNKNOWN), new Card(Rank.TWO, Suit.SPADES),
+                              new Card(Rank.UNKNOWN, Suit.UNKNOWN), new Card(Rank.UNKNOWN, Suit.UNKNOWN), new Card(Rank.THREE, Suit.SPADES),
+                              new Card(Rank.FOUR, Suit.SPADES), new Card(Rank.UNKNOWN, Suit.UNKNOWN), new Card(Rank.FIVE, Suit.SPADES));
+            handExpected = new Hand(new Card(Rank.UNKNOWN, Suit.UNKNOWN), new Card(Rank.UNKNOWN, Suit.UNKNOWN), new Card(Rank.UNKNOWN, Suit.UNKNOWN),
+                                    new Card(Rank.UNKNOWN, Suit.UNKNOWN));
             startingWithRank = Rank.ACE;
             suit = Suit.CLUBS;
             minimumNumberOfCards = 4;
@@ -809,11 +809,11 @@ namespace TestProjectPokerSimLib4911
             Assert.AreEqual(handExpected, hand);
             Assert.AreEqual(expected, actual);
 
-            target = new Hand(new Card(Suit.CLUBS, Rank.ACE), new Card(Suit.UNKNOWN, Rank.UNKNOWN), new Card(Suit.SPADES, Rank.TWO),
-                              new Card(Suit.UNKNOWN, Rank.UNKNOWN), new Card(Suit.UNKNOWN, Rank.UNKNOWN), new Card(Suit.SPADES, Rank.THREE),
-                              new Card(Suit.SPADES, Rank.FOUR), new Card(Suit.UNKNOWN, Rank.UNKNOWN), new Card(Suit.SPADES, Rank.FIVE));
-            handExpected = new Hand(new Card(Suit.UNKNOWN, Rank.UNKNOWN), new Card(Suit.UNKNOWN, Rank.UNKNOWN), new Card(Suit.UNKNOWN, Rank.UNKNOWN),
-                                    new Card(Suit.CLUBS, Rank.ACE));
+            target = new Hand(new Card(Rank.ACE, Suit.CLUBS), new Card(Rank.UNKNOWN, Suit.UNKNOWN), new Card(Rank.TWO, Suit.SPADES),
+                              new Card(Rank.UNKNOWN, Suit.UNKNOWN), new Card(Rank.UNKNOWN, Suit.UNKNOWN), new Card(Rank.THREE, Suit.SPADES),
+                              new Card(Rank.FOUR, Suit.SPADES), new Card(Rank.UNKNOWN, Suit.UNKNOWN), new Card(Rank.FIVE, Suit.SPADES));
+            handExpected = new Hand(new Card(Rank.UNKNOWN, Suit.UNKNOWN), new Card(Rank.UNKNOWN, Suit.UNKNOWN), new Card(Rank.UNKNOWN, Suit.UNKNOWN),
+                                    new Card(Rank.ACE, Suit.CLUBS));
             startingWithRank = Rank.JACK;
             suit = Suit.CLUBS;
             minimumNumberOfCards = 4;

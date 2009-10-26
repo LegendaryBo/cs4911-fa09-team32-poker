@@ -32,7 +32,7 @@ namespace PokerSimLib4911
 
             // a royal flush contains the cards ten through ace, all of the same suit
             for (int i = 0; i < REQ_CARDS[RF]; i++)
-                royalFlush.InsertCard(new Card((Suit)suit, Rank.TEN + i));
+                royalFlush.InsertCard(new Card(Rank.TEN + i, (Suit)suit));
 
             Deck.Instance.RemoveCards(royalFlush.ToArray());
 
@@ -62,7 +62,7 @@ namespace PokerSimLib4911
                 Rank cardRank = rank - i;
                 if (cardRank < 0) cardRank = Rank.ACE;
 
-                hand.InsertCard(new Card(suit, cardRank));
+                hand.InsertCard(new Card(cardRank, suit));
             }
 
             deck.RemoveCards(hand.ToArray());
@@ -87,7 +87,7 @@ namespace PokerSimLib4911
             rank = rand.Next(0, 12);
 
             for (int i = 0; i < REQ_CARDS[FK]; i++)
-                fourKind.InsertCard(new Card((Suit)i, (Rank)rank));
+                fourKind.InsertCard(new Card((Rank)rank, (Suit)i));
 
             Deck.Instance.RemoveCards(fourKind.ToArray());
 
@@ -132,7 +132,7 @@ namespace PokerSimLib4911
                     suits[a, index] = suits[a, suitLast];
                     suits[a, suitLast] = suit;
 
-                    c[a] = new Card((Suit)suit, ranks[a]);
+                    c[a] = new Card(ranks[a], (Suit)suit);
                 }
 
                 suitLast--;
@@ -177,7 +177,7 @@ namespace PokerSimLib4911
                     //choose five cards of that suit
                     do
                     {
-                        card = new Card((Suit)suit, (Rank)rand.Next(0, 12));
+                        card = new Card((Rank)rand.Next(0, 12), (Suit)suit);
                     } while (flushHand.Contains(card));
 
                     flushHand.InsertCard(card);
@@ -217,7 +217,7 @@ namespace PokerSimLib4911
                     Rank cardRank = rank - i;
                     if (cardRank < 0) cardRank = Rank.ACE;
 
-                    hand.InsertCard(new Card((Suit)r.Next(0, 3), cardRank));
+                    hand.InsertCard(new Card(cardRank, (Suit)r.Next(0, 3)));
                 }
 
                 deck.RemoveCards(hand.ToArray());
@@ -250,7 +250,7 @@ namespace PokerSimLib4911
             //end up with a 4-Kind.
             for (int i = 0; i < REQ_CARDS[TK] + 1; i++)
             {
-                card = new Card((Suit)i, (Rank)rank);
+                card = new Card((Rank)rank, (Suit)i);
                 if (i < 3) threeKind.InsertCard(card);
                 Deck.Instance.RemoveCard(card);
             }
@@ -324,7 +324,7 @@ namespace PokerSimLib4911
                     suits[a, index] = suits[a, suitLast];
                     suits[a, suitLast] = suit;
 
-                    c[a] = new Card((Suit)suit, (Rank)ranks[a]);
+                    c[a] = new Card((Rank)ranks[a], (Suit)suit);
                 }
 
                 suitLast--;
@@ -382,12 +382,12 @@ namespace PokerSimLib4911
 
 
             for (int i = 0; i < REQ_CARDS[OP] + 2; i++)
-                onePair.InsertCard(new Card((Suit)i, (Rank)rank));
+                onePair.InsertCard(new Card((Rank)rank, (Suit)i));
 
             Deck.Instance.RemoveCards(onePair.ToArray());
 
-            onePair.RemoveCard(new Card((Suit)suit, (Rank)rank));
-            onePair.RemoveCard(new Card((Suit)suit2, (Rank)rank));
+            onePair.RemoveCard(new Card((Rank)rank, (Suit)suit));
+            onePair.RemoveCard(new Card((Rank)rank, (Suit)suit2));
 
             //Generate 5 cards, knowing that a Full House, 4-Kind of a different rank, straight, flush,
             //Straight flush and Royal Flush will beat 2-Kind.
