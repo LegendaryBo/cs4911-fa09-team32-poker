@@ -141,20 +141,24 @@ namespace PokerSimLib4911
 
         public Card DealCard()
         {
-            Card returnCard = null;
+            Card dealtCard = null;
 
+            // we can only deal from a non-empty deck
             if (_cards.Count > 0)
             {
-                returnCard = _cards[0];
+                // save the card to return
+                dealtCard = _cards[0];
+                // remove the card from the top of the deck
                 _cards.RemoveAt(0);
-                _dealtCards.Add(returnCard);
+                // add the removed card to the list of dealt cards
+                _dealtCards.Add(dealtCard);
             }
             else
             {
                 throw new InvalidOperationException("You cannot deal a card from an empty deck.");
             }
 
-            return returnCard;
+            return dealtCard;
         }
 
         public Card[] ToArray()
@@ -198,42 +202,6 @@ namespace PokerSimLib4911
         {
             return _dealtCards.Contains(card);
         }
-    }
-
-    /// <summary>
-    /// The Suit enumeration contains all of the valid suit values for a Deck.
-    /// </summary>
-    public enum Suit
-    {
-        CLUBS,
-        DIAMONDS,
-        HEARTS,
-        SPADES,
-        UNKNOWN
-    }
-
-    /// <summary>
-    /// The Rank enumeration contains all of the valid card values for a Deck, in ascending order.
-    /// </summary>
-    /// <remarks>
-    /// Note that the lowest rank in this deck is 2 and the highest is an ace.
-    /// </remarks>
-    public enum Rank
-    {
-        TWO,
-        THREE,
-        FOUR,
-        FIVE,
-        SIX,
-        SEVEN,
-        EIGHT,
-        NINE,
-        TEN,
-        JACK,
-        QUEEN,
-        KING,
-        ACE,
-        UNKNOWN
     }
 }
 

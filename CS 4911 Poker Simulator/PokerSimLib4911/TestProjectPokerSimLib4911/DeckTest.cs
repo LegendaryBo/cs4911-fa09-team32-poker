@@ -161,6 +161,7 @@ namespace TestProjectPokerSimLib4911
         [TestMethod()]
         public void DealCardTest()
         {
+            Deck.Instance.MakeFreshDeck();
             Card expected = new Card(Rank.TWO, Suit.CLUBS);
             Card actual;
             actual = Deck.Instance.DealCard();

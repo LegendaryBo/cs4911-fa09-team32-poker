@@ -275,4 +275,40 @@ namespace PokerSimLib4911
             return !(x == y);
         }
     }
+
+    /// <summary>
+    /// The Suit enumeration contains all of the valid suit values for a Deck.
+    /// </summary>
+    public enum Suit
+    {
+        CLUBS,
+        DIAMONDS,
+        HEARTS,
+        SPADES,
+        UNKNOWN
+    }
+
+    /// <summary>
+    /// The Rank enumeration contains all of the valid card values for a Deck, in ascending order.
+    /// </summary>
+    /// <remarks>
+    /// Note that the lowest rank in this deck is 2 and the highest is an ace.
+    /// </remarks>
+    public enum Rank
+    {
+        TWO,
+        THREE,
+        FOUR,
+        FIVE,
+        SIX,
+        SEVEN,
+        EIGHT,
+        NINE,
+        TEN,
+        JACK,
+        QUEEN,
+        KING,
+        ACE,
+        UNKNOWN
+    }
 }
