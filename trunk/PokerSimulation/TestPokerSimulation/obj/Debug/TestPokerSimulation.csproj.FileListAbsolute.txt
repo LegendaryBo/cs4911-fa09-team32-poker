@@ -1,0 +1,7 @@
+C:\Users\Ruslan\Documents\Visual Studio 2008\Projects\PokerSimulation\TestPokerSimulation\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Ruslan\Documents\Visual Studio 2008\Projects\PokerSimulation\TestPokerSimulation\bin\Debug\TestPokerSimulation.dll
+C:\Users\Ruslan\Documents\Visual Studio 2008\Projects\PokerSimulation\TestPokerSimulation\bin\Debug\TestPokerSimulation.pdb
+C:\Users\Ruslan\Documents\Visual Studio 2008\Projects\PokerSimulation\TestPokerSimulation\bin\Debug\PokerSimulation.exe
+C:\Users\Ruslan\Documents\Visual Studio 2008\Projects\PokerSimulation\TestPokerSimulation\bin\Debug\PokerSimulation.pdb
+C:\Users\Ruslan\Documents\Visual Studio 2008\Projects\PokerSimulation\TestPokerSimulation\obj\Debug\TestPokerSimulation.dll
+C:\Users\Ruslan\Documents\Visual Studio 2008\Projects\PokerSimulation\TestPokerSimulation\obj\Debug\TestPokerSimulation.pdb
