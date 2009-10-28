@@ -1,0 +1,15 @@
+ID#
+Session Session#
+
+Trial 1
+Hand: TH, 9S, TD, 9H, JC, JS, 9C
+Guess: 
+Time: 
+
+Trial 2
+Hand: JD, TH, TS, 7H, 4D, JS, TC
+Guess: 
+Time: 
+
+End Session Session#
+End ID#

@@ -16,7 +16,6 @@ namespace PokerSimulation
         public StartForm()
         {
             InitializeComponent();
-            setupCards();
             game = new Game();
         }
 
@@ -45,23 +44,17 @@ namespace PokerSimulation
         #endregion
         
         #region Methods
-        public void setupCards()
-        {
-            boardCards = new List<Card>(3);
-            //boardCards.Add(new Card());
-            //boardCards.Add(new Card("Ace_Club"));
-            //boardCards.Add(new Card("Five_Spade"));
-
-            
-        }
         public void drawOnBoard()
         {
+            generateHand();
+            pictureBox1.Image = (Image)boardCards[0].Image;
+            pictureBox2.Image = (Image)boardCards[1].Image;
+            pictureBox3.Image = (Image)boardCards[2].Image;
+            pictureBox4.Image = (Image)boardCards[3].Image;
+            pictureBox5.Image = (Image)boardCards[4].Image;
             
-            //pictureBox1.Image = (Image)boardCards[0].Image;
-            //pictureBox2.Image = (Image)boardCards[1].Image;
-            //pictureBox3.Image = (Image)boardCards[2].Image;
-            debugText = boardCards.ToString();
-            answerEntryText.Text = debugText;
+            //debugText = boardCards.ToString();
+            //answerEntryText.Text = debugText;
             
                 
         }
@@ -73,7 +66,45 @@ namespace PokerSimulation
             form.Show();
         }
 
-        
+        private void button1_Click(object sender, EventArgs e)
+        {
+            drawOnBoard();
+        }
 
+        private void generateHand()
+        {
+            String generatedText = handText.Text;
+            int numOfCards = 5;
+
+            Hand testHand = new Hand();
+            if ((generatedText.Length == 0) || generatedText.Equals("Enter Hand"))
+            {
+                MessageBox.Show("You must enter a valid two-letter hand");
+            }
+            else if (generatedText.ToUpper().Equals("HC"))
+                testHand = PokerSimulation.HandGenerator.genHC(numOfCards);
+            else if (generatedText.ToUpper().Equals("OP"))
+                testHand = PokerSimulation.HandGenerator.genOP(numOfCards);
+            else if (generatedText.ToUpper().Equals("TP"))
+                testHand = PokerSimulation.HandGenerator.genTP(numOfCards);
+            else if (generatedText.ToUpper().Equals("TK"))
+                testHand = PokerSimulation.HandGenerator.genTK(numOfCards);
+            else if (generatedText.ToUpper().Equals("ST"))
+                testHand = PokerSimulation.HandGenerator.genST(numOfCards);
+            else if (generatedText.ToUpper().Equals("FL"))
+                testHand = PokerSimulation.HandGenerator.genFL(numOfCards);
+            else if (generatedText.ToUpper().Equals("FH"))
+                testHand = PokerSimulation.HandGenerator.genFH(numOfCards);
+            else if (generatedText.ToUpper().Equals("SF"))
+                testHand = PokerSimulation.HandGenerator.genSF(numOfCards);
+            else if (generatedText.ToUpper().Equals("FK"))
+                testHand = PokerSimulation.HandGenerator.genFK(numOfCards);
+            else if (generatedText.ToUpper().Equals("RF"))
+                testHand = PokerSimulation.HandGenerator.genRF(numOfCards);
+            else
+                MessageBox.Show("You must enter a valid two-letter hand");
+
+            boardCards = testHand.Cards;
+        }
     }
 }
