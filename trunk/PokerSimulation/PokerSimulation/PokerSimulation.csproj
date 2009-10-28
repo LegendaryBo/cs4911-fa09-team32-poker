@@ -55,6 +55,7 @@
     <Compile Include="BoardControl.Designer.cs">
       <DependentUpon>BoardControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Card.cs" />
     <Compile Include="Deck.cs" />
     <Compile Include="Game.cs" />
     <Compile Include="GuessForm.cs">
@@ -63,6 +64,8 @@
     <Compile Include="GuessForm.Designer.cs">
       <DependentUpon>GuessForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Hand.cs" />
+    <Compile Include="HandGenerator.cs" />
     <Compile Include="StartForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -115,16 +118,75 @@
     <Compile Include="UserSession.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\ft_green_poker_skin.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\ft_green_poker_skin1.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\ft_green_poker_skin2.png" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Resources\Joker.png" />
+    <Content Include="Resources\cards\2C.png" />
+    <Content Include="Resources\cards\2D.png" />
+    <Content Include="Resources\cards\2H.png" />
+    <Content Include="Resources\cards\2S.png" />
+    <Content Include="Resources\cards\3C.png" />
+    <Content Include="Resources\cards\3D.png" />
+    <Content Include="Resources\cards\3H.png" />
+    <Content Include="Resources\cards\3S.png" />
+    <Content Include="Resources\cards\4C.png" />
+    <Content Include="Resources\cards\4D.png" />
+    <Content Include="Resources\cards\4H.png" />
+    <Content Include="Resources\cards\4S.png" />
+    <Content Include="Resources\cards\5C.png" />
+    <Content Include="Resources\cards\5D.png" />
+    <Content Include="Resources\cards\5H.png" />
+    <Content Include="Resources\cards\5S.png" />
+    <Content Include="Resources\cards\6C.png" />
+    <Content Include="Resources\cards\6D.png" />
+    <Content Include="Resources\cards\6H.png" />
+    <Content Include="Resources\cards\6S.png" />
+    <Content Include="Resources\cards\7C.png" />
+    <Content Include="Resources\cards\7D.png" />
+    <Content Include="Resources\cards\7H.png" />
+    <Content Include="Resources\cards\7S.png" />
+    <Content Include="Resources\cards\8C.png" />
+    <Content Include="Resources\cards\8D.png" />
+    <Content Include="Resources\cards\8H.png" />
+    <Content Include="Resources\cards\8S.png" />
+    <Content Include="Resources\cards\9C.png" />
+    <Content Include="Resources\cards\9D.png" />
+    <Content Include="Resources\cards\9H.png" />
+    <Content Include="Resources\cards\9S.png" />
+    <Content Include="Resources\cards\AC.png" />
+    <Content Include="Resources\cards\AD.png" />
+    <Content Include="Resources\cards\AH.png" />
+    <Content Include="Resources\cards\AS.png" />
+    <Content Include="Resources\cards\b1fh.png" />
+    <Content Include="Resources\cards\b1fv.png" />
+    <Content Include="Resources\cards\b1pb.png" />
+    <Content Include="Resources\cards\b1pl.png" />
+    <Content Include="Resources\cards\b1pr.png" />
+    <Content Include="Resources\cards\b1pt.png" />
+    <Content Include="Resources\cards\b2fh.png" />
+    <Content Include="Resources\cards\b2fv.png" />
+    <Content Include="Resources\cards\b2pb.png" />
+    <Content Include="Resources\cards\b2pl.png" />
+    <Content Include="Resources\cards\b2pr.png" />
+    <Content Include="Resources\cards\b2pt.png" />
+    <Content Include="Resources\cards\JC.png" />
+    <Content Include="Resources\cards\JD.png" />
+    <Content Include="Resources\cards\JH.png" />
+    <Content Include="Resources\cards\Joker_Black.png" />
+    <Content Include="Resources\cards\Joker_Red.png" />
+    <Content Include="Resources\cards\JS.png" />
+    <Content Include="Resources\cards\KC.png" />
+    <Content Include="Resources\cards\KD.png" />
+    <Content Include="Resources\cards\KH.png" />
+    <Content Include="Resources\cards\KS.png" />
+    <Content Include="Resources\cards\QC.png" />
+    <Content Include="Resources\cards\QD.png" />
+    <Content Include="Resources\cards\QH.png" />
+    <Content Include="Resources\cards\QS.png" />
+    <Content Include="Resources\cards\TC.png" />
+    <Content Include="Resources\cards\TD.png" />
+    <Content Include="Resources\cards\TH.png" />
+    <Content Include="Resources\cards\TS.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

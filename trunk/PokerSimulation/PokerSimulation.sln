@@ -3,7 +3,18 @@ Microsoft Visual Studio Solution File, Format Version 10.00
 # Visual Studio 2008
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PokerSimulation", "PokerSimulation\PokerSimulation.csproj", "{96717790-3D4C-40EF-B760-4B53DD62CCD3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestPokerSimulation", "TestPokerSimulation\TestPokerSimulation.csproj", "{A17C8D17-4050-47B1-9BB3-D32209CAFA14}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{490BFD54-5865-42D2-8524-DE36BE49AC06}"
+	ProjectSection(SolutionItems) = preProject
+		LocalTestRun.testrunconfig = LocalTestRun.testrunconfig
+		PokerSimulation.vsmdi = PokerSimulation.vsmdi
+	EndProjectSection
+EndProject
 Global
+	GlobalSection(TestCaseManagementSettings) = postSolution
+		CategoryFile = PokerSimulation.vsmdi
+	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
@@ -13,6 +24,10 @@ Global
 		{96717790-3D4C-40EF-B760-4B53DD62CCD3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{96717790-3D4C-40EF-B760-4B53DD62CCD3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{96717790-3D4C-40EF-B760-4B53DD62CCD3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A17C8D17-4050-47B1-9BB3-D32209CAFA14}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A17C8D17-4050-47B1-9BB3-D32209CAFA14}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A17C8D17-4050-47B1-9BB3-D32209CAFA14}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A17C8D17-4050-47B1-9BB3-D32209CAFA14}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
