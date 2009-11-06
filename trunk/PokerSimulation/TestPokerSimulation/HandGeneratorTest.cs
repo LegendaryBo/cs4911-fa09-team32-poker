@@ -332,6 +332,50 @@ namespace TestPokerSimulation
                 );
         }
 
+        [TestMethod]
+        public void genFLTest()
+        {
+            Hand hand = new Hand();
+
+            Hand testHand5 = HandGenerator.genFL(5);
+        }
+
+        [TestMethod]
+        public void genSTTest()
+        {
+            Hand hand = new Hand();
+
+            Hand testHand6 = HandGenerator.genST(5);
+        }
+
+        [TestMethod]
+        public void genTKTest()
+        {
+            Hand hand = new Hand();
+
+            Hand testHand7 = HandGenerator.genTK(5);
+        }
+        [TestMethod]
+        public void genTPTest()
+        {
+            Hand hand = new Hand();
+
+            Hand testHand8 = HandGenerator.genTP(5);
+        }
+        [TestMethod]
+        public void genOPTest()
+        {
+            Hand hand = new Hand();
+
+            Hand testHand9 = HandGenerator.genOP(5);
+        }
+        [TestMethod]
+        public void genHCTest()
+        {
+            Hand hand = new Hand();
+
+            Hand testHand0 = HandGenerator.genHC(5);
+        }
 
     }
 }
