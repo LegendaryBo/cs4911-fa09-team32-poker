@@ -335,25 +335,45 @@ namespace TestPokerSimulation
         [TestMethod]
         public void genFLTest()
         {
-            Hand hand = new Hand();
+            //Hand hand = new Hand();
 
             Hand testHand5 = HandGenerator.genFL(5);
+
+            Assert.IsTrue(testHand5.HasFlush());
         }
 
         [TestMethod]
         public void genSTTest()
         {
-            Hand hand = new Hand();
+            //Hand hand = new Hand();
 
             Hand testHand6 = HandGenerator.genST(5);
+
+            Assert.IsTrue(testHand6.HasStraight());
         }
 
         [TestMethod]
-        public void genTKTest()
+        public void genOPTest()
         {
             Hand hand = new Hand();
 
-            Hand testHand7 = HandGenerator.genTK(5);
+            Hand testHand7 = HandGenerator.genOP(5);
+
+            Assert.IsTrue(
+                testHand7.HasTwoOfAKind( Rank.ACE, ref hand)||
+                testHand7.HasTwoOfAKind( Rank.TWO, ref hand)||
+                testHand7.HasTwoOfAKind( Rank.THREE, ref hand)||
+                testHand7.HasTwoOfAKind( Rank.FOUR, ref hand)||
+                testHand7.HasTwoOfAKind( Rank.FIVE, ref hand)||
+                testHand7.HasTwoOfAKind( Rank.SIX, ref hand)||
+                testHand7.HasTwoOfAKind( Rank.SEVEN, ref hand)||
+                testHand7.HasTwoOfAKind( Rank.EIGHT, ref hand)||
+                testHand7.HasTwoOfAKind( Rank.NINE, ref hand)||
+                testHand7.HasTwoOfAKind( Rank.TEN, ref hand)||
+                testHand7.HasTwoOfAKind( Rank.JACK, ref hand)||
+                testHand7.HasTwoOfAKind( Rank.QUEEN, ref hand)||
+                testHand7.HasTwoOfAKind( Rank.KING, ref hand)
+                );
         }
         [TestMethod]
         public void genTPTest()
@@ -361,13 +381,199 @@ namespace TestPokerSimulation
             Hand hand = new Hand();
 
             Hand testHand8 = HandGenerator.genTP(5);
+
+            Assert.IsTrue(
+                testHand8.HasTwoPair(Rank.ACE, Rank.KING, ref hand) ||
+                testHand8.HasTwoPair(Rank.ACE, Rank.QUEEN, ref hand) ||
+                testHand8.HasTwoPair(Rank.ACE, Rank.JACK, ref hand) ||
+                testHand8.HasTwoPair(Rank.ACE, Rank.TEN, ref hand) ||
+                testHand8.HasTwoPair(Rank.ACE, Rank.NINE, ref hand) ||
+                testHand8.HasTwoPair(Rank.ACE, Rank.EIGHT, ref hand) ||
+                testHand8.HasTwoPair(Rank.ACE, Rank.SEVEN, ref hand) ||
+                testHand8.HasTwoPair(Rank.ACE, Rank.SIX, ref hand) ||
+                testHand8.HasTwoPair(Rank.ACE, Rank.FIVE, ref hand) ||
+                testHand8.HasTwoPair(Rank.ACE, Rank.FOUR, ref hand) ||
+                testHand8.HasTwoPair(Rank.ACE, Rank.THREE, ref hand) ||
+                testHand8.HasTwoPair(Rank.ACE, Rank.TWO, ref hand) ||
+
+                testHand8.HasTwoPair(Rank.KING, Rank.ACE, ref hand) ||
+                testHand8.HasTwoPair(Rank.KING, Rank.QUEEN, ref hand) ||
+                testHand8.HasTwoPair(Rank.KING, Rank.JACK, ref hand) ||
+                testHand8.HasTwoPair(Rank.KING, Rank.TEN, ref hand) ||
+                testHand8.HasTwoPair(Rank.KING, Rank.NINE, ref hand) ||
+                testHand8.HasTwoPair(Rank.KING, Rank.EIGHT, ref hand) ||
+                testHand8.HasTwoPair(Rank.KING, Rank.SEVEN, ref hand) ||
+                testHand8.HasTwoPair(Rank.KING, Rank.SIX, ref hand) ||
+                testHand8.HasTwoPair(Rank.KING, Rank.FIVE, ref hand) ||
+                testHand8.HasTwoPair(Rank.KING, Rank.FOUR, ref hand) ||
+                testHand8.HasTwoPair(Rank.KING, Rank.THREE, ref hand) ||
+                testHand8.HasTwoPair(Rank.KING, Rank.TWO, ref hand) ||
+
+                testHand8.HasTwoPair(Rank.QUEEN, Rank.KING, ref hand) ||
+                testHand8.HasTwoPair(Rank.QUEEN, Rank.ACE, ref hand) ||
+                testHand8.HasTwoPair(Rank.QUEEN, Rank.JACK, ref hand) ||
+                testHand8.HasTwoPair(Rank.QUEEN, Rank.TEN, ref hand) ||
+                testHand8.HasTwoPair(Rank.QUEEN, Rank.NINE, ref hand) ||
+                testHand8.HasTwoPair(Rank.QUEEN, Rank.EIGHT, ref hand) ||
+                testHand8.HasTwoPair(Rank.QUEEN, Rank.SEVEN, ref hand) ||
+                testHand8.HasTwoPair(Rank.QUEEN, Rank.SIX, ref hand) ||
+                testHand8.HasTwoPair(Rank.QUEEN, Rank.FIVE, ref hand) ||
+                testHand8.HasTwoPair(Rank.QUEEN, Rank.FOUR, ref hand) ||
+                testHand8.HasTwoPair(Rank.QUEEN, Rank.THREE, ref hand) ||
+                testHand8.HasTwoPair(Rank.QUEEN, Rank.TWO, ref hand) ||
+
+                testHand8.HasTwoPair(Rank.JACK, Rank.KING, ref hand) ||
+                testHand8.HasTwoPair(Rank.JACK, Rank.QUEEN, ref hand) ||
+                testHand8.HasTwoPair(Rank.JACK, Rank.ACE, ref hand) ||
+                testHand8.HasTwoPair(Rank.JACK, Rank.TEN, ref hand) ||
+                testHand8.HasTwoPair(Rank.JACK, Rank.NINE, ref hand) ||
+                testHand8.HasTwoPair(Rank.JACK, Rank.EIGHT, ref hand) ||
+                testHand8.HasTwoPair(Rank.JACK, Rank.SEVEN, ref hand) ||
+                testHand8.HasTwoPair(Rank.JACK, Rank.SIX, ref hand) ||
+                testHand8.HasTwoPair(Rank.JACK, Rank.FIVE, ref hand) ||
+                testHand8.HasTwoPair(Rank.JACK, Rank.FOUR, ref hand) ||
+                testHand8.HasTwoPair(Rank.JACK, Rank.THREE, ref hand) ||
+                testHand8.HasTwoPair(Rank.JACK, Rank.TWO, ref hand) ||
+
+                testHand8.HasTwoPair(Rank.TEN, Rank.KING, ref hand) ||
+                testHand8.HasTwoPair(Rank.TEN, Rank.QUEEN, ref hand) ||
+                testHand8.HasTwoPair(Rank.TEN, Rank.JACK, ref hand) ||
+                testHand8.HasTwoPair(Rank.TEN, Rank.ACE, ref hand) ||
+                testHand8.HasTwoPair(Rank.TEN, Rank.NINE, ref hand) ||
+                testHand8.HasTwoPair(Rank.TEN, Rank.EIGHT, ref hand) ||
+                testHand8.HasTwoPair(Rank.TEN, Rank.SEVEN, ref hand) ||
+                testHand8.HasTwoPair(Rank.TEN, Rank.SIX, ref hand) ||
+                testHand8.HasTwoPair(Rank.TEN, Rank.FIVE, ref hand) ||
+                testHand8.HasTwoPair(Rank.TEN, Rank.FOUR, ref hand) ||
+                testHand8.HasTwoPair(Rank.TEN, Rank.THREE, ref hand) ||
+                testHand8.HasTwoPair(Rank.TEN, Rank.TWO, ref hand) ||
+
+                testHand8.HasTwoPair(Rank.NINE, Rank.KING, ref hand) ||
+                testHand8.HasTwoPair(Rank.NINE, Rank.QUEEN, ref hand) ||
+                testHand8.HasTwoPair(Rank.NINE, Rank.JACK, ref hand) ||
+                testHand8.HasTwoPair(Rank.NINE, Rank.TEN, ref hand) ||
+                testHand8.HasTwoPair(Rank.NINE, Rank.ACE, ref hand) ||
+                testHand8.HasTwoPair(Rank.NINE, Rank.EIGHT, ref hand) ||
+                testHand8.HasTwoPair(Rank.NINE, Rank.SEVEN, ref hand) ||
+                testHand8.HasTwoPair(Rank.NINE, Rank.SIX, ref hand) ||
+                testHand8.HasTwoPair(Rank.NINE, Rank.FIVE, ref hand) ||
+                testHand8.HasTwoPair(Rank.NINE, Rank.FOUR, ref hand) ||
+                testHand8.HasTwoPair(Rank.NINE, Rank.THREE, ref hand) ||
+                testHand8.HasTwoPair(Rank.NINE, Rank.TWO, ref hand) ||
+
+                testHand8.HasTwoPair(Rank.EIGHT, Rank.KING, ref hand) ||
+                testHand8.HasTwoPair(Rank.EIGHT, Rank.QUEEN, ref hand) ||
+                testHand8.HasTwoPair(Rank.EIGHT, Rank.JACK, ref hand) ||
+                testHand8.HasTwoPair(Rank.EIGHT, Rank.TEN, ref hand) ||
+                testHand8.HasTwoPair(Rank.EIGHT, Rank.NINE, ref hand) ||
+                testHand8.HasTwoPair(Rank.EIGHT, Rank.ACE, ref hand) ||
+                testHand8.HasTwoPair(Rank.EIGHT, Rank.SEVEN, ref hand) ||
+                testHand8.HasTwoPair(Rank.EIGHT, Rank.SIX, ref hand) ||
+                testHand8.HasTwoPair(Rank.EIGHT, Rank.FIVE, ref hand) ||
+                testHand8.HasTwoPair(Rank.EIGHT, Rank.FOUR, ref hand) ||
+                testHand8.HasTwoPair(Rank.EIGHT, Rank.THREE, ref hand) ||
+                testHand8.HasTwoPair(Rank.EIGHT, Rank.TWO, ref hand) ||
+
+                testHand8.HasTwoPair(Rank.SEVEN, Rank.KING, ref hand) ||
+                testHand8.HasTwoPair(Rank.SEVEN, Rank.QUEEN, ref hand) ||
+                testHand8.HasTwoPair(Rank.SEVEN, Rank.JACK, ref hand) ||
+                testHand8.HasTwoPair(Rank.SEVEN, Rank.TEN, ref hand) ||
+                testHand8.HasTwoPair(Rank.SEVEN, Rank.NINE, ref hand) ||
+                testHand8.HasTwoPair(Rank.SEVEN, Rank.EIGHT, ref hand) ||
+                testHand8.HasTwoPair(Rank.SEVEN, Rank.ACE, ref hand) ||
+                testHand8.HasTwoPair(Rank.SEVEN, Rank.SIX, ref hand) ||
+                testHand8.HasTwoPair(Rank.SEVEN, Rank.FIVE, ref hand) ||
+                testHand8.HasTwoPair(Rank.SEVEN, Rank.FOUR, ref hand) ||
+                testHand8.HasTwoPair(Rank.SEVEN, Rank.THREE, ref hand) ||
+                testHand8.HasTwoPair(Rank.SEVEN, Rank.TWO, ref hand) ||
+
+                testHand8.HasTwoPair(Rank.SIX, Rank.KING, ref hand) ||
+                testHand8.HasTwoPair(Rank.SIX, Rank.QUEEN, ref hand) ||
+                testHand8.HasTwoPair(Rank.SIX, Rank.JACK, ref hand) ||
+                testHand8.HasTwoPair(Rank.SIX, Rank.TEN, ref hand) ||
+                testHand8.HasTwoPair(Rank.SIX, Rank.NINE, ref hand) ||
+                testHand8.HasTwoPair(Rank.SIX, Rank.EIGHT, ref hand) ||
+                testHand8.HasTwoPair(Rank.SIX, Rank.SEVEN, ref hand) ||
+                testHand8.HasTwoPair(Rank.SIX, Rank.ACE, ref hand) ||
+                testHand8.HasTwoPair(Rank.SIX, Rank.FIVE, ref hand) ||
+                testHand8.HasTwoPair(Rank.SIX, Rank.FOUR, ref hand) ||
+                testHand8.HasTwoPair(Rank.SIX, Rank.THREE, ref hand) ||
+                testHand8.HasTwoPair(Rank.SIX, Rank.TWO, ref hand) ||
+
+                testHand8.HasTwoPair(Rank.FIVE, Rank.KING, ref hand) ||
+                testHand8.HasTwoPair(Rank.FIVE, Rank.QUEEN, ref hand) ||
+                testHand8.HasTwoPair(Rank.FIVE, Rank.JACK, ref hand) ||
+                testHand8.HasTwoPair(Rank.FIVE, Rank.TEN, ref hand) ||
+                testHand8.HasTwoPair(Rank.FIVE, Rank.NINE, ref hand) ||
+                testHand8.HasTwoPair(Rank.FIVE, Rank.EIGHT, ref hand) ||
+                testHand8.HasTwoPair(Rank.FIVE, Rank.SEVEN, ref hand) ||
+                testHand8.HasTwoPair(Rank.FIVE, Rank.SIX, ref hand) ||
+                testHand8.HasTwoPair(Rank.FIVE, Rank.ACE, ref hand) ||
+                testHand8.HasTwoPair(Rank.FIVE, Rank.FOUR, ref hand) ||
+                testHand8.HasTwoPair(Rank.FIVE, Rank.THREE, ref hand) ||
+                testHand8.HasTwoPair(Rank.FIVE, Rank.TWO, ref hand) ||
+
+                testHand8.HasTwoPair(Rank.FOUR, Rank.KING, ref hand) ||
+                testHand8.HasTwoPair(Rank.FOUR, Rank.QUEEN, ref hand) ||
+                testHand8.HasTwoPair(Rank.FOUR, Rank.JACK, ref hand) ||
+                testHand8.HasTwoPair(Rank.FOUR, Rank.TEN, ref hand) ||
+                testHand8.HasTwoPair(Rank.FOUR, Rank.NINE, ref hand) ||
+                testHand8.HasTwoPair(Rank.FOUR, Rank.EIGHT, ref hand) ||
+                testHand8.HasTwoPair(Rank.FOUR, Rank.SEVEN, ref hand) ||
+                testHand8.HasTwoPair(Rank.FOUR, Rank.SIX, ref hand) ||
+                testHand8.HasTwoPair(Rank.FOUR, Rank.FIVE, ref hand) ||
+                testHand8.HasTwoPair(Rank.FOUR, Rank.ACE, ref hand) ||
+                testHand8.HasTwoPair(Rank.FOUR, Rank.THREE, ref hand) ||
+                testHand8.HasTwoPair(Rank.FOUR, Rank.TWO, ref hand) ||
+
+                testHand8.HasTwoPair(Rank.THREE, Rank.KING, ref hand) ||
+                testHand8.HasTwoPair(Rank.THREE, Rank.QUEEN, ref hand) ||
+                testHand8.HasTwoPair(Rank.THREE, Rank.JACK, ref hand) ||
+                testHand8.HasTwoPair(Rank.THREE, Rank.TEN, ref hand) ||
+                testHand8.HasTwoPair(Rank.THREE, Rank.NINE, ref hand) ||
+                testHand8.HasTwoPair(Rank.THREE, Rank.EIGHT, ref hand) ||
+                testHand8.HasTwoPair(Rank.THREE, Rank.SEVEN, ref hand) ||
+                testHand8.HasTwoPair(Rank.THREE, Rank.SIX, ref hand) ||
+                testHand8.HasTwoPair(Rank.THREE, Rank.FIVE, ref hand) ||
+                testHand8.HasTwoPair(Rank.THREE, Rank.FOUR, ref hand) ||
+                testHand8.HasTwoPair(Rank.THREE, Rank.ACE, ref hand) ||
+                testHand8.HasTwoPair(Rank.THREE, Rank.TWO, ref hand) ||
+
+                testHand8.HasTwoPair(Rank.TWO, Rank.KING, ref hand) ||
+                testHand8.HasTwoPair(Rank.TWO, Rank.QUEEN, ref hand) ||
+                testHand8.HasTwoPair(Rank.TWO, Rank.JACK, ref hand) ||
+                testHand8.HasTwoPair(Rank.TWO, Rank.TEN, ref hand) ||
+                testHand8.HasTwoPair(Rank.TWO, Rank.NINE, ref hand) ||
+                testHand8.HasTwoPair(Rank.TWO, Rank.EIGHT, ref hand) ||
+                testHand8.HasTwoPair(Rank.TWO, Rank.SEVEN, ref hand) ||
+                testHand8.HasTwoPair(Rank.TWO, Rank.SIX, ref hand) ||
+                testHand8.HasTwoPair(Rank.TWO, Rank.FIVE, ref hand) ||
+                testHand8.HasTwoPair(Rank.TWO, Rank.FOUR, ref hand) ||
+                testHand8.HasTwoPair(Rank.TWO, Rank.THREE, ref hand) ||
+                testHand8.HasTwoPair(Rank.TWO, Rank.ACE, ref hand));
         }
         [TestMethod]
-        public void genOPTest()
+        public void genTKTest()
         {
             Hand hand = new Hand();
 
-            Hand testHand9 = HandGenerator.genOP(5);
+            Hand testHand9 = HandGenerator.genTK(5);
+
+            Assert.IsTrue(
+                testHand9.HasThreeOfAKind( Rank.ACE, ref hand)||
+                testHand9.HasThreeOfAKind(Rank.TWO, ref hand) ||
+                testHand9.HasThreeOfAKind(Rank.THREE, ref hand) ||
+                testHand9.HasThreeOfAKind(Rank.FOUR, ref hand) ||
+                testHand9.HasThreeOfAKind(Rank.FIVE, ref hand) ||
+                testHand9.HasThreeOfAKind(Rank.SIX, ref hand) ||
+                testHand9.HasThreeOfAKind(Rank.SEVEN, ref hand) ||
+                testHand9.HasThreeOfAKind(Rank.EIGHT, ref hand) ||
+                testHand9.HasThreeOfAKind(Rank.NINE, ref hand) ||
+                testHand9.HasThreeOfAKind(Rank.TEN, ref hand) ||
+                testHand9.HasThreeOfAKind(Rank.JACK, ref hand) ||
+                testHand9.HasThreeOfAKind(Rank.QUEEN, ref hand) ||
+                testHand9.HasThreeOfAKind(Rank.KING, ref hand)
+                );
         }
         [TestMethod]
         public void genHCTest()
@@ -375,6 +581,26 @@ namespace TestPokerSimulation
             Hand hand = new Hand();
 
             Hand testHand0 = HandGenerator.genHC(5);
+            //it's a high-card if it doesn't have at least a pair, straight, or flush.
+            Assert.IsFalse(
+                testHand0.HasTwoOfAKind( Rank.ACE, ref hand)||
+                testHand0.HasTwoOfAKind( Rank.TWO, ref hand)||
+                testHand0.HasTwoOfAKind( Rank.THREE, ref hand)||
+                testHand0.HasTwoOfAKind( Rank.FOUR, ref hand)||
+                testHand0.HasTwoOfAKind( Rank.FIVE, ref hand)||
+                testHand0.HasTwoOfAKind( Rank.SIX, ref hand)||
+                testHand0.HasTwoOfAKind( Rank.SEVEN, ref hand)||
+                testHand0.HasTwoOfAKind( Rank.EIGHT, ref hand)||
+                testHand0.HasTwoOfAKind( Rank.NINE, ref hand)||
+                testHand0.HasTwoOfAKind( Rank.TEN, ref hand)||
+                testHand0.HasTwoOfAKind( Rank.JACK, ref hand)||
+                testHand0.HasTwoOfAKind( Rank.QUEEN, ref hand)||
+                testHand0.HasTwoOfAKind( Rank.KING, ref hand)
+                );
+
+            Assert.IsFalse(testHand0.HasStraight());
+
+            Assert.IsFalse(testHand0.HasFlush());
         }
 
     }
