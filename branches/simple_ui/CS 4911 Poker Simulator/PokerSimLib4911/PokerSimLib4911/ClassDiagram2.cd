@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="PokerSimLib4911.Card">
+    <Position X="3" Y="5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAABAABAAAgABAAGgAAACAAAAACAgIAAAAAAAAAQAiA=</HashCode>
+      <FileName>Card.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PokerSimLib4911.Deck">
+    <Position X="7.5" Y="1.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAAAAAAAQEAAgAAABAAAAQAAAARCQACADQkQg=</HashCode>
+      <FileName>Deck.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PokerSimLib4911.Hand">
+    <Position X="0.5" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AABgAAAAAABQAAwEgAAAAAQACBAAAIAAAAgBAAJQEig=</HashCode>
+      <FileName>Hand.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PokerSimLib4911.Logger">
+    <Position X="5.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AADEAAgQAAAAAABAQAAAAAAAAAggAAAhQAEAAAEEAAA=</HashCode>
+      <FileName>Logger.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PokerSimLib4911.PokerHand">
+    <Position X="3" Y="0.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAACAhAAAQEAAQAAEAgBAAeAAARAAAAEgAAAAAAAA=</HashCode>
+      <FileName>PokerHand.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PokerSimLib4911.Properties.Settings" Collapsed="true">
+    <Position X="7.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAIAAAAAABAAABAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Enum Name="PokerSimLib4911.Suit">
+    <Position X="5" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAAAAAABAAAAAAQAAAAAAAAAEAAAAAAAAAAAgAAAA=</HashCode>
+      <FileName>Card.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="PokerSimLib4911.Rank">
+    <Position X="5" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAABABAAJAiAAAAAABIAAAAAAAAABAQgBAAAg=</HashCode>
+      <FileName>Card.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Tahoma" Size="8.25" />
+</ClassDiagram>
