@@ -55,17 +55,17 @@ namespace TestPokerSimulation
         #endregion
 
         [TestMethod]
-        public void genRFTest()
+        public void makeRoyalFlushTest()
         {
-            Hand hand = new Hand();
+            PokerHand hand = new PokerHand();
 
-            Hand testHand = HandGenerator.genRF(5);
-            //Hand testHand5 = HandGenerator.genFL();
-            //Hand testHand6 = HandGenerator.genST();
-            //Hand testHand7 = HandGenerator.genTK();
-            //Hand testHand8 = HandGenerator.genTP();
-            //Hand testHand9 = HandGenerator.genOP();
-            //Hand testHand0 = HandGenerator.genHC();
+            PokerHand testHand = PokerHand.makeRoyalFlush(5);
+            //PokerHand testHand5 = HandGenerator.genFL();
+            //PokerHand testHand6 = HandGenerator.genST();
+            //PokerHand testHand7 = HandGenerator.genTK();
+            //PokerHand testHand8 = HandGenerator.genTP();
+            //PokerHand testHand9 = HandGenerator.genOP();
+            //PokerHand testHand0 = HandGenerator.genHC();
 
             Assert.IsTrue(testHand.HasRoyalFlush(5, Suit.CLUBS, ref hand) || testHand.HasRoyalFlush(5, Suit.SPADES, ref hand) || testHand.HasRoyalFlush(5, Suit.HEARTS, ref hand) || testHand.HasRoyalFlush(5, Suit.DIAMONDS, ref hand));
             Assert.IsFalse(testHand.HasFourOfAKind(Rank.ACE, ref hand));
@@ -74,11 +74,11 @@ namespace TestPokerSimulation
         }
 
         [TestMethod]
-        public void genSFTest()
+        public void makeStraightFlushTest()
         {
-            Hand hand = new Hand();
+            PokerHand hand = new PokerHand();
 
-            Hand testHand = HandGenerator.genSF(5);
+            PokerHand testHand = PokerSimulation.PokerHand.makeStraightFlush(5);
 
             Assert.IsTrue(
                 testHand.HasStraightFlush(5, Rank.TEN, Suit.CLUBS, ref hand) ||
@@ -130,11 +130,11 @@ namespace TestPokerSimulation
         }
 
         [TestMethod]
-        public void genFKTest()
+        public void makeFourOfAKindTest()
         {
-            Hand hand = new Hand();
+            PokerHand hand = new PokerHand();
 
-            Hand testHand3 = HandGenerator.genFK(5);
+            PokerHand testHand3 = PokerSimulation.PokerHand.makeFourOfAKind(5);
 
             Assert.IsTrue(
                 testHand3.HasFourOfAKind(Rank.ACE, ref hand) ||
@@ -154,11 +154,11 @@ namespace TestPokerSimulation
         }
 
         [TestMethod]
-        public void genFHTest()
+        public void makeFullHouseTest()
         {
-            Hand hand = new Hand();
+            PokerHand hand = new PokerHand();
 
-            Hand testHand4 = HandGenerator.genFH(5);
+            PokerHand testHand4 = PokerSimulation.PokerHand.makeFullHouse(5);
 
             Assert.IsTrue(
                 testHand4.HasFullHouse(Rank.ACE, Rank.KING, ref hand) ||
@@ -333,31 +333,31 @@ namespace TestPokerSimulation
         }
 
         [TestMethod]
-        public void genFLTest()
+        public void makeFlushTest()
         {
-            //Hand hand = new Hand();
+            //PokerHand hand = new PokerHand();
 
-            Hand testHand5 = HandGenerator.genFL(5);
+            PokerHand testHand5 = PokerSimulation.PokerHand.makeFlush(5);
 
             Assert.IsTrue(testHand5.HasFlush());
         }
 
         [TestMethod]
-        public void genSTTest()
+        public void makeStraightTest()
         {
-            //Hand hand = new Hand();
+            //PokerHand hand = new PokerHand();
 
-            Hand testHand6 = HandGenerator.genST(5);
+            PokerHand testHand6 = PokerSimulation.PokerHand.makeStraight(5);
 
             Assert.IsTrue(testHand6.HasStraight());
         }
 
         [TestMethod]
-        public void genOPTest()
+        public void makeOnePairTest()
         {
-            Hand hand = new Hand();
+            PokerHand hand = new PokerHand();
 
-            Hand testHand7 = HandGenerator.genOP(5);
+            PokerHand testHand7 = PokerSimulation.PokerHand.makeOnePair(5);
 
             Assert.IsTrue(
                 testHand7.HasTwoOfAKind( Rank.ACE, ref hand)||
@@ -376,11 +376,11 @@ namespace TestPokerSimulation
                 );
         }
         [TestMethod]
-        public void genTPTest()
+        public void makeTwoPairTest()
         {
-            Hand hand = new Hand();
+            PokerHand hand = new PokerHand();
 
-            Hand testHand8 = HandGenerator.genTP(5);
+            PokerHand testHand8 = PokerSimulation.PokerHand.makeTwoPair(5);
 
             Assert.IsTrue(
                 testHand8.HasTwoPair(Rank.ACE, Rank.KING, ref hand) ||
@@ -553,11 +553,11 @@ namespace TestPokerSimulation
                 testHand8.HasTwoPair(Rank.TWO, Rank.ACE, ref hand));
         }
         [TestMethod]
-        public void genTKTest()
+        public void makeThreeOfAKindTest()
         {
-            Hand hand = new Hand();
+            PokerHand hand = new PokerHand();
 
-            Hand testHand9 = HandGenerator.genTK(5);
+            PokerHand testHand9 = PokerSimulation.PokerHand.makeThreeOfAKind(5);
 
             Assert.IsTrue(
                 testHand9.HasThreeOfAKind( Rank.ACE, ref hand)||
@@ -576,11 +576,11 @@ namespace TestPokerSimulation
                 );
         }
         [TestMethod]
-        public void genHCTest()
+        public void makeHighCardTest()
         {
-            Hand hand = new Hand();
+            PokerHand hand = new PokerHand();
 
-            Hand testHand0 = HandGenerator.genHC(5);
+            PokerHand testHand0 = PokerSimulation.PokerHand.makeHighCard(5);
             //it's a high-card if it doesn't have at least a pair, straight, or flush.
             Assert.IsFalse(
                 testHand0.HasTwoOfAKind( Rank.ACE, ref hand)||

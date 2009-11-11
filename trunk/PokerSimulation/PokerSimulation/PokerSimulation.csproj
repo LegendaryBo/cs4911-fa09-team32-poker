@@ -48,6 +48,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Block.cs" />
     <Compile Include="Board.cs" />
     <Compile Include="BoardControl.cs">
       <SubType>UserControl</SubType>
@@ -56,6 +57,8 @@
       <DependentUpon>BoardControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Card.cs" />
+    <Compile Include="Session.cs" />
+    <Compile Include="PokerHand.cs" />
     <Compile Include="Deck.cs" />
     <Compile Include="Game.cs" />
     <Compile Include="GuessForm.cs">
@@ -65,7 +68,8 @@
       <DependentUpon>GuessForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Hand.cs" />
-    <Compile Include="HandGenerator.cs" />
+    <Compile Include="SessionController.cs" />
+    <Compile Include="Simulator.cs" />
     <Compile Include="StartForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -115,6 +119,7 @@
     <Compile Include="TestingForm.Designer.cs">
       <DependentUpon>TestingForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Trial.cs" />
     <Compile Include="UserSession.cs" />
   </ItemGroup>
   <ItemGroup>

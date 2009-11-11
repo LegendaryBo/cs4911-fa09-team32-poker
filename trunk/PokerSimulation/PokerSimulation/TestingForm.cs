@@ -13,7 +13,6 @@ namespace PokerSimulation
     public partial class TestingForm : Form
     {
         Hand testHand = new Hand();
-        HandGenerator testGenerator = new HandGenerator();
         string generatedText = "";
         int handCount = 0;
         string id = "";
@@ -42,25 +41,25 @@ namespace PokerSimulation
                 MessageBox.Show("You must enter a valid two-letter hand");
             }
             else if (generatedText.ToUpper().Equals("HC"))
-                testHand = PokerSimulation.HandGenerator.genHC(numOfCards);
+                testHand = PokerSimulation.PokerHand.makeHighCard(numOfCards);
             else if (generatedText.ToUpper().Equals("OP"))
-                testHand = PokerSimulation.HandGenerator.genOP(numOfCards);
+                testHand = PokerSimulation.PokerHand.makeOnePair(numOfCards);
             else if (generatedText.ToUpper().Equals("TP"))
-                testHand = PokerSimulation.HandGenerator.genTP(numOfCards);
+                testHand = PokerSimulation.PokerHand.makeTwoPair(numOfCards);
             else if (generatedText.ToUpper().Equals("TK"))
-                testHand = PokerSimulation.HandGenerator.genTK(numOfCards);
+                testHand = PokerSimulation.PokerHand.makeThreeOfAKind(numOfCards);
             else if (generatedText.ToUpper().Equals("ST"))
-                testHand = PokerSimulation.HandGenerator.genST(numOfCards);
+                testHand = PokerSimulation.PokerHand.makeStraight(numOfCards);
             else if (generatedText.ToUpper().Equals("FL"))
-                testHand = PokerSimulation.HandGenerator.genFL(numOfCards);
+                testHand = PokerSimulation.PokerHand.makeFlush(numOfCards);
             else if (generatedText.ToUpper().Equals("FH"))
-                testHand = PokerSimulation.HandGenerator.genFH(numOfCards);
+                testHand = PokerSimulation.PokerHand.makeFullHouse(numOfCards);
             else if (generatedText.ToUpper().Equals("SF"))
-                testHand = PokerSimulation.HandGenerator.genSF(numOfCards);
+                testHand = PokerSimulation.PokerHand.makeStraightFlush(numOfCards);
             else if (generatedText.ToUpper().Equals("FK"))
-                testHand = PokerSimulation.HandGenerator.genFK(numOfCards);
+                testHand = PokerSimulation.PokerHand.makeFourOfAKind(numOfCards);
             else if (generatedText.ToUpper().Equals("RF"))
-                testHand = PokerSimulation.HandGenerator.genRF(numOfCards);
+                testHand = PokerSimulation.PokerHand.makeRoyalFlush(numOfCards);
             else
                 MessageBox.Show("You must enter a valid two-letter hand");
 
