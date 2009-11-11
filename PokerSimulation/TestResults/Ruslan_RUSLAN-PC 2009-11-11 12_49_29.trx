@@ -1,0 +1,640 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<TestRun id="05ccb030-1463-4296-a18d-4817a47d91d9" name="Ruslan@RUSLAN-PC 2009-11-11 12:49:29" runUser="Ruslan-PC\Ruslan" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2006">
+  <TestRunConfiguration name="Local Test Run" id="b3a46757-5465-4564-a900-16ee29caaa40">
+    <Description>This is a default test run configuration for a local test run.</Description>
+    <Deployment runDeploymentRoot="C:\Users\Ruslan\Documents\Visual Studio 2008\Projects\PokerSimulation\TestResults\Ruslan_RUSLAN-PC 2009-11-11 12_49_29">
+      <DeploymentItem filename="C:\Users\Ruslan\Documents\Visual Studio 2008\Projects\PokerSimulation\PokerSimulation\bin\Debug\PokerSimulation.exe" />
+    </Deployment>
+    <TestTypeSpecific />
+  </TestRunConfiguration>
+  <ResultSummary outcome="Failed">
+    <Counters total="39" executed="39" passed="38" error="0" failed="1" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+  </ResultSummary>
+  <Times creation="2009-11-11T12:49:29.6386719-05:00" queuing="2009-11-11T12:49:30.0380860-05:00" start="2009-11-11T12:49:30.2568360-05:00" finish="2009-11-11T12:49:33.1250000-05:00" />
+  <TestDefinitions>
+    <UnitTest name="RemoveCardTest" storage="c:\users\ruslan\documents\visual studio 2008\projects\pokersimulation\testpokersimulation\bin\debug\testpokersimulation.dll" id="4c32af62-37fa-abdb-275d-cf323047847c">
+      <Css projectStructure="" iteration="" />
+      <Owners>
+        <Owner name="" />
+      </Owners>
+      <Execution id="ba97e140-fcad-4245-aff5-e3c037c064e6" />
+      <TestMethod codeBase="C:\Users\Ruslan\Documents\Visual Studio 2008\Projects\PokerSimulation\TestPokerSimulation\bin\Debug\TestPokerSimulation.dll" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="TestPokerSimulation.PokerHandTest, TestPokerSimulation" name="RemoveCardTest" />
+    </UnitTest>
+    <UnitTest name="makeFlushTest" storage="c:\users\ruslan\documents\visual studio 2008\projects\pokersimulation\testpokersimulation\bin\debug\testpokersimulation.dll" id="93173cc4-6db2-0db2-ecff-5cacbc98c948">
+      <Css projectStructure="" iteration="" />
+      <Owners>
+        <Owner name="" />
+      </Owners>
+      <Execution id="f47f1442-577a-45a0-a1fe-03209d1b0d5b" />
+      <TestMethod codeBase="C:\Users\Ruslan\Documents\Visual Studio 2008\Projects\PokerSimulation\TestPokerSimulation\bin\Debug\TestPokerSimulation.dll" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="TestPokerSimulation.HandGeneratorTest, TestPokerSimulation" name="makeFlushTest" />
+    </UnitTest>
+    <UnitTest name="HasStraightTest" storage="c:\users\ruslan\documents\visual studio 2008\projects\pokersimulation\testpokersimulation\bin\debug\testpokersimulation.dll" id="3702c185-9b22-60d5-eaf3-a61a49514d5a">
+      <Css projectStructure="" iteration="" />
+      <Owners>
+        <Owner name="" />
+      </Owners>
+      <Execution id="407dabc9-169a-4a55-a916-5a5895cc218a" />
+      <TestMethod codeBase="C:\Users\Ruslan\Documents\Visual Studio 2008\Projects\PokerSimulation\TestPokerSimulation\bin\Debug\TestPokerSimulation.dll" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="TestPokerSimulation.PokerHandTest, TestPokerSimulation" name="HasStraightTest" />
+    </UnitTest>
+    <UnitTest name="ToStringTest" storage="c:\users\ruslan\documents\visual studio 2008\projects\pokersimulation\testpokersimulation\bin\debug\testpokersimulation.dll" id="8502ee39-6a2e-ed53-145f-601f8f41717d">
+      <Css projectStructure="" iteration="" />
+      <Owners>
+        <Owner name="" />
+      </Owners>
+      <Execution id="0b9fc261-9d7c-487b-bd97-978085357710" />
+      <TestMethod codeBase="C:\Users\Ruslan\Documents\Visual Studio 2008\Projects\PokerSimulation\TestPokerSimulation\bin\Debug\TestPokerSimulation.dll" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="TestPokerSimulation.CardTest, TestPokerSimulation" name="ToStringTest" />
+    </UnitTest>
+    <UnitTest name="HasFlushTest1" storage="c:\users\ruslan\documents\visual studio 2008\projects\pokersimulation\testpokersimulation\bin\debug\testpokersimulation.dll" id="ec614f75-a946-b4e7-f5b2-74795a71ff64">
+      <Css projectStructure="" iteration="" />
+      <Owners>
+        <Owner name="" />
+      </Owners>
+      <Execution id="92b5a96b-8ccc-4a66-815d-35257aa910b6" />
+      <TestMethod codeBase="C:\Users\Ruslan\Documents\Visual Studio 2008\Projects\PokerSimulation\TestPokerSimulation\bin\Debug\TestPokerSimulation.dll" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="TestPokerSimulation.PokerHandTest, TestPokerSimulation" name="HasFlushTest1" />
+    </UnitTest>
+    <UnitTest name="makeRoyalFlushTest" storage="c:\users\ruslan\documents\visual studio 2008\projects\pokersimulation\testpokersimulation\bin\debug\testpokersimulation.dll" id="c63a57d4-847c-a4af-8ee4-494c3dc07513">
+      <Css projectStructure="" iteration="" />
+      <Owners>
+        <Owner name="" />
+      </Owners>
+      <Execution id="28c00397-d77f-416c-88cb-c14fa3d18489" />
+      <TestMethod codeBase="C:\Users\Ruslan\Documents\Visual Studio 2008\Projects\PokerSimulation\TestPokerSimulation\bin\Debug\TestPokerSimulation.dll" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="TestPokerSimulation.HandGeneratorTest, TestPokerSimulation" name="makeRoyalFlushTest" />
+    </UnitTest>
+    <UnitTest name="HandConstructorTest" storage="c:\users\ruslan\documents\visual studio 2008\projects\pokersimulation\testpokersimulation\bin\debug\testpokersimulation.dll" id="fa5c7bea-69d5-fa0a-f5b3-ed3e8b8326bc">
+      <Css projectStructure="" iteration="" />
+      <Owners>
+        <Owner name="" />
+      </Owners>
+      <Execution id="e9f753ad-e3ff-4be7-851f-c5c720675082" />
+      <TestMethod codeBase="C:\Users\Ruslan\Documents\Visual Studio 2008\Projects\PokerSimulation\TestPokerSimulation\bin\Debug\TestPokerSimulation.dll" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="TestPokerSimulation.PokerHandTest, TestPokerSimulation" name="HandConstructorTest" />
+    </UnitTest>
+    <UnitTest name="makeStraightTest" storage="c:\users\ruslan\documents\visual studio 2008\projects\pokersimulation\testpokersimulation\bin\debug\testpokersimulation.dll" id="61c75426-a379-7527-1cba-f5df992283ed">
+      <Css projectStructure="" iteration="" />
+      <Owners>
+        <Owner name="" />
+      </Owners>
+      <Execution id="cc9647d6-d48d-42ad-8d0e-730bfd7bf5ac" />
+      <TestMethod codeBase="C:\Users\Ruslan\Documents\Visual Studio 2008\Projects\PokerSimulation\TestPokerSimulation\bin\Debug\TestPokerSimulation.dll" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="TestPokerSimulation.HandGeneratorTest, TestPokerSimulation" name="makeStraightTest" />
+    </UnitTest>
+    <UnitTest name="ContainsTest" storage="c:\users\ruslan\documents\visual studio 2008\projects\pokersimulation\testpokersimulation\bin\debug\testpokersimulation.dll" id="027d1261-6022-c5db-3964-d806c0debd91">
+      <Css projectStructure="" iteration="" />
+      <Owners>
+        <Owner name="" />
+      </Owners>
+      <Execution id="0303db22-7dab-4dde-9bdb-34701b87048d" />
+      <TestMethod codeBase="C:\Users\Ruslan\Documents\Visual Studio 2008\Projects\PokerSimulation\TestPokerSimulation\bin\Debug\TestPokerSimulation.dll" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="TestProjectPokerSimulation.DeckTest, TestPokerSimulation" name="ContainsTest" />
+    </UnitTest>
+    <UnitTest name="HasRoyalFlushTest" storage="c:\users\ruslan\documents\visual studio 2008\projects\pokersimulation\testpokersimulation\bin\debug\testpokersimulation.dll" id="26a960c0-84c4-3e35-c571-afc0ffb5f85c">
+      <Css projectStructure="" iteration="" />
+      <Owners>
+        <Owner name="" />
+      </Owners>
+      <Execution id="7eeb180c-aa92-4e3e-9c87-5ae43e6b30fd" />
+      <TestMethod codeBase="C:\Users\Ruslan\Documents\Visual Studio 2008\Projects\PokerSimulation\TestPokerSimulation\bin\Debug\TestPokerSimulation.dll" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="TestPokerSimulation.PokerHandTest, TestPokerSimulation" name="HasRoyalFlushTest" />
+    </UnitTest>
+    <UnitTest name="makeThreeOfAKindTest" storage="c:\users\ruslan\documents\visual studio 2008\projects\pokersimulation\testpokersimulation\bin\debug\testpokersimulation.dll" id="0d4ced66-d87f-a753-456b-b69a616ffd2c">
+      <Css projectStructure="" iteration="" />
+      <Owners>
+        <Owner name="" />
+      </Owners>
+      <Execution id="05f43655-8e7d-42e5-8f20-8b64d24fc478" />
+      <TestMethod codeBase="C:\Users\Ruslan\Documents\Visual Studio 2008\Projects\PokerSimulation\TestPokerSimulation\bin\Debug\TestPokerSimulation.dll" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="TestPokerSimulation.HandGeneratorTest, TestPokerSimulation" name="makeThreeOfAKindTest" />
+    </UnitTest>
+    <UnitTest name="InsertCardTest" storage="c:\users\ruslan\documents\visual studio 2008\projects\pokersimulation\testpokersimulation\bin\debug\testpokersimulation.dll" id="ceec8cf2-1eea-b76b-efe5-e4f82ccfe4b9">
+      <Css projectStructure="" iteration="" />
+      <Owners>
+        <Owner name="" />
+      </Owners>
+      <Execution id="9c63507e-c67d-4076-b07c-cb557745d6af" />
+      <TestMethod codeBase="C:\Users\Ruslan\Documents\Visual Studio 2008\Projects\PokerSimulation\TestPokerSimulation\bin\Debug\TestPokerSimulation.dll" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="TestPokerSimulation.PokerHandTest, TestPokerSimulation" name="InsertCardTest" />
+    </UnitTest>
+    <UnitTest name="op_EqualityTest" storage="c:\users\ruslan\documents\visual studio 2008\projects\pokersimulation\testpokersimulation\bin\debug\testpokersimulation.dll" id="e046f4b1-f90f-180e-3d7b-d33818e7e93f">
+      <Css projectStructure="" iteration="" />
+      <Owners>
+        <Owner name="" />
+      </Owners>
+      <Execution id="5e713a42-7abb-4f61-b89a-e212aaf7b005" />
+      <TestMethod codeBase="C:\Users\Ruslan\Documents\Visual Studio 2008\Projects\PokerSimulation\TestPokerSimulation\bin\Debug\TestPokerSimulation.dll" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="TestPokerSimulation.CardTest, TestPokerSimulation" name="op_EqualityTest" />
+    </UnitTest>
+    <UnitTest name="makeHighCardTest" storage="c:\users\ruslan\documents\visual studio 2008\projects\pokersimulation\testpokersimulation\bin\debug\testpokersimulation.dll" id="2c7d75cc-8559-f538-fefd-bf5566b0f091">
+      <Css projectStructure="" iteration="" />
+      <Owners>
+        <Owner name="" />
+      </Owners>
+      <Execution id="2d2baabb-eb27-4909-86b7-713aedc9f963" />
+      <TestMethod codeBase="C:\Users\Ruslan\Documents\Visual Studio 2008\Projects\PokerSimulation\TestPokerSimulation\bin\Debug\TestPokerSimulation.dll" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="TestPokerSimulation.HandGeneratorTest, TestPokerSimulation" name="makeHighCardTest" />
+    </UnitTest>
+    <UnitTest name="op_InequalityTest" storage="c:\users\ruslan\documents\visual studio 2008\projects\pokersimulation\testpokersimulation\bin\debug\testpokersimulation.dll" id="170b373d-0886-4cc6-f51e-35c35c9219ce">
+      <Css projectStructure="" iteration="" />
+      <Owners>
+        <Owner name="" />
+      </Owners>
+      <Execution id="501270e5-7c0b-403d-9c11-3baecaac30d3" />
+      <TestMethod codeBase="C:\Users\Ruslan\Documents\Visual Studio 2008\Projects\PokerSimulation\TestPokerSimulation\bin\Debug\TestPokerSimulation.dll" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="TestPokerSimulation.CardTest, TestPokerSimulation" name="op_InequalityTest" />
+    </UnitTest>
+    <UnitTest name="HasBeenDealtTest" storage="c:\users\ruslan\documents\visual studio 2008\projects\pokersimulation\testpokersimulation\bin\debug\testpokersimulation.dll" id="55b61287-1f00-6fc1-a3cd-f3c34c35e807">
+      <Css projectStructure="" iteration="" />
+      <Owners>
+        <Owner name="" />
+      </Owners>
+      <Execution id="806239e3-0298-4b1b-9d4d-a8c98d508d28" />
+      <TestMethod codeBase="C:\Users\Ruslan\Documents\Visual Studio 2008\Projects\PokerSimulation\TestPokerSimulation\bin\Debug\TestPokerSimulation.dll" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="TestProjectPokerSimulation.DeckTest, TestPokerSimulation" name="HasBeenDealtTest" />
+    </UnitTest>
+    <UnitTest name="RemoveCardTest" storage="c:\users\ruslan\documents\visual studio 2008\projects\pokersimulation\testpokersimulation\bin\debug\testpokersimulation.dll" id="776074d1-f212-6547-7b2d-f58d4137b101">
+      <Css projectStructure="" iteration="" />
+      <Owners>
+        <Owner name="" />
+      </Owners>
+      <Execution id="df140026-551a-44ab-bebd-d3e5a011c4c5" />
+      <TestMethod codeBase="C:\Users\Ruslan\Documents\Visual Studio 2008\Projects\PokerSimulation\TestPokerSimulation\bin\Debug\TestPokerSimulation.dll" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="TestProjectPokerSimulation.DeckTest, TestPokerSimulation" name="RemoveCardTest" />
+    </UnitTest>
+    <UnitTest name="ContainsTest" storage="c:\users\ruslan\documents\visual studio 2008\projects\pokersimulation\testpokersimulation\bin\debug\testpokersimulation.dll" id="f353b4b8-3c89-2a01-0edf-87f1d472906b">
+      <Css projectStructure="" iteration="" />
+      <Owners>
+        <Owner name="" />
+      </Owners>
+      <Execution id="876a0f58-63ca-4636-80e8-5aa14c17819d" />
+      <TestMethod codeBase="C:\Users\Ruslan\Documents\Visual Studio 2008\Projects\PokerSimulation\TestPokerSimulation\bin\Debug\TestPokerSimulation.dll" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="TestPokerSimulation.PokerHandTest, TestPokerSimulation" name="ContainsTest" />
+    </UnitTest>
+    <UnitTest name="makeOnePairTest" storage="c:\users\ruslan\documents\visual studio 2008\projects\pokersimulation\testpokersimulation\bin\debug\testpokersimulation.dll" id="cc0e6ea1-37ac-b501-7c86-b4a359d27680">
+      <Css projectStructure="" iteration="" />
+      <Owners>
+        <Owner name="" />
+      </Owners>
+      <Execution id="6b5c7507-a748-4f98-9a8f-e4f0d7076b67" />
+      <TestMethod codeBase="C:\Users\Ruslan\Documents\Visual Studio 2008\Projects\PokerSimulation\TestPokerSimulation\bin\Debug\TestPokerSimulation.dll" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="TestPokerSimulation.HandGeneratorTest, TestPokerSimulation" name="makeOnePairTest" />
+    </UnitTest>
+    <UnitTest name="MakeShuffledDeckTest" storage="c:\users\ruslan\documents\visual studio 2008\projects\pokersimulation\testpokersimulation\bin\debug\testpokersimulation.dll" id="a15e50d8-f341-f9b0-357f-697e8dff833e">
+      <Css projectStructure="" iteration="" />
+      <Owners>
+        <Owner name="" />
+      </Owners>
+      <Execution id="274bf362-2388-4a40-b7e0-eefdc544e160" />
+      <TestMethod codeBase="C:\Users\Ruslan\Documents\Visual Studio 2008\Projects\PokerSimulation\TestPokerSimulation\bin\Debug\TestPokerSimulation.dll" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="TestProjectPokerSimulation.DeckTest, TestPokerSimulation" name="MakeShuffledDeckTest" />
+    </UnitTest>
+    <UnitTest name="HasStraightTest1" storage="c:\users\ruslan\documents\visual studio 2008\projects\pokersimulation\testpokersimulation\bin\debug\testpokersimulation.dll" id="b94661db-0ea2-400e-43a4-8d0635852713">
+      <Css projectStructure="" iteration="" />
+      <Owners>
+        <Owner name="" />
+      </Owners>
+      <Execution id="4aa52e56-bf1a-4e52-a84a-27c88af6aa59" />
+      <TestMethod codeBase="C:\Users\Ruslan\Documents\Visual Studio 2008\Projects\PokerSimulation\TestPokerSimulation\bin\Debug\TestPokerSimulation.dll" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="TestPokerSimulation.PokerHandTest, TestPokerSimulation" name="HasStraightTest1" />
+    </UnitTest>
+    <UnitTest name="OrderAscendingTest" storage="c:\users\ruslan\documents\visual studio 2008\projects\pokersimulation\testpokersimulation\bin\debug\testpokersimulation.dll" id="dfab1cc3-28ed-87a3-8157-ee7310f973eb">
+      <Css projectStructure="" iteration="" />
+      <Owners>
+        <Owner name="" />
+      </Owners>
+      <Execution id="91e101fd-06dd-477c-8770-52c7b0bcf86f" />
+      <TestMethod codeBase="C:\Users\Ruslan\Documents\Visual Studio 2008\Projects\PokerSimulation\TestPokerSimulation\bin\Debug\TestPokerSimulation.dll" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="TestPokerSimulation.PokerHandTest, TestPokerSimulation" name="OrderAscendingTest" />
+    </UnitTest>
+    <UnitTest name="makeStraightFlushTest" storage="c:\users\ruslan\documents\visual studio 2008\projects\pokersimulation\testpokersimulation\bin\debug\testpokersimulation.dll" id="86a6a497-96cd-2a60-4952-ff68fbb4b225">
+      <Css projectStructure="" iteration="" />
+      <Owners>
+        <Owner name="" />
+      </Owners>
+      <Execution id="34e701d1-af8e-499c-8438-33500c989578" />
+      <TestMethod codeBase="C:\Users\Ruslan\Documents\Visual Studio 2008\Projects\PokerSimulation\TestPokerSimulation\bin\Debug\TestPokerSimulation.dll" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="TestPokerSimulation.HandGeneratorTest, TestPokerSimulation" name="makeStraightFlushTest" />
+    </UnitTest>
+    <UnitTest name="HasStraightFlushTest" storage="c:\users\ruslan\documents\visual studio 2008\projects\pokersimulation\testpokersimulation\bin\debug\testpokersimulation.dll" id="43e50bbf-5d46-46a7-18b9-c2a2c4c3e56a">
+      <Css projectStructure="" iteration="" />
+      <Owners>
+        <Owner name="" />
+      </Owners>
+      <Execution id="4a718a95-2d87-4c5b-81e7-e7f89a2f327b" />
+      <TestMethod codeBase="C:\Users\Ruslan\Documents\Visual Studio 2008\Projects\PokerSimulation\TestPokerSimulation\bin\Debug\TestPokerSimulation.dll" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="TestPokerSimulation.PokerHandTest, TestPokerSimulation" name="HasStraightFlushTest" />
+    </UnitTest>
+    <UnitTest name="OrderDescendingTest" storage="c:\users\ruslan\documents\visual studio 2008\projects\pokersimulation\testpokersimulation\bin\debug\testpokersimulation.dll" id="90171c6e-f240-a92d-4c20-a19b6167aed9">
+      <Css projectStructure="" iteration="" />
+      <Owners>
+        <Owner name="" />
+      </Owners>
+      <Execution id="e1eddcab-66a6-4808-ac4a-d5af4d69295d" />
+      <TestMethod codeBase="C:\Users\Ruslan\Documents\Visual Studio 2008\Projects\PokerSimulation\TestPokerSimulation\bin\Debug\TestPokerSimulation.dll" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="TestPokerSimulation.PokerHandTest, TestPokerSimulation" name="OrderDescendingTest" />
+    </UnitTest>
+    <UnitTest name="InsertCardsTest" storage="c:\users\ruslan\documents\visual studio 2008\projects\pokersimulation\testpokersimulation\bin\debug\testpokersimulation.dll" id="ac0d52d6-5c23-6c2b-5187-57eae8ca9254">
+      <Css projectStructure="" iteration="" />
+      <Owners>
+        <Owner name="" />
+      </Owners>
+      <Execution id="de2fee34-d981-44e5-89b9-6a2d89af4c75" />
+      <TestMethod codeBase="C:\Users\Ruslan\Documents\Visual Studio 2008\Projects\PokerSimulation\TestPokerSimulation\bin\Debug\TestPokerSimulation.dll" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="TestProjectPokerSimulation.DeckTest, TestPokerSimulation" name="InsertCardsTest" />
+    </UnitTest>
+    <UnitTest name="MakeFreshDeckTest" storage="c:\users\ruslan\documents\visual studio 2008\projects\pokersimulation\testpokersimulation\bin\debug\testpokersimulation.dll" id="97aff3de-c58d-9987-8aba-37dcbf5b3447">
+      <Css projectStructure="" iteration="" />
+      <Owners>
+        <Owner name="" />
+      </Owners>
+      <Execution id="620eb51d-237e-426c-92c6-02a78613ae67" />
+      <TestMethod codeBase="C:\Users\Ruslan\Documents\Visual Studio 2008\Projects\PokerSimulation\TestPokerSimulation\bin\Debug\TestPokerSimulation.dll" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="TestProjectPokerSimulation.DeckTest, TestPokerSimulation" name="MakeFreshDeckTest" />
+    </UnitTest>
+    <UnitTest name="IsWildTest" storage="c:\users\ruslan\documents\visual studio 2008\projects\pokersimulation\testpokersimulation\bin\debug\testpokersimulation.dll" id="ccaabef5-aee7-7831-4213-ee768c0e5545">
+      <Css projectStructure="" iteration="" />
+      <Owners>
+        <Owner name="" />
+      </Owners>
+      <Execution id="2063ee03-9ea7-4b2a-ae1a-0e63302502a3" />
+      <TestMethod codeBase="C:\Users\Ruslan\Documents\Visual Studio 2008\Projects\PokerSimulation\TestPokerSimulation\bin\Debug\TestPokerSimulation.dll" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="TestPokerSimulation.CardTest, TestPokerSimulation" name="IsWildTest" />
+    </UnitTest>
+    <UnitTest name="HasFlushTest" storage="c:\users\ruslan\documents\visual studio 2008\projects\pokersimulation\testpokersimulation\bin\debug\testpokersimulation.dll" id="2b3f6e4a-1ba6-be2a-0073-65212adb71ea">
+      <Css projectStructure="" iteration="" />
+      <Owners>
+        <Owner name="" />
+      </Owners>
+      <Execution id="4ad965c1-6740-45e2-bedf-b7a3fe6ec56c" />
+      <TestMethod codeBase="C:\Users\Ruslan\Documents\Visual Studio 2008\Projects\PokerSimulation\TestPokerSimulation\bin\Debug\TestPokerSimulation.dll" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="TestPokerSimulation.PokerHandTest, TestPokerSimulation" name="HasFlushTest" />
+    </UnitTest>
+    <UnitTest name="CountOfTest" storage="c:\users\ruslan\documents\visual studio 2008\projects\pokersimulation\testpokersimulation\bin\debug\testpokersimulation.dll" id="93ee3737-4b0a-54e2-392c-6c65dbf806c6">
+      <Css projectStructure="" iteration="" />
+      <Owners>
+        <Owner name="" />
+      </Owners>
+      <Execution id="375ab260-c789-46e2-9354-0e1b5f57861f" />
+      <TestMethod codeBase="C:\Users\Ruslan\Documents\Visual Studio 2008\Projects\PokerSimulation\TestPokerSimulation\bin\Debug\TestPokerSimulation.dll" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="TestPokerSimulation.PokerHandTest, TestPokerSimulation" name="CountOfTest" />
+    </UnitTest>
+    <UnitTest name="PeekHighCardTest" storage="c:\users\ruslan\documents\visual studio 2008\projects\pokersimulation\testpokersimulation\bin\debug\testpokersimulation.dll" id="31ff0988-056c-71b1-65b1-579ad9dfec51">
+      <Css projectStructure="" iteration="" />
+      <Owners>
+        <Owner name="" />
+      </Owners>
+      <Execution id="56f1df7a-8746-4f6b-8983-34fd842b0c4d" />
+      <TestMethod codeBase="C:\Users\Ruslan\Documents\Visual Studio 2008\Projects\PokerSimulation\TestPokerSimulation\bin\Debug\TestPokerSimulation.dll" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="TestPokerSimulation.PokerHandTest, TestPokerSimulation" name="PeekHighCardTest" />
+    </UnitTest>
+    <UnitTest name="CountOfTest1" storage="c:\users\ruslan\documents\visual studio 2008\projects\pokersimulation\testpokersimulation\bin\debug\testpokersimulation.dll" id="9a84d867-eb6d-8b1f-2996-33751b217a63">
+      <Css projectStructure="" iteration="" />
+      <Owners>
+        <Owner name="" />
+      </Owners>
+      <Execution id="095d8483-269b-4293-a7fb-b57bf6d20fc1" />
+      <TestMethod codeBase="C:\Users\Ruslan\Documents\Visual Studio 2008\Projects\PokerSimulation\TestPokerSimulation\bin\Debug\TestPokerSimulation.dll" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="TestPokerSimulation.PokerHandTest, TestPokerSimulation" name="CountOfTest1" />
+    </UnitTest>
+    <UnitTest name="DealCardTest" storage="c:\users\ruslan\documents\visual studio 2008\projects\pokersimulation\testpokersimulation\bin\debug\testpokersimulation.dll" id="4f3400b0-feaf-8aaf-cbac-a928f33d95db">
+      <Css projectStructure="" iteration="" />
+      <Owners>
+        <Owner name="" />
+      </Owners>
+      <Execution id="53cd0766-b1ca-4e48-be75-7e69dce7d973" />
+      <TestMethod codeBase="C:\Users\Ruslan\Documents\Visual Studio 2008\Projects\PokerSimulation\TestPokerSimulation\bin\Debug\TestPokerSimulation.dll" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="TestProjectPokerSimulation.DeckTest, TestPokerSimulation" name="DealCardTest" />
+    </UnitTest>
+    <UnitTest name="ToStringTest" storage="c:\users\ruslan\documents\visual studio 2008\projects\pokersimulation\testpokersimulation\bin\debug\testpokersimulation.dll" id="4a4aeb5c-880a-f187-4c13-9eda6d882d3a">
+      <Css projectStructure="" iteration="" />
+      <Owners>
+        <Owner name="" />
+      </Owners>
+      <Execution id="3357775a-6ace-47ff-ad71-d5c8f8f9e158" />
+      <TestMethod codeBase="C:\Users\Ruslan\Documents\Visual Studio 2008\Projects\PokerSimulation\TestPokerSimulation\bin\Debug\TestPokerSimulation.dll" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="TestPokerSimulation.PokerHandTest, TestPokerSimulation" name="ToStringTest" />
+    </UnitTest>
+    <UnitTest name="GetSuitCardsTest" storage="c:\users\ruslan\documents\visual studio 2008\projects\pokersimulation\testpokersimulation\bin\debug\testpokersimulation.dll" id="b0d6f333-3d33-1ee0-0f1d-765a3c5f2ecf">
+      <Css projectStructure="" iteration="" />
+      <Owners>
+        <Owner name="" />
+      </Owners>
+      <Execution id="ac2fa579-0043-4806-83bc-8b5a3c2eebca" />
+      <TestMethod codeBase="C:\Users\Ruslan\Documents\Visual Studio 2008\Projects\PokerSimulation\TestPokerSimulation\bin\Debug\TestPokerSimulation.dll" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="TestPokerSimulation.PokerHandTest, TestPokerSimulation" name="GetSuitCardsTest" />
+    </UnitTest>
+    <UnitTest name="IsEmptyTest" storage="c:\users\ruslan\documents\visual studio 2008\projects\pokersimulation\testpokersimulation\bin\debug\testpokersimulation.dll" id="784d5de4-ebe8-2771-6c7e-255dd4679651">
+      <Css projectStructure="" iteration="" />
+      <Owners>
+        <Owner name="" />
+      </Owners>
+      <Execution id="5be5d299-d3ab-412d-bc95-d7d8b974d9a8" />
+      <TestMethod codeBase="C:\Users\Ruslan\Documents\Visual Studio 2008\Projects\PokerSimulation\TestPokerSimulation\bin\Debug\TestPokerSimulation.dll" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="TestPokerSimulation.PokerHandTest, TestPokerSimulation" name="IsEmptyTest" />
+    </UnitTest>
+    <UnitTest name="makeFullHouseTest" storage="c:\users\ruslan\documents\visual studio 2008\projects\pokersimulation\testpokersimulation\bin\debug\testpokersimulation.dll" id="9ab6a6a6-4385-a511-07bb-ca950284dd97">
+      <Css projectStructure="" iteration="" />
+      <Owners>
+        <Owner name="" />
+      </Owners>
+      <Execution id="e15ea1d7-5ffa-48d5-b364-a1db76dc10c9" />
+      <TestMethod codeBase="C:\Users\Ruslan\Documents\Visual Studio 2008\Projects\PokerSimulation\TestPokerSimulation\bin\Debug\TestPokerSimulation.dll" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="TestPokerSimulation.HandGeneratorTest, TestPokerSimulation" name="makeFullHouseTest" />
+    </UnitTest>
+    <UnitTest name="makeFourOfAKindTest" storage="c:\users\ruslan\documents\visual studio 2008\projects\pokersimulation\testpokersimulation\bin\debug\testpokersimulation.dll" id="b24ac270-8848-29b9-9899-18b45623db94">
+      <Css projectStructure="" iteration="" />
+      <Owners>
+        <Owner name="" />
+      </Owners>
+      <Execution id="b23e3c2f-619e-42d1-a591-834dc795cef6" />
+      <TestMethod codeBase="C:\Users\Ruslan\Documents\Visual Studio 2008\Projects\PokerSimulation\TestPokerSimulation\bin\Debug\TestPokerSimulation.dll" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="TestPokerSimulation.HandGeneratorTest, TestPokerSimulation" name="makeFourOfAKindTest" />
+    </UnitTest>
+    <UnitTest name="makeTwoPairTest" storage="c:\users\ruslan\documents\visual studio 2008\projects\pokersimulation\testpokersimulation\bin\debug\testpokersimulation.dll" id="53b821f5-8d92-8715-d037-66e58f4c5cce">
+      <Css projectStructure="" iteration="" />
+      <Owners>
+        <Owner name="" />
+      </Owners>
+      <Execution id="708449e2-e219-438e-9255-3b032bdb4723" />
+      <TestMethod codeBase="C:\Users\Ruslan\Documents\Visual Studio 2008\Projects\PokerSimulation\TestPokerSimulation\bin\Debug\TestPokerSimulation.dll" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="TestPokerSimulation.HandGeneratorTest, TestPokerSimulation" name="makeTwoPairTest" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <TestEntries>
+    <TestEntry testId="027d1261-6022-c5db-3964-d806c0debd91" executionId="0303db22-7dab-4dde-9bdb-34701b87048d" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="0d4ced66-d87f-a753-456b-b69a616ffd2c" executionId="05f43655-8e7d-42e5-8f20-8b64d24fc478" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="170b373d-0886-4cc6-f51e-35c35c9219ce" executionId="501270e5-7c0b-403d-9c11-3baecaac30d3" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="26a960c0-84c4-3e35-c571-afc0ffb5f85c" executionId="7eeb180c-aa92-4e3e-9c87-5ae43e6b30fd" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="2b3f6e4a-1ba6-be2a-0073-65212adb71ea" executionId="4ad965c1-6740-45e2-bedf-b7a3fe6ec56c" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="2c7d75cc-8559-f538-fefd-bf5566b0f091" executionId="2d2baabb-eb27-4909-86b7-713aedc9f963" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="31ff0988-056c-71b1-65b1-579ad9dfec51" executionId="56f1df7a-8746-4f6b-8983-34fd842b0c4d" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="3702c185-9b22-60d5-eaf3-a61a49514d5a" executionId="407dabc9-169a-4a55-a916-5a5895cc218a" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="43e50bbf-5d46-46a7-18b9-c2a2c4c3e56a" executionId="4a718a95-2d87-4c5b-81e7-e7f89a2f327b" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="4a4aeb5c-880a-f187-4c13-9eda6d882d3a" executionId="3357775a-6ace-47ff-ad71-d5c8f8f9e158" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="4c32af62-37fa-abdb-275d-cf323047847c" executionId="ba97e140-fcad-4245-aff5-e3c037c064e6" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="4f3400b0-feaf-8aaf-cbac-a928f33d95db" executionId="53cd0766-b1ca-4e48-be75-7e69dce7d973" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="53b821f5-8d92-8715-d037-66e58f4c5cce" executionId="708449e2-e219-438e-9255-3b032bdb4723" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="55b61287-1f00-6fc1-a3cd-f3c34c35e807" executionId="806239e3-0298-4b1b-9d4d-a8c98d508d28" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="61c75426-a379-7527-1cba-f5df992283ed" executionId="cc9647d6-d48d-42ad-8d0e-730bfd7bf5ac" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="776074d1-f212-6547-7b2d-f58d4137b101" executionId="df140026-551a-44ab-bebd-d3e5a011c4c5" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="784d5de4-ebe8-2771-6c7e-255dd4679651" executionId="5be5d299-d3ab-412d-bc95-d7d8b974d9a8" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="8502ee39-6a2e-ed53-145f-601f8f41717d" executionId="0b9fc261-9d7c-487b-bd97-978085357710" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="86a6a497-96cd-2a60-4952-ff68fbb4b225" executionId="34e701d1-af8e-499c-8438-33500c989578" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="90171c6e-f240-a92d-4c20-a19b6167aed9" executionId="e1eddcab-66a6-4808-ac4a-d5af4d69295d" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="93173cc4-6db2-0db2-ecff-5cacbc98c948" executionId="f47f1442-577a-45a0-a1fe-03209d1b0d5b" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="93ee3737-4b0a-54e2-392c-6c65dbf806c6" executionId="375ab260-c789-46e2-9354-0e1b5f57861f" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="97aff3de-c58d-9987-8aba-37dcbf5b3447" executionId="620eb51d-237e-426c-92c6-02a78613ae67" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="9a84d867-eb6d-8b1f-2996-33751b217a63" executionId="095d8483-269b-4293-a7fb-b57bf6d20fc1" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="9ab6a6a6-4385-a511-07bb-ca950284dd97" executionId="e15ea1d7-5ffa-48d5-b364-a1db76dc10c9" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="a15e50d8-f341-f9b0-357f-697e8dff833e" executionId="274bf362-2388-4a40-b7e0-eefdc544e160" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="ac0d52d6-5c23-6c2b-5187-57eae8ca9254" executionId="de2fee34-d981-44e5-89b9-6a2d89af4c75" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="b0d6f333-3d33-1ee0-0f1d-765a3c5f2ecf" executionId="ac2fa579-0043-4806-83bc-8b5a3c2eebca" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="b24ac270-8848-29b9-9899-18b45623db94" executionId="b23e3c2f-619e-42d1-a591-834dc795cef6" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="b94661db-0ea2-400e-43a4-8d0635852713" executionId="4aa52e56-bf1a-4e52-a84a-27c88af6aa59" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="c63a57d4-847c-a4af-8ee4-494c3dc07513" executionId="28c00397-d77f-416c-88cb-c14fa3d18489" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="cc0e6ea1-37ac-b501-7c86-b4a359d27680" executionId="6b5c7507-a748-4f98-9a8f-e4f0d7076b67" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="ccaabef5-aee7-7831-4213-ee768c0e5545" executionId="2063ee03-9ea7-4b2a-ae1a-0e63302502a3" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="ceec8cf2-1eea-b76b-efe5-e4f82ccfe4b9" executionId="9c63507e-c67d-4076-b07c-cb557745d6af" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="dfab1cc3-28ed-87a3-8157-ee7310f973eb" executionId="91e101fd-06dd-477c-8770-52c7b0bcf86f" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="e046f4b1-f90f-180e-3d7b-d33818e7e93f" executionId="5e713a42-7abb-4f61-b89a-e212aaf7b005" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="ec614f75-a946-b4e7-f5b2-74795a71ff64" executionId="92b5a96b-8ccc-4a66-815d-35257aa910b6" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="f353b4b8-3c89-2a01-0edf-87f1d472906b" executionId="876a0f58-63ca-4636-80e8-5aa14c17819d" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="fa5c7bea-69d5-fa0a-f5b3-ed3e8b8326bc" executionId="e9f753ad-e3ff-4be7-851f-c5c720675082" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <Results>
+    <UnitTestResult executionId="0303db22-7dab-4dde-9bdb-34701b87048d" testId="027d1261-6022-c5db-3964-d806c0debd91" testName="ContainsTest" computerName="RUSLAN-PC" duration="00:00:00.1093208" startTime="2009-11-11T12:49:30.3740235-05:00" endTime="2009-11-11T12:49:30.6689453-05:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d">
+      <Output>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="05f43655-8e7d-42e5-8f20-8b64d24fc478" testId="0d4ced66-d87f-a753-456b-b69a616ffd2c" testName="makeThreeOfAKindTest" computerName="RUSLAN-PC" duration="00:00:00.0514584" startTime="2009-11-11T12:49:30.6757813-05:00" endTime="2009-11-11T12:49:30.7343750-05:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d">
+      <Output>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="501270e5-7c0b-403d-9c11-3baecaac30d3" testId="170b373d-0886-4cc6-f51e-35c35c9219ce" testName="op_InequalityTest" computerName="RUSLAN-PC" duration="00:00:00.0023603" startTime="2009-11-11T12:49:30.7402344-05:00" endTime="2009-11-11T12:49:30.7490235-05:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d">
+      <Output>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="7eeb180c-aa92-4e3e-9c87-5ae43e6b30fd" testId="26a960c0-84c4-3e35-c571-afc0ffb5f85c" testName="HasRoyalFlushTest" computerName="RUSLAN-PC" duration="00:00:00.0190722" startTime="2009-11-11T12:49:30.7548828-05:00" endTime="2009-11-11T12:49:30.7802735-05:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d">
+      <Output>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="4ad965c1-6740-45e2-bedf-b7a3fe6ec56c" testId="2b3f6e4a-1ba6-be2a-0073-65212adb71ea" testName="HasFlushTest" computerName="RUSLAN-PC" duration="00:00:00.0119515" startTime="2009-11-11T12:49:30.7861328-05:00" endTime="2009-11-11T12:49:30.8056641-05:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d">
+      <Output>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="2d2baabb-eb27-4909-86b7-713aedc9f963" testId="2c7d75cc-8559-f538-fefd-bf5566b0f091" testName="makeHighCardTest" computerName="RUSLAN-PC" duration="00:00:00.0275138" startTime="2009-11-11T12:49:30.8916016-05:00" endTime="2009-11-11T12:49:30.9960938-05:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d">
+      <Output>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="56f1df7a-8746-4f6b-8983-34fd842b0c4d" testId="31ff0988-056c-71b1-65b1-579ad9dfec51" testName="PeekHighCardTest" computerName="RUSLAN-PC" duration="00:00:00.0021868" startTime="2009-11-11T12:49:31.0419922-05:00" endTime="2009-11-11T12:49:31.0917969-05:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d">
+      <Output>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="407dabc9-169a-4a55-a916-5a5895cc218a" testId="3702c185-9b22-60d5-eaf3-a61a49514d5a" testName="HasStraightTest" computerName="RUSLAN-PC" duration="00:00:00.0131106" startTime="2009-11-11T12:49:31.1347656-05:00" endTime="2009-11-11T12:49:31.2294922-05:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d">
+      <Output>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="4a718a95-2d87-4c5b-81e7-e7f89a2f327b" testId="43e50bbf-5d46-46a7-18b9-c2a2c4c3e56a" testName="HasStraightFlushTest" computerName="RUSLAN-PC" duration="00:00:00.0217100" startTime="2009-11-11T12:49:31.3154297-05:00" endTime="2009-11-11T12:49:31.3876953-05:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d">
+      <Output>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="3357775a-6ace-47ff-ad71-d5c8f8f9e158" testId="4a4aeb5c-880a-f187-4c13-9eda6d882d3a" testName="ToStringTest" computerName="RUSLAN-PC" duration="00:00:00.0035705" startTime="2009-11-11T12:49:31.4042969-05:00" endTime="2009-11-11T12:49:31.4433594-05:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d">
+      <Output>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="ba97e140-fcad-4245-aff5-e3c037c064e6" testId="4c32af62-37fa-abdb-275d-cf323047847c" testName="RemoveCardTest" computerName="RUSLAN-PC" duration="00:00:00.0029500" startTime="2009-11-11T12:49:31.4873047-05:00" endTime="2009-11-11T12:49:31.5302735-05:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d">
+      <Output>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="53cd0766-b1ca-4e48-be75-7e69dce7d973" testId="4f3400b0-feaf-8aaf-cbac-a928f33d95db" testName="DealCardTest" computerName="RUSLAN-PC" duration="00:00:00.0142423" startTime="2009-11-11T12:49:31.5478516-05:00" endTime="2009-11-11T12:49:31.5830078-05:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.AreEqual failed. Expected:&lt;2C&gt;. Actual:&lt;AH&gt;. </Message>
+          <StackTrace>   at TestProjectPokerSimulation.DeckTest.DealCardTest() in C:\Users\Ruslan\Documents\Visual Studio 2008\Projects\PokerSimulation\TestPokerSimulation\DeckTest.cs:line 168
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="708449e2-e219-438e-9255-3b032bdb4723" testId="53b821f5-8d92-8715-d037-66e58f4c5cce" testName="makeTwoPairTest" computerName="RUSLAN-PC" duration="00:00:00.0854262" startTime="2009-11-11T12:49:31.6289063-05:00" endTime="2009-11-11T12:49:31.7226563-05:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d">
+      <Output>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="806239e3-0298-4b1b-9d4d-a8c98d508d28" testId="55b61287-1f00-6fc1-a3cd-f3c34c35e807" testName="HasBeenDealtTest" computerName="RUSLAN-PC" duration="00:00:00.0275775" startTime="2009-11-11T12:49:31.7353516-05:00" endTime="2009-11-11T12:49:31.7978516-05:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d">
+      <Output>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="cc9647d6-d48d-42ad-8d0e-730bfd7bf5ac" testId="61c75426-a379-7527-1cba-f5df992283ed" testName="makeStraightTest" computerName="RUSLAN-PC" duration="00:00:00.0298523" startTime="2009-11-11T12:49:31.8525391-05:00" endTime="2009-11-11T12:49:31.9316406-05:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d">
+      <Output>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="df140026-551a-44ab-bebd-d3e5a011c4c5" testId="776074d1-f212-6547-7b2d-f58d4137b101" testName="RemoveCardTest" computerName="RUSLAN-PC" duration="00:00:00.0032937" startTime="2009-11-11T12:49:31.9736328-05:00" endTime="2009-11-11T12:49:32.0224610-05:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d">
+      <Output>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="5be5d299-d3ab-412d-bc95-d7d8b974d9a8" testId="784d5de4-ebe8-2771-6c7e-255dd4679651" testName="IsEmptyTest" computerName="RUSLAN-PC" duration="00:00:00.0015130" startTime="2009-11-11T12:49:32.0654297-05:00" endTime="2009-11-11T12:49:32.1220703-05:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d">
+      <Output>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="0b9fc261-9d7c-487b-bd97-978085357710" testId="8502ee39-6a2e-ed53-145f-601f8f41717d" testName="ToStringTest" computerName="RUSLAN-PC" duration="00:00:00.0037845" startTime="2009-11-11T12:49:32.1650391-05:00" endTime="2009-11-11T12:49:32.2148438-05:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d">
+      <Output>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="34e701d1-af8e-499c-8438-33500c989578" testId="86a6a497-96cd-2a60-4952-ff68fbb4b225" testName="makeStraightFlushTest" computerName="RUSLAN-PC" duration="00:00:00.0289598" startTime="2009-11-11T12:49:32.2412110-05:00" endTime="2009-11-11T12:49:32.2802735-05:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d">
+      <Output>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="e1eddcab-66a6-4808-ac4a-d5af4d69295d" testId="90171c6e-f240-a92d-4c20-a19b6167aed9" testName="OrderDescendingTest" computerName="RUSLAN-PC" duration="00:00:00.0087854" startTime="2009-11-11T12:49:32.2890625-05:00" endTime="2009-11-11T12:49:32.3066406-05:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d">
+      <Output>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="f47f1442-577a-45a0-a1fe-03209d1b0d5b" testId="93173cc4-6db2-0db2-ecff-5cacbc98c948" testName="makeFlushTest" computerName="RUSLAN-PC" duration="00:00:00.0377131" startTime="2009-11-11T12:49:32.3115235-05:00" endTime="2009-11-11T12:49:32.3554688-05:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d">
+      <Output>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="375ab260-c789-46e2-9354-0e1b5f57861f" testId="93ee3737-4b0a-54e2-392c-6c65dbf806c6" testName="CountOfTest" computerName="RUSLAN-PC" duration="00:00:00.0036655" startTime="2009-11-11T12:49:32.3681641-05:00" endTime="2009-11-11T12:49:32.3847656-05:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d">
+      <Output>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="620eb51d-237e-426c-92c6-02a78613ae67" testId="97aff3de-c58d-9987-8aba-37dcbf5b3447" testName="MakeFreshDeckTest" computerName="RUSLAN-PC" duration="00:00:00.0664771" startTime="2009-11-11T12:49:32.3896485-05:00" endTime="2009-11-11T12:49:32.4638672-05:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d">
+      <Output>
+        <StdOut>TWO of CLUBS
+THREE of CLUBS
+FOUR of CLUBS
+FIVE of CLUBS
+SIX of CLUBS
+SEVEN of CLUBS
+EIGHT of CLUBS
+NINE of CLUBS
+TEN of CLUBS
+JACK of CLUBS
+QUEEN of CLUBS
+KING of CLUBS
+ACE of CLUBS
+TWO of DIAMONDS
+THREE of DIAMONDS
+FOUR of DIAMONDS
+FIVE of DIAMONDS
+SIX of DIAMONDS
+SEVEN of DIAMONDS
+EIGHT of DIAMONDS
+NINE of DIAMONDS
+TEN of DIAMONDS
+JACK of DIAMONDS
+QUEEN of DIAMONDS
+KING of DIAMONDS
+ACE of DIAMONDS
+TWO of HEARTS
+THREE of HEARTS
+FOUR of HEARTS
+FIVE of HEARTS
+SIX of HEARTS
+SEVEN of HEARTS
+EIGHT of HEARTS
+NINE of HEARTS
+TEN of HEARTS
+JACK of HEARTS
+QUEEN of HEARTS
+KING of HEARTS
+ACE of HEARTS
+TWO of SPADES
+THREE of SPADES
+FOUR of SPADES
+FIVE of SPADES
+SIX of SPADES
+SEVEN of SPADES
+EIGHT of SPADES
+NINE of SPADES
+TEN of SPADES
+JACK of SPADES
+QUEEN of SPADES
+KING of SPADES
+ACE of SPADES</StdOut>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="095d8483-269b-4293-a7fb-b57bf6d20fc1" testId="9a84d867-eb6d-8b1f-2996-33751b217a63" testName="CountOfTest1" computerName="RUSLAN-PC" duration="00:00:00.0022139" startTime="2009-11-11T12:49:32.4677735-05:00" endTime="2009-11-11T12:49:32.4853516-05:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d">
+      <Output>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="e15ea1d7-5ffa-48d5-b364-a1db76dc10c9" testId="9ab6a6a6-4385-a511-07bb-ca950284dd97" testName="makeFullHouseTest" computerName="RUSLAN-PC" duration="00:00:00.0411309" startTime="2009-11-11T12:49:32.4912110-05:00" endTime="2009-11-11T12:49:32.5390625-05:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d">
+      <Output>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="274bf362-2388-4a40-b7e0-eefdc544e160" testId="a15e50d8-f341-f9b0-357f-697e8dff833e" testName="MakeShuffledDeckTest" computerName="RUSLAN-PC" duration="00:00:00.0558635" startTime="2009-11-11T12:49:32.5410156-05:00" endTime="2009-11-11T12:49:32.6103516-05:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d">
+      <Output>
+        <StdOut>TWO of CLUBS
+THREE of CLUBS
+FOUR of CLUBS
+FIVE of CLUBS
+SIX of CLUBS
+SEVEN of CLUBS
+EIGHT of CLUBS
+NINE of CLUBS
+TEN of CLUBS
+JACK of CLUBS
+QUEEN of CLUBS
+KING of CLUBS
+ACE of CLUBS
+TWO of DIAMONDS
+THREE of DIAMONDS
+FOUR of DIAMONDS
+FIVE of DIAMONDS
+SIX of DIAMONDS
+SEVEN of DIAMONDS
+EIGHT of DIAMONDS
+NINE of DIAMONDS
+TEN of DIAMONDS
+JACK of DIAMONDS
+QUEEN of DIAMONDS
+KING of DIAMONDS
+ACE of DIAMONDS
+TWO of HEARTS
+THREE of HEARTS
+FOUR of HEARTS
+FIVE of HEARTS
+SIX of HEARTS
+SEVEN of HEARTS
+EIGHT of HEARTS
+NINE of HEARTS
+TEN of HEARTS
+JACK of HEARTS
+QUEEN of HEARTS
+KING of HEARTS
+ACE of HEARTS
+TWO of SPADES
+THREE of SPADES
+FOUR of SPADES
+FIVE of SPADES
+SIX of SPADES
+SEVEN of SPADES
+EIGHT of SPADES
+NINE of SPADES
+TEN of SPADES
+JACK of SPADES
+QUEEN of SPADES
+KING of SPADES
+ACE of SPADES</StdOut>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="de2fee34-d981-44e5-89b9-6a2d89af4c75" testId="ac0d52d6-5c23-6c2b-5187-57eae8ca9254" testName="InsertCardsTest" computerName="RUSLAN-PC" duration="00:00:00.0014211" startTime="2009-11-11T12:49:32.6210938-05:00" endTime="2009-11-11T12:49:32.6318360-05:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d">
+      <Output>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="ac2fa579-0043-4806-83bc-8b5a3c2eebca" testId="b0d6f333-3d33-1ee0-0f1d-765a3c5f2ecf" testName="GetSuitCardsTest" computerName="RUSLAN-PC" duration="00:00:00.0252479" startTime="2009-11-11T12:49:32.6367188-05:00" endTime="2009-11-11T12:49:32.6699219-05:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d">
+      <Output>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="b23e3c2f-619e-42d1-a591-834dc795cef6" testId="b24ac270-8848-29b9-9899-18b45623db94" testName="makeFourOfAKindTest" computerName="RUSLAN-PC" duration="00:00:00.0263410" startTime="2009-11-11T12:49:32.6767578-05:00" endTime="2009-11-11T12:49:32.7109375-05:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d">
+      <Output>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="4aa52e56-bf1a-4e52-a84a-27c88af6aa59" testId="b94661db-0ea2-400e-43a4-8d0635852713" testName="HasStraightTest1" computerName="RUSLAN-PC" duration="00:00:00.0212068" startTime="2009-11-11T12:49:32.7167969-05:00" endTime="2009-11-11T12:49:32.7441406-05:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d">
+      <Output>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="28c00397-d77f-416c-88cb-c14fa3d18489" testId="c63a57d4-847c-a4af-8ee4-494c3dc07513" testName="makeRoyalFlushTest" computerName="RUSLAN-PC" duration="00:00:00.0287349" startTime="2009-11-11T12:49:32.7509766-05:00" endTime="2009-11-11T12:49:32.7871094-05:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d">
+      <Output>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="6b5c7507-a748-4f98-9a8f-e4f0d7076b67" testId="cc0e6ea1-37ac-b501-7c86-b4a359d27680" testName="makeOnePairTest" computerName="RUSLAN-PC" duration="00:00:00.0270573" startTime="2009-11-11T12:49:32.7929688-05:00" endTime="2009-11-11T12:49:32.8291016-05:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d">
+      <Output>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="2063ee03-9ea7-4b2a-ae1a-0e63302502a3" testId="ccaabef5-aee7-7831-4213-ee768c0e5545" testName="IsWildTest" computerName="RUSLAN-PC" duration="00:00:00.0015641" startTime="2009-11-11T12:49:32.8359375-05:00" endTime="2009-11-11T12:49:32.8447266-05:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d">
+      <Output>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="9c63507e-c67d-4076-b07c-cb557745d6af" testId="ceec8cf2-1eea-b76b-efe5-e4f82ccfe4b9" testName="InsertCardTest" computerName="RUSLAN-PC" duration="00:00:00.0041508" startTime="2009-11-11T12:49:32.8505860-05:00" endTime="2009-11-11T12:49:32.8603516-05:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d">
+      <Output>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="91e101fd-06dd-477c-8770-52c7b0bcf86f" testId="dfab1cc3-28ed-87a3-8157-ee7310f973eb" testName="OrderAscendingTest" computerName="RUSLAN-PC" duration="00:00:00.0060862" startTime="2009-11-11T12:49:32.8710938-05:00" endTime="2009-11-11T12:49:32.8837891-05:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d">
+      <Output>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="5e713a42-7abb-4f61-b89a-e212aaf7b005" testId="e046f4b1-f90f-180e-3d7b-d33818e7e93f" testName="op_EqualityTest" computerName="RUSLAN-PC" duration="00:00:00.0019943" startTime="2009-11-11T12:49:32.8896485-05:00" endTime="2009-11-11T12:49:32.8984375-05:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d">
+      <Output>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="92b5a96b-8ccc-4a66-815d-35257aa910b6" testId="ec614f75-a946-b4e7-f5b2-74795a71ff64" testName="HasFlushTest1" computerName="RUSLAN-PC" duration="00:00:00.0216932" startTime="2009-11-11T12:49:32.9101563-05:00" endTime="2009-11-11T12:49:32.9394531-05:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d">
+      <Output>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="876a0f58-63ca-4636-80e8-5aa14c17819d" testId="f353b4b8-3c89-2a01-0edf-87f1d472906b" testName="ContainsTest" computerName="RUSLAN-PC" duration="00:00:00.0015256" startTime="2009-11-11T12:49:32.9443360-05:00" endTime="2009-11-11T12:49:32.9521485-05:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d">
+      <Output>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="e9f753ad-e3ff-4be7-851f-c5c720675082" testId="fa5c7bea-69d5-fa0a-f5b3-ed3e8b8326bc" testName="HandConstructorTest" computerName="RUSLAN-PC" duration="00:00:00.0039544" startTime="2009-11-11T12:49:32.9580078-05:00" endTime="2009-11-11T12:49:32.9687500-05:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d">
+      <Output>
+      </Output>
+    </UnitTestResult>
+  </Results>
+</TestRun>
