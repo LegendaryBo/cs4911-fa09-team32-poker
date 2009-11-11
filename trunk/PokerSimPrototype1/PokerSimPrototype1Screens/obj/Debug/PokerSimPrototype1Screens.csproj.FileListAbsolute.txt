@@ -1,0 +1,16 @@
+C:\Documents and Settings\John\My Documents\Expression\Blend 3\Projects\PokerSimPrototype1\PokerSimPrototype1\bin\Debug\PokerSimPrototype1.Screens.dll
+C:\Documents and Settings\John\My Documents\Expression\Blend 3\Projects\PokerSimPrototype1\PokerSimPrototype1\bin\Debug\PokerSimPrototype1.Screens.pdb
+C:\Documents and Settings\John\My Documents\Expression\Blend 3\Projects\PokerSimPrototype1\PokerSimPrototype1\PokerSimPrototype1Screens\obj\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\John\My Documents\Expression\Blend 3\Projects\PokerSimPrototype1\PokerSimPrototype1\PokerSimPrototype1Screens\obj\Debug\SketchStyles.baml
+C:\Documents and Settings\John\My Documents\Expression\Blend 3\Projects\PokerSimPrototype1\PokerSimPrototype1\PokerSimPrototype1Screens\obj\Debug\PokerSimPrototype1.Screens_MarkupCompile.cache
+C:\Documents and Settings\John\My Documents\Expression\Blend 3\Projects\PokerSimPrototype1\PokerSimPrototype1\PokerSimPrototype1Screens\obj\Debug\PokerSimPrototype1.Screens.g.resources
+C:\Documents and Settings\John\My Documents\Expression\Blend 3\Projects\PokerSimPrototype1\PokerSimPrototype1\PokerSimPrototype1Screens\obj\Debug\PokerSimPrototype1.Screens.dll
+C:\Documents and Settings\John\My Documents\Expression\Blend 3\Projects\PokerSimPrototype1\PokerSimPrototype1\PokerSimPrototype1Screens\obj\Debug\PokerSimPrototype1.Screens.pdb
+C:\Documents and Settings\John\My Documents\Expression\Blend 3\Projects\PokerSimPrototype1\PokerSimPrototype1\PokerSimPrototype1Screens\obj\Debug\cards.baml
+C:\Documents and Settings\John\My Documents\Expression\Blend 3\Projects\PokerSimPrototype1\PokerSimPrototype1\PokerSimPrototype1Screens\obj\Debug\Simple Styles.baml
+C:\Documents and Settings\John\My Documents\Expression\Blend 3\Projects\PokerSimPrototype1\PokerSimPrototype1\PokerSimPrototype1Screens\obj\Debug\Fixation.baml
+C:\Documents and Settings\John\My Documents\Expression\Blend 3\Projects\PokerSimPrototype1\PokerSimPrototype1\PokerSimPrototype1Screens\obj\Debug\Fixation.g.cs
+C:\Documents and Settings\John\My Documents\Expression\Blend 3\Projects\PokerSimPrototype1\PokerSimPrototype1\PokerSimPrototype1Screens\obj\Debug\Session Start.baml
+C:\Documents and Settings\John\My Documents\Expression\Blend 3\Projects\PokerSimPrototype1\PokerSimPrototype1\PokerSimPrototype1Screens\obj\Debug\Session Start.g.cs
+C:\Documents and Settings\John\My Documents\Expression\Blend 3\Projects\PokerSimPrototype1\PokerSimPrototype1\PokerSimPrototype1Screens\obj\Debug\Welcome.baml
+C:\Documents and Settings\John\My Documents\Expression\Blend 3\Projects\PokerSimPrototype1\PokerSimPrototype1\PokerSimPrototype1Screens\obj\Debug\Welcome.g.cs

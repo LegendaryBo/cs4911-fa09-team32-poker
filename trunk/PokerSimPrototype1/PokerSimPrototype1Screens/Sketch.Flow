@@ -1,0 +1,108 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Data xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" SchemaVersion="2">
+  <SketchFlowGuid>bab7725e-89ac-4f9b-bdb6-3dd0c8083ee0</SketchFlowGuid>
+  <StartScreen>PokerSimPrototype1Screens.Screen_1</StartScreen>
+  <Screens>
+    <Screen>
+      <Type>Navigation</Type>
+      <ClassName>PokerSimPrototype1Screens.Screen_1</ClassName>
+      <DisplayName>Welcome</DisplayName>
+      <FileName>Welcome.xaml</FileName>
+      <Annotations />
+      <Position>
+        <X>0</X>
+        <Y>0</Y>
+      </Position>
+      <VisualTag>0</VisualTag>
+    </Screen>
+    <Screen>
+      <Type>Navigation</Type>
+      <ClassName>PokerSimPrototype1Screens.Copy_of_Welcome</ClassName>
+      <DisplayName>Session Fixation</DisplayName>
+      <FileName>Fixation.xaml</FileName>
+      <Annotations />
+      <Position>
+        <X>0</X>
+        <Y>35</Y>
+      </Position>
+      <VisualTag>0</VisualTag>
+    </Screen>
+    <Screen>
+      <Type>Navigation</Type>
+      <ClassName>PokerSimPrototype1Screens.Copy_of_Session_Fixation</ClassName>
+      <DisplayName>Session Start</DisplayName>
+      <FileName>Session Start.xaml</FileName>
+      <Annotations />
+      <Position>
+        <X>0</X>
+        <Y>70</Y>
+      </Position>
+      <VisualTag>0</VisualTag>
+    </Screen>
+  </Screens>
+  <Connections>
+    <Connection>
+      <Source>PokerSimPrototype1Screens.Screen_1</Source>
+      <Target>PokerSimPrototype1Screens.Copy_of_Welcome</Target>
+      <Type>Navigation</Type>
+      <TransitionType>Fade</TransitionType>
+      <VisualTag>0</VisualTag>
+    </Connection>
+    <Connection>
+      <Source>PokerSimPrototype1Screens.Copy_of_Welcome</Source>
+      <Target>PokerSimPrototype1Screens.Copy_of_Session_Fixation</Target>
+      <Type>Navigation</Type>
+      <TransitionType>Fade</TransitionType>
+      <VisualTag>0</VisualTag>
+    </Connection>
+  </Connections>
+  <BrandingText>Microsoft SketchFlow Prototype</BrandingText>
+  <RuntimeOptions>
+    <HideNavigation>false</HideNavigation>
+    <HideFlowGraph>false</HideFlowGraph>
+    <HideAnnotationAndInk>false</HideAnnotationAndInk>
+    <DisableInking>false</DisableInking>
+    <HideDesignTimeAnnotations>false</HideDesignTimeAnnotations>
+  </RuntimeOptions>
+  <VisualTags>
+    <VisualTag>
+      <Name>Navigation</Name>
+      <Color>FF1E2AD6</Color>
+    </VisualTag>
+    <VisualTag>
+      <Name>Component</Name>
+      <Color>FF178F11</Color>
+    </VisualTag>
+    <VisualTag>
+      <Name>Yellow</Name>
+      <Color>FFFEC600</Color>
+    </VisualTag>
+    <VisualTag>
+      <Name>Orange</Name>
+      <Color>FFF06000</Color>
+    </VisualTag>
+    <VisualTag>
+      <Name>Red</Name>
+      <Color>FFCC0202</Color>
+    </VisualTag>
+    <VisualTag>
+      <Name>Violet</Name>
+      <Color>FF780099</Color>
+    </VisualTag>
+    <VisualTag>
+      <Name>Gray</Name>
+      <Color>FF6B6B6B</Color>
+    </VisualTag>
+    <VisualTag>
+      <Name>White</Name>
+      <Color>FFFFFFFF</Color>
+    </VisualTag>
+  </VisualTags>
+  <ViewState>
+    <Zoom>1.125</Zoom>
+    <Center>
+      <X>224.20367368989736</X>
+      <Y>77.053333333333342</Y>
+    </Center>
+  </ViewState>
+</Data>
