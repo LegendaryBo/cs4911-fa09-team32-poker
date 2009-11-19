@@ -22,6 +22,7 @@ namespace PokerSimulation
         public Block(long id)
         {
             Block_ID = id;
+            Trials = new List<Trial>();
         }
         #endregion
 
