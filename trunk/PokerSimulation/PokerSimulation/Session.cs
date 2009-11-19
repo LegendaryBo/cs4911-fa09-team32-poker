@@ -52,6 +52,8 @@ namespace PokerSimulation
             }
             else
                 _settingPath = Properties.Settings.Default.defaultRawFile;
+
+            Properties.Settings.Default.Save();
         }
 
         public Session(string file)
@@ -74,6 +76,9 @@ namespace PokerSimulation
             LoadInputFile(pathEnd);
         }
 
+        #endregion
+
+        #region Methods
         private void LoadInputFile(string pathEnd)
         {
             try
