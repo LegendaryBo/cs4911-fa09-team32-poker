@@ -8,7 +8,7 @@ namespace PokerSimulation
     public class Trial
     {
         #region Properties
-         public string Trial_ID { get; internal set; }
+         public long Trial_ID { get; internal set; }
          public string Response { get; internal set; }
          public Hand Hand { get; internal set; }
          public int Number_of_cards { get; internal set; }
@@ -22,7 +22,7 @@ namespace PokerSimulation
 
         #region Constructors
 
-         public Trial(string id, Hand hand, int num_of_cards, string nuts)
+         public Trial(long id, Hand hand, int num_of_cards, string nuts)
          {
              Trial_ID = id;
              Hand = hand;

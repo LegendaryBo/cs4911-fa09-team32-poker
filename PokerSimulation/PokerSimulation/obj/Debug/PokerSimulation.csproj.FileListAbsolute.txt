@@ -20,3 +20,5 @@ C:\Users\Ruslan\Documents\Visual Studio 2008\Projects\PokerSimulation\PokerSimul
 C:\Users\Ruslan\Documents\Visual Studio 2008\Projects\PokerSimulation\PokerSimulation\obj\Debug\PokerSimulation.GuessForm.resources
 C:\SeniorDesign\PokerSimulation\PokerSimulation\obj\Debug\PokerSimulation.exe
 C:\SeniorDesign\PokerSimulation\PokerSimulation\obj\Debug\PokerSimulation.pdb
+C:\Users\Ruslan\Documents\Visual Studio 2008\Projects\PokerSimulation\PokerSimulation\bin\Debug\PokerSimulation.exe.config
+C:\Users\Ruslan\Documents\Visual Studio 2008\Projects\PokerSimulation\PokerSimulation\obj\Debug\PokerSimulation.SessionTest.resources
