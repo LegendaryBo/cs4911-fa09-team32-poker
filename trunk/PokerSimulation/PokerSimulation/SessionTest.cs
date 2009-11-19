@@ -1,10 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 
 namespace PokerSimulation
@@ -25,8 +19,8 @@ namespace PokerSimulation
             {
                 foreach (Trial t in b.Trials)
                 {
-                    string item = "Nuts: " + t.Nuts;
-                    foreach (Card c in t.Hand.ToArray())
+                    string item = "Nuts: " + t.Nuts + "|Cards:";
+                    foreach (Card c in t.Hand.Cards)
                         item += " " + c.ToString();
                     nuts.Items.Add(item);
                 }

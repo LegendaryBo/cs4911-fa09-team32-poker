@@ -23,12 +23,15 @@ namespace PokerSimulation.Properties {
             }
         }
         
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
         public string defaultRawFile {
             get {
                 return ((string)(this["defaultRawFile"]));
+            }
+            set {
+                this["defaultRawFile"] = value;
             }
         }
     }

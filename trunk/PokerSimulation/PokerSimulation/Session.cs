@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.IO;
 
 namespace PokerSimulation
@@ -13,45 +11,66 @@ namespace PokerSimulation
         private const string _inDirectory = @"\in";
         private const string _rawDirectory = @"\raw";
         private const string _outDirectory = @"\out";
+        private const string _defaultDirectory = @"\default";
         private const string _inPath = _inDirectory + @"\in_";
         private const string _rawPath = _rawDirectory + @"\raw_";
         private const string _outPath = _outDirectory + @"\out_";
+        private const string _defaultPath = _defaultDirectory + @"\raw_default.txt";
+        private string _defaultRaw = "START BLOCK 1" + Environment.NewLine + "ST5" 
+            + Environment.NewLine + "ST6" + Environment.NewLine + "ST7" + Environment.NewLine 
+            + "ST5" + Environment.NewLine + "END BLOCK" + Environment.NewLine + "START BLOCK 2" 
+            + Environment.NewLine + "FL7" + Environment.NewLine + "FL6" + Environment.NewLine 
+            + "FL5" + Environment.NewLine + "END BLOCK";
+        private string _settingPath;
         private StreamReader _fileReader;
         private StreamWriter _fileWriter;
 
         public const string BLOCK_START = "START BLOCK";
         public const string BLOCK_END = "END BLOCK";
-        
+
         #endregion
 
         #region Properties
-        
+
         public string Subject_ID { get; internal set; }
         public string Session_ID { get; internal set; }
         public List<Block> Blocks { get; internal set; }
-        
+        public bool IsDefault { get; internal set; }
+
         #endregion
 
         #region Constructors
 
-        public Session(string file)
+        public Session()
         {
+            IsDefault = false;
             Blocks = new List<Block>();
+            if (Properties.Settings.Default.defaultRawFile.Equals(""))
+            {
+                _settingPath = Directory.GetCurrentDirectory() + _defaultPath;
+                Properties.Settings.Default.defaultRawFile = _settingPath;
+            }
+            else
+                _settingPath = Properties.Settings.Default.defaultRawFile;
+        }
+
+        public Session(string file)
+            : this()
+        {
         }
 
         public Session(string subject_id, string session_id)
+            : this()
         {
             Subject_ID = subject_id;
             Session_ID = session_id;
             string pathEnd = subject_id + "_" + session_id + ".txt";
 
-            Blocks = new List<Block>();
-
             if (!Directory.Exists(Directory.GetCurrentDirectory() + _outDirectory))
-                Directory.CreateDirectory(Directory.GetCurrentDirectory() + _outDirectory);  
+                Directory.CreateDirectory(Directory.GetCurrentDirectory() + _outDirectory);
             else if (File.Exists(Directory.GetCurrentDirectory() + _outPath + pathEnd))
-                throw(new Exception("Session has been completed. Use the dialog on the right to override existing results."));
-            
+                throw (new Exception("Session has been completed. Use the dialog on the right to override existing results."));
+
             LoadInputFile(pathEnd);
         }
 
@@ -59,7 +78,7 @@ namespace PokerSimulation
         {
             try
             {
-                _fileReader = new StreamReader(_inPath + pathEnd);
+                _fileReader = new StreamReader(Directory.GetCurrentDirectory() + _inPath + pathEnd);
 
                 string line = null;
                 int id = 0;
@@ -85,14 +104,15 @@ namespace PokerSimulation
                         Hand h = new Hand();
                         id++;
 
-                        int num = int.Parse("" + sr.Read());
+                        int num = int.Parse("" + (char)sr.Read());
 
                         for (int i = 0; i < num; i++)
                         {
                             sr.Read();
+                            Rank rank = this.ParseRank((char)sr.Read());
                             Suit suit = this.ParseSuit((char)sr.Read());
 
-                            Card c = new Card(this.ParseSuit((char)sr.Read()), this.ParseRank((char)sr.Read()));
+                            Card c = new Card(suit, rank);
                             h.InsertCard(c);
                         }
                         sr.Read();
@@ -117,46 +137,78 @@ namespace PokerSimulation
 
         private void LoadRawFile(string pathEnd)
         {
-            _fileReader = new StreamReader(_rawPath + pathEnd);
-
-            Block currBlock = null;
-
-            string line;
-
-            int id = 0;
-
-            while ((line = _fileReader.ReadLine()) != null)
+            try
             {
-                if (line.Equals("")) continue;
-                if (line.StartsWith(BLOCK_START))
-                {
-                    string[] s = line.Split(" ".ToCharArray());
-                    currBlock = new Block(long.Parse(s[s.Length - 1]));
-                }
-                else if (line.StartsWith(BLOCK_END))
-                {
-                    Blocks.Add(currBlock);
-                    currBlock = null;
-                }
-                else
-                {
-                    id++;
+                string path = Directory.GetCurrentDirectory() + _rawPath + pathEnd;
+                if (IsDefault)
+                    path = _settingPath;
 
-                    string nuts = line.Substring(0, 2).ToUpper();
-                    int num = int.Parse(line.Substring(2, 3));
+                _fileReader = new StreamReader(path);
 
-                    currBlock.AddTrial(new Trial(id, this.ParseNuts(nuts, num), num, nuts));
+                Block currBlock = null;
+
+                string line;
+
+                int id = 0;
+
+                while ((line = _fileReader.ReadLine()) != null)
+                {
+                    if (line.Equals("")) continue;
+                    if (line.StartsWith(BLOCK_START))
+                    {
+                        string[] s = line.Split(" ".ToCharArray());
+                        currBlock = new Block(long.Parse(s[s.Length - 1]));
+                    }
+                    else if (line.StartsWith(BLOCK_END))
+                    {
+                        Blocks.Add(currBlock);
+                        currBlock = null;
+                    }
+                    else
+                    {
+                        id++;
+
+                        string nuts = line.Substring(0, 2).ToUpper();
+                        int num = int.Parse(line.Substring(2, 1));
+
+                        currBlock.AddTrial(new Trial(id, this.ParseNuts(nuts, num), num, nuts));
+                    }
                 }
+                _fileReader.Close();
+
+                this.WriteInputFile(pathEnd);
             }
-            _fileReader.Close();
+            catch (DirectoryNotFoundException e)
+            {
+                Directory.CreateDirectory(Directory.GetCurrentDirectory() + _defaultDirectory);
+                LoadDefaultRawFile(pathEnd);
+            }
+            catch (FileNotFoundException e)
+            {
+                if (IsDefault)
+                    this.WriteDefaultFile();
+                this.LoadDefaultRawFile(pathEnd);
+            }
+        }
 
-            this.WriteInputFile(pathEnd);
-            this.LoadInputFile(pathEnd);
+        private void LoadDefaultRawFile(string pathEnd)
+        {
+            IsDefault = true;
+            LoadRawFile(pathEnd);
+        }
+
+        private void WriteDefaultFile()
+        {
+            _fileWriter = new StreamWriter(Directory.GetCurrentDirectory() + _defaultPath);
+
+            _fileWriter.Write(_defaultRaw);
+
+            _fileWriter.Close();
         }
 
         private void WriteInputFile(string pathEnd)
         {
-            _fileWriter = new StreamWriter(_inPath + pathEnd);
+            _fileWriter = new StreamWriter(Directory.GetCurrentDirectory() + _inPath + pathEnd);
 
             foreach (Block b in Blocks)
             {
@@ -261,7 +313,7 @@ namespace PokerSimulation
         {
             return Blocks.Remove(b);
         }
-        
+
         #endregion
     }
 }
