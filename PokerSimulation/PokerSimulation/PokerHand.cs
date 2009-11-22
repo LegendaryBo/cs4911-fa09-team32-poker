@@ -456,17 +456,20 @@ namespace PokerSimulation
         }
 
         /// <summary>
-        /// 
+        /// Does the Hand contain a 5-card straight?
         /// </summary>
         /// <returns>
         /// True if the hand contains at least 5 cards of sequential rank, otherwise false.
         /// </returns>
         public bool HasStraight()
         {
+            // Special case: the ace may be a high card or low card for the straight
+            // First, test to see if the hand has a straight starting with an ace
             if (this.HasStraight(5, Rank.ACE))
             {
                 return true;
             }
+            // Now test to see if the hand has any other straight
             else
             {
                 for (int i = 0; i < (int)Rank.ACE - 4; ++i)
@@ -509,7 +512,7 @@ namespace PokerSimulation
             {
                 return false;
             }
-            // we've handled the special cases, now just apply the normal algorithm
+            // we've handled the special case, now just apply the normal algorithm
             else
             {
                 return this.HasStraightHelper(minimumNumberOfCards, startingWithRank, this.GetCardsOfRank(Rank.UNKNOWN).Count, ref matchedHand);

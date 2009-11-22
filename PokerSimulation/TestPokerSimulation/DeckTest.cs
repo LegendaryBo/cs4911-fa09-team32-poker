@@ -133,6 +133,7 @@ namespace TestProjectPokerSimulation
         [TestMethod()]
         public void InsertCardsTest()
         {
+            Deck.Instance.MakeFreshDeck();
             Card[] cards = { new Card(Suit.CLUBS, Rank.UNKNOWN), new Card(Suit.DIAMONDS, Rank.UNKNOWN) };
             Deck.Instance.InsertCards(cards);
             Assert.AreEqual(true, Deck.Instance.Contains(new Card(Suit.CLUBS, Rank.UNKNOWN)));
@@ -148,6 +149,7 @@ namespace TestProjectPokerSimulation
         [TestMethod()]
         public void RemoveCardTest()
         {
+            Deck.Instance.MakeFreshDeck();
             Card card = new Card(Suit.SPADES, Rank.ACE);
             bool actual;
             actual = Deck.Instance.RemoveCard(card);
@@ -162,8 +164,14 @@ namespace TestProjectPokerSimulation
         [TestMethod()]
         public void DealCardTest()
         {
+            Deck.Instance.MakeFreshDeck();
             Card expected = new Card(Suit.CLUBS, Rank.TWO);
             Card actual;
+            actual = Deck.Instance.DealCard();
+            Assert.AreEqual(expected, actual);
+            Assert.AreEqual(false, Deck.Instance.Contains(expected));
+
+            expected = new Card(Suit.CLUBS, Rank.THREE);
             actual = Deck.Instance.DealCard();
             Assert.AreEqual(expected, actual);
             Assert.AreEqual(false, Deck.Instance.Contains(expected));
@@ -175,6 +183,7 @@ namespace TestProjectPokerSimulation
         [TestMethod()]
         public void ContainsTest()
         {
+            Deck.Instance.MakeFreshDeck();
             Card invalid = new Card(Suit.UNKNOWN, Rank.ACE);
             Card valid = new Card(Suit.CLUBS, Rank.ACE);
             bool actual;
