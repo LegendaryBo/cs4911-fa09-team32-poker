@@ -293,6 +293,11 @@ namespace PokerSimulation
             }
         }
 
+        public List<Card> ToList()
+        {
+            return _hand.ToList<Card>();
+        }
+
         public Card[] ToArray()
         {
             return _hand.ToArray();

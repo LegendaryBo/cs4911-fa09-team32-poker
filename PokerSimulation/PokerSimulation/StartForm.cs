@@ -47,11 +47,11 @@ namespace PokerSimulation
         public void drawOnBoard()
         {
             generateHand();
-            pictureBox1.Image = (Image)boardCards[0].Image;
-            pictureBox2.Image = (Image)boardCards[1].Image;
-            pictureBox3.Image = (Image)boardCards[2].Image;
-            pictureBox4.Image = (Image)boardCards[3].Image;
-            pictureBox5.Image = (Image)boardCards[4].Image;
+            //pictureBox1.Image = (Image)boardCards[0].Image;
+            //pictureBox2.Image = (Image)boardCards[1].Image;
+            //pictureBox3.Image = (Image)boardCards[2].Image;
+            //pictureBox4.Image = (Image)boardCards[3].Image;
+            //pictureBox5.Image = (Image)boardCards[4].Image;
             
             //debugText = boardCards.ToString();
             //answerEntryText.Text = debugText;

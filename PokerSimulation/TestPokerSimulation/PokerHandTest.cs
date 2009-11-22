@@ -127,6 +127,63 @@ namespace TestPokerSimulation
         }
 
         /// <summary>
+        ///A test for HasXOfAKind
+        ///</summary>
+        [TestMethod()]
+        public void HasXOfAKindTest()
+        {
+            Card[] cards = { new Card("AS"), new Card("AH"), new Card("AC"), new Card("AD"), new Card("2H"), new Card("UU") };
+            PokerHand target = new PokerHand(cards);
+            Rank ofRank = Rank.ACE;
+            PokerHand matchedHand = new PokerHand();
+            PokerHand matchedHandExpected = new PokerHand();
+            bool expected = false;
+            bool actual;
+            actual = target.HasXOfAKind(ofRank, 6, ref matchedHand);
+            Assert.AreEqual(matchedHandExpected, matchedHand);
+            Assert.AreEqual(expected, actual);
+
+            expected = false;
+            ofRank = Rank.SEVEN;
+            actual = target.HasXOfAKind(ofRank, 5, ref matchedHand);
+            matchedHandExpected = new PokerHand();
+            Assert.AreEqual(matchedHandExpected, matchedHand);
+            Assert.AreEqual(expected, actual);
+
+            expected = true;
+            ofRank = Rank.ACE;
+            actual = target.HasXOfAKind(ofRank, 5, ref matchedHand);
+            matchedHandExpected = new PokerHand(cards);
+            matchedHandExpected.RemoveCard(new Card("2H"));
+            Assert.AreEqual(matchedHandExpected, matchedHand);
+            Assert.AreEqual(expected, actual);
+
+            expected = true;
+            matchedHand = new PokerHand();
+            actual = target.HasXOfAKind(ofRank, 4, ref matchedHand);
+            matchedHandExpected = new PokerHand(cards);
+            matchedHandExpected.RemoveCards(new Card("2H"), new Card("UU"));
+            Assert.AreEqual(matchedHandExpected, matchedHand);
+            Assert.AreEqual(expected, actual);
+
+            expected = true;
+            matchedHand = new PokerHand();
+            actual = target.HasXOfAKind(ofRank, 3, ref matchedHand);
+            matchedHandExpected = new PokerHand(cards);
+            matchedHandExpected.RemoveCards(new Card("AD"), new Card("2H"), new Card("UU"));
+            Assert.AreEqual(matchedHandExpected, matchedHand);
+            Assert.AreEqual(expected, actual);
+
+            expected = true;
+            matchedHand = new PokerHand();
+            actual = target.HasXOfAKind(ofRank, 2, ref matchedHand);
+            matchedHandExpected = new PokerHand(cards);
+            matchedHandExpected.RemoveCards(new Card("AC"), new Card("AD"), new Card("2H"), new Card("UU"));
+            Assert.AreEqual(matchedHandExpected, matchedHand);
+            Assert.AreEqual(expected, actual);
+        }
+
+        /// <summary>
         ///A test for OrderDescending
         ///</summary>
         [TestMethod()]

@@ -57,6 +57,7 @@
       <DependentUpon>BoardControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Card.cs" />
+    <Compile Include="Logger.cs" />
     <Compile Include="SessionTest.cs">
       <SubType>Form</SubType>
     </Compile>
