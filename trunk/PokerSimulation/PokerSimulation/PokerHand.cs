@@ -810,7 +810,7 @@ namespace PokerSimulation
 
             for (int i = 0; i < Deck.NUMBER_OF_RANKS; i++)
             {
-                for (int j = 0; i < Deck.NUMBER_OF_RANKS; j++)
+                for (int j = 0; j < Deck.NUMBER_OF_RANKS; j++)
                 {
                     if (i == j)
                     {
@@ -837,7 +837,7 @@ namespace PokerSimulation
 
             for (int i = 0; i < Deck.NUMBER_OF_RANKS; i++)
             {
-                for (int j = 0; i < Deck.NUMBER_OF_RANKS; j++)
+                for (int j = 0; j < Deck.NUMBER_OF_RANKS; j++)
                 {
                     if (i == j)
                     {
