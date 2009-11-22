@@ -53,7 +53,7 @@ namespace PokerSimulation
             // next, choose a starting card rank
             // let -1 mean that we start with an Ace-low flush
             // also, make sure that the range does not allow a royal flush to be dealt
-            Rank beginRank = (Rank)(new Random().Next(-1, (Deck.NUMBER_OF_RANKS - REQ_CARDS[SF] - 1)));
+            Rank beginRank = (Rank)(new Random().Next(-1, (Deck.NUMBER_OF_RANKS - (REQ_CARDS[SF] + 1))));
 
             PokerHand straightFlush;
 
@@ -63,7 +63,7 @@ namespace PokerSimulation
 
                 straightFlush = new PokerHand();
 
-                for (int i = (int)beginRank; i < REQ_CARDS[SF]; i++)
+                for (int i = (int)beginRank; i < REQ_CARDS[SF] + (int)beginRank; i++)
                 {
                     Rank rank;
 
@@ -115,7 +115,7 @@ namespace PokerSimulation
                 fourKind.InsertCard(Deck.Instance.DealCard());
 
             fourKind.Shuffle();
-            return fourKind; //return completed straightFlush
+            return fourKind; //return completed four of a kind
         }
 
         //Full House//Ruslan
@@ -179,7 +179,7 @@ namespace PokerSimulation
             //pick the suit of the FL
             int suit = 0;
             Random rand = new Random();
-            suit = rand.Next(0, 3);
+            suit = rand.Next(0, Deck.NUMBER_OF_SUITS);
             Boolean invalid = false;
 
             Card card;
