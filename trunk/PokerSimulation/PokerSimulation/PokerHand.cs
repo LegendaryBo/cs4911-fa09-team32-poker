@@ -683,9 +683,16 @@ namespace PokerSimulation
 
         public bool HasXOfAKind(Rank ofRank, int x, ref PokerHand matchedHand)
         {
-            if (GetCardsOfRank(ofRank).Count == x)
+            List<Card> allMatches = GetCardsOfRank(ofRank).ToList();
+            allMatches.AddRange(GetCardsOfRank(Rank.UNKNOWN).ToList());
+
+            if (allMatches.Count >= x)
             {
-                matchedHand.InsertCards(GetCardsOfRank(ofRank).ToArray());
+                IEnumerable<Card> matched = allMatches.Take(x);
+                foreach (Card c in matched)
+                {
+                    matchedHand.InsertCard(c);
+                }
                 return true;
             }
             else
