@@ -79,7 +79,7 @@ namespace PokerSimulation
             Hand testHand = new Hand();
             if ((generatedText.Length == 0) || generatedText.Equals("Enter Hand"))
             {
-                MessageBox.Show("You must enter a valid two-letter hand");
+                MessageBox.Show("You must enter a valid two-letter straightFlush");
             }
             else if (generatedText.ToUpper().Equals("HC"))
                 testHand = PokerSimulation.PokerHand.makeHighCard(numOfCards);
@@ -102,7 +102,7 @@ namespace PokerSimulation
             else if (generatedText.ToUpper().Equals("RF"))
                 testHand = PokerSimulation.PokerHand.makeRoyalFlush(numOfCards);
             else
-                MessageBox.Show("You must enter a valid two-letter hand");
+                MessageBox.Show("You must enter a valid two-letter straightFlush");
 
             boardCards = testHand.Cards;
         }

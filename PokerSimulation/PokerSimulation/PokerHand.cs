@@ -27,7 +27,7 @@ namespace PokerSimulation
         {
             int suit = new Random().Next(Deck.NUMBER_OF_SUITS);
 
-            // first, create a new + shuffled deck
+            // first, create a new deck
             Deck.Instance.MakeShuffledDeck();
             PokerHand royalFlush = new PokerHand();
 
@@ -47,30 +47,48 @@ namespace PokerSimulation
         //Straight Flush//JSS
         static public PokerHand makeStraightFlush(int numCards)
         {
-            Random r = new Random();
-            Deck deck = Deck.Instance;
-            PokerHand hand = new PokerHand();
+            // choose a random suit
+            Suit suit = (Suit)(new Random().Next(0, Deck.NUMBER_OF_SUITS));
 
-            deck.MakeShuffledDeck();
+            // next, choose a starting card rank
+            // let -1 mean that we start with an Ace-low flush
+            // also, make sure that the range does not allow a royal flush to be dealt
+            Rank beginRank = (Rank)(new Random().Next(-1, (Deck.NUMBER_OF_RANKS - REQ_CARDS[SF] - 1)));
 
-            Rank rank = (Rank)r.Next(3, 11);
-            Suit suit = (Suit)r.Next(0, 3);
+            PokerHand straightFlush;
 
-            for (int i = 0; i < REQ_CARDS[SF]; i++)
+            do
             {
-                Rank cardRank = rank - i;
-                if (cardRank < 0) cardRank = Rank.ACE;
+                Deck.Instance.MakeFreshDeck();
 
-                hand.InsertCard(new Card(suit, cardRank));
-            }
+                straightFlush = new PokerHand();
 
-            deck.RemoveCards(hand.ToArray());
+                for (int i = (int)beginRank; i < REQ_CARDS[SF]; i++)
+                {
+                    Rank rank;
 
-            for (int i = 0; i < numCards - REQ_CARDS[SF]; i++)
-                hand.InsertCard(deck.DealCard());
+                    if (i == -1)
+                    {
+                        rank = Rank.ACE;
+                    }
+                    else
+                    {
+                        rank = (Rank)i;
+                    }
 
-            hand.Shuffle();
-            return hand;
+                    straightFlush.InsertCard(new Card(suit, rank));
+                }
+
+                // remove straight flush cards from the deck
+                Deck.Instance.RemoveCards(straightFlush.ToArray());
+
+                // fill the rest of the hand with random cards
+                for (int i = 0; i < numCards - REQ_CARDS[SF]; i++)
+                    straightFlush.InsertCard(Deck.Instance.DealCard());
+            } while (!straightFlush.HasRoyalFlush());
+
+            straightFlush.Shuffle();
+            return straightFlush;
         }
 
         //Four of a Kind//JSS
@@ -80,10 +98,10 @@ namespace PokerSimulation
             Deck.Instance.MakeShuffledDeck();
             PokerHand fourKind = new PokerHand();
 
-            //pick the rank of the FK
+            //pick the beginRank of the FK
             int rank = 0;
             Random rand = new Random();
-            rank = rand.Next(0, 12);
+            rank = rand.Next(0, Deck.NUMBER_OF_RANKS);
 
             for (int i = 0; i < REQ_CARDS[FK]; i++)
                 fourKind.InsertCard(new Card((Suit)i, (Rank)rank));
@@ -91,13 +109,13 @@ namespace PokerSimulation
             Deck.Instance.RemoveCards(fourKind.ToArray());
 
             //random 3 cards
-            //can be random because no cards that are dealt will make the hand better than a 4-Kind
+            //can be random because no cards that are dealt will make the straightFlush better than a 4-Kind
 
             for (int i = 0; i < numCards - REQ_CARDS[FK]; i++)
                 fourKind.InsertCard(Deck.Instance.DealCard());
 
             fourKind.Shuffle();
-            return fourKind; //return completed hand
+            return fourKind; //return completed straightFlush
         }
 
         //Full House//Ruslan
@@ -239,12 +257,12 @@ namespace PokerSimulation
             PokerHand threeKind = new PokerHand();
             Card card;
 
-            //pick the rank of the TK
+            //pick the beginRank of the TK
             int rank = 0;
             Random rand = new Random();
             rank = rand.Next(0, 12);
 
-            //Get all four cards of that rank, and randomly choose one to remove from the hand.
+            //Get all four cards of that beginRank, and randomly choose one to remove from the straightFlush.
             //This takes care of finding that card later to remove it from the deck so you won't
             //end up with a 4-Kind.
             for (int i = 0; i < REQ_CARDS[TK] + 1; i++)
@@ -254,7 +272,7 @@ namespace PokerSimulation
                 Deck.Instance.RemoveCard(card);
             }
 
-            //Generate 4 cards, knowing that a Full House, 4-Kind of a different rank, straight, flush,
+            //Generate 4 cards, knowing that a Full House, 4-Kind of a different beginRank, straight, flush,
             //Straight flush and Royal Flush will beat 3-Kind.
 
             PokerHand randHand = null;
@@ -270,17 +288,17 @@ namespace PokerSimulation
                 for (int i = 0; i < numCards - REQ_CARDS[TK]; i++)
                     randHand.InsertCard(Deck.Instance.DealCard());
 
-                //checks to see how many of each rank are in the hand.
+                //checks to see how many of each beginRank are in the straightFlush.
                 for (int j = 0; j < 12; j++)
                 {
-                    //If there are 2 or more of a rank, and that rank is not the 3-Kind rank, hand is invalid
+                    //If there are 2 or more of a beginRank, and that beginRank is not the 3-Kind beginRank, straightFlush is invalid
                     if ((randHand.CountOf((Rank)j) >= 2) && (j != rank))
                     {
                         invalid = true;
                     }
                 }
 
-                //checks for Straight and Flush in hand
+                //checks for Straight and Flush in straightFlush
                 if (invalid == false)
                     invalid = randHand.HasStraight() || randHand.HasFlush(3);
 
@@ -355,20 +373,20 @@ namespace PokerSimulation
         //One Pair//JSS
         static public PokerHand makeOnePair(int numCards)
         {
-            //pick the rank of the OP
-            //pick two of the four cards of that rank
-            //Remove the other 2 cards of that rank from deck
+            //pick the beginRank of the OP
+            //pick two of the four cards of that beginRank
+            //Remove the other 2 cards of that beginRank from deck
             //random 5 cards NOT OF THAT RANK
 
             //Added by EJ
             Deck.Instance.MakeShuffledDeck();
             PokerHand onePair = new PokerHand();
 
-            //pick the rank of the TK
+            //pick the beginRank of the TK
             Random rand = new Random();
             int rank = rand.Next(0, 12);
 
-            //Get all four cards of that rank, and randomly choose twp to remove from the hand.
+            //Get all four cards of that beginRank, and randomly choose twp to remove from the straightFlush.
             //This takes care of finding those cards later to remove them from the deck so you won't
             //end up with a 4-Kind or 3-Kind.
             int suit, suit2 = 0;
@@ -388,7 +406,7 @@ namespace PokerSimulation
             onePair.RemoveCard(new Card((Suit)suit, (Rank)rank));
             onePair.RemoveCard(new Card((Suit)suit2, (Rank)rank));
 
-            //Generate 5 cards, knowing that a Full House, 4-Kind of a different rank, straight, flush,
+            //Generate 5 cards, knowing that a Full House, 4-Kind of a different beginRank, straight, flush,
             //Straight flush and Royal Flush will beat 2-Kind.
 
             PokerHand randHand = null;
@@ -404,16 +422,16 @@ namespace PokerSimulation
                 for (int i = 0; i < numCards - REQ_CARDS[OP]; i++)
                     randHand.InsertCard(Deck.Instance.DealCard());
 
-                //checks to see how many of each rank are in the hand.
+                //checks to see how many of each beginRank are in the straightFlush.
                 for (int j = 0; j < 12; j++)
                 {
-                    //If there are 2 or more of a rank, and that rank is not the One Pair rank, hand is invalid
+                    //If there are 2 or more of a beginRank, and that beginRank is not the One Pair beginRank, straightFlush is invalid
                     if ((randHand.CountOf((Rank)j) >= 2) && (j != rank))
                     {
                         invalid = true;
                     }
                 }
-                //checks for Straight and Flush in hand
+                //checks for Straight and Flush in straightFlush
                 if (!invalid)
                     invalid = randHand.HasStraight() || randHand.HasFlush(3);
 
@@ -459,17 +477,17 @@ namespace PokerSimulation
         /// Does the Hand contain a 5-card straight?
         /// </summary>
         /// <returns>
-        /// True if the hand contains at least 5 cards of sequential rank, otherwise false.
+        /// True if the straightFlush contains at least 5 cards of sequential beginRank, otherwise false.
         /// </returns>
         public bool HasStraight()
         {
             // Special case: the ace may be a high card or low card for the straight
-            // First, test to see if the hand has a straight starting with an ace
+            // First, test to see if the straightFlush has a straight starting with an ace
             if (this.HasStraight(5, Rank.ACE))
             {
                 return true;
             }
-            // Now test to see if the hand has any other straight
+            // Now test to see if the straightFlush has any other straight
             else
             {
                 for (int i = 0; i < (int)Rank.ACE - 4; ++i)
@@ -495,7 +513,7 @@ namespace PokerSimulation
             // an ACE can be a low card or high card
             // in the Rank enumeration, it has the highest value other than UNKNOWN
             // therefore, we handle the ACE being a low card as a special case
-            // first, when we've got an ACE in our hand
+            // first, when we've got an ACE in our straightFlush
             if (startingWithRank == Rank.ACE && this.GetCardsOfRank(Rank.ACE).Count > 0 && minimumNumberOfCards > 1)
             {
                 matchedHand.InsertCard(this.GetCardsOfRank(Rank.ACE).ToArray()[0]);
@@ -625,6 +643,21 @@ namespace PokerSimulation
             return false;
         }
 
+        public bool HasRoyalFlush()
+        {
+            PokerHand hand = new PokerHand();
+
+            for (int i = 0; i < Deck.NUMBER_OF_SUITS; i++)
+            {
+                if (HasRoyalFlush(5, (Suit)i, ref hand))
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
         public bool HasRoyalFlush(int minimumNumberOfCards, Suit suit, ref PokerHand matchedHand)
         {
             Rank highestRank = Rank.ACE;
@@ -638,6 +671,29 @@ namespace PokerSimulation
                 {
                     matchedHand = royalFlush;
                     return true;
+                }
+            }
+
+            return false;
+        }
+
+        public bool HasStraightFlush()
+        {
+            PokerHand hand = new PokerHand();
+
+            for (int i = 0; i < Deck.NUMBER_OF_SUITS; i++)
+            {
+                // first check for an ace-low straight flush
+                if (HasStraightFlush(5, Rank.ACE, (Suit)i, ref hand))
+                {
+                    return true;
+                }
+                for (int j = 0; j < Deck.NUMBER_OF_RANKS - 5; j++)
+                {
+                    if (HasStraightFlush(5, (Rank)j, (Suit)i, ref hand))
+                    {
+                        return true;
+                    }
                 }
             }
 

@@ -157,15 +157,15 @@ namespace PokerSimulation
 
             while (_hand.Count > 0)
             {
-                // select a card from the cards left in the hand
+                // select a card from the cards left in the straightFlush
                 int randomIndex = rand.Next(_hand.Count);
-                // add the selected card to the temp hand
+                // add the selected card to the temp straightFlush
                 tempCards.Add(_hand[randomIndex]);
-                // remove the selected card from the current hand
+                // remove the selected card from the current straightFlush
                 _hand.RemoveAt(randomIndex);
             }
 
-            // set the current hand to the shuffled hand
+            // set the current straightFlush to the shuffled straightFlush
             _hand = tempCards;
         }
 
@@ -213,14 +213,14 @@ namespace PokerSimulation
         }
 
         /// <summary>
-        /// Determines the number of cards of a given suit within the hand.
+        /// Determines the number of cards of a given suit within the straightFlush.
         /// </summary>
-        /// <param name="rank">
+        /// <param name="beginRank">
         /// The suit of the cards the method should count.
         /// </param>
         /// <returns>
-        /// The number of cards of the given suit within the hand.  If no cards of the given
-        /// suit are held in the hand, then the method returns 0.
+        /// The number of cards of the given suit within the straightFlush.  If no cards of the given
+        /// suit are held in the straightFlush, then the method returns 0.
         /// </returns>
         public int CountOf(Suit suit)
         {
@@ -238,14 +238,14 @@ namespace PokerSimulation
         }
 
         /// <summary>
-        /// Determines the number of cards of a given rank within the hand.
+        /// Determines the number of cards of a given beginRank within the straightFlush.
         /// </summary>
-        /// <param name="rank">
-        /// The rank of the cards the method should count.
+        /// <param name="beginRank">
+        /// The beginRank of the cards the method should count.
         /// </param>
         /// <returns>
-        /// The number of cards of the given rank within the hand.  If no cards of the given
-        /// rank are held in the hand, then the method returns 0.
+        /// The number of cards of the given beginRank within the straightFlush.  If no cards of the given
+        /// beginRank are held in the straightFlush, then the method returns 0.
         /// </returns>
         public int CountOf(Rank rank)
         {
@@ -263,7 +263,7 @@ namespace PokerSimulation
         }
 
         /// <summary>
-        /// Orders the hand in ascending rank.
+        /// Orders the straightFlush in ascending beginRank.
         /// </summary>
         public void OrderAscending()
         {
@@ -271,7 +271,7 @@ namespace PokerSimulation
         }
 
         /// <summary>
-        /// Orders the hand in descending rank.
+        /// Orders the straightFlush in descending beginRank.
         /// </summary>
         public void OrderDescending()
         {
