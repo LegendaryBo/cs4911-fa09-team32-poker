@@ -85,7 +85,7 @@ namespace PokerSimulation
                 // fill the rest of the hand with random cards
                 for (int i = 0; i < numCards - REQ_CARDS[SF]; i++)
                     straightFlush.InsertCard(Deck.Instance.DealCard());
-            } while (!straightFlush.HasRoyalFlush());
+            } while (straightFlush.HasRoyalFlush());
 
             straightFlush.Shuffle();
             return straightFlush;
