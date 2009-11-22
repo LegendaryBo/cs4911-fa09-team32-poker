@@ -80,53 +80,9 @@ namespace TestPokerSimulation
 
             PokerHand testHand = PokerSimulation.PokerHand.makeStraightFlush(5);
 
-            Assert.IsTrue(
-                testHand.HasStraightFlush(5, Rank.TEN, Suit.CLUBS, ref hand) ||
-                testHand.HasStraightFlush(5, Rank.NINE, Suit.CLUBS, ref hand) ||
-                testHand.HasStraightFlush(5, Rank.EIGHT, Suit.CLUBS, ref hand) ||
-                testHand.HasStraightFlush(5, Rank.SEVEN, Suit.CLUBS, ref hand) ||
-                testHand.HasStraightFlush(5, Rank.SIX, Suit.CLUBS, ref hand) ||
-                testHand.HasStraightFlush(5, Rank.FIVE, Suit.CLUBS, ref hand) ||
-                testHand.HasStraightFlush(5, Rank.FOUR, Suit.CLUBS, ref hand) ||
-                testHand.HasStraightFlush(5, Rank.THREE, Suit.CLUBS, ref hand) ||
-                testHand.HasStraightFlush(5, Rank.TWO, Suit.CLUBS, ref hand) ||
-                testHand.HasStraightFlush(5, Rank.ACE, Suit.CLUBS, ref hand) ||
-
-                testHand.HasStraightFlush(5, Rank.TEN, Suit.SPADES, ref hand) ||
-                testHand.HasStraightFlush(5, Rank.NINE, Suit.SPADES, ref hand) ||
-                testHand.HasStraightFlush(5, Rank.EIGHT, Suit.SPADES, ref hand) ||
-                testHand.HasStraightFlush(5, Rank.SEVEN, Suit.SPADES, ref hand) ||
-                testHand.HasStraightFlush(5, Rank.SIX, Suit.SPADES, ref hand) ||
-                testHand.HasStraightFlush(5, Rank.FIVE, Suit.SPADES, ref hand) ||
-                testHand.HasStraightFlush(5, Rank.FOUR, Suit.SPADES, ref hand) ||
-                testHand.HasStraightFlush(5, Rank.THREE, Suit.SPADES, ref hand) ||
-                testHand.HasStraightFlush(5, Rank.TWO, Suit.SPADES, ref hand) ||
-                testHand.HasStraightFlush(5, Rank.ACE, Suit.SPADES, ref hand) ||
-
-                testHand.HasStraightFlush(5, Rank.TEN, Suit.HEARTS, ref hand) ||
-                testHand.HasStraightFlush(5, Rank.NINE, Suit.HEARTS, ref hand) ||
-                testHand.HasStraightFlush(5, Rank.EIGHT, Suit.HEARTS, ref hand) ||
-                testHand.HasStraightFlush(5, Rank.SEVEN, Suit.HEARTS, ref hand) ||
-                testHand.HasStraightFlush(5, Rank.SIX, Suit.HEARTS, ref hand) ||
-                testHand.HasStraightFlush(5, Rank.FIVE, Suit.HEARTS, ref hand) ||
-                testHand.HasStraightFlush(5, Rank.FOUR, Suit.HEARTS, ref hand) ||
-                testHand.HasStraightFlush(5, Rank.THREE, Suit.HEARTS, ref hand) ||
-                testHand.HasStraightFlush(5, Rank.TWO, Suit.HEARTS, ref hand) ||
-                testHand.HasStraightFlush(5, Rank.ACE, Suit.HEARTS, ref hand) ||
-
-                testHand.HasStraightFlush(5, Rank.TEN, Suit.DIAMONDS, ref hand) ||
-                testHand.HasStraightFlush(5, Rank.NINE, Suit.DIAMONDS, ref hand) ||
-                testHand.HasStraightFlush(5, Rank.EIGHT, Suit.DIAMONDS, ref hand) ||
-                testHand.HasStraightFlush(5, Rank.SEVEN, Suit.DIAMONDS, ref hand) ||
-                testHand.HasStraightFlush(5, Rank.SIX, Suit.DIAMONDS, ref hand) ||
-                testHand.HasStraightFlush(5, Rank.FIVE, Suit.DIAMONDS, ref hand) ||
-                testHand.HasStraightFlush(5, Rank.FOUR, Suit.DIAMONDS, ref hand) ||
-                testHand.HasStraightFlush(5, Rank.THREE, Suit.DIAMONDS, ref hand) ||
-                testHand.HasStraightFlush(5, Rank.TWO, Suit.DIAMONDS, ref hand) ||
-                testHand.HasStraightFlush(5, Rank.ACE, Suit.DIAMONDS, ref hand)
-                );
+            Assert.IsTrue(testHand.HasStraightFlush());
             Assert.IsFalse(testHand.HasFourOfAKind(Rank.ACE, ref hand));
-            Assert.IsFalse(testHand.HasFullHouse(Rank.ACE, Rank.KING, ref hand));
+            Assert.IsFalse(testHand.HasRoyalFlush());
         }
 
         [TestMethod]

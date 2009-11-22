@@ -722,19 +722,61 @@ namespace PokerSimulation
             return HasXOfAKind(ofRank, 4, ref matchedHand);
         }
 
+        public bool HasFourOfAKind()
+        {
+            PokerHand hand = new PokerHand();
+            for (int i = 0; i < Deck.NUMBER_OF_RANKS; i++)
+            {
+                if (HasFourOfAKind((Rank)i, ref hand))
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
         public bool HasThreeOfAKind(Rank ofRank, ref PokerHand matchedHand)
         {
             return HasXOfAKind(ofRank, 3, ref matchedHand);
         }
 
+        public bool HasThreeOfAKind()
+        {
+            PokerHand hand = new PokerHand();
+            for (int i = 0; i < Deck.NUMBER_OF_RANKS; i++)
+            {
+                if (HasThreeOfAKind((Rank)i, ref hand))
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
         public bool HasTwoOfAKind(Rank ofRank, ref PokerHand matchedHand)
         {
-            return HasPairOf(ofRank, ref matchedHand);
+            return HasXOfAKind(ofRank, 2, ref matchedHand);
         }
 
         public bool HasPairOf(Rank ofRank, ref PokerHand matchedHand)
         {
             return HasXOfAKind(ofRank, 2, ref matchedHand);
+        }
+
+        public bool HasPair()
+        {
+            PokerHand hand = new PokerHand();
+            for (int i = 0; i < Deck.NUMBER_OF_RANKS; i++)
+            {
+                if (HasTwoOfAKind((Rank)i, ref hand))
+                {
+                    return true;
+                }
+            }
+
+            return false;
         }
 
         public bool HasXOfAKind(Rank ofRank, int x, ref PokerHand matchedHand)
@@ -762,9 +804,53 @@ namespace PokerSimulation
             return (HasPairOf(firstRank, ref matchedHand) && HasPairOf(secondRank, ref matchedHand));
         }
 
+        public bool HasTwoPair()
+        {
+            PokerHand hand = new PokerHand();
+
+            for (int i = 0; i < Deck.NUMBER_OF_RANKS; i++)
+            {
+                for (int j = 0; i < Deck.NUMBER_OF_RANKS; j++)
+                {
+                    if (i == j)
+                    {
+                        continue;
+                    }
+                    if (HasTwoPair((Rank)i, (Rank)j, ref hand))
+                    {
+                        return true;
+                    }
+                }
+            }
+
+            return false;
+        }
+
         public bool HasFullHouse(Rank tripleRank, Rank pairRank, ref PokerHand matchedHand)
         {
             return (HasThreeOfAKind(tripleRank, ref matchedHand) && HasPairOf(pairRank, ref matchedHand));
+        }
+
+        public bool HasFullHouse()
+        {
+            PokerHand hand = new PokerHand();
+
+            for (int i = 0; i < Deck.NUMBER_OF_RANKS; i++)
+            {
+                for (int j = 0; i < Deck.NUMBER_OF_RANKS; j++)
+                {
+                    if (i == j)
+                    {
+                        continue;
+                    }
+                    if (HasFullHouse((Rank)i, (Rank)j, ref hand))
+                    {
+                        return true;
+                    }
+                }
+            }
+
+            return false;
         }
     }
 }
