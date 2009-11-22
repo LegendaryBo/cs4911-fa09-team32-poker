@@ -20,7 +20,7 @@ namespace PokerSimulation
         string filename = "";
         string lastFilename = "";
         bool newFile = false;
-        TextWriter tw = new StreamWriter("hand.txt");
+        TextWriter tw = new StreamWriter("straightFlush.txt");
 
         public TestingForm()
         {
@@ -38,7 +38,7 @@ namespace PokerSimulation
             testHand = new Hand();
             if((generatedText.Length == 0) || generatedText.Equals("Enter Hand"))
             {
-                MessageBox.Show("You must enter a valid two-letter hand");
+                MessageBox.Show("You must enter a valid two-letter straightFlush");
             }
             else if (generatedText.ToUpper().Equals("HC"))
                 testHand = PokerSimulation.PokerHand.makeHighCard(numOfCards);
@@ -61,7 +61,7 @@ namespace PokerSimulation
             else if (generatedText.ToUpper().Equals("RF"))
                 testHand = PokerSimulation.PokerHand.makeRoyalFlush(numOfCards);
             else
-                MessageBox.Show("You must enter a valid two-letter hand");
+                MessageBox.Show("You must enter a valid two-letter straightFlush");
 
             handCount++;
             writeHandToFile();
@@ -115,7 +115,7 @@ namespace PokerSimulation
             // write a line of text to the file
             if (tw == null)
             {
-                TextWriter newTw = new StreamWriter("hand.txt");
+                TextWriter newTw = new StreamWriter("straightFlush.txt");
                 tw = newTw;
             }
             else

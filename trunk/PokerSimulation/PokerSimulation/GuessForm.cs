@@ -54,7 +54,7 @@ namespace PokerSimulation
                 //Make sure that the guess TextBox is not empty
                 if (guessTextBox.Text != "")
                 {
-                    //Feedback generated here because we are asking about the last hand that was generated.
+                    //Feedback generated here because we are asking about the last straightFlush that was generated.
                     feedbackText = writeFeedback();
                     enableTextBoxes();
                     cardsListBox.Items.Clear();
@@ -176,9 +176,9 @@ namespace PokerSimulation
         {
             Hand returnHand = new Hand();
 
-            //This assumes that the hand from the file will look like: 
+            //This assumes that the straightFlush from the file will look like: 
             //"[2-letter Hand][Number of cards to generate (5-7)]"
-            //Ex. FL6 for a flush hand of 6 cards.
+            //Ex. FL6 for a flush straightFlush of 6 cards.
             switch (hand.Substring(0,2).ToUpper())
             {
                 case "HC":
@@ -283,7 +283,7 @@ namespace PokerSimulation
             // write a line of text to the file
             if (tw == null)
             {
-                TextWriter newTw = new StreamWriter("hand.txt");
+                TextWriter newTw = new StreamWriter("straightFlush.txt");
                 tw = newTw;
             }
             else

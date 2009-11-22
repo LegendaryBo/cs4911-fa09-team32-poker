@@ -7,7 +7,7 @@ using System.Drawing;
 namespace PokerSimulation
 {
     /// <summary>
-    /// A card has a certain suit and rank, or is a wild card.
+    /// A card has a certain suit and beginRank, or is a wild card.
     /// </summary>
     public class Card
     {
@@ -36,9 +36,9 @@ namespace PokerSimulation
 
         static Card()
         {
-            #region create dictionary for mapping rank strings to rank values
+            #region create dictionary for mapping beginRank strings to beginRank values
 
-            // Add the short representations of each rank to the dictionary
+            // Add the short representations of each beginRank to the dictionary
             _rankMappings.Add("A", Rank.ACE);
             _rankMappings.Add("2", Rank.TWO);
             _rankMappings.Add("3", Rank.THREE);
@@ -54,7 +54,7 @@ namespace PokerSimulation
             _rankMappings.Add("K", Rank.KING);
             _rankMappings.Add("U", Rank.UNKNOWN);
 
-            // Add each rank's full name to the dictionary
+            // Add each beginRank's full name to the dictionary
             String[] rankStrings = Enum.GetNames(typeof(Rank));
             foreach (string r in rankStrings)
             {
@@ -72,7 +72,7 @@ namespace PokerSimulation
             _suitMappings.Add("S", Suit.SPADES);
             _suitMappings.Add("U", Suit.UNKNOWN);
 
-            // Add each rank's full name to the dictionary
+            // Add each beginRank's full name to the dictionary
             String[] suitStrings = Enum.GetNames(typeof(Suit));
             foreach (string s in suitStrings)
             {
@@ -85,7 +85,7 @@ namespace PokerSimulation
         /// <summary>
         /// Constructor for a Card.
         /// </summary>
-        /// <param name="rank">The Rank of the card.</param>
+        /// <param name="beginRank">The Rank of the card.</param>
         /// <param name="suit">The Suit of the card.</param>
         public Card(Rank rank, Suit suit)
         {
@@ -97,7 +97,7 @@ namespace PokerSimulation
         /// Constructor for a Card.
         /// </summary>
         /// <param name="suit">The Suit of the card.</param>
-        /// <param name="rank">The Rank of the card.</param>
+        /// <param name="beginRank">The Rank of the card.</param>
         public Card(Suit suit, Rank rank)
         {
             Suit = suit;
@@ -107,7 +107,7 @@ namespace PokerSimulation
         /// <summary>
         /// Constructor for a Card.
         /// </summary>
-        /// <param name="rank">A single character representing the card's rank.</param>
+        /// <param name="beginRank">A single character representing the card's beginRank.</param>
         /// <param name="suit">A single character representing the card's suit.</param>
         public Card(char rank, char suit) : this(rank.ToString(), suit.ToString()) { }
 
@@ -134,7 +134,7 @@ namespace PokerSimulation
         /// <summary>
         /// Constructor for a Card.
         /// </summary>
-        /// <param name="rank">The card's rank as a string.</param>
+        /// <param name="beginRank">The card's beginRank as a string.</param>
         /// <param name="suit">The card's suit as a string.</param>
         public Card(string rank, string suit)
         {
@@ -158,7 +158,7 @@ namespace PokerSimulation
 
             if (!_rankMappings.ContainsKey(rank))
             {
-                throw new ArgumentException("The rank string {" + rank + "} is an invalid argument.");
+                throw new ArgumentException("The beginRank string {" + rank + "} is an invalid argument.");
             }
             else
             {
@@ -176,7 +176,7 @@ namespace PokerSimulation
         }
 
         /// <summary>
-        /// Retrieves the valid string representations for a Card's rank.
+        /// Retrieves the valid string representations for a Card's beginRank.
         /// </summary>
         /// <returns>A List of valid strings for a Card's Rank.</returns>
         public static List<string> ValidRankStrings()
@@ -196,7 +196,7 @@ namespace PokerSimulation
         /// <summary>
         /// Checks if a string is a valid Rank.
         /// </summary>
-        /// <param name="rank">The string to check.</param>
+        /// <param name="beginRank">The string to check.</param>
         /// <returns>True if the string is a valid Rank, otherwise false.</returns>
         public static bool IsValidRank(string rank)
         {
@@ -337,7 +337,7 @@ namespace PokerSimulation
     /// The Rank enumeration contains all of the valid card values for a Deck, in ascending order.
     /// </summary>
     /// <remarks>
-    /// Note that the lowest rank in this deck is 2 and the highest is an ace.
+    /// Note that the lowest beginRank in this deck is 2 and the highest is an ace.
     /// </remarks>
     public enum Rank
     {

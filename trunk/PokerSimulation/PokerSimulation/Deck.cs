@@ -40,7 +40,7 @@ namespace PokerSimulation
             // outer loop is for suit
             for (int i = 0; i < numberOfSuits; i++)
             {
-                // inner loop is for rank
+                // inner loop is for beginRank
                 for (int j = 0; j < numberOfRanks; j++)
                 {
                     Card c = new Card((Suit)i, (Rank)j);

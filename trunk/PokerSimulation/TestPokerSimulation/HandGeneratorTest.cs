@@ -335,7 +335,7 @@ namespace TestPokerSimulation
         [TestMethod]
         public void makeFlushTest()
         {
-            //PokerHand hand = new PokerHand();
+            //PokerHand straightFlush = new PokerHand();
 
             PokerHand testHand5 = PokerSimulation.PokerHand.makeFlush(5);
 
@@ -345,7 +345,7 @@ namespace TestPokerSimulation
         [TestMethod]
         public void makeStraightTest()
         {
-            //PokerHand hand = new PokerHand();
+            //PokerHand straightFlush = new PokerHand();
 
             PokerHand testHand6 = PokerSimulation.PokerHand.makeStraight(5);
 
