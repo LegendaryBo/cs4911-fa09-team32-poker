@@ -23,7 +23,7 @@ namespace PokerSimulation
         public PokerHand(params Card[] cards):base(cards){}
 
         //Royal Flush//JC
-        static public PokerHand makeRoyalFlush(int numCards)
+        static public PokerHand MakeRoyalFlush(int numCards)
         {
             int suit = new Random().Next(Deck.NUMBER_OF_SUITS);
 
@@ -45,7 +45,7 @@ namespace PokerSimulation
         }
 
         //Straight Flush//JSS
-        static public PokerHand makeStraightFlush(int numCards)
+        static public PokerHand MakeStraightFlush(int numCards)
         {
             // choose a random suit
             Suit suit = (Suit)(new Random().Next(0, Deck.NUMBER_OF_SUITS));
@@ -92,7 +92,7 @@ namespace PokerSimulation
         }
 
         //Four of a Kind//JSS
-        static public PokerHand makeFourOfAKind(int numCards)
+        static public PokerHand MakeFourOfAKind(int numCards)
         {
             //Added by EJ
             Deck.Instance.MakeShuffledDeck();
@@ -119,7 +119,7 @@ namespace PokerSimulation
         }
 
         //Full House//Ruslan
-        static public PokerHand makeFullHouse(int numCards)
+        static public PokerHand MakeFullHouse(int numCards)
         {
             Deck deck = Deck.Instance;
             PokerHand hand = new PokerHand();
@@ -170,7 +170,7 @@ namespace PokerSimulation
         }
 
         //Flush//JSS
-        static public PokerHand makeFlush(int numCards)
+        static public PokerHand MakeFlush(int numCards)
         {
             //Added by EJ
             Deck.Instance.MakeShuffledDeck();
@@ -213,7 +213,7 @@ namespace PokerSimulation
         }
 
         //Straight//Ruslan
-        static public PokerHand makeStraight(int numCards)
+        static public PokerHand MakeStraight(int numCards)
         {
             Random r = new Random();
             Deck deck = Deck.Instance;
@@ -250,7 +250,7 @@ namespace PokerSimulation
         }
 
         //Three of a Kind//JSS
-        static public PokerHand makeThreeOfAKind(int numCards)
+        static public PokerHand MakeThreeOfAKind(int numCards)
         {
             //Added by EJ
             Deck.Instance.MakeShuffledDeck();
@@ -298,9 +298,9 @@ namespace PokerSimulation
                     }
                 }
 
-                //checks for Straight and Flush in straightFlush
+                //checks for Straight, Flush and Full House in straightFlush
                 if (invalid == false)
-                    invalid = randHand.HasStraight() || randHand.HasFlush(3);
+                    invalid = randHand.HasStraight() || randHand.HasFlush(3) || randHand.HasFullHouse();
 
             } while (invalid);
 
@@ -309,7 +309,7 @@ namespace PokerSimulation
         }
 
         //Two Pair//Ruslan
-        static public PokerHand makeTwoPair(int numCards)
+        static public PokerHand MakeTwoPair(int numCards)
         {
             Deck deck = Deck.Instance;
             PokerHand hand = new PokerHand();
@@ -331,6 +331,7 @@ namespace PokerSimulation
             int suitLast = 3;
 
             Rank[] ranks = new Rank[] { c[0].Rank, c[1].Rank };
+            deck.ReturnCards(c);
 
             for (int i = 0; i < 4; i++)
             {
@@ -371,7 +372,7 @@ namespace PokerSimulation
         }
 
         //One Pair//JSS
-        static public PokerHand makeOnePair(int numCards)
+        static public PokerHand MakeOnePair(int numCards)
         {
             //pick the beginRank of the OP
             //pick two of the four cards of that beginRank
@@ -433,7 +434,7 @@ namespace PokerSimulation
                 }
                 //checks for Straight and Flush in straightFlush
                 if (!invalid)
-                    invalid = randHand.HasStraight() || randHand.HasFlush(3);
+                    invalid = randHand.HasStraight() || randHand.HasFlush(3) || randHand.HasTwoPair();
 
             } while (invalid);
 
@@ -442,20 +443,18 @@ namespace PokerSimulation
         }
 
         //High Card//Ruslan
-        static public PokerHand makeHighCard(int numCards)
+        static public PokerHand MakeHighCard(int numCards)
         {
             PokerHand hand;
-            Deck deck = Deck.Instance;
             Boolean invalid = false;
 
             do
             {
-
-                deck.MakeShuffledDeck();
+                Deck.Instance.MakeShuffledDeck();
 
                 hand = new PokerHand();
 
-                for (int i = 0; i < numCards; i++) hand.InsertCard(deck.DealCard());
+                for (int i = 0; i < numCards; i++) hand.InsertCard(Deck.Instance.DealCard());
 
                 Boolean hasPair = false;
                 for (int i = 0; i < 13; i++)
@@ -470,6 +469,7 @@ namespace PokerSimulation
                 invalid = hand.HasFlush() || hand.HasStraight() || hasPair;
             } while (invalid);
 
+            hand.Shuffle();
             return hand;
         }
 

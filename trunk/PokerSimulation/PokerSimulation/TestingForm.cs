@@ -41,25 +41,25 @@ namespace PokerSimulation
                 MessageBox.Show("You must enter a valid two-letter straightFlush");
             }
             else if (generatedText.ToUpper().Equals("HC"))
-                testHand = PokerSimulation.PokerHand.makeHighCard(numOfCards);
+                testHand = PokerSimulation.PokerHand.MakeHighCard(numOfCards);
             else if (generatedText.ToUpper().Equals("OP"))
-                testHand = PokerSimulation.PokerHand.makeOnePair(numOfCards);
+                testHand = PokerSimulation.PokerHand.MakeOnePair(numOfCards);
             else if (generatedText.ToUpper().Equals("TP"))
-                testHand = PokerSimulation.PokerHand.makeTwoPair(numOfCards);
+                testHand = PokerSimulation.PokerHand.MakeTwoPair(numOfCards);
             else if (generatedText.ToUpper().Equals("TK"))
-                testHand = PokerSimulation.PokerHand.makeThreeOfAKind(numOfCards);
+                testHand = PokerSimulation.PokerHand.MakeThreeOfAKind(numOfCards);
             else if (generatedText.ToUpper().Equals("ST"))
-                testHand = PokerSimulation.PokerHand.makeStraight(numOfCards);
+                testHand = PokerSimulation.PokerHand.MakeStraight(numOfCards);
             else if (generatedText.ToUpper().Equals("FL"))
-                testHand = PokerSimulation.PokerHand.makeFlush(numOfCards);
+                testHand = PokerSimulation.PokerHand.MakeFlush(numOfCards);
             else if (generatedText.ToUpper().Equals("FH"))
-                testHand = PokerSimulation.PokerHand.makeFullHouse(numOfCards);
+                testHand = PokerSimulation.PokerHand.MakeFullHouse(numOfCards);
             else if (generatedText.ToUpper().Equals("SF"))
-                testHand = PokerSimulation.PokerHand.makeStraightFlush(numOfCards);
+                testHand = PokerSimulation.PokerHand.MakeStraightFlush(numOfCards);
             else if (generatedText.ToUpper().Equals("FK"))
-                testHand = PokerSimulation.PokerHand.makeFourOfAKind(numOfCards);
+                testHand = PokerSimulation.PokerHand.MakeFourOfAKind(numOfCards);
             else if (generatedText.ToUpper().Equals("RF"))
-                testHand = PokerSimulation.PokerHand.makeRoyalFlush(numOfCards);
+                testHand = PokerSimulation.PokerHand.MakeRoyalFlush(numOfCards);
             else
                 MessageBox.Show("You must enter a valid two-letter straightFlush");
 

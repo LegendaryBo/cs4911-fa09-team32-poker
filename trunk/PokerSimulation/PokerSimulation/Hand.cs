@@ -169,6 +169,11 @@ namespace PokerSimulation
             _hand = tempCards;
         }
 
+        public void RemoveAllCards()
+        {
+            _hand.RemoveRange(0, _hand.Count);
+        }
+
         public bool RemoveCard(Card card)
         {
             return _hand.Remove(card);
