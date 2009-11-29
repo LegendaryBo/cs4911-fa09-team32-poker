@@ -93,43 +93,43 @@ namespace PokerSimulation
             switch(randNum)
             {
                 case 0:
-                    testHand = PokerSimulation.PokerHand.makeHighCard(numOfCards);
+                    testHand = PokerSimulation.PokerHand.MakeHighCard(numOfCards);
                     generatedHand = "HC";
                     break;
                 case 1:
-                    testHand = PokerSimulation.PokerHand.makeOnePair(numOfCards);
+                    testHand = PokerSimulation.PokerHand.MakeOnePair(numOfCards);
                     generatedHand = "OP";
                     break;
                 case 2:
-                    testHand = PokerSimulation.PokerHand.makeTwoPair(numOfCards);
+                    testHand = PokerSimulation.PokerHand.MakeTwoPair(numOfCards);
                     generatedHand = "TP";
                     break;
                 case 3:
-                    testHand = PokerSimulation.PokerHand.makeThreeOfAKind(numOfCards);
+                    testHand = PokerSimulation.PokerHand.MakeThreeOfAKind(numOfCards);
                     generatedHand = "TK";
                     break;
                 case 4:
-                    testHand = PokerSimulation.PokerHand.makeStraight(numOfCards);
+                    testHand = PokerSimulation.PokerHand.MakeStraight(numOfCards);
                     generatedHand = "ST";
                     break;
                 case 5:
-                    testHand = PokerSimulation.PokerHand.makeFlush(numOfCards);
+                    testHand = PokerSimulation.PokerHand.MakeFlush(numOfCards);
                     generatedHand = "FL";
                     break;
                 case 6:
-                    testHand = PokerSimulation.PokerHand.makeFullHouse(numOfCards);
+                    testHand = PokerSimulation.PokerHand.MakeFullHouse(numOfCards);
                     generatedHand = "FH";
                     break;
                 case 7:
-                    testHand = PokerSimulation.PokerHand.makeStraightFlush(numOfCards);
+                    testHand = PokerSimulation.PokerHand.MakeStraightFlush(numOfCards);
                     generatedHand = "SF";
                     break;
                 case 8:
-                    testHand = PokerSimulation.PokerHand.makeFourOfAKind(numOfCards);
+                    testHand = PokerSimulation.PokerHand.MakeFourOfAKind(numOfCards);
                     generatedHand = "FK";
                     break;
                 case 9:
-                    testHand = PokerSimulation.PokerHand.makeRoyalFlush(numOfCards);
+                    testHand = PokerSimulation.PokerHand.MakeRoyalFlush(numOfCards);
                     generatedHand = "RF";
                     break;
             }
@@ -182,34 +182,34 @@ namespace PokerSimulation
             switch (hand.Substring(0,2).ToUpper())
             {
                 case "HC":
-                    returnHand = PokerSimulation.PokerHand.makeHighCard(int.Parse(hand.Substring(2, 1)));
+                    returnHand = PokerSimulation.PokerHand.MakeHighCard(int.Parse(hand.Substring(2, 1)));
                     break;
                 case "OP":
-                    returnHand = PokerSimulation.PokerHand.makeOnePair(int.Parse(hand.Substring(2, 1)));
+                    returnHand = PokerSimulation.PokerHand.MakeOnePair(int.Parse(hand.Substring(2, 1)));
                     break;
                 case "TP":
-                    returnHand = PokerSimulation.PokerHand.makeTwoPair(int.Parse(hand.Substring(2, 1)));
+                    returnHand = PokerSimulation.PokerHand.MakeTwoPair(int.Parse(hand.Substring(2, 1)));
                     break;
                 case "TK":
-                    returnHand = PokerSimulation.PokerHand.makeThreeOfAKind(int.Parse(hand.Substring(2, 1)));
+                    returnHand = PokerSimulation.PokerHand.MakeThreeOfAKind(int.Parse(hand.Substring(2, 1)));
                     break;
                 case "ST":
-                    returnHand = PokerSimulation.PokerHand.makeStraight(int.Parse(hand.Substring(2, 1)));
+                    returnHand = PokerSimulation.PokerHand.MakeStraight(int.Parse(hand.Substring(2, 1)));
                     break;
                 case "FL":
-                    returnHand = PokerSimulation.PokerHand.makeFlush(int.Parse(hand.Substring(2, 1)));
+                    returnHand = PokerSimulation.PokerHand.MakeFlush(int.Parse(hand.Substring(2, 1)));
                     break;
                 case "FH":
-                    returnHand = PokerSimulation.PokerHand.makeFullHouse(int.Parse(hand.Substring(2, 1)));
+                    returnHand = PokerSimulation.PokerHand.MakeFullHouse(int.Parse(hand.Substring(2, 1)));
                     break;
                 case "SF":
-                    returnHand = PokerSimulation.PokerHand.makeStraightFlush(int.Parse(hand.Substring(2, 1)));
+                    returnHand = PokerSimulation.PokerHand.MakeStraightFlush(int.Parse(hand.Substring(2, 1)));
                     break;
                 case "FK":
-                    returnHand = PokerSimulation.PokerHand.makeFourOfAKind(int.Parse(hand.Substring(2, 1)));
+                    returnHand = PokerSimulation.PokerHand.MakeFourOfAKind(int.Parse(hand.Substring(2, 1)));
                     break;
                 case "RF":
-                    returnHand = PokerSimulation.PokerHand.makeRoyalFlush(int.Parse(hand.Substring(2, 1)));
+                    returnHand = PokerSimulation.PokerHand.MakeRoyalFlush(int.Parse(hand.Substring(2, 1)));
                     break;
             }
             return returnHand;

@@ -62,7 +62,7 @@ namespace TestPokerSimulation
 
             for (int i = 0; i < TEST_ITERATIONS; i++)
             {
-                PokerHand testHand = PokerHand.makeRoyalFlush(7);
+                PokerHand testHand = PokerHand.MakeRoyalFlush(7);
                 Assert.IsTrue(testHand.HasRoyalFlush());
             }
         }
@@ -74,7 +74,7 @@ namespace TestPokerSimulation
 
             for (int i = 0; i < TEST_ITERATIONS; i++)
             {
-                PokerHand testHand = PokerSimulation.PokerHand.makeStraightFlush(7);
+                PokerHand testHand = PokerSimulation.PokerHand.MakeStraightFlush(7);
 
                 Assert.IsTrue(testHand.HasStraightFlush());
                 Assert.IsFalse(testHand.HasRoyalFlush());
@@ -88,7 +88,7 @@ namespace TestPokerSimulation
 
             for (int i = 0; i < TEST_ITERATIONS; i++)
             {
-                PokerHand testHand3 = PokerSimulation.PokerHand.makeFourOfAKind(7);
+                PokerHand testHand3 = PokerSimulation.PokerHand.MakeFourOfAKind(7);
 
                 Assert.IsTrue(testHand3.HasFourOfAKind());
                 Assert.IsFalse(testHand3.HasStraightFlush());
@@ -102,7 +102,7 @@ namespace TestPokerSimulation
 
             for (int i = 0; i < TEST_ITERATIONS; i++)
             {
-                PokerHand testHand4 = PokerSimulation.PokerHand.makeFullHouse(7);
+                PokerHand testHand4 = PokerSimulation.PokerHand.MakeFullHouse(7);
 
                 Assert.IsTrue(testHand4.HasFullHouse());
                 Assert.IsFalse(testHand4.HasStraightFlush());
@@ -117,7 +117,7 @@ namespace TestPokerSimulation
 
             for (int i = 0; i < TEST_ITERATIONS; i++)
             {
-                PokerHand testHand5 = PokerSimulation.PokerHand.makeFlush(7);
+                PokerHand testHand5 = PokerSimulation.PokerHand.MakeFlush(7);
 
                 Assert.IsTrue(testHand5.HasFlush());
                 Assert.IsFalse(testHand5.HasFullHouse());
@@ -133,7 +133,7 @@ namespace TestPokerSimulation
 
             for (int i = 0; i < TEST_ITERATIONS; i++)
             {
-                PokerHand testHand6 = PokerSimulation.PokerHand.makeStraight(7);
+                PokerHand testHand6 = PokerSimulation.PokerHand.MakeStraight(7);
                 Assert.IsTrue(testHand6.HasStraight());
                 Assert.IsFalse(testHand6.HasFourOfAKind());
                 Assert.IsFalse(testHand6.HasFullHouse());
@@ -148,7 +148,7 @@ namespace TestPokerSimulation
 
             for (int i = 0; i < TEST_ITERATIONS; i++)
             {
-                PokerHand testHand7 = PokerSimulation.PokerHand.makeOnePair(7);
+                PokerHand testHand7 = PokerSimulation.PokerHand.MakeOnePair(7);
 
                 Assert.IsTrue(testHand7.HasPair());
                 Assert.IsFalse(testHand7.HasStraight());
@@ -165,7 +165,7 @@ namespace TestPokerSimulation
 
             for (int i = 0; i < TEST_ITERATIONS; i++)
             {
-                PokerHand testHand8 = PokerSimulation.PokerHand.makeTwoPair(7);
+                PokerHand testHand8 = PokerSimulation.PokerHand.MakeTwoPair(7);
 
                 Assert.IsTrue(testHand8.HasTwoPair());
                 Assert.IsFalse(testHand8.HasStraight());
@@ -181,7 +181,7 @@ namespace TestPokerSimulation
 
             for (int i = 0; i < TEST_ITERATIONS; i++)
             {
-                PokerHand testHand9 = PokerSimulation.PokerHand.makeThreeOfAKind(7);
+                PokerHand testHand9 = PokerSimulation.PokerHand.MakeThreeOfAKind(7);
 
                 Assert.IsTrue(testHand9.HasThreeOfAKind());
                 Assert.IsFalse(testHand9.HasStraight());
@@ -198,7 +198,7 @@ namespace TestPokerSimulation
 
             for (int i = 0; i < TEST_ITERATIONS; i++)
             {
-                PokerHand testHand0 = PokerSimulation.PokerHand.makeHighCard(7);
+                PokerHand testHand0 = PokerSimulation.PokerHand.MakeHighCard(7);
                 //it's a high-card if it doesn't have at least a pair, straight, or flush.
                 Assert.IsFalse(testHand0.HasPair());
                 Assert.IsFalse(testHand0.HasStraight());

@@ -240,34 +240,34 @@ namespace PokerSimulation
             switch (nuts)
             {
                 case "HC":
-                    returnHand = PokerSimulation.PokerHand.makeHighCard(num);
+                    returnHand = PokerSimulation.PokerHand.MakeHighCard(num);
                     break;
                 case "OP":
-                    returnHand = PokerSimulation.PokerHand.makeOnePair(num);
+                    returnHand = PokerSimulation.PokerHand.MakeOnePair(num);
                     break;
                 case "TP":
-                    returnHand = PokerSimulation.PokerHand.makeTwoPair(num);
+                    returnHand = PokerSimulation.PokerHand.MakeTwoPair(num);
                     break;
                 case "TK":
-                    returnHand = PokerSimulation.PokerHand.makeThreeOfAKind(num);
+                    returnHand = PokerSimulation.PokerHand.MakeThreeOfAKind(num);
                     break;
                 case "ST":
-                    returnHand = PokerSimulation.PokerHand.makeStraight(num);
+                    returnHand = PokerSimulation.PokerHand.MakeStraight(num);
                     break;
                 case "FL":
-                    returnHand = PokerSimulation.PokerHand.makeFlush(num);
+                    returnHand = PokerSimulation.PokerHand.MakeFlush(num);
                     break;
                 case "FH":
-                    returnHand = PokerSimulation.PokerHand.makeFullHouse(num);
+                    returnHand = PokerSimulation.PokerHand.MakeFullHouse(num);
                     break;
                 case "SF":
-                    returnHand = PokerSimulation.PokerHand.makeStraightFlush(num);
+                    returnHand = PokerSimulation.PokerHand.MakeStraightFlush(num);
                     break;
                 case "FK":
-                    returnHand = PokerSimulation.PokerHand.makeFourOfAKind(num);
+                    returnHand = PokerSimulation.PokerHand.MakeFourOfAKind(num);
                     break;
                 case "RF":
-                    returnHand = PokerSimulation.PokerHand.makeRoyalFlush(num);
+                    returnHand = PokerSimulation.PokerHand.MakeRoyalFlush(num);
                     break;
             }
 
