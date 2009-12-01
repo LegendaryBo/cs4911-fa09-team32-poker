@@ -9,7 +9,7 @@ namespace PokerSimulation
 {
     public class Logger
     {
-        private static string _logPath = @"pokerExperiment.log";
+        private static string _logPath = @"poker.log";
         private static StreamWriter _logStream;
         private static Logger _instance = null;
 

@@ -21,6 +21,56 @@ namespace PokerSimulation
 
         public PokerHand() : this(null) { }
         public PokerHand(params Card[] cards):base(cards){}
+        public HandRank MaxRank
+        {
+            get
+            {
+                if (this.Count == 0)
+                {
+                    return HandRank.None;
+                }
+                else if (this.HasRoyalFlush())
+                {
+                    return HandRank.RoyalFlush;
+                }
+                else if (this.HasStraightFlush())
+                {
+                    return HandRank.StraightFlush;
+                }
+                else if (this.HasFourOfAKind())
+                {
+                    return HandRank.FourOfAKind;
+                }
+                else if (this.HasFullHouse())
+                {
+                    return HandRank.FullHouse;
+                }
+                else if (this.HasFlush())
+                {
+                    return HandRank.Flush;
+                }
+                else if (this.HasStraight())
+                {
+                    return HandRank.Straight;
+                }
+                else if (this.HasThreeOfAKind())
+                {
+                    return HandRank.ThreeOfAKind;
+                }
+                else if (this.HasTwoPair())
+                {
+                    return HandRank.TwoPair;
+                }
+                else if (this.HasPair())
+                {
+                    return HandRank.OnePair;
+                }
+                else
+                {
+                    return HandRank.HighCard;
+                }
+            }
+        }
 
         //Royal Flush//JC
         static public PokerHand MakeRoyalFlush(int numCards)
@@ -50,7 +100,7 @@ namespace PokerSimulation
             // choose a random suit
             Suit suit = (Suit)(new Random().Next(0, Deck.NUMBER_OF_SUITS));
 
-            // next, choose a starting card rank
+            // next, choose a starting card hr
             // let -1 mean that we start with an Ace-low flush
             // also, make sure that the range does not allow a royal flush to be dealt
             Rank beginRank = (Rank)(new Random().Next(-1, (Deck.NUMBER_OF_RANKS - (REQ_CARDS[SF] + 1))));
@@ -853,4 +903,19 @@ namespace PokerSimulation
             return false;
         }
     }
+
+        public enum HandRank
+        {
+            None,
+            HighCard,
+            OnePair,
+            TwoPair,
+            ThreeOfAKind,
+            Straight,
+            Flush,
+            FullHouse,
+            FourOfAKind,
+            StraightFlush,
+            RoyalFlush
+        }
 }

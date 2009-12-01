@@ -19,7 +19,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>..\PokerSimulationUI\bin\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -51,65 +51,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Block.cs" />
-    <Compile Include="Board.cs" />
-    <Compile Include="BoardControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="BoardControl.Designer.cs">
-      <DependentUpon>BoardControl.cs</DependentUpon>
-    </Compile>
     <Compile Include="Card.cs" />
     <Compile Include="Logger.cs" />
-    <Compile Include="SessionTest.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="SessionTest.Designer.cs">
-      <DependentUpon>SessionTest.cs</DependentUpon>
-    </Compile>
     <Compile Include="Session.cs" />
     <Compile Include="PokerHand.cs" />
     <Compile Include="Deck.cs" />
-    <Compile Include="Game.cs" />
-    <Compile Include="GuessForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="GuessForm.Designer.cs">
-      <DependentUpon>GuessForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="Hand.cs" />
-    <Compile Include="SessionController.cs" />
-    <Compile Include="Simulator.cs" />
-    <Compile Include="StartForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="StartForm.Designer.cs">
-      <DependentUpon>StartForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="BoardControl.resx">
-      <DependentUpon>BoardControl.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="GuessForm.resx">
-      <DependentUpon>GuessForm.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="SessionTest.resx">
-      <DependentUpon>SessionTest.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="StartForm.resx">
-      <DependentUpon>StartForm.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="TestingForm.resx">
-      <DependentUpon>TestingForm.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <Compile Include="Properties\Resources.Designer.cs">
@@ -126,17 +77,11 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="TestingForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="TestingForm.Designer.cs">
-      <DependentUpon>TestingForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="Trial.cs" />
-    <Compile Include="UserSession.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <None Include="ClassDiagram1.cd" />
     <None Include="Resources\ft_green_poker_skin2.png" />
   </ItemGroup>
   <ItemGroup>

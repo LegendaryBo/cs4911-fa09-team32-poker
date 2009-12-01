@@ -1,1 +1,108 @@
- 
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="PokerSimulation.Block">
+    <Position X="6.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAACAAAAAgAAAAAAAAAAAAAAACAAAAAEAA=</HashCode>
+      <FileName>Block.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PokerSimulation.Card" Collapsed="true">
+    <Position X="0.5" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAABAAAgABAAGgAAACAAAAACAgIAAAAAAAAAQAiA=</HashCode>
+      <FileName>Card.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PokerSimulation.Deck" Collapsed="true">
+    <Position X="10" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAAAAAAAwEAAgAAABAAAAQAAAARCQACADQkQg=</HashCode>
+      <FileName>Deck.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PokerSimulation.Game">
+    <Position X="7" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAEACAAAAAAAAABAAAAAgAAAIAAAA=</HashCode>
+      <FileName>Game.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PokerSimulation.Hand" Collapsed="true">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BABgAQAAAABQAAwEgAAAAAQIABAEAIAAAMgJAAJQEig=</HashCode>
+      <FileName>Hand.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PokerSimulation.Logger" Collapsed="true">
+    <Position X="0.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AADEAAgQAAAAAABAQAAAAAAAAAggAAAhQAEAAAEEAAA=</HashCode>
+      <FileName>Logger.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PokerSimulation.PokerHand" Collapsed="true">
+    <Position X="0.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAEACBlAQAAAAAAEQEIgHIAOAQARQQCIAqAIADAIAA=</HashCode>
+      <FileName>PokerHand.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PokerSimulation.Session">
+    <Position X="2.25" Y="0.5" Width="1.75" />
+    <NestedTypes>
+      <Delegate Name="PokerSimulation.Session.PokerHandGeneratorDelegate" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Session.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Delegate>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>CQAAAAAIAEAAAAAAAAABACAAIAAAAAAAAAAABAIAAAA=</HashCode>
+      <FileName>Session.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PokerSimulation.SessionController">
+    <Position X="4.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAABAAAAEAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAA=</HashCode>
+      <FileName>SessionController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PokerSimulation.Trial">
+    <Position X="8.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACBAAAAAAAgAAAASAAAAEBABAAAABAAIAAA=</HashCode>
+      <FileName>Trial.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PokerSimulation.UserSession">
+    <Position X="4.25" Y="2.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AEAAAAACIEQAAAAAABAEAAAAJEAAAgAADAAQAAAAAAA=</HashCode>
+      <FileName>UserSession.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PokerSimulation.Properties.Resources" Collapsed="true">
+    <Position X="10" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAkAAABAAAAAAAAQBQJFAAAAVUEAQAIhC6CAAEAAoI=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Enum Name="PokerSimulation.Suit" Collapsed="true">
+    <Position X="0.5" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAAAAAABAAAAAAQAAAAAAAAAEAAAAAAAAAAAgAAAA=</HashCode>
+      <FileName>Card.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="PokerSimulation.Rank" Collapsed="true">
+    <Position X="0.5" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAABABAAJAiAAAAAABIAAAAAAAAABAQgBAAAg=</HashCode>
+      <FileName>Card.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Tahoma" Size="8.25" />
+</ClassDiagram>

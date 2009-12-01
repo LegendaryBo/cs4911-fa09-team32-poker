@@ -2,11 +2,71 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="PokerSimulation.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
-    <Setting Name="defaultRawFile" Type="System.String" Scope="User">
+    <Setting Name="DefaultRawFile" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
     <Setting Name="LogPath" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="RoyalStraightFlushIdentifiers" Type="System.String" Scope="User">
+      <Value Profile="(Default)">rsf</Value>
+    </Setting>
+    <Setting Name="StraightFlushIdentifiers" Type="System.String" Scope="User">
+      <Value Profile="(Default)">sf</Value>
+    </Setting>
+    <Setting Name="StraightIdentifiers" Type="System.String" Scope="User">
+      <Value Profile="(Default)">st</Value>
+    </Setting>
+    <Setting Name="FlushIdentifiers" Type="System.String" Scope="User">
+      <Value Profile="(Default)">fl</Value>
+    </Setting>
+    <Setting Name="FourOfAKindIdentifiers" Type="System.String" Scope="User">
+      <Value Profile="(Default)">fk</Value>
+    </Setting>
+    <Setting Name="FullHouseIdentifiers" Type="System.String" Scope="User">
+      <Value Profile="(Default)">fh, fl</Value>
+    </Setting>
+    <Setting Name="ThreeOfAKindIdentifiers" Type="System.String" Scope="User">
+      <Value Profile="(Default)">tk</Value>
+    </Setting>
+    <Setting Name="TwoPairIdentifiers" Type="System.String" Scope="User">
+      <Value Profile="(Default)">tp</Value>
+    </Setting>
+    <Setting Name="OnePairIdentifiers" Type="System.String" Scope="User">
+      <Value Profile="(Default)">op</Value>
+    </Setting>
+    <Setting Name="HighCardIdentifiers" Type="System.String" Scope="User">
+      <Value Profile="(Default)">hc</Value>
+    </Setting>
+    <Setting Name="RoyalStraightFlushFileTokens" Type="System.String" Scope="User">
+      <Value Profile="(Default)">9, rsf, rf</Value>
+    </Setting>
+    <Setting Name="StraightFlushFileTokens" Type="System.String" Scope="User">
+      <Value Profile="(Default)">8, sf</Value>
+    </Setting>
+    <Setting Name="StraightFileTokens" Type="System.String" Scope="User">
+      <Value Profile="(Default)">4, st</Value>
+    </Setting>
+    <Setting Name="FlushFileTokens" Type="System.String" Scope="User">
+      <Value Profile="(Default)">5, fl</Value>
+    </Setting>
+    <Setting Name="FourOfAKindFileTokens" Type="System.String" Scope="User">
+      <Value Profile="(Default)">7, fk</Value>
+    </Setting>
+    <Setting Name="FullHouseFileTokens" Type="System.String" Scope="User">
+      <Value Profile="(Default)">6, fh</Value>
+    </Setting>
+    <Setting Name="ThreeOfAKindFileTokens" Type="System.String" Scope="User">
+      <Value Profile="(Default)">3, tk</Value>
+    </Setting>
+    <Setting Name="TwoPairFileTokens" Type="System.String" Scope="User">
+      <Value Profile="(Default)">2, tp</Value>
+    </Setting>
+    <Setting Name="OnePairFileTokens" Type="System.String" Scope="User">
+      <Value Profile="(Default)">1, op</Value>
+    </Setting>
+    <Setting Name="HighCardFileTokens" Type="System.String" Scope="User">
+      <Value Profile="(Default)">0, hc</Value>
     </Setting>
   </Settings>
 </SettingsFile>
