@@ -1,320 +1,376 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Windows.Forms;
+using System.Text;
 
 namespace PokerSimulation
 {
     public class Session
     {
-        #region Fields
+        private List<Trial> _trials = new List<Trial>();
+        public delegate PokerHand PokerHandGeneratorDelegate(int numCards);
+        private static Dictionary<string, PokerHandGeneratorDelegate> _generatorDictionary = new Dictionary<string,PokerHandGeneratorDelegate>();
+        private int _trialIndex = 0;
 
-        private const string _inDirectory = @"\in";
-        private const string _rawDirectory = @"\raw";
-        private const string _outDirectory = @"\out";
-        private const string _defaultDirectory = @"\default";
-        private const string _inPath = _inDirectory + @"\in_";
-        private const string _rawPath = _rawDirectory + @"\raw_";
-        private const string _outPath = _outDirectory + @"\out_";
-        private const string _defaultPath = _defaultDirectory + @"\raw_default.txt";
-        private string _defaultRaw = "START BLOCK 1" + Environment.NewLine + "ST5" 
-            + Environment.NewLine + "ST6" + Environment.NewLine + "ST7" + Environment.NewLine 
-            + "ST5" + Environment.NewLine + "END BLOCK" + Environment.NewLine + "START BLOCK 2" 
-            + Environment.NewLine + "FL7" + Environment.NewLine + "FL6" + Environment.NewLine 
-            + "FL5" + Environment.NewLine + "END BLOCK";
-        private string _settingPath;
-        private StreamReader _fileReader;
-        private StreamWriter _fileWriter;
-
-        public const string BLOCK_START = "START BLOCK";
-        public const string BLOCK_END = "END BLOCK";
-
-        #endregion
-
-        #region Properties
-
-        public string Subject_ID { get; internal set; }
-        public string Session_ID { get; internal set; }
-        public List<Block> Blocks { get; internal set; }
-        public bool IsDefault { get; internal set; }
-
-        #endregion
-
-        #region Constructors
-
-        public Session()
+        static Session()
         {
-            IsDefault = false;
-            Blocks = new List<Block>();
-            if (Properties.Settings.Default.defaultRawFile.Equals(""))
-                _settingPath = Directory.GetCurrentDirectory() + _defaultPath;
+            BuildStringToPokerHandDictionary();
+        }
+
+        public Session() { }
+
+        private static void BuildStringToPokerHandDictionary()
+        {
+            AddToPokerHandDictionary(Properties.Settings.Default.RoyalStraightFlushFileTokens.ToUpper(),
+                                     new PokerHandGeneratorDelegate(PokerHand.makeRoyalFlush));
+            AddToPokerHandDictionary(Properties.Settings.Default.StraightFlushFileTokens.ToUpper(),
+                                     new PokerHandGeneratorDelegate(PokerHand.makeStraightFlush));
+            AddToPokerHandDictionary(Properties.Settings.Default.FourOfAKindFileTokens.ToUpper(),
+                                     new PokerHandGeneratorDelegate(PokerHand.makeFourOfAKind));
+            AddToPokerHandDictionary(Properties.Settings.Default.FullHouseFileTokens.ToUpper(),
+                                     new PokerHandGeneratorDelegate(PokerHand.makeFullHouse));
+            AddToPokerHandDictionary(Properties.Settings.Default.FlushFileTokens.ToUpper(),
+                                     new PokerHandGeneratorDelegate(PokerHand.makeFlush));
+            AddToPokerHandDictionary(Properties.Settings.Default.StraightFileTokens.ToUpper(),
+                                     new PokerHandGeneratorDelegate(PokerHand.makeStraight));
+            AddToPokerHandDictionary(Properties.Settings.Default.ThreeOfAKindFileTokens.ToUpper(),
+                                     new PokerHandGeneratorDelegate(PokerHand.makeThreeOfAKind));
+            AddToPokerHandDictionary(Properties.Settings.Default.TwoPairFileTokens.ToUpper(),
+                                     new PokerHandGeneratorDelegate(PokerHand.makeTwoPair));
+            AddToPokerHandDictionary(Properties.Settings.Default.OnePairFileTokens.ToUpper(),
+                                     new PokerHandGeneratorDelegate(PokerHand.makeOnePair));
+            AddToPokerHandDictionary(Properties.Settings.Default.HighCardFileTokens.ToUpper(),
+                                     new PokerHandGeneratorDelegate(PokerHand.makeHighCard));
+        }
+
+        private static void AddToPokerHandDictionary(string stringRepresentations, PokerHandGeneratorDelegate generator)
+        {
+            string[] representations = stringRepresentations.Split(",".ToCharArray(), StringSplitOptions.RemoveEmptyEntries);
+
+            foreach (string r in representations)
+            {
+                try
+                {
+                    _generatorDictionary.Add(r.Trim(), generator);
+                }
+                catch (ArgumentException)
+                {
+                    PokerHandGeneratorDelegate g = _generatorDictionary[r.Trim()];
+                    string error = "Cannot add the string representation: " + r.Trim() + " for the generator: " + generator + ". It is already mapped to a poker hand generator: " + g;
+                    Logger.Instance.WriteError(error);
+                    MessageBox.Show("There was a problem with a poker hand file token: " + r.Trim() + ".  Please refer to the error log: " + Logger.Instance.LogPath);
+                }
+            }
+        }
+
+        public bool TryOpenFile(string path)
+        {
+            if (File.Exists(path))
+            {
+                string fileExt = Path.GetExtension(path);
+
+                if (fileExt == null || fileExt == string.Empty)
+                {
+                    string error = "The specified file: " + path + " does not have an extension.\n" +
+                                   "Supported extensions are: .txt, .in, and .sim.";
+                    Logger.Instance.WriteError(error);
+                    MessageBox.Show(error);
+                    return false;
+                }
+                else if (fileExt == ".txt" || fileExt == ".in")
+                {
+                    if (TryGenerateSimFile(path))
+                    {
+                        string filename = Path.GetFileNameWithoutExtension(path);
+                        filename += ".sim";
+                        return TryLoadSimFile(filename);
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+                else if (fileExt == ".sim")
+                {
+                    return TryLoadSimFile(path);
+                }
+                else
+                {
+                    string error = "The specified file: " + path + " does not have a supported extension.\n" +
+                                   "Supported extensions are: .txt, .in, and .sim.";
+                    Logger.Instance.WriteError(error);
+                    MessageBox.Show(error);
+                    return false;
+                }
+            }
             else
-                _settingPath = Properties.Settings.Default.defaultRawFile;
-
+            {
+                string error = "The specified file: " + path + " does not exist.";
+                Logger.Instance.WriteError(error);
+                MessageBox.Show(error);
+                return false;
+            }
         }
 
-        public Session(string file)
-            : this()
+        private bool TryGenerateSimFile(string path)
         {
-        }
+            string filename = Path.GetFileNameWithoutExtension(path) + ".sim";
 
-        public Session(string subject_id, string session_id)
-            : this()
-        {
-            Subject_ID = subject_id;
-            Session_ID = session_id;
-            string pathEnd = subject_id + "_" + session_id + ".txt";
-
-            if (!Directory.Exists(Directory.GetCurrentDirectory() + _outDirectory))
-                Directory.CreateDirectory(Directory.GetCurrentDirectory() + _outDirectory);
-            else if (File.Exists(Directory.GetCurrentDirectory() + _outPath + pathEnd))
-                throw (new Exception("Session has been completed. Use the dialog on the right to override existing results."));
-
-            LoadInputFile(pathEnd);
-        }
-
-        #endregion
-
-        #region Methods
-        private void LoadInputFile(string pathEnd)
-        {
             try
             {
-                _fileReader = new StreamReader(Directory.GetCurrentDirectory() + _inPath + pathEnd);
-
-                string line = null;
-                int id = 0;
-                Block currBlock = null;
-
-                while ((line = _fileReader.ReadLine()) != null)
+                using (StreamReader sr = new StreamReader(path))
                 {
-                    if (line.Equals("")) continue;
-                    if (line.StartsWith(BLOCK_START))
+                    if (File.Exists(filename))
                     {
-                        string[] s = line.Split(" ".ToCharArray());
-                        currBlock = new Block(long.Parse(s[s.Length - 1]));
-                    }
-                    else if (line.StartsWith(BLOCK_END))
-                    {
-                        Blocks.Add(currBlock);
-                        currBlock = null;
-                    }
-                    else
-                    {
-                        StringReader sr = new StringReader(line);
-
-                        Hand h = new Hand();
-                        id++;
-
-                        int num = int.Parse("" + (char)sr.Read());
-
-                        for (int i = 0; i < num; i++)
+                        if (!UserSaysOverwrite(filename))
                         {
-                            sr.Read();
-                            Rank rank = this.ParseRank((char)sr.Read());
-                            Suit suit = this.ParseSuit((char)sr.Read());
-
-                            Card c = new Card(suit, rank);
-                            h.InsertCard(c);
+                            Logger.Instance.WriteInfo("Did not create the .sim file " + filename + ", the file already exists.");
+                            return false;
                         }
-                        sr.Read();
-                        currBlock.AddTrial(new Trial(id, h, num, (char)sr.Read() + "" + (char)sr.Read()));
-                        sr.Close();
+                        else
+                        {
+                            Logger.Instance.WriteInfo("Over-wrote the .sim file " + filename + ".");
+                        }
+                    }
+                    using (StreamWriter sw = new StreamWriter(new FileStream(filename, FileMode.Create)))
+                    {
+                        string subjectID;   // subjectID and sessionID are parsed from the file name
+                        string sessionID;   // these will remain constant within this scope
+
+                        int blockID = 0;    // blockID and trialID are auto-incremented for each respective new block
+                        int trialID = 0;    // or new trial
+                        string blockTag;
+
+                        sw.AutoFlush = true;
+
+                        // try to parse the subjectID and sessionID out of the file name
+                        if (!TryGetSubjectAndSessionIDFromPath(path, out subjectID, out sessionID))
+                        {
+                            return false;
+                        }
+
+                        while (!sr.EndOfStream)
+                        {
+                            string[] inTokens = sr.ReadLine().ToUpper().Split("\t".ToCharArray(), 4, StringSplitOptions.RemoveEmptyEntries);
+                            for (int i = 0; i < inTokens.Length; i++) inTokens[i] = inTokens[i].Trim();
+
+                            blockTag = "";
+                            int numCards;
+                            string bestHand = "";
+                            string hand = "";
+
+                            if (DoBeginNewBlock(inTokens))
+                            {
+                                blockID++;
+                                blockTag = GetBlockTag(inTokens);
+                            }
+
+                            if (!TryGetNumCards(inTokens, out numCards))
+                            {
+                                return false;
+                            }
+
+                            if (!TryGetBestHand(inTokens, numCards, out bestHand, out hand))
+                            {
+                                return false;
+                            }
+
+                            string simLine = subjectID + "\t" + sessionID + "\t" + blockID + "\t" + trialID + "\t" +
+                                             numCards + "\t" + hand + "\t" + bestHand + "\t" + blockTag;
+                            sw.WriteLine(simLine);
+
+                            trialID++;
+                        }
                     }
                 }
-
-                _fileReader.Close();
             }
-            catch (DirectoryNotFoundException e)
+            catch (Exception)
             {
-                Directory.CreateDirectory(Directory.GetCurrentDirectory() + _inDirectory);
+                string error = "Could not generate the simulation file: An invalid path or file name was specified.";
+                MessageBox.Show(error);
+                Logger.Instance.WriteError(error);
+                return false;
+            }
 
-                this.LoadRawFile(pathEnd);
-            }
-            catch (FileNotFoundException e)
-            {
-                this.LoadRawFile(pathEnd);
-            }
+            return true;
         }
 
-        private void LoadRawFile(string pathEnd)
+        private bool TryGetBestHand(string[] inTokens, int numCards, out string bestHand, out string hand)
         {
-            try
+            bestHand = "";
+            hand = "";
+
+            if (inTokens.Length >= 2)
             {
-                string path = Directory.GetCurrentDirectory() + _rawPath + pathEnd;
-                if (IsDefault)
-                    path = _settingPath;
-
-                _fileReader = new StreamReader(path);
-
-                Block currBlock = null;
-
-                string line;
-
-                int id = 0;
-
-                while ((line = _fileReader.ReadLine()) != null)
+                if (!_generatorDictionary.ContainsKey(inTokens[1]))
                 {
-                    if (line.Equals("")) continue;
-                    if (line.StartsWith(BLOCK_START))
-                    {
-                        string[] s = line.Split(" ".ToCharArray());
-                        currBlock = new Block(long.Parse(s[s.Length - 1]));
-                    }
-                    else if (line.StartsWith(BLOCK_END))
-                    {
-                        Blocks.Add(currBlock);
-                        currBlock = null;
-                    }
-                    else
-                    {
-                        id++;
-
-                        string nuts = line.Substring(0, 2).ToUpper();
-                        int num = int.Parse(line.Substring(2, 1));
-
-                        currBlock.AddTrial(new Trial(id, this.ParseNuts(nuts, num), num, nuts));
-                    }
+                    return false;
                 }
-                _fileReader.Close();
 
-                this.WriteInputFile(pathEnd);
+                PokerHandGeneratorDelegate d = _generatorDictionary[inTokens[1]];
+                PokerHand pokerHand = d.Invoke(numCards);
+                hand = pokerHand.ToString();
+                bestHand = pokerHand.MaxRank.ToString();
+                return true;
             }
-            catch (DirectoryNotFoundException e)
-            {
-                Directory.CreateDirectory(Directory.GetCurrentDirectory() + _defaultDirectory);
-                LoadDefaultRawFile(pathEnd);
-            }
-            catch (FileNotFoundException e)
-            {
-                if (IsDefault)
-                    this.WriteDefaultFile();
-                this.LoadDefaultRawFile(pathEnd);
-            }
+
+            return false;
         }
 
-        private void LoadDefaultRawFile(string pathEnd)
+        private bool TryGetNumCards(string[] inTokens, out int numCards)
         {
-            IsDefault = true;
-            LoadRawFile(pathEnd);
-        }
+            numCards = 0;
 
-        private void WriteDefaultFile()
-        {
-            _fileWriter = new StreamWriter(Directory.GetCurrentDirectory() + _defaultPath);
-
-            _fileWriter.Write(_defaultRaw);
-
-            _fileWriter.Close();
-        }
-
-        private void WriteInputFile(string pathEnd)
-        {
-            _fileWriter = new StreamWriter(Directory.GetCurrentDirectory() + _inPath + pathEnd);
-
-            foreach (Block b in Blocks)
+            if (inTokens.Length >= 1)
             {
-                _fileWriter.WriteLine(BLOCK_START + " " + b.Block_ID);
-                foreach (Trial t in b.Trials)
+                return int.TryParse(inTokens[0], out numCards);
+            }
+
+            return false;
+        }
+
+        private string GetBlockTag(string[] inTokens)
+        {
+            string blockTag = "";
+
+            if (inTokens.Length == 4)
+            {
+                blockTag = inTokens[3];
+            }
+
+            return blockTag;
+        }
+
+        private bool DoBeginNewBlock(string[] inTokens)
+        {
+            if (inTokens.Length >= 3)
+            {               
+                if (inTokens[2] == "YES")
                 {
-                    string result = "" + t.Number_of_cards;
-                    foreach (Card c in t.Hand.Cards)
-                    {
-                        result += " " + c.ToString();
-                    }
-                    result += " " + t.Nuts;
-                    _fileWriter.WriteLine(result);
+                    return true;
                 }
-                _fileWriter.WriteLine(BLOCK_END);
             }
 
-            _fileWriter.Close();
+            return false;
         }
 
-        private PokerHand ParseNuts(string nuts, int num)
+        private bool TryGetSubjectAndSessionIDFromPath(string path, out string subjectID, out string sessionID)
         {
-            PokerHand returnHand = new PokerHand();
-            switch (nuts)
+            string subjAndSessionId = Path.GetFileNameWithoutExtension(path);
+            string[] subjAndSessionIdArr = subjAndSessionId.Split("_".ToCharArray(), 2, StringSplitOptions.RemoveEmptyEntries);
+
+            subjectID = "";
+            sessionID = "";
+
+            if (subjAndSessionIdArr.Length != 2)
             {
-                case "HC":
-                    returnHand = PokerSimulation.PokerHand.MakeHighCard(num);
-                    break;
-                case "OP":
-                    returnHand = PokerSimulation.PokerHand.MakeOnePair(num);
-                    break;
-                case "TP":
-                    returnHand = PokerSimulation.PokerHand.MakeTwoPair(num);
-                    break;
-                case "TK":
-                    returnHand = PokerSimulation.PokerHand.MakeThreeOfAKind(num);
-                    break;
-                case "ST":
-                    returnHand = PokerSimulation.PokerHand.MakeStraight(num);
-                    break;
-                case "FL":
-                    returnHand = PokerSimulation.PokerHand.MakeFlush(num);
-                    break;
-                case "FH":
-                    returnHand = PokerSimulation.PokerHand.MakeFullHouse(num);
-                    break;
-                case "SF":
-                    returnHand = PokerSimulation.PokerHand.MakeStraightFlush(num);
-                    break;
-                case "FK":
-                    returnHand = PokerSimulation.PokerHand.MakeFourOfAKind(num);
-                    break;
-                case "RF":
-                    returnHand = PokerSimulation.PokerHand.MakeRoyalFlush(num);
-                    break;
+                string error = "The specified filename format: " + subjAndSessionId + " is invalid.  The correct format is: <subject ID>_<session ID>.";
+                Logger.Instance.WriteCritical(error);
+                return false;
             }
 
-            return returnHand;
+            subjectID = subjAndSessionIdArr[0].ToUpper();
+            sessionID = subjAndSessionIdArr[1].ToUpper();
+            return true;
         }
 
-        private Suit ParseSuit(char s)
+        private bool UserSaysOverwrite(string filename)
         {
-            Suit suit = Suit.UNKNOWN;
-            switch (s)
+            if (MessageBox.Show("Would you like to overwrite the existing file \"" + filename + "\"?", "File Already Exists",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
             {
-                case 'S': suit = Suit.SPADES; break;
-                case 'C': suit = Suit.CLUBS; break;
-                case 'D': suit = Suit.DIAMONDS; break;
-                case 'H': suit = Suit.HEARTS; break;
+                return true;
             }
-            return suit;
-        }
-
-        private Rank ParseRank(char r)
-        {
-            Rank rank = Rank.UNKNOWN;
-            switch (r)
+            else
             {
-                case '2': rank = Rank.TWO; break;
-                case '3': rank = Rank.THREE; break;
-                case '4': rank = Rank.FOUR; break;
-                case '5': rank = Rank.FIVE; break;
-                case '6': rank = Rank.SIX; break;
-                case '7': rank = Rank.SEVEN; break;
-                case '8': rank = Rank.EIGHT; break;
-                case '9': rank = Rank.NINE; break;
-                case 'T': rank = Rank.TEN; break;
-                case 'J': rank = Rank.JACK; break;
-                case 'Q': rank = Rank.QUEEN; break;
-                case 'K': rank = Rank.KING; break;
-                case 'A': rank = Rank.ACE; break;
+                return false;
             }
-            return rank;
         }
 
-        private void AddBlock(Block b)
+        private bool TryLoadSimFile(string path)
         {
-            Blocks.Add(b);
+            if (File.Exists(path))
+            {
+                try
+                {
+                    using (StreamReader sr = new StreamReader(path))
+                    {
+                        while (!sr.EndOfStream)
+                        {
+                            _trials.Add(new Trial(sr.ReadLine()));
+                        }
+                    }
+                }
+                catch (Exception)
+                {
+                    string error = "Could not open the simulation file: An invalid path or file name was specified.";
+                    MessageBox.Show(error);
+                    Logger.Instance.WriteError(error);
+                }
+
+                return true;
+            }
+            return false;
         }
 
-        private bool RemoveBlock(Block b)
+        public Trial GetNextTrial()
         {
-            return Blocks.Remove(b);
+            if (_trialIndex < _trials.Count)
+            {
+                return _trials[_trialIndex++];
+            }
+            else
+            {
+                return null;
+            }
         }
-
-        #endregion
     }
+    
+    //[Flags]
+    //public enum HandRank
+    //{
+    //    None = 0,
+    //    HighCard = 1,
+    //    OnePair = 2,
+    //    TwoPair = 4,
+    //    ThreeOfAKind = 8,
+    //    Straight = 16,
+    //    Flush = 32,
+    //    FullHouse = 64,
+    //    FourOfAKind = 128,
+    //    StraightFlush = 256,
+    //    RoyalStraightFlush = 512
+    //}
+
+    //public struct MyEnum<T> : IEnumerable<T>
+    //{
+    //    private T _value;
+
+    //    public MyEnum(T value)
+    //    {
+    //        _value = value;
+    //    }
+
+    //    IEnumerator<T> IEnumerable<T>.GetEnumerator()
+    //    {
+    //        if (!typeof(T).IsSubclassOf(typeof(Enum)))
+    //            throw new InvalidCastException("MyEnum must be a type of Enum");
+
+    //        int[] allValues = (int[])Enum.GetValues(typeof(T));
+
+    //        int intValues = Convert.ToInt32(_value);
+
+    //        foreach (int i in allValues)
+    //        {
+    //            if ((i & intValues) != 0)
+    //                yield return (T)Enum.ToObject(typeof(T), i);
+    //        }
+    //    }
+
+    //    public override string ToString()
+    //    {
+    //        return _value.ToString();
+    //    }
+    //}
 }

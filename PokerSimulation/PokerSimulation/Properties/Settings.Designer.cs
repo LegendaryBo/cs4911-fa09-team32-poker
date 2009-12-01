@@ -26,12 +26,12 @@ namespace PokerSimulation.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string defaultRawFile {
+        public string DefaultRawFile {
             get {
-                return ((string)(this["defaultRawFile"]));
+                return ((string)(this["DefaultRawFile"]));
             }
             set {
-                this["defaultRawFile"] = value;
+                this["DefaultRawFile"] = value;
             }
         }
         
@@ -44,6 +44,246 @@ namespace PokerSimulation.Properties {
             }
             set {
                 this["LogPath"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("rsf")]
+        public string RoyalStraightFlushIdentifiers {
+            get {
+                return ((string)(this["RoyalStraightFlushIdentifiers"]));
+            }
+            set {
+                this["RoyalStraightFlushIdentifiers"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("sf")]
+        public string StraightFlushIdentifiers {
+            get {
+                return ((string)(this["StraightFlushIdentifiers"]));
+            }
+            set {
+                this["StraightFlushIdentifiers"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("st")]
+        public string StraightIdentifiers {
+            get {
+                return ((string)(this["StraightIdentifiers"]));
+            }
+            set {
+                this["StraightIdentifiers"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("fl")]
+        public string FlushIdentifiers {
+            get {
+                return ((string)(this["FlushIdentifiers"]));
+            }
+            set {
+                this["FlushIdentifiers"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("fk")]
+        public string FourOfAKindIdentifiers {
+            get {
+                return ((string)(this["FourOfAKindIdentifiers"]));
+            }
+            set {
+                this["FourOfAKindIdentifiers"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("fh, fl")]
+        public string FullHouseIdentifiers {
+            get {
+                return ((string)(this["FullHouseIdentifiers"]));
+            }
+            set {
+                this["FullHouseIdentifiers"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("tk")]
+        public string ThreeOfAKindIdentifiers {
+            get {
+                return ((string)(this["ThreeOfAKindIdentifiers"]));
+            }
+            set {
+                this["ThreeOfAKindIdentifiers"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("tp")]
+        public string TwoPairIdentifiers {
+            get {
+                return ((string)(this["TwoPairIdentifiers"]));
+            }
+            set {
+                this["TwoPairIdentifiers"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("op")]
+        public string OnePairIdentifiers {
+            get {
+                return ((string)(this["OnePairIdentifiers"]));
+            }
+            set {
+                this["OnePairIdentifiers"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("hc")]
+        public string HighCardIdentifiers {
+            get {
+                return ((string)(this["HighCardIdentifiers"]));
+            }
+            set {
+                this["HighCardIdentifiers"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("9, rsf, rf")]
+        public string RoyalStraightFlushFileTokens {
+            get {
+                return ((string)(this["RoyalStraightFlushFileTokens"]));
+            }
+            set {
+                this["RoyalStraightFlushFileTokens"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("8, sf")]
+        public string StraightFlushFileTokens {
+            get {
+                return ((string)(this["StraightFlushFileTokens"]));
+            }
+            set {
+                this["StraightFlushFileTokens"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("4, st")]
+        public string StraightFileTokens {
+            get {
+                return ((string)(this["StraightFileTokens"]));
+            }
+            set {
+                this["StraightFileTokens"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("5, fl")]
+        public string FlushFileTokens {
+            get {
+                return ((string)(this["FlushFileTokens"]));
+            }
+            set {
+                this["FlushFileTokens"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("7, fk")]
+        public string FourOfAKindFileTokens {
+            get {
+                return ((string)(this["FourOfAKindFileTokens"]));
+            }
+            set {
+                this["FourOfAKindFileTokens"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("6, fh")]
+        public string FullHouseFileTokens {
+            get {
+                return ((string)(this["FullHouseFileTokens"]));
+            }
+            set {
+                this["FullHouseFileTokens"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("3, tk")]
+        public string ThreeOfAKindFileTokens {
+            get {
+                return ((string)(this["ThreeOfAKindFileTokens"]));
+            }
+            set {
+                this["ThreeOfAKindFileTokens"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("2, tp")]
+        public string TwoPairFileTokens {
+            get {
+                return ((string)(this["TwoPairFileTokens"]));
+            }
+            set {
+                this["TwoPairFileTokens"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1, op")]
+        public string OnePairFileTokens {
+            get {
+                return ((string)(this["OnePairFileTokens"]));
+            }
+            set {
+                this["OnePairFileTokens"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0, hc")]
+        public string HighCardFileTokens {
+            get {
+                return ((string)(this["HighCardFileTokens"]));
+            }
+            set {
+                this["HighCardFileTokens"] = value;
             }
         }
     }
