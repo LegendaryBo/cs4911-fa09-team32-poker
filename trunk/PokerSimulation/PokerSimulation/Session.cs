@@ -46,14 +46,10 @@ namespace PokerSimulation
             IsDefault = false;
             Blocks = new List<Block>();
             if (Properties.Settings.Default.defaultRawFile.Equals(""))
-            {
                 _settingPath = Directory.GetCurrentDirectory() + _defaultPath;
-                Properties.Settings.Default.defaultRawFile = _settingPath;
-            }
             else
                 _settingPath = Properties.Settings.Default.defaultRawFile;
 
-            Properties.Settings.Default.Save();
         }
 
         public Session(string file)
