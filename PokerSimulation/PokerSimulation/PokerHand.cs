@@ -363,7 +363,7 @@ namespace PokerSimulation
                 for (int i = 0; i < numCards - REQ_CARDS[TP]; i++)
                     randHand.InsertCard(deck.DealCard());
 
-                invalid = randHand.HasStraight() || randHand.HasFlush();
+                invalid = randHand.HasStraight() || randHand.HasFlush() || randHand.HasThreeOfAKind();
 
             } while (invalid);
 
