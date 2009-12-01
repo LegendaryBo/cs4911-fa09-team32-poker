@@ -23,25 +23,25 @@ namespace PokerSimulation
         private static void BuildStringToPokerHandDictionary()
         {
             AddToPokerHandDictionary(Properties.Settings.Default.RoyalStraightFlushFileTokens.ToUpper(),
-                                     new PokerHandGeneratorDelegate(PokerHand.makeRoyalFlush));
+                                     new PokerHandGeneratorDelegate(PokerHand.MakeRoyalFlush));
             AddToPokerHandDictionary(Properties.Settings.Default.StraightFlushFileTokens.ToUpper(),
-                                     new PokerHandGeneratorDelegate(PokerHand.makeStraightFlush));
+                                     new PokerHandGeneratorDelegate(PokerHand.MakeStraightFlush));
             AddToPokerHandDictionary(Properties.Settings.Default.FourOfAKindFileTokens.ToUpper(),
-                                     new PokerHandGeneratorDelegate(PokerHand.makeFourOfAKind));
+                                     new PokerHandGeneratorDelegate(PokerHand.MakeFourOfAKind));
             AddToPokerHandDictionary(Properties.Settings.Default.FullHouseFileTokens.ToUpper(),
-                                     new PokerHandGeneratorDelegate(PokerHand.makeFullHouse));
+                                     new PokerHandGeneratorDelegate(PokerHand.MakeFullHouse));
             AddToPokerHandDictionary(Properties.Settings.Default.FlushFileTokens.ToUpper(),
-                                     new PokerHandGeneratorDelegate(PokerHand.makeFlush));
+                                     new PokerHandGeneratorDelegate(PokerHand.MakeFlush));
             AddToPokerHandDictionary(Properties.Settings.Default.StraightFileTokens.ToUpper(),
-                                     new PokerHandGeneratorDelegate(PokerHand.makeStraight));
+                                     new PokerHandGeneratorDelegate(PokerHand.MakeStraight));
             AddToPokerHandDictionary(Properties.Settings.Default.ThreeOfAKindFileTokens.ToUpper(),
-                                     new PokerHandGeneratorDelegate(PokerHand.makeThreeOfAKind));
+                                     new PokerHandGeneratorDelegate(PokerHand.MakeThreeOfAKind));
             AddToPokerHandDictionary(Properties.Settings.Default.TwoPairFileTokens.ToUpper(),
-                                     new PokerHandGeneratorDelegate(PokerHand.makeTwoPair));
+                                     new PokerHandGeneratorDelegate(PokerHand.MakeTwoPair));
             AddToPokerHandDictionary(Properties.Settings.Default.OnePairFileTokens.ToUpper(),
-                                     new PokerHandGeneratorDelegate(PokerHand.makeOnePair));
+                                     new PokerHandGeneratorDelegate(PokerHand.MakeOnePair));
             AddToPokerHandDictionary(Properties.Settings.Default.HighCardFileTokens.ToUpper(),
-                                     new PokerHandGeneratorDelegate(PokerHand.makeHighCard));
+                                     new PokerHandGeneratorDelegate(PokerHand.MakeHighCard));
         }
 
         private static void AddToPokerHandDictionary(string stringRepresentations, PokerHandGeneratorDelegate generator)
