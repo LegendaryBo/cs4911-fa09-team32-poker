@@ -12,7 +12,9 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.IO;
+using System.Timers;
 using System.Windows.Threading;
+using System.Threading;
 
 namespace PokerSimulationUI
 {
@@ -25,6 +27,8 @@ namespace PokerSimulationUI
         private PokerSimulation.Trial _currentTrial;
         private const string SESSION_ID = "Session ID";
         private const string SUBJECT_ID = "Subject ID";
+        private const string INPUT_DEFAULT = "Type your answer and press ENTER.";
+		private string _userInput = null;
 
         public View()
         {
@@ -67,7 +71,18 @@ namespace PokerSimulationUI
 
         private void Btn_StartSess_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-        	MessageBox.Show("Starting the session!");
+            string filename = TxtBx_SubjectID.Text.Trim() + "_" + TxtBx_SessionID.Text.Trim();
+
+            if (_controller.TryOpenFile(filename + ".in") ||
+                _controller.TryOpenFile(filename + ".txt") ||
+                _controller.TryOpenFile(filename + ".sim"))
+            {
+                DoTrial();
+            }
+            else
+            {
+                MessageBox.Show("Sorry, but " + filename + " is invalid.");
+            }
         }
 
         private void Btn_ChooseFile_Click(object sender, System.Windows.RoutedEventArgs e)
@@ -89,58 +104,59 @@ namespace PokerSimulationUI
                 {
                     if (_controller.TryOpenFile(filename))
                     {
-                        HideWelcomeScreen();
                         DoTrial();
                     }
                 }
                 else
                 {
-                    MessageBox.Show("Sorry, but " + filename + " is an invalid file type.");
+                    MessageBox.Show("Sorry, but " + filename + " is invalid.");
                 }
             }
         }
 
         private void HideWelcomeScreen()
         {
-            TxtBlck_Welcome.Visibility = Visibility.Hidden;
-            TxtBlck_ChooseFile.Visibility = Visibility.Hidden;
-            TxtBx_SessionID.Visibility = Visibility.Hidden;
-            TxtBx_SubjectID.Visibility = Visibility.Hidden;
-            Btn_ChooseFile.Visibility = Visibility.Hidden;
-            Btn_StartSess.Visibility = Visibility.Hidden;
-            Pth_Splitter.Visibility = Visibility.Hidden;
+            Grid_Welcome_Content.Visibility = Visibility.Hidden;
         }
 
         private void ShowWelcomeScreen()
         {
-            TxtBlck_Welcome.Visibility = Visibility.Visible;
-            TxtBlck_ChooseFile.Visibility = Visibility.Visible;
-            TxtBx_SessionID.Visibility = Visibility.Visible;
+            Grid_Welcome_Content.Visibility = Visibility.Visible;
             TxtBx_SessionID.Text = SESSION_ID;
-            TxtBx_SubjectID.Visibility = Visibility.Visible;
             TxtBx_SubjectID.Text = SUBJECT_ID;
-            Btn_ChooseFile.Visibility = Visibility.Visible;
-            Btn_StartSess.Visibility = Visibility.Visible;
-            Pth_Splitter.Visibility = Visibility.Visible;
         }
 		
-		private void HideCards()
+		private void HideTrialScreen()
 		{
 			Uni_Grid_Cards.Visibility = Visibility.Hidden;
+            TxtBx_Subj_Input.Visibility = Visibility.Hidden;
 		}
 		
-		private void ShowCards()
+		private void ShowTrialScreen()
 		{
 			Uni_Grid_Cards.Visibility = Visibility.Visible;
 		}
 
         private void DoTrial()
         {
+            HideWelcomeScreen();
+
+            Thread fix = new Thread(ShowFixation);
+            fix.SetApartmentState(ApartmentState.STA);
+            fix.Start();
+            fix.Join(Properties.Settings.Default.FixationTime);
+
+            ShowCards();
+        }
+
+        private void ShowCards()
+        {
             _currentTrial = _controller.GetNextTrial();
 
             if (_currentTrial != null)
             {
                 string[] cardLabels = _currentTrial.PokerHand.ToString().Split(",".ToCharArray());
+
                 if (cardLabels.Length == 5)
                 {
                     Rect_Card0.Fill = (Brush)FindResource(cardLabels[0].Trim());
@@ -172,8 +188,29 @@ namespace PokerSimulationUI
                     Rect_Card6.Fill = (Brush)FindResource(cardLabels[6].Trim());
                 }
 
-                ShowCards();
+                TxtBx_Subj_Input.Text = "";
+                TxtBx_Subj_Input.Visibility = Visibility.Visible;
+
+                ShowTrialScreen();
+
+                TxtBx_Subj_Input.Focus();
             }
+        }
+
+        private void ShowFixation()
+        {
+            Fixation myFixScreen = new Fixation();
+            myFixScreen.Activate();
+            myFixScreen.Focus();
+        }
+
+        private void TxtBx_Subj_Input_KeyUp(object sender, System.Windows.Input.KeyEventArgs e)
+        {
+        	if(e.Key == Key.Enter && TxtBx_Subj_Input.Text.Trim() != "")
+			{
+				_userInput = TxtBx_Subj_Input.Text.Trim();
+                DoTrial();
+			}
         }
     }
 }
