@@ -1,9 +1,17 @@
 ﻿<Window
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" x:Class="PokerSimulationUI.View"
-    Title="View" Height="600" Width="800" Background="DarkGreen" WindowState="Maximized" WindowStartupLocation="CenterScreen" WindowStyle="None" mc:Ignorable="d">
-    <Grid>
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	x:Class="PokerSimulationUI.View"
+    Title="View"
+	Height="600" Width="800"
+	Background="DarkGreen"
+	WindowState="Maximized"
+	WindowStartupLocation="CenterScreen"
+	WindowStyle="None"
+	mc:Ignorable="d">
+    <Grid x:Name="Grid_Main">
     	<Grid.RowDefinitions>
     		<RowDefinition/>
     		<RowDefinition/>
@@ -17,35 +25,7 @@
     		<ColumnDefinition/>
     		<ColumnDefinition/>
     	</Grid.ColumnDefinitions>
-    	<TextBlock x:Name="TxtBlck_Welcome" HorizontalAlignment="Right" VerticalAlignment="Bottom" TextWrapping="Wrap" FontSize="18.667" FontFamily="Arial" Margin="10" Grid.Column="1" Grid.Row="1" TextAlignment="Right">
-    		<TextBlock.Foreground>
-    			<SolidColorBrush Opacity="0.9" Color="White"/>
-    		</TextBlock.Foreground><Run FontWeight="Bold" Text="Welcome!"/><LineBreak/><Run Text="Please start a session by providing the following information:"/></TextBlock>
-    	<TextBox x:Name="TxtBx_SubjectID" Margin="10,10,10,0" Style="{DynamicResource SimpleTextBox}" VerticalAlignment="Top" Grid.Column="1" Grid.Row="2" Text="Subject ID" TextWrapping="Wrap" FontFamily="Arial" BorderThickness="0" Opacity="0.9" FontSize="{Binding FontSize, ElementName=TxtBlck_Welcome, Mode=Default}" GotFocus="TxtBx_SubjectID_GotFocus" LostFocus="TxtBx_SubjectID_LostFocus">
-    		<TextBox.Foreground>
-    			<SolidColorBrush Opacity="0.8" Color="Black"/>
-    		</TextBox.Foreground>
-    	</TextBox>
-    	<TextBox x:Name="TxtBx_SessionID" Margin="10,43.466,10,0" Style="{DynamicResource SimpleTextBox}" VerticalAlignment="Top" BorderThickness="0" FontFamily="Arial" Opacity="0.9" Grid.Column="1" Grid.Row="2" Text="Session ID" TextWrapping="Wrap" FontSize="{Binding FontSize, ElementName=TxtBlck_Welcome, Mode=Default}" GotFocus="TxtBx_SessionID_GotFocus" LostFocus="TxtBx_SessionID_LostFocus">
-    		<TextBox.Foreground>
-    			<SolidColorBrush Opacity="0.8" Color="Black"/>
-    		</TextBox.Foreground>
-    	</TextBox>
-    	<Button x:Name="Btn_StartSess" Margin="10,76.933,10,0" Style="{DynamicResource SimpleButton}" Content="Start Session" Grid.Column="1" Grid.Row="2" IsDefault="True" FontFamily="Arial" FontSize="{Binding FontSize, ElementName=TxtBlck_Welcome, Mode=Default}" BorderThickness="1" Height="{Binding Height, ElementName=TxtBx_SubjectID, Mode=Default}" VerticalAlignment="Top" HorizontalAlignment="Right" Padding="10,2" Click="Btn_StartSess_Click">
-    		<Button.Foreground>
-    			<SolidColorBrush Opacity="0.9" Color="Black"/>
-    		</Button.Foreground>
-    	</Button>
-    	<TextBlock x:Name="TxtBlck_ChooseFile" VerticalAlignment="Bottom" TextWrapping="Wrap" FontSize="18.667" FontFamily="Arial" Margin="10" Width="184" Grid.Column="2" Grid.Row="1" HorizontalAlignment="Left">
-    		<TextBlock.Foreground>
-    			<SolidColorBrush Opacity="0.9" Color="White"/>
-    		</TextBlock.Foreground><Run FontWeight="Bold" Text="Or,"/><LineBreak/><Run Text="Choose a file to load."/></TextBlock>
-    	<Button x:Name="Btn_ChooseFile" HorizontalAlignment="Left" Margin="10" Style="{DynamicResource SimpleButton}" VerticalAlignment="Top" Height="{Binding Height, ElementName=TxtBx_SubjectID, Mode=Default}" Content="Choose File" BorderThickness="1" FontFamily="Arial" FontSize="{Binding FontSize, ElementName=TxtBlck_Welcome, Mode=Default}" Padding="10,2" Grid.Column="2" Grid.Row="2" d:LayoutOverrides="VerticalAlignment" Click="Btn_ChooseFile_Click">
-    		<Button.Foreground>
-    			<SolidColorBrush Opacity="0.9" Color="Black"/>
-    		</Button.Foreground>
-    	</Button>
-    	<Path Fill="White" Stretch="Fill" Stroke="White" HorizontalAlignment="Left" Margin="0" Width="1" Grid.Column="2" Grid.Row="1" Data="M432,280.266 L432,355.2" StrokeThickness="3" Grid.RowSpan="2" Opacity="0.5" StrokeStartLineCap="Round" StrokeEndLineCap="Round" Name="Pth_Splitter" />
+    	
     	<UniformGrid x:Name="Uni_Grid_Cards" Margin="0" Grid.Row="2" Grid.ColumnSpan="4" Columns="9" Visibility="Hidden">
     		<Rectangle x:Name="Rect_LeftHolder" Stroke="Black" Margin="5" StrokeThickness="0" Panel.ZIndex="-3" Opacity="0"/>
     		<Rectangle x:Name="Rect_Card0" Fill="{DynamicResource QH}" Stroke="Black" StrokeThickness="0" Margin="5" Panel.ZIndex="-3"/>
@@ -57,5 +37,50 @@
     		<Rectangle x:Name="Rect_Card6" Fill="{DynamicResource BACK}" Stroke="Black" StrokeThickness="0" Margin="5" Panel.ZIndex="-3"/>
     		<Rectangle x:Name="Rect_RightHolder" Stroke="Black" StrokeThickness="0" Margin="5" Panel.ZIndex="-3" Opacity="0"/>
     	</UniformGrid>
+    	<Grid x:Name="Grid_Welcome_Content" Margin="0" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="1" Grid.RowSpan="2" d:IsHidden="True">
+    		<Grid.RowDefinitions>
+    			<RowDefinition/>
+    			<RowDefinition/>
+    		</Grid.RowDefinitions>
+    		<Grid.ColumnDefinitions>
+    			<ColumnDefinition/>
+    			<ColumnDefinition/>
+    		</Grid.ColumnDefinitions>
+		<TextBlock x:Name="TxtBlck_Welcome" HorizontalAlignment="Right" VerticalAlignment="Bottom" TextWrapping="Wrap" FontSize="18.667" FontFamily="Arial" Margin="10" Grid.Column="0" Grid.Row="0" TextAlignment="Right">
+    		<TextBlock.Foreground>
+    			<SolidColorBrush Opacity="0.9" Color="White"/>
+    		</TextBlock.Foreground><Run FontWeight="Bold" Text="Welcome!"/><LineBreak/><Run Text="Please start a session by providing the following information:"/></TextBlock>
+    	<TextBox x:Name="TxtBx_SubjectID" Margin="10,10,10,0" Style="{DynamicResource SimpleTextBox}" VerticalAlignment="Top" Grid.Row="1" Text="Subject ID" TextWrapping="Wrap" FontFamily="Arial" BorderThickness="0" Opacity="0.9" FontSize="{Binding FontSize, ElementName=TxtBlck_Welcome, Mode=Default}" GotFocus="TxtBx_SubjectID_GotFocus" LostFocus="TxtBx_SubjectID_LostFocus">
+    		<TextBox.Foreground>
+    			<SolidColorBrush Opacity="0.8" Color="Black"/>
+    		</TextBox.Foreground>
+    	</TextBox>
+    	<TextBox x:Name="TxtBx_SessionID" Margin="10,43.466,10,0" Style="{DynamicResource SimpleTextBox}" VerticalAlignment="Top" BorderThickness="0" FontFamily="Arial" Opacity="0.9" Grid.Row="1" Text="Session ID" TextWrapping="Wrap" FontSize="{Binding FontSize, ElementName=TxtBlck_Welcome, Mode=Default}" GotFocus="TxtBx_SessionID_GotFocus" LostFocus="TxtBx_SessionID_LostFocus">
+    		<TextBox.Foreground>
+    			<SolidColorBrush Opacity="0.8" Color="Black"/>
+    		</TextBox.Foreground>
+    	</TextBox>
+    	<Button x:Name="Btn_StartSess" Margin="10,76.933,10,0" Style="{DynamicResource SimpleButton}" Content="Start Session" Grid.Row="1" IsDefault="True" FontFamily="Arial" FontSize="{Binding FontSize, ElementName=TxtBlck_Welcome, Mode=Default}" BorderThickness="1" Height="{Binding Height, ElementName=TxtBx_SubjectID, Mode=Default}" VerticalAlignment="Top" HorizontalAlignment="Right" Padding="10,2" Click="Btn_StartSess_Click">
+    		<Button.Foreground>
+    			<SolidColorBrush Opacity="0.9" Color="Black"/>
+    		</Button.Foreground>
+    	</Button>
+    	<TextBlock x:Name="TxtBlck_ChooseFile" VerticalAlignment="Bottom" TextWrapping="Wrap" FontSize="18.667" FontFamily="Arial" Margin="10" Width="184" Grid.Column="1" HorizontalAlignment="Left">
+    		<TextBlock.Foreground>
+    			<SolidColorBrush Opacity="0.9" Color="White"/>
+    		</TextBlock.Foreground><Run FontWeight="Bold" Text="Or,"/><LineBreak/><Run Text="Choose a file to load."/></TextBlock>
+    	<Button x:Name="Btn_ChooseFile" HorizontalAlignment="Left" Margin="10" Style="{DynamicResource SimpleButton}" VerticalAlignment="Top" Height="{Binding Height, ElementName=TxtBx_SubjectID, Mode=Default}" Content="Choose File" BorderThickness="1" FontFamily="Arial" FontSize="{Binding FontSize, ElementName=TxtBlck_Welcome, Mode=Default}" Padding="10,2" Grid.Column="1" Grid.Row="1" d:LayoutOverrides="VerticalAlignment" Click="Btn_ChooseFile_Click">
+    		<Button.Foreground>
+    			<SolidColorBrush Opacity="0.9" Color="Black"/>
+    		</Button.Foreground>
+    	</Button>
+    	<Path Fill="White" Stretch="Fill" Stroke="White" HorizontalAlignment="Left" Margin="0" Width="1" Grid.Column="1" Data="M432,280.266 L432,355.2" StrokeThickness="3" Grid.RowSpan="3" Opacity="0.5" StrokeStartLineCap="Round" StrokeEndLineCap="Round" Name="Pth_Splitter" />
+		</Grid>
+    	<TextBox x:Name="TxtBx_Subj_Input" Margin="0,20,0,0" Style="{DynamicResource SimpleTextBox}" VerticalAlignment="Top" BorderThickness="0" FontFamily="Arial" Opacity="0.9" Grid.Row="3" TextWrapping="Wrap" FontSize="{Binding FontSize, ElementName=TxtBlck_Welcome, Mode=Default}" Grid.Column="1" Grid.ColumnSpan="2" TextAlignment="Center" KeyUp="TxtBx_Subj_Input_KeyUp" Visibility="Hidden">
+    		<TextBox.Foreground>
+    			<SolidColorBrush Opacity="0.8" Color="Black"/>
+    		</TextBox.Foreground>
+    	</TextBox>
+    	<TextBlock x:Name="Txt_Blck_Instr" Margin="10,53.467,10,0" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="3" Text="Type your answer and press enter." TextWrapping="Wrap" FontSize="21.333" FontFamily="Arial" TextAlignment="Center" Foreground="White" Opacity="0.9" Visibility="Hidden"/>
     </Grid>
 </Window>
