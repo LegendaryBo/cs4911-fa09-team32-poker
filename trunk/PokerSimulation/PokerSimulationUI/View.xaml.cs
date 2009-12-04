@@ -144,7 +144,7 @@ namespace PokerSimulationUI
             Thread fix = new Thread(ShowFixation);
             fix.SetApartmentState(ApartmentState.STA);
             fix.Start();
-            fix.Join(Properties.Settings.Default.FixationTime);
+            fix.Join(5000);
 
             ShowCards();
         }
@@ -201,7 +201,6 @@ namespace PokerSimulationUI
         {
             Fixation myFixScreen = new Fixation();
             myFixScreen.Activate();
-            myFixScreen.Focus();
         }
 
         private void TxtBx_Subj_Input_KeyUp(object sender, System.Windows.Input.KeyEventArgs e)
