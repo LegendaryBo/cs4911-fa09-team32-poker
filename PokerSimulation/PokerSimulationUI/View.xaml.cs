@@ -84,7 +84,8 @@ namespace PokerSimulationUI
                 _controller.TryOpenFile(filename + ".txt") ||
                 _controller.TryOpenFile(filename + ".sim"))
             {
-                DoTrial();
+                HideWelcomeScreen();
+                ShowPressAnyKey();
             }
             else
             {
