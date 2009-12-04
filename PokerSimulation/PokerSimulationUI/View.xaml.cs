@@ -28,15 +28,17 @@ namespace PokerSimulationUI
         private const string SESSION_ID = "Session ID";
         private const string SUBJECT_ID = "Subject ID";
         private const string INPUT_DEFAULT = "Type your answer and press ENTER.";
-		private string _userInput = null;
         private DispatcherTimer _timer;
-        private Fixation _fixation;
 
         public View()
         {
             InitializeComponent();
             this.Width = SystemParameters.WorkArea.Width;
             this.Height = SystemParameters.WorkArea.Height;
+
+            _timer = new DispatcherTimer();
+            _timer.Interval = TimeSpan.FromMilliseconds(Properties.Settings.Default.FixationTime);
+            _timer.Tick += new EventHandler(_timer_Tick);
         }
 
         private void TxtBx_SubjectID_GotFocus(object sender, System.Windows.RoutedEventArgs e)
@@ -132,6 +134,7 @@ namespace PokerSimulationUI
 		{
 			Uni_Grid_Cards.Visibility = Visibility.Hidden;
             TxtBx_Subj_Input.Visibility = Visibility.Hidden;
+            Txt_Blck_Instr.Visibility = Visibility.Hidden;
 		}
 		
 		private void ShowTrialScreen()
@@ -142,20 +145,13 @@ namespace PokerSimulationUI
         private void DoTrial()
         {
             HideWelcomeScreen();
-
-            _timer = new DispatcherTimer();
-            _timer.Interval = TimeSpan.FromMilliseconds(Properties.Settings.Default.FixationTime);
-            _timer.Tick += new EventHandler(_timer_Tick);
-
             _timer.Start();
-            _fixation = new Fixation();
-            _fixation.Show();
+            ShowFixation();
         }
 
         void _timer_Tick(object sender, EventArgs e)
         {
             _timer.Stop();
-            _fixation.Close();
             ShowCards();
         }
 
@@ -200,6 +196,7 @@ namespace PokerSimulationUI
 
                 TxtBx_Subj_Input.Text = "";
                 TxtBx_Subj_Input.Visibility = Visibility.Visible;
+                Txt_Blck_Instr.Visibility = Visibility.Visible;
 
                 ShowTrialScreen();
 
@@ -207,11 +204,31 @@ namespace PokerSimulationUI
             }
         }
 
+        private void ShowFixation()
+        {
+            TxtBx_Subj_Input.Visibility = Visibility.Hidden;
+            Txt_Blck_Instr.Visibility = Visibility.Hidden;
+
+            Rect_Card0.Fill = Brushes.DarkGreen;
+            Rect_Card1.Fill = Brushes.DarkGreen;
+            Rect_Card2.Fill = Brushes.DarkGreen;
+            Rect_Card3.Fill = (Brush)FindResource("FIX2");
+            Rect_Card4.Fill = Brushes.DarkGreen;
+            Rect_Card5.Fill = Brushes.DarkGreen;
+            Rect_Card6.Fill = Brushes.DarkGreen;
+
+            ShowTrialScreen();
+        }
+
         private void TxtBx_Subj_Input_KeyUp(object sender, System.Windows.Input.KeyEventArgs e)
         {
         	if(e.Key == Key.Enter && TxtBx_Subj_Input.Text.Trim() != "")
 			{
-				_userInput = TxtBx_Subj_Input.Text.Trim();
+				_currentTrial.ResponseString = TxtBx_Subj_Input.Text.Trim();
+                while (!_currentTrial.Persist())
+                {
+                    MessageBox.Show("Trial could not be saved.\nPlease notify your administrator.");
+                }
                 DoTrial();
 			}
         }
