@@ -88,7 +88,7 @@ namespace PokerSimulationUI
             }
             else
             {
-                MessageBox.Show("Sorry, but " + filename + " is invalid.");
+                MessageBox.Show("Sorry, but " + filename + " is an invalid file name.");
             }
         }
 
@@ -137,7 +137,7 @@ namespace PokerSimulationUI
 		{
 			Uni_Grid_Cards.Visibility = Visibility.Hidden;
             TxtBx_Subj_Input.Visibility = Visibility.Hidden;
-            Txt_Blck_Instr.Visibility = Visibility.Hidden;
+            TxtBlck_Instr.Visibility = Visibility.Hidden;
 		}
 		
 		private void ShowTrialScreen()
@@ -199,7 +199,7 @@ namespace PokerSimulationUI
 
                 TxtBx_Subj_Input.Text = "";
                 TxtBx_Subj_Input.Visibility = Visibility.Visible;
-                Txt_Blck_Instr.Visibility = Visibility.Visible;
+                TxtBlck_Instr.Visibility = Visibility.Visible;
 
                 _firstKeyPress = DateTime.MinValue;
                 _timeStamp = DateTime.Now;
@@ -207,12 +207,17 @@ namespace PokerSimulationUI
 
                 TxtBx_Subj_Input.Focus();
             }
+            else
+            {
+                HideTrialScreen();
+                TxtBlck_ThankYou.Visibility = Visibility.Visible;
+            }
         }
 
         private void ShowFixation()
         {
             TxtBx_Subj_Input.Visibility = Visibility.Hidden;
-            Txt_Blck_Instr.Visibility = Visibility.Hidden;
+            TxtBlck_Instr.Visibility = Visibility.Hidden;
 
             Rect_Card0.Fill = Brushes.DarkGreen;
             Rect_Card1.Fill = Brushes.DarkGreen;
@@ -233,18 +238,19 @@ namespace PokerSimulationUI
                 _timeSpan = TimeSpan.FromTicks(_firstKeyPress.Ticks - _timeStamp.Ticks);
                 _currentTrial.ReactionTime = _timeSpan;
             }
-            
-        	if(e.Key == Key.Enter && TxtBx_Subj_Input.Text.Trim() != "")
+
+            if (e.Key == Key.Enter && TxtBx_Subj_Input.Text.Trim() != "")
 			{
                 _timeSpan = TimeSpan.FromTicks(DateTime.Now.Ticks - _timeStamp.Ticks);
 				_currentTrial.ResponseString = TxtBx_Subj_Input.Text.Trim();
                 _currentTrial.ResponseTime = _timeSpan;
                 _currentTrial.FixationTime = TimeSpan.FromMilliseconds(Properties.Settings.Default.FixationTime);
-                
+
                 while (!_currentTrial.Persist())
                 {
                     MessageBox.Show("Trial could not be saved.\nPlease notify your administrator.");
                 }
+
                 DoTrial();
 			}
         }

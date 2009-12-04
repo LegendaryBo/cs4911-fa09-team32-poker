@@ -26,7 +26,7 @@
     		<ColumnDefinition/>
     	</Grid.ColumnDefinitions>
     	
-    	<UniformGrid x:Name="Uni_Grid_Cards" Margin="0" Grid.Row="2" Grid.ColumnSpan="4" Columns="9" Visibility="Hidden">
+    	<UniformGrid x:Name="Uni_Grid_Cards" Margin="0" Grid.Row="2" Grid.ColumnSpan="4" Columns="9" Visibility="Hidden" d:IsHidden="True">
     		<Rectangle x:Name="Rect_LeftHolder" Stroke="Black" Margin="5" StrokeThickness="0" Panel.ZIndex="-3" Opacity="0"/>
     		<Rectangle x:Name="Rect_Card0" Fill="{DynamicResource QH}" Stroke="Black" StrokeThickness="0" Margin="5" Panel.ZIndex="-3"/>
     		<Rectangle x:Name="Rect_Card1" Fill="{DynamicResource FIX2}" Stroke="Black" StrokeThickness="0" Margin="5" Panel.ZIndex="-3"/>
@@ -76,11 +76,24 @@
     	</Button>
     	<Path Fill="White" Stretch="Fill" Stroke="White" HorizontalAlignment="Left" Margin="0" Width="1" Grid.Column="1" Data="M432,280.266 L432,355.2" StrokeThickness="3" Grid.RowSpan="3" Opacity="0.5" StrokeStartLineCap="Round" StrokeEndLineCap="Round" Name="Pth_Splitter" />
 		</Grid>
-    	<TextBox x:Name="TxtBx_Subj_Input" Margin="0,20,0,0" Style="{DynamicResource SimpleTextBox}" VerticalAlignment="Top" BorderThickness="0" FontFamily="Arial" Opacity="0.9" Grid.Row="3" TextWrapping="Wrap" FontSize="{Binding FontSize, ElementName=TxtBlck_Welcome, Mode=Default}" Grid.Column="1" Grid.ColumnSpan="2" TextAlignment="Center" KeyUp="TxtBx_Subj_Input_KeyUp" Visibility="Hidden">
+    	<TextBox x:Name="TxtBx_Subj_Input" Margin="0,20,0,0" Style="{DynamicResource SimpleTextBox}" VerticalAlignment="Top" BorderThickness="0" FontFamily="Arial" Opacity="0.9" Grid.Row="3" TextWrapping="Wrap" FontSize="{Binding FontSize, ElementName=TxtBlck_Welcome, Mode=Default}" Grid.Column="1" Grid.ColumnSpan="2" TextAlignment="Center" KeyUp="TxtBx_Subj_Input_KeyUp" Visibility="Hidden" d:IsHidden="True">
     		<TextBox.Foreground>
     			<SolidColorBrush Opacity="0.8" Color="Black"/>
     		</TextBox.Foreground>
     	</TextBox>
-    	<TextBlock x:Name="Txt_Blck_Instr" Margin="10,53.467,10,0" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="3" Text="Type your answer and press enter." TextWrapping="Wrap" FontSize="21.333" FontFamily="Arial" TextAlignment="Center" Foreground="White" Opacity="0.9" Visibility="Hidden"/>
+    	<TextBlock x:Name="TxtBlck_Instr" Margin="10,53.467,10,0" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="3" Text="Type your answer and press enter." TextWrapping="Wrap" FontSize="21.333" FontFamily="Arial" TextAlignment="Center" Foreground="White" Opacity="0.9" Visibility="Hidden" d:IsHidden="True"/>
+    	<Grid x:Name="Grid_Finish" Margin="0" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="2" Grid.RowSpan="2">
+    		<Grid.RowDefinitions>
+    			<RowDefinition/>
+    			<RowDefinition/>
+    		</Grid.RowDefinitions>
+    		<Grid.ColumnDefinitions>
+    			<ColumnDefinition/>
+    			<ColumnDefinition/>
+    		</Grid.ColumnDefinitions>
+    		<TextBlock x:Name="TxtBlck_ThankYou" TextWrapping="Wrap" FontSize="26.667" FontFamily="Arial" Margin="10" Grid.Column="0" Grid.Row="0" TextAlignment="Center" Grid.ColumnSpan="2" Grid.RowSpan="2" Visibility="Hidden"><TextBlock.Foreground>
+    				<SolidColorBrush Opacity="0.9" Color="White"/>
+    			</TextBlock.Foreground><Run Text="Your session is complete."/><LineBreak/><Run Text=""/><LineBreak/><Run FontSize="24" Text="Please notify the test administrator."/><LineBreak/><Run Text=""/><LineBreak/><Run FontWeight="Bold" Text="Thank you!"/></TextBlock>
+    	</Grid>
     </Grid>
 </Window>

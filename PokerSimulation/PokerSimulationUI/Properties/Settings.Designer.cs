@@ -34,5 +34,17 @@ namespace PokerSimulationUI.Properties {
                 this["FixationTime"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool ShowFeedback {
+            get {
+                return ((bool)(this["ShowFeedback"]));
+            }
+            set {
+                this["ShowFeedback"] = value;
+            }
+        }
     }
 }

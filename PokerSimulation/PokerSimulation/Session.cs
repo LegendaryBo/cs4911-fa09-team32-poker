@@ -75,8 +75,11 @@ namespace PokerSimulation
                     string error = "The specified file: " + path + " does not have an extension.\n" +
                                    "Supported extensions are: .txt, .in, and .sim.";
                     Logger.Instance.WriteError(error);
-                    MessageBox.Show(error);
                     return false;
+                }
+                if (fileExt == ".sim")
+                {
+                    return TryLoadSimFile(path);
                 }
                 else if (fileExt == ".txt" || fileExt == ".in")
                 {
@@ -91,16 +94,11 @@ namespace PokerSimulation
                         return false;
                     }
                 }
-                else if (fileExt == ".sim")
-                {
-                    return TryLoadSimFile(path);
-                }
                 else
                 {
                     string error = "The specified file: " + path + " does not have a supported extension.\n" +
                                    "Supported extensions are: .txt, .in, and .sim.";
                     Logger.Instance.WriteError(error);
-                    MessageBox.Show(error);
                     return false;
                 }
             }
@@ -108,7 +106,6 @@ namespace PokerSimulation
             {
                 string error = "The specified file: " + path + " does not exist.";
                 Logger.Instance.WriteError(error);
-                MessageBox.Show(error);
                 return false;
             }
         }
@@ -168,11 +165,17 @@ namespace PokerSimulation
 
                             if (!TryGetNumCards(inTokens, out numCards))
                             {
+                                string error = "There is an error at position " + sr.BaseStream.Position + " in the input file.";
+                                error += "\nThe number of cards specified is unsupported.";
+                                Logger.Instance.WriteError(error);
                                 return false;
                             }
 
                             if (!TryGetBestHand(inTokens, numCards, out bestHand, out hand))
                             {
+                                string error = "There is an error at position " + sr.BaseStream.Position + " in the input file.";
+                                error += "\nThe hand specified is unrecognized.";
+                                Logger.Instance.WriteError(error);
                                 return false;
                             }
 
