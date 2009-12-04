@@ -201,9 +201,9 @@ namespace PokerSimulationUI
                 TxtBx_Subj_Input.Visibility = Visibility.Visible;
                 Txt_Blck_Instr.Visibility = Visibility.Visible;
 
-                ShowTrialScreen();
-                _timeStamp = DateTime.Now;
                 _firstKeyPress = DateTime.MinValue;
+                _timeStamp = DateTime.Now;
+                ShowTrialScreen();
 
                 TxtBx_Subj_Input.Focus();
             }
@@ -230,15 +230,15 @@ namespace PokerSimulationUI
             if (_firstKeyPress == DateTime.MinValue)
             {
                 _firstKeyPress = DateTime.Now;
-                _timeSpan = TimeSpan.FromMilliseconds(_firstKeyPress.Millisecond - _timeStamp.Millisecond);
-                _currentTrial.ResponseTime = _timeSpan;
+                _timeSpan = TimeSpan.FromTicks(_firstKeyPress.Ticks - _timeStamp.Ticks);
+                _currentTrial.ReactionTime = _timeSpan;
             }
             
         	if(e.Key == Key.Enter && TxtBx_Subj_Input.Text.Trim() != "")
 			{
-                _timeSpan = TimeSpan.FromMilliseconds(DateTime.Now.Millisecond - _timeStamp.Millisecond);
+                _timeSpan = TimeSpan.FromTicks(DateTime.Now.Ticks - _timeStamp.Ticks);
 				_currentTrial.ResponseString = TxtBx_Subj_Input.Text.Trim();
-                _currentTrial.ReactionTime = _timeSpan;
+                _currentTrial.ResponseTime = _timeSpan;
                 _currentTrial.FixationTime = TimeSpan.FromMilliseconds(Properties.Settings.Default.FixationTime);
                 
                 while (!_currentTrial.Persist())
