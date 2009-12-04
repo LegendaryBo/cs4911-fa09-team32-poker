@@ -230,7 +230,7 @@ namespace PokerSimulationUI
             if (_firstKeyPress == DateTime.MinValue)
             {
                 _firstKeyPress = DateTime.Now;
-                _timeSpan = TimeSpan.FromMilliseconds(DateTime.Now.Millisecond - _firstKeyPress.Millisecond);
+                _timeSpan = TimeSpan.FromMilliseconds(_firstKeyPress.Millisecond - _timeStamp.Millisecond);
                 _currentTrial.ResponseTime = _timeSpan;
             }
             
