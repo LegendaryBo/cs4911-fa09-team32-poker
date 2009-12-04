@@ -58,9 +58,9 @@ namespace PokerSimulation
                 _responseString = value;
             }
         }
-        public TimeSpan Feedback { get; set; }
-        public TimeSpan Response { get; set; }
-        public TimeSpan Reaction { get; set; }
+        public TimeSpan FixationTime { get; set; }
+        public TimeSpan ResponseTime { get; set; }
+        public TimeSpan ReactionTime { get; set; }
 
         static Trial()
         {
@@ -102,9 +102,9 @@ namespace PokerSimulation
             sb.Append(_responseRank + "\t");
             sb.Append((_responseRank != HandRank.None) + "\t");
             sb.Append((_handRank == _responseRank) + "\t");
-            sb.Append(Feedback.Milliseconds + "\t");
-            sb.Append(Reaction.Milliseconds + "\t");
-            sb.Append(Response.Milliseconds + "\t");
+            sb.Append(FixationTime.Milliseconds + "\t");
+            sb.Append(ReactionTime.Milliseconds + "\t");
+            sb.Append(ResponseTime.Milliseconds + "\t");
 
             return sb.ToString();
         }
