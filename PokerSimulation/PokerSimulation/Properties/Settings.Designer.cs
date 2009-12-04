@@ -49,7 +49,7 @@ namespace PokerSimulation.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("rsf")]
+        [global::System.Configuration.DefaultSettingValueAttribute("rsf, rf")]
         public string RoyalStraightFlushIdentifiers {
             get {
                 return ((string)(this["RoyalStraightFlushIdentifiers"]));
@@ -109,7 +109,7 @@ namespace PokerSimulation.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("fh, fl")]
+        [global::System.Configuration.DefaultSettingValueAttribute("fh")]
         public string FullHouseIdentifiers {
             get {
                 return ((string)(this["FullHouseIdentifiers"]));

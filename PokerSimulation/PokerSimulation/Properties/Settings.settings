@@ -9,7 +9,7 @@
       <Value Profile="(Default)" />
     </Setting>
     <Setting Name="RoyalStraightFlushIdentifiers" Type="System.String" Scope="User">
-      <Value Profile="(Default)">rsf</Value>
+      <Value Profile="(Default)">rsf, rf</Value>
     </Setting>
     <Setting Name="StraightFlushIdentifiers" Type="System.String" Scope="User">
       <Value Profile="(Default)">sf</Value>
@@ -24,7 +24,7 @@
       <Value Profile="(Default)">fk</Value>
     </Setting>
     <Setting Name="FullHouseIdentifiers" Type="System.String" Scope="User">
-      <Value Profile="(Default)">fh, fl</Value>
+      <Value Profile="(Default)">fh</Value>
     </Setting>
     <Setting Name="ThreeOfAKindIdentifiers" Type="System.String" Scope="User">
       <Value Profile="(Default)">tk</Value>

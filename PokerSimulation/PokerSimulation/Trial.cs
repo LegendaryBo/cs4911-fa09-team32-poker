@@ -102,9 +102,9 @@ namespace PokerSimulation
             sb.Append(_responseRank + "\t");
             sb.Append((_responseRank != HandRank.None) + "\t");
             sb.Append((_handRank == _responseRank) + "\t");
-            sb.Append(FixationTime.Milliseconds + "\t");
-            sb.Append(ReactionTime.Milliseconds + "\t");
-            sb.Append(ResponseTime.Milliseconds + "\t");
+            sb.Append(FixationTime.TotalMilliseconds + "\t");
+            sb.Append(ReactionTime.TotalMilliseconds + "\t");
+            sb.Append(ResponseTime.TotalMilliseconds + "\t");
 
             return sb.ToString();
         }
