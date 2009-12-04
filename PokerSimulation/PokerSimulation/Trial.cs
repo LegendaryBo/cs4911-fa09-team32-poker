@@ -38,6 +38,13 @@ namespace PokerSimulation
                 _handRank = value;
             }
         }
+        public HandRank ResponseRank
+        {
+            get
+            {
+                return _responseRank;
+            }
+        }
         public int NumberOfCards { get; private set; }
         public string ResponseString
         {
@@ -61,6 +68,7 @@ namespace PokerSimulation
         public TimeSpan FixationTime { get; set; }
         public TimeSpan ResponseTime { get; set; }
         public TimeSpan ReactionTime { get; set; }
+        public TimeSpan FeedbackTime { get; set; }
 
         static Trial()
         {
@@ -105,6 +113,7 @@ namespace PokerSimulation
             sb.Append(FixationTime.TotalMilliseconds + "\t");
             sb.Append(ReactionTime.TotalMilliseconds + "\t");
             sb.Append(ResponseTime.TotalMilliseconds + "\t");
+            sb.Append(FeedbackTime.TotalMilliseconds + "\t");
 
             return sb.ToString();
         }

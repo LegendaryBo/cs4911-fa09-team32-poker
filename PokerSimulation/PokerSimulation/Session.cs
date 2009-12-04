@@ -77,10 +77,6 @@ namespace PokerSimulation
                     Logger.Instance.WriteError(error);
                     return false;
                 }
-                if (fileExt == ".sim")
-                {
-                    return TryLoadSimFile(path);
-                }
                 else if (fileExt == ".txt" || fileExt == ".in")
                 {
                     if (TryGenerateSimFile(path))
@@ -93,6 +89,10 @@ namespace PokerSimulation
                     {
                         return false;
                     }
+                }
+                else if (fileExt == ".sim")
+                {
+                    return TryLoadSimFile(path);
                 }
                 else
                 {
@@ -144,7 +144,10 @@ namespace PokerSimulation
                         // try to parse the subjectID and sessionID out of the file name
                         if (!TryGetSubjectAndSessionIDFromPath(path, out subjectID, out sessionID))
                         {
-                            return false;
+                            string error = "The name of the input file is incorrectly formatted.";
+                            error += "\nThe correct format is: <subject ID>_<session ID>.<ext> where <ext> is .txt or .in.";
+                            Logger.Instance.WriteError(error);
+                            goto CleanUp;
                         }
 
                         while (!sr.EndOfStream)
@@ -168,7 +171,7 @@ namespace PokerSimulation
                                 string error = "There is an error at position " + sr.BaseStream.Position + " in the input file.";
                                 error += "\nThe number of cards specified is unsupported.";
                                 Logger.Instance.WriteError(error);
-                                return false;
+                                goto CleanUp;
                             }
 
                             if (!TryGetBestHand(inTokens, numCards, out bestHand, out hand))
@@ -176,7 +179,7 @@ namespace PokerSimulation
                                 string error = "There is an error at position " + sr.BaseStream.Position + " in the input file.";
                                 error += "\nThe hand specified is unrecognized.";
                                 Logger.Instance.WriteError(error);
-                                return false;
+                                goto CleanUp;
                             }
 
                             string simLine = subjectID + "\t" + sessionID + "\t" + blockID + "\t" + trialID + "\t" +
@@ -197,6 +200,11 @@ namespace PokerSimulation
             }
 
             return true;
+
+        CleanUp:
+            if (File.Exists(filename))
+                File.Delete(filename);
+            return false;
         }
 
         private bool TryGetBestHand(string[] inTokens, int numCards, out string bestHand, out string hand)
@@ -273,8 +281,8 @@ namespace PokerSimulation
                 return false;
             }
 
-            subjectID = subjAndSessionIdArr[0].ToUpper();
-            sessionID = subjAndSessionIdArr[1].ToUpper();
+            subjectID = subjAndSessionIdArr[0];
+            sessionID = subjAndSessionIdArr[1];
             return true;
         }
 
