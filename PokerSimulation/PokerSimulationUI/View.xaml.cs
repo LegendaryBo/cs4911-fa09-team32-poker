@@ -29,6 +29,8 @@ namespace PokerSimulationUI
         private const string SUBJECT_ID = "Subject ID";
         private const string INPUT_DEFAULT = "Type your answer and press ENTER.";
 		private string _userInput = null;
+        private DispatcherTimer _timer;
+        private Fixation _fixation;
 
         public View()
         {
@@ -141,11 +143,19 @@ namespace PokerSimulationUI
         {
             HideWelcomeScreen();
 
-            Thread fix = new Thread(ShowFixation);
-            fix.SetApartmentState(ApartmentState.STA);
-            fix.Start();
-            fix.Join(5000);
+            _timer = new DispatcherTimer();
+            _timer.Interval = TimeSpan.FromMilliseconds(Properties.Settings.Default.FixationTime);
+            _timer.Tick += new EventHandler(_timer_Tick);
 
+            _timer.Start();
+            _fixation = new Fixation();
+            _fixation.Show();
+        }
+
+        void _timer_Tick(object sender, EventArgs e)
+        {
+            _timer.Stop();
+            _fixation.Close();
             ShowCards();
         }
 
@@ -195,12 +205,6 @@ namespace PokerSimulationUI
 
                 TxtBx_Subj_Input.Focus();
             }
-        }
-
-        private void ShowFixation()
-        {
-            Fixation myFixScreen = new Fixation();
-            myFixScreen.Activate();
         }
 
         private void TxtBx_Subj_Input_KeyUp(object sender, System.Windows.Input.KeyEventArgs e)
