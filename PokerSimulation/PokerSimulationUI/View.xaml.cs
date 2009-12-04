@@ -30,6 +30,7 @@ namespace PokerSimulationUI
         private const string INPUT_DEFAULT = "Type your answer and press ENTER.";
         private DispatcherTimer _timer;
         private DateTime _timeStamp;
+        private DateTime _firstKeyPress;
         private TimeSpan _timeSpan;
 
         public View()
@@ -202,6 +203,7 @@ namespace PokerSimulationUI
 
                 ShowTrialScreen();
                 _timeStamp = DateTime.Now;
+                _firstKeyPress = DateTime.MinValue;
 
                 TxtBx_Subj_Input.Focus();
             }
@@ -225,6 +227,12 @@ namespace PokerSimulationUI
 
         private void TxtBx_Subj_Input_KeyUp(object sender, System.Windows.Input.KeyEventArgs e)
         {
+            if (_firstKeyPress == DateTime.MinValue)
+            {
+                _firstKeyPress = DateTime.Now;
+                _timeSpan = TimeSpan.FromMilliseconds(DateTime.Now.Millisecond - _firstKeyPress.Millisecond);
+                _currentTrial.ResponseTime = _timeSpan;
+            }
             
         	if(e.Key == Key.Enter && TxtBx_Subj_Input.Text.Trim() != "")
 			{
