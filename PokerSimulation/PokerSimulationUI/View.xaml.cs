@@ -27,7 +27,6 @@ namespace PokerSimulationUI
         private PokerSimulation.Trial _currentTrial;
         private const string SESSION_ID = "Session ID";
         private const string SUBJECT_ID = "Subject ID";
-        private const string INPUT_DEFAULT = "Type your answer and press ENTER.";
         private DispatcherTimer _timer;
         private DateTime _timeStamp;
         private DateTime _firstKeyPress;
@@ -42,7 +41,7 @@ namespace PokerSimulationUI
 
             _timer = new DispatcherTimer();
             _timer.Interval = TimeSpan.FromMilliseconds(Properties.Settings.Default.FixationTime);
-            _timer.Tick += new EventHandler(_timer_Tick);
+            _timer.Tick += new EventHandler(Timer_Tick);
         }
 
         private void TxtBx_SubjectID_GotFocus(object sender, System.Windows.RoutedEventArgs e)
@@ -165,7 +164,7 @@ namespace PokerSimulationUI
             ShowFixation();
         }
 
-        void _timer_Tick(object sender, EventArgs e)
+        private void Timer_Tick(object sender, EventArgs e)
         {
             _timer.Stop();
             ShowCards();
