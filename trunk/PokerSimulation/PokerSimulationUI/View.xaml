@@ -10,7 +10,7 @@
 	WindowState="Maximized"
 	WindowStartupLocation="CenterScreen"
 	WindowStyle="None"
-	mc:Ignorable="d">
+	mc:Ignorable="d" KeyDown="Window_KeyDown">
     <Grid x:Name="Grid_Main">
     	<Grid.RowDefinitions>
     		<RowDefinition/>
@@ -94,6 +94,19 @@
     		<TextBlock x:Name="TxtBlck_ThankYou" TextWrapping="Wrap" FontSize="26.667" FontFamily="Arial" Margin="10" Grid.Column="0" Grid.Row="0" TextAlignment="Center" Grid.ColumnSpan="2" Grid.RowSpan="2" Visibility="Hidden"><TextBlock.Foreground>
     				<SolidColorBrush Opacity="0.9" Color="White"/>
     			</TextBlock.Foreground><Run Text="Your session is complete."/><LineBreak/><Run Text=""/><LineBreak/><Run FontSize="24" Text="Please notify the test administrator."/><LineBreak/><Run Text=""/><LineBreak/><Run FontWeight="Bold" Text="Thank you!"/></TextBlock>
+    	</Grid>
+    	<Grid x:Name="Grid_Ready" Margin="0" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="2" Grid.RowSpan="2" Visibility="Hidden">
+    		<Grid.RowDefinitions>
+    			<RowDefinition/>
+    			<RowDefinition/>
+    		</Grid.RowDefinitions>
+    		<Grid.ColumnDefinitions>
+    			<ColumnDefinition/>
+    			<ColumnDefinition/>
+    		</Grid.ColumnDefinitions>
+    		<TextBlock x:Name="TxtBlck_PressAnyKey" TextWrapping="Wrap" FontSize="26.667" FontFamily="Arial" Margin="10" Grid.Column="0" Grid.Row="0" TextAlignment="Center" Grid.ColumnSpan="2" VerticalAlignment="Center"><TextBlock.Foreground>
+    				<SolidColorBrush Opacity="0.9" Color="White"/>
+    			</TextBlock.Foreground><Run FontWeight="Bold" Text="Press any key to begin."/></TextBlock>
     	</Grid>
     </Grid>
 </Window>

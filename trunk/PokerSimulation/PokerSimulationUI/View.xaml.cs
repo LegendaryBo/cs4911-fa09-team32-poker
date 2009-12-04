@@ -97,7 +97,7 @@ namespace PokerSimulationUI
         {
         	Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
             dlg.DefaultExt = ".in";                                                      // Default file extension
-            dlg.Filter = "Text documents (.txt)|*.txt|Simulation Input File (.in)|*.in|Simulation Script (.sim)|*.sim"; // Filter files by extension
+            dlg.Filter = "Simulation Script (.sim)|*.sim|Text documents (.txt)|*.txt|Simulation Input File (.in)|*.in"; // Filter files by extension
 
             // Show open file dialog box
             bool? result = dlg.ShowDialog();
@@ -112,7 +112,8 @@ namespace PokerSimulationUI
                 {
                     if (_controller.TryOpenFile(filename))
                     {
-                        DoTrial();
+                        HideWelcomeScreen();
+                        ShowPressAnyKey();
                     }
                 }
                 else
@@ -143,12 +144,23 @@ namespace PokerSimulationUI
 		
 		private void ShowTrialScreen()
 		{
-			Uni_Grid_Cards.Visibility = Visibility.Visible;
+            Uni_Grid_Cards.Visibility = Visibility.Visible;
+            TxtBx_Subj_Input.Visibility = Visibility.Visible;
+            TxtBlck_Instr.Visibility = Visibility.Visible;
 		}
+
+        private void ShowPressAnyKey()
+        {
+            Grid_Ready.Visibility = Visibility.Visible;
+        }
+
+        private void HidePressAnyKey()
+        {
+            Grid_Ready.Visibility = Visibility.Hidden;
+        }
 
         private void DoTrial()
         {
-            HideWelcomeScreen();
             _timer.Start();
             ShowFixation();
         }
@@ -199,8 +211,6 @@ namespace PokerSimulationUI
                 }
 
                 TxtBx_Subj_Input.Text = "";
-                TxtBx_Subj_Input.Visibility = Visibility.Visible;
-                TxtBlck_Instr.Visibility = Visibility.Visible;
 
                 _firstKeyPress = DateTime.MinValue;
                 _timeStamp = DateTime.Now;
@@ -228,7 +238,7 @@ namespace PokerSimulationUI
             Rect_Card5.Fill = Brushes.DarkGreen;
             Rect_Card6.Fill = Brushes.DarkGreen;
 
-            ShowTrialScreen();
+            Uni_Grid_Cards.Visibility = Visibility.Visible;
         }
 
         private void TxtBx_Subj_Input_KeyUp(object sender, System.Windows.Input.KeyEventArgs e)
@@ -275,6 +285,15 @@ namespace PokerSimulationUI
 
                 DoTrial();
 			}
+        }
+
+        private void Window_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
+        {
+        	if (Grid_Ready.Visibility == Visibility.Visible)
+            {
+                Grid_Ready.Visibility = Visibility.Hidden;
+                DoTrial();
+            }
         }
     }
 }
