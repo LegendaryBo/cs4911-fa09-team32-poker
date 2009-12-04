@@ -32,6 +32,7 @@ namespace PokerSimulationUI
         private DateTime _timeStamp;
         private DateTime _firstKeyPress;
         private TimeSpan _timeSpan;
+        private bool _showFeedback = Properties.Settings.Default.ShowFeedback;
 
         public View()
         {
@@ -88,7 +89,7 @@ namespace PokerSimulationUI
             }
             else
             {
-                MessageBox.Show("Sorry, but " + filename + " is an invalid file name.");
+                MessageBox.Show("Sorry, but there was a problem opening: " + filename + ".");
             }
         }
 
@@ -116,7 +117,7 @@ namespace PokerSimulationUI
                 }
                 else
                 {
-                    MessageBox.Show("Sorry, but " + filename + " is invalid.");
+                    MessageBox.Show("Sorry, but there was a problem opening: " + filename + ".");
                 }
             }
         }
@@ -245,6 +246,27 @@ namespace PokerSimulationUI
 				_currentTrial.ResponseString = TxtBx_Subj_Input.Text.Trim();
                 _currentTrial.ResponseTime = _timeSpan;
                 _currentTrial.FixationTime = TimeSpan.FromMilliseconds(Properties.Settings.Default.FixationTime);
+
+                if (_showFeedback)
+                {
+                    string feedback;
+
+                    if (_currentTrial.HandRank == _currentTrial.ResponseRank)
+                    {
+                        feedback = "Your answer was correct!";
+                    }
+                    else
+                    {
+                        feedback = "Sorry, the correct answer is: " + _currentTrial.HandRank;
+                    }
+                    _timeStamp = DateTime.Now;
+                    MessageBox.Show(feedback);
+                    _currentTrial.FeedbackTime = TimeSpan.FromMilliseconds(DateTime.Now.Ticks - _timeStamp.Ticks);
+                }
+                else
+                {
+                    _currentTrial.FeedbackTime = 0;
+                }
 
                 while (!_currentTrial.Persist())
                 {
