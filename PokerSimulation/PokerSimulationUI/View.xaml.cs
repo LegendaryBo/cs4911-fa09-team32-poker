@@ -253,7 +253,7 @@ namespace PokerSimulationUI
 
                     if (_currentTrial.HandRank == _currentTrial.ResponseRank)
                     {
-                        feedback = "Your answer was correct!";
+                        feedback = "Correct!";
                     }
                     else
                     {
@@ -265,7 +265,7 @@ namespace PokerSimulationUI
                 }
                 else
                 {
-                    _currentTrial.FeedbackTime = 0;
+                    _currentTrial.FeedbackTime = TimeSpan.Zero;
                 }
 
                 while (!_currentTrial.Persist())
