@@ -8,6 +8,7 @@ namespace PokerSimulation
     public class Hand
     {
         private List<Card> _hand;
+        private static Random _random = new Random();
 
         public List<Card> Cards
         {
@@ -153,12 +154,11 @@ namespace PokerSimulation
         public void Shuffle()
         {
             List<Card> tempCards = new List<Card>();
-            Random rand = new Random();
 
             while (_hand.Count > 0)
             {
                 // select a card from the cards left in the straightFlush
-                int randomIndex = rand.Next(_hand.Count);
+                int randomIndex = _random.Next(_hand.Count);
                 // add the selected card to the temp straightFlush
                 tempCards.Add(_hand[randomIndex]);
                 // remove the selected card from the current straightFlush

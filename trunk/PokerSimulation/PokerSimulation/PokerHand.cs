@@ -18,6 +18,7 @@ namespace PokerSimulation
         private const int OP = 8;
 
         private static int[] REQ_CARDS = { 5, 5, 4, 5, 5, 5, 3, 4, 2 };
+        private static Random _random = new Random();
 
         public PokerHand() : this(null) { }
         public PokerHand(params Card[] cards):base(cards){}
@@ -75,7 +76,7 @@ namespace PokerSimulation
         //Royal Flush//JC
         static public PokerHand MakeRoyalFlush(int numCards)
         {
-            int suit = new Random().Next(Deck.NUMBER_OF_SUITS);
+            int suit = _random.Next(Deck.NUMBER_OF_SUITS);
 
             // first, create a new deck
             Deck.Instance.MakeShuffledDeck();
@@ -97,13 +98,13 @@ namespace PokerSimulation
         //Straight Flush//JSS
         static public PokerHand MakeStraightFlush(int numCards)
         {
-            // choose a random suit
-            Suit suit = (Suit)(new Random().Next(0, Deck.NUMBER_OF_SUITS));
+            // choose a _random suit
+            Suit suit = (Suit)(_random.Next(0, Deck.NUMBER_OF_SUITS));
 
             // next, choose a starting card hr
             // let -1 mean that we start with an Ace-low flush
             // also, make sure that the range does not allow a royal flush to be dealt
-            Rank beginRank = (Rank)(new Random().Next(-1, (Deck.NUMBER_OF_RANKS - (REQ_CARDS[SF] + 1))));
+            Rank beginRank = (Rank)(_random.Next(-1, (Deck.NUMBER_OF_RANKS - (REQ_CARDS[SF] + 1))));
 
             PokerHand straightFlush;
 
@@ -132,7 +133,7 @@ namespace PokerSimulation
                 // remove straight flush cards from the deck
                 Deck.Instance.RemoveCards(straightFlush.ToArray());
 
-                // fill the rest of the hand with random cards
+                // fill the rest of the hand with _random cards
                 for (int i = 0; i < numCards - REQ_CARDS[SF]; i++)
                     straightFlush.InsertCard(Deck.Instance.DealCard());
             } while (straightFlush.HasRoyalFlush());
@@ -150,16 +151,15 @@ namespace PokerSimulation
 
             //pick the beginRank of the FK
             int rank = 0;
-            Random rand = new Random();
-            rank = rand.Next(0, Deck.NUMBER_OF_RANKS);
+            rank = _random.Next(0, Deck.NUMBER_OF_RANKS);
 
             for (int i = 0; i < REQ_CARDS[FK]; i++)
                 fourKind.InsertCard(new Card((Suit)i, (Rank)rank));
 
             Deck.Instance.RemoveCards(fourKind.ToArray());
 
-            //random 3 cards
-            //can be random because no cards that are dealt will make the straightFlush better than a 4-Kind
+            //_random 3 cards
+            //can be _random because no cards that are dealt will make the straightFlush better than a 4-Kind
 
             for (int i = 0; i < numCards - REQ_CARDS[FK]; i++)
                 fourKind.InsertCard(Deck.Instance.DealCard());
@@ -174,7 +174,6 @@ namespace PokerSimulation
             Deck deck = Deck.Instance;
             PokerHand hand = new PokerHand();
             Card[] dealBack = new Card[2];
-            Random r = new Random();
 
             deck.MakeShuffledDeck();
 
@@ -194,7 +193,7 @@ namespace PokerSimulation
             {
                 for (int a = 0; a < 2; a++)
                 {
-                    int index = r.Next(0, suitLast);
+                    int index = _random.Next(0, suitLast);
                     Suit suit = suits[a, index];
                     suits[a, index] = suits[a, suitLast];
                     suits[a, suitLast] = suit;
@@ -210,7 +209,7 @@ namespace PokerSimulation
                 deck.RemoveCards(c);
             }
 
-            deck.ReturnCard(dealBack[r.Next(0, 1)]);
+            deck.ReturnCard(dealBack[_random.Next(0, 1)]);
 
             for (int i = 0; i < numCards - REQ_CARDS[FH]; i++)
                 hand.InsertCard(deck.DealCard());
@@ -228,8 +227,7 @@ namespace PokerSimulation
 
             //pick the suit of the FL
             int suit = 0;
-            Random rand = new Random();
-            suit = rand.Next(0, Deck.NUMBER_OF_SUITS);
+            suit = _random.Next(0, Deck.NUMBER_OF_SUITS);
             Boolean invalid = false;
 
             Card card;
@@ -244,7 +242,7 @@ namespace PokerSimulation
                     //choose five cards of that suit
                     do
                     {
-                        card = new Card((Suit)suit, (Rank)rand.Next(0, 12));
+                        card = new Card((Suit)suit, (Rank)_random.Next(0, 12));
                     } while (flushHand.Contains(card));
 
                     flushHand.InsertCard(card);
@@ -265,13 +263,12 @@ namespace PokerSimulation
         //Straight//Ruslan
         static public PokerHand MakeStraight(int numCards)
         {
-            Random r = new Random();
             Deck deck = Deck.Instance;
             PokerHand hand = null;
 
             deck.MakeShuffledDeck();
 
-            Rank rank = (Rank)r.Next(3, 12);
+            Rank rank = (Rank)_random.Next(3, 12);
             Boolean invalid = false;
 
             do
@@ -284,7 +281,7 @@ namespace PokerSimulation
                     Rank cardRank = rank - i;
                     if (cardRank < 0) cardRank = Rank.ACE;
 
-                    hand.InsertCard(new Card((Suit)r.Next(0, 3), cardRank));
+                    hand.InsertCard(new Card((Suit)_random.Next(0, 3), cardRank));
                 }
 
                 deck.RemoveCards(hand.ToArray());
@@ -309,8 +306,7 @@ namespace PokerSimulation
 
             //pick the beginRank of the TK
             int rank = 0;
-            Random rand = new Random();
-            rank = rand.Next(0, 12);
+            rank = _random.Next(0, 12);
 
             //Get all four cards of that beginRank, and randomly choose one to remove from the straightFlush.
             //This takes care of finding that card later to remove it from the deck so you won't
@@ -363,7 +359,6 @@ namespace PokerSimulation
         {
             Deck deck = Deck.Instance;
             PokerHand hand = new PokerHand();
-            Random r = new Random();
             Card[] dealBack = new Card[2];
 
             deck.MakeShuffledDeck();
@@ -387,7 +382,7 @@ namespace PokerSimulation
             {
                 for (int a = 0; a < 2; a++)
                 {
-                    int index = r.Next(0, suitLast);
+                    int index = _random.Next(0, suitLast);
                     Suit suit = suits[a, index];
                     suits[a, index] = suits[a, suitLast];
                     suits[a, suitLast] = suit;
@@ -427,24 +422,23 @@ namespace PokerSimulation
             //pick the beginRank of the OP
             //pick two of the four cards of that beginRank
             //Remove the other 2 cards of that beginRank from deck
-            //random 5 cards NOT OF THAT RANK
+            //_random 5 cards NOT OF THAT RANK
 
             //Added by EJ
             Deck.Instance.MakeShuffledDeck();
             PokerHand onePair = new PokerHand();
 
             //pick the beginRank of the TK
-            Random rand = new Random();
-            int rank = rand.Next(0, 12);
+            int rank = _random.Next(0, 12);
 
             //Get all four cards of that beginRank, and randomly choose twp to remove from the straightFlush.
             //This takes care of finding those cards later to remove them from the deck so you won't
             //end up with a 4-Kind or 3-Kind.
             int suit, suit2 = 0;
-            suit = rand.Next(0, 3);
+            suit = _random.Next(0, 3);
             do
             {
-                suit2 = rand.Next(0, 3);
+                suit2 = _random.Next(0, 3);
             } while (suit2 == suit);
 
 

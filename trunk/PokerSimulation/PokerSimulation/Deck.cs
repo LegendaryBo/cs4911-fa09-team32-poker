@@ -11,6 +11,7 @@ namespace PokerSimulation
         private static Deck _instance;
         private List<Card> _cards = new List<Card>();
         private List<Card> _dealtCards = new List<Card>();
+        private static Random _random = new Random();
 
         public static readonly int NUMBER_OF_RANKS = 13;
         public static readonly int NUMBER_OF_SUITS = 4;
@@ -63,12 +64,11 @@ namespace PokerSimulation
         public void Shuffle()
         {
             List<Card> tempCards = new List<Card>();
-            Random rand = new Random();
 
             while (_cards.Count > 0)
             {
                 // select a card from the cards left in the deck
-                int randomIndex = rand.Next(_cards.Count);
+                int randomIndex = _random.Next(_cards.Count);
                 // add the selected card to the temp deck
                 tempCards.Add(_cards[randomIndex]);
                 // remove the selected card from the current deck
