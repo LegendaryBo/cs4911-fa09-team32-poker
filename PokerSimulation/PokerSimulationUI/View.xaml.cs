@@ -32,6 +32,7 @@ namespace PokerSimulationUI
         private DateTime _firstKeyPress;
         private TimeSpan _timeSpan;
         private bool _showFeedback = Properties.Settings.Default.ShowFeedback;
+        private static Dictionary<PokerSimulation.HandRank, string> _handStrings;
 
         public View()
         {
@@ -42,6 +43,25 @@ namespace PokerSimulationUI
             _timer = new DispatcherTimer();
             _timer.Interval = TimeSpan.FromMilliseconds(Properties.Settings.Default.FixationTime);
             _timer.Tick += new EventHandler(Timer_Tick);
+            LoadHandStrings();
+        }
+
+        private static void LoadHandStrings()
+        {
+            if (_handStrings == null)
+            {
+                _handStrings = new Dictionary<PokerSimulation.HandRank, string>();
+                _handStrings[PokerSimulation.HandRank.HighCard] = Properties.Settings.Default.HighCardString;
+                _handStrings[PokerSimulation.HandRank.OnePair] = Properties.Settings.Default.OnePairString;
+                _handStrings[PokerSimulation.HandRank.TwoPair] = Properties.Settings.Default.TwoPairString;
+                _handStrings[PokerSimulation.HandRank.ThreeOfAKind] = Properties.Settings.Default.ThreeOfAKindString;
+                _handStrings[PokerSimulation.HandRank.FullHouse] = Properties.Settings.Default.FullHouseString;
+                _handStrings[PokerSimulation.HandRank.FourOfAKind] = Properties.Settings.Default.FourOfAKindString;
+                _handStrings[PokerSimulation.HandRank.Flush] = Properties.Settings.Default.FlushString;
+                _handStrings[PokerSimulation.HandRank.Straight] = Properties.Settings.Default.StraightString;
+                _handStrings[PokerSimulation.HandRank.StraightFlush] = Properties.Settings.Default.StraightFlushString;
+                _handStrings[PokerSimulation.HandRank.RoyalFlush] = Properties.Settings.Default.RoyalFlushString;
+            }
         }
 
         private void TxtBx_SubjectID_GotFocus(object sender, System.Windows.RoutedEventArgs e)
@@ -233,7 +253,7 @@ namespace PokerSimulationUI
             Rect_Card0.Fill = Brushes.DarkGreen;
             Rect_Card1.Fill = Brushes.DarkGreen;
             Rect_Card2.Fill = Brushes.DarkGreen;
-            Rect_Card3.Fill = (Brush)FindResource("FIX2");
+            Rect_Card3.Fill = (Brush)FindResource("FIX");
             Rect_Card4.Fill = Brushes.DarkGreen;
             Rect_Card5.Fill = Brushes.DarkGreen;
             Rect_Card6.Fill = Brushes.DarkGreen;
@@ -263,11 +283,13 @@ namespace PokerSimulationUI
 
                     if (_currentTrial.HandRank == _currentTrial.ResponseRank)
                     {
-                        feedback = "Correct!";
+                        feedback = "Correct!\n" + 
+                                   "You answered in " + _timeSpan.TotalSeconds + " seconds.";
                     }
                     else
                     {
-                        feedback = "Sorry, the correct answer is: " + _currentTrial.HandRank;
+                        feedback = "Sorry, the correct answer is: " + _handStrings[_currentTrial.HandRank] + "\n" +
+                                   "You answered in " + _timeSpan.TotalSeconds + " seconds.";
                     }
                     _timeStamp = DateTime.Now;
                     MessageBox.Show(feedback);

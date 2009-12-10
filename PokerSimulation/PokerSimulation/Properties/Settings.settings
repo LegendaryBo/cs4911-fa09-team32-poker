@@ -68,5 +68,35 @@
     <Setting Name="HighCardFileTokens" Type="System.String" Scope="User">
       <Value Profile="(Default)">0, hc</Value>
     </Setting>
+    <Setting Name="HighCardString" Type="System.String" Scope="User">
+      <Value Profile="(Default)">High Card</Value>
+    </Setting>
+    <Setting Name="OnePairString" Type="System.String" Scope="User">
+      <Value Profile="(Default)">One Pair</Value>
+    </Setting>
+    <Setting Name="TwoPairString" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Two Pair</Value>
+    </Setting>
+    <Setting Name="ThreeOfAKindString" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Three of a Kind</Value>
+    </Setting>
+    <Setting Name="FullHouseString" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Full House</Value>
+    </Setting>
+    <Setting Name="FourOfAKindString" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Four of a Kind</Value>
+    </Setting>
+    <Setting Name="FlushString" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Flush</Value>
+    </Setting>
+    <Setting Name="StraightString" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Straight</Value>
+    </Setting>
+    <Setting Name="StraightFlushString" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Straight Flush</Value>
+    </Setting>
+    <Setting Name="RoyalFlushString" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Royal Flush</Value>
+    </Setting>
   </Settings>
 </SettingsFile>
