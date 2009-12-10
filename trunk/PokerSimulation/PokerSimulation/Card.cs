@@ -7,21 +7,29 @@ using System.Drawing;
 namespace PokerSimulation
 {
     /// <summary>
-    /// A card has a certain suit and beginRank, or is a wild card.
+    /// A Card has a certain suit and beginRank, or is a wild card.
     /// </summary>
     public class Card
     {
-        #region private fields
+        #region private Fields
 
         private static Dictionary<String, Rank> _rankMappings = new Dictionary<string, Rank>();
         private static Dictionary<String, Suit> _suitMappings = new Dictionary<string, Suit>();
 
         #endregion
 
-        #region public properties
-
+        #region public Properties
+        /// <summary>
+        /// The Suit of the Card
+        /// </summary>
         public Suit Suit { get; internal set; }
+        /// <summary>
+        /// The Rank of the Card
+        /// </summary>
         public Rank Rank { get; internal set; }
+        /// <summary>
+        /// Boolean representing whether or not the Card is a "Wild Card"
+        /// </summary>
         public bool IsWild
         {
             get
@@ -32,8 +40,12 @@ namespace PokerSimulation
 
         #endregion
 
-        #region constructors
+        #region Constructors
 
+        /// <summary>
+        /// Constructor that maps the individal Rank and Suit values to strings, and adds that mapping
+        /// to a dictionary
+        /// </summary>
         static Card()
         {
             #region create dictionary for mapping beginRank strings to beginRank values
@@ -85,7 +97,7 @@ namespace PokerSimulation
         /// <summary>
         /// Constructor for a Card.
         /// </summary>
-        /// <param name="beginRank">The Rank of the card.</param>
+        /// <param name="rank">The Rank of the card.</param>
         /// <param name="suit">The Suit of the card.</param>
         public Card(Rank rank, Suit suit)
         {
@@ -97,7 +109,7 @@ namespace PokerSimulation
         /// Constructor for a Card.
         /// </summary>
         /// <param name="suit">The Suit of the card.</param>
-        /// <param name="beginRank">The Rank of the card.</param>
+        /// <param name="rank">The Rank of the card.</param>
         public Card(Suit suit, Rank rank)
         {
             Suit = suit;
@@ -107,10 +119,14 @@ namespace PokerSimulation
         /// <summary>
         /// Constructor for a Card.
         /// </summary>
-        /// <param name="beginRank">A single character representing the card's beginRank.</param>
+        /// <param name="rank">A single character representing the card's beginRank.</param>
         /// <param name="suit">A single character representing the card's suit.</param>
         public Card(char rank, char suit) : this(rank.ToString(), suit.ToString()) { }
 
+        /// <summary>
+        /// Constructor for a Card
+        /// </summary>
+        /// <param name="rankAndSuit">A two character string representing the rank and suit of the card</param>
         public Card(string rankAndSuit)
         {
             if (rankAndSuit.Length != 2)
@@ -134,7 +150,7 @@ namespace PokerSimulation
         /// <summary>
         /// Constructor for a Card.
         /// </summary>
-        /// <param name="beginRank">The card's beginRank as a string.</param>
+        /// <param name="rank">The card's beginRank as a string.</param>
         /// <param name="suit">The card's suit as a string.</param>
         public Card(string rank, string suit)
         {
@@ -151,6 +167,13 @@ namespace PokerSimulation
 
         #endregion
 
+        #region Methods
+
+        /// <summary>
+        /// Sets the Rank and the Suit of the Card
+        /// </summary>
+        /// <param name="rank">The Rank of the Card</param>
+        /// <param name="suit">The Suit of the Card</param>
         private void SetRankAndSuit(string rank, string suit)
         {
             rank = rank.ToUpper();
@@ -319,8 +342,9 @@ namespace PokerSimulation
         {
             return !(x == y);
         }
+        #endregion
     }
-
+        
     /// <summary>
     /// The Suit enumeration contains all of the valid suit values for a Deck.
     /// </summary>
