@@ -1,12 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace PokerSimulation
 {
+    /// <summary>
+    /// A card hand class that is specific to poker.
+    /// </summary>
     public class PokerHand : Hand
     {
+        /// <summary>
+        /// These private constants map to the REQ_CARDS array
+        /// </summary>
         private const int RF = 0;
         private const int SF = 1;
         private const int FK = 2;
@@ -17,11 +22,27 @@ namespace PokerSimulation
         private const int TP = 7;
         private const int OP = 8;
 
+        /// <summary>
+        /// An array that holds the minimum number of cards the specific hand must have.
+        /// For example, Straight Flush is 1st element in the array (look for SF in the mapping above).
+        /// A straight flush must have at least 5 cards (ex. 3H, 4H, 5H, 6H, 7H).
+        /// </summary>
         private static int[] REQ_CARDS = { 5, 5, 4, 5, 5, 5, 3, 4, 2 };
+
+        /// <summary>
+        /// Random instance that is used for hand generation.
+        /// </summary>
         private static Random _random = new Random();
 
+        /// <summary>
+        /// Basic constructors for PokerHand
+        /// </summary>
         public PokerHand() : this(null) { }
         public PokerHand(params Card[] cards):base(cards){}
+        
+        /// <summary>
+        /// A helper property that uses all available evaluator methods to find out what is the best rank (poker pattern) for this hand.
+        /// </summary>
         public HandRank MaxRank
         {
             get
@@ -73,29 +94,43 @@ namespace PokerSimulation
             }
         }
 
-        //Royal Flush//JC
+        /// <summary>
+        /// Generates a hand that cointains a random royal flush as it's best poker pattern.
+        /// </summary>
+        /// <param name="numCards">The number of cards that the hand should have as a result.</param>
+        /// <returns>A PokerHand instance that has a royal flush as it's best pattern.</returns>
         static public PokerHand MakeRoyalFlush(int numCards)
         {
             int suit = _random.Next(Deck.NUMBER_OF_SUITS);
 
             // first, create a new deck
             Deck.Instance.MakeShuffledDeck();
+
+            //this is an instance of hand that will be returned
             PokerHand royalFlush = new PokerHand();
 
             // a royal flush contains the cards ten through ace, all of the same suit
             for (int i = 0; i < REQ_CARDS[RF]; i++)
                 royalFlush.InsertCard(new Card((Suit)suit, Rank.TEN + i));
 
+            //remove the cards from the deck so they aren't chosen again
             Deck.Instance.RemoveCards(royalFlush.ToArray());
 
+            //add additional random cards so we have numCards number of cards
             for (int i = 0; i < numCards - REQ_CARDS[RF]; i++)
                 royalFlush.InsertCard(Deck.Instance.DealCard());
 
+            //shuffle the resulting hand for randomness
             royalFlush.Shuffle();
+
             return royalFlush;
         }
 
-        //Straight Flush//JSS
+        /// <summary>
+        /// Generates a hand that cointains a random straight flush as it's best poker pattern.
+        /// </summary>
+        /// <param name="numCards">The number of cards that the hand should have as a result.</param>
+        /// <returns>A PokerHand instance that has a straight flush as it's best pattern.</returns>
         static public PokerHand MakeStraightFlush(int numCards)
         {
             // choose a _random suit
@@ -104,54 +139,46 @@ namespace PokerSimulation
             // next, choose a starting card hr
             // let -1 mean that we start with an Ace-low flush
             // also, make sure that the range does not allow a royal flush to be dealt
-            Rank beginRank = (Rank)(_random.Next(-1, (Deck.NUMBER_OF_RANKS - (REQ_CARDS[SF] + 1))));
+            Rank beginRank = (Rank)(_random.Next(-1, (Deck.NUMBER_OF_RANKS - (REQ_CARDS[SF] + 2))));
 
-            PokerHand straightFlush;
+            PokerHand straightFlush = new PokerHand();
 
-            do
+            Deck.Instance.MakeShuffledDeck();
+
+            for (int i = (int)beginRank; i < REQ_CARDS[SF] + (int)beginRank; i++)
             {
-                Deck.Instance.MakeFreshDeck();
+                //Checking if the starting card is Ace
+                Rank rank = i == -1 ? Rank.ACE : (Rank)i;
 
-                straightFlush = new PokerHand();
+                straightFlush.InsertCard(new Card(suit, rank));
+            }
 
-                for (int i = (int)beginRank; i < REQ_CARDS[SF] + (int)beginRank; i++)
-                {
-                    Rank rank;
+            // remove straight flush cards from the deck
+            Deck.Instance.RemoveCards(straightFlush.ToArray());
 
-                    if (i == -1)
-                    {
-                        rank = Rank.ACE;
-                    }
-                    else
-                    {
-                        rank = (Rank)i;
-                    }
+            // fill the rest of the hand with _random cards
+            for (int i = 0; i < numCards - REQ_CARDS[SF]; i++)
+                straightFlush.InsertCard(Deck.Instance.DealCard());
 
-                    straightFlush.InsertCard(new Card(suit, rank));
-                }
-
-                // remove straight flush cards from the deck
-                Deck.Instance.RemoveCards(straightFlush.ToArray());
-
-                // fill the rest of the hand with _random cards
-                for (int i = 0; i < numCards - REQ_CARDS[SF]; i++)
-                    straightFlush.InsertCard(Deck.Instance.DealCard());
-            } while (straightFlush.HasRoyalFlush());
-
+            //shuffle the hand before returning
             straightFlush.Shuffle();
             return straightFlush;
         }
 
-        //Four of a Kind//JSS
+        /// <summary>
+        /// Generates a hand that cointains a random four of a kind as it's best poker pattern.
+        /// </summary>
+        /// <param name="numCards">The number of cards that the hand should have as a result.</param>
+        /// <returns>A PokerHand instance that has a four of a kind as it's best pattern.</returns>
         static public PokerHand MakeFourOfAKind(int numCards)
         {
-            //Added by EJ
+            //Initializes the deck
             Deck.Instance.MakeShuffledDeck();
+
             PokerHand fourKind = new PokerHand();
 
             //pick the beginRank of the FK
-            int rank = 0;
-            rank = _random.Next(0, Deck.NUMBER_OF_RANKS);
+            int rank = _random.Next(0, Deck.NUMBER_OF_RANKS);
 
             for (int i = 0; i < REQ_CARDS[FK]; i++)
                 fourKind.InsertCard(new Card((Suit)i, (Rank)rank));
@@ -159,24 +186,33 @@ namespace PokerSimulation
             Deck.Instance.RemoveCards(fourKind.ToArray());
 
             //_random 3 cards
-            //can be _random because no cards that are dealt will make the straightFlush better than a 4-Kind
-
+            //can be _random because no cards that are dealt will make the straightFlush or royal flush better than a 4-Kind
             for (int i = 0; i < numCards - REQ_CARDS[FK]; i++)
                 fourKind.InsertCard(Deck.Instance.DealCard());
 
+            //shuffles the cards in the hand
             fourKind.Shuffle();
             return fourKind; //return completed four of a kind
         }
 
-        //Full House//Ruslan
+        /// <summary>
+        /// Generates a hand that cointains a random full house as it's best poker pattern.
+        /// </summary>
+        /// <param name="numCards">The number of cards that the hand should have as a result.</param>
+        /// <returns>A PokerHand instance that has a full house as it's best pattern.</returns>
         static public PokerHand MakeFullHouse(int numCards)
         {
             Deck deck = Deck.Instance;
             PokerHand hand = new PokerHand();
+
+            //cards that are dealt back
             Card[] dealBack = new Card[2];
 
+            //initialize a random deck
             deck.MakeShuffledDeck();
 
+            //dealing two random cards and making sure that their rank is different
+            //these two cards will be used to make the full house
             Card[] c = new Card[] { deck.DealCard(), deck.DealCard() };
             while (c[0].Rank == c[1].Rank)
             {
@@ -184,31 +220,55 @@ namespace PokerSimulation
                 c[1] = deck.DealCard();
             }
 
+            //quick and dirty way to get random suits, explained in inner loop
             Suit[,] suits = {{ Suit.CLUBS, Suit.DIAMONDS, Suit.HEARTS, Suit.SPADES },
                             { Suit.CLUBS, Suit.DIAMONDS, Suit.HEARTS, Suit.SPADES }};
+
+            //keeping track of the last valid suit in the suits array
             int suitLast = 3;
+
+            //our two ranks for the full house
             Rank[] ranks = { c[0].Rank, c[1].Rank };
 
+            //this four times for each suit of ranks in rank array
             for (int i = 0; i < 4; i++)
             {
+                //the inner loop is for each separate rank
+                //these sort of confusing manipulations are there to make sure that
+                //the same suit doesnt get selected twice 
                 for (int a = 0; a < 2; a++)
                 {
+                    //the index point to the next random index within the suits array
                     int index = _random.Next(0, suitLast);
+                    //this is the actual suit
                     Suit suit = suits[a, index];
+                    //the suit is placed in the swapped with the last valid suit
                     suits[a, index] = suits[a, suitLast];
                     suits[a, suitLast] = suit;
 
+                    //the array holds the 2 new cards created for the two ranks
                     c[a] = new Card((Suit)suit, ranks[a]);
                 }
 
+                //the pointer to the last valid suit is decremented to exclude the used suit
+                //from the valid range
                 suitLast--;
 
+                //the two cards are inserted for the first 2 iterations of the loop
+                //since we need 3 cards of 1st rank and 2 cards of the 2nd rank,
+                //one card gets to be dealt back, thus the deal back array
                 if (i < 2) hand.InsertCards(c);
                 else dealBack[i - 2] = c[1];
+
+                //inserting the 3rd card for only one of the ranks
                 if (i == 2) hand.InsertCard(c[0]);
+
+                //all cards of the chosen ranks are removed so four of a kind
+                //is not generated when picking random cards 
                 deck.RemoveCards(c);
             }
 
+            //dealing back
             deck.ReturnCard(dealBack[_random.Next(0, 1)]);
 
             for (int i = 0; i < numCards - REQ_CARDS[FH]; i++)
