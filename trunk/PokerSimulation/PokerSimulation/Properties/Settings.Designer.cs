@@ -286,5 +286,125 @@ namespace PokerSimulation.Properties {
                 this["HighCardFileTokens"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("High Card")]
+        public string HighCardString {
+            get {
+                return ((string)(this["HighCardString"]));
+            }
+            set {
+                this["HighCardString"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("One Pair")]
+        public string OnePairString {
+            get {
+                return ((string)(this["OnePairString"]));
+            }
+            set {
+                this["OnePairString"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Two Pair")]
+        public string TwoPairString {
+            get {
+                return ((string)(this["TwoPairString"]));
+            }
+            set {
+                this["TwoPairString"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Three of a Kind")]
+        public string ThreeOfAKindString {
+            get {
+                return ((string)(this["ThreeOfAKindString"]));
+            }
+            set {
+                this["ThreeOfAKindString"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Full House")]
+        public string FullHouseString {
+            get {
+                return ((string)(this["FullHouseString"]));
+            }
+            set {
+                this["FullHouseString"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Four of a Kind")]
+        public string FourOfAKindString {
+            get {
+                return ((string)(this["FourOfAKindString"]));
+            }
+            set {
+                this["FourOfAKindString"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Flush")]
+        public string FlushString {
+            get {
+                return ((string)(this["FlushString"]));
+            }
+            set {
+                this["FlushString"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Straight")]
+        public string StraightString {
+            get {
+                return ((string)(this["StraightString"]));
+            }
+            set {
+                this["StraightString"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Straight Flush")]
+        public string StraightFlushString {
+            get {
+                return ((string)(this["StraightFlushString"]));
+            }
+            set {
+                this["StraightFlushString"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Royal Flush")]
+        public string RoyalFlushString {
+            get {
+                return ((string)(this["RoyalFlushString"]));
+            }
+            set {
+                this["RoyalFlushString"] = value;
+            }
+        }
     }
 }
