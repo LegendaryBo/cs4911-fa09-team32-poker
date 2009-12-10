@@ -566,6 +566,12 @@ namespace TestPokerSimulation
             expected = false;
             actual = target.HasStraight();
             Assert.AreEqual(expected, actual);
+
+            target = new PokerHand(new Card(Suit.HEARTS, Rank.ACE), new Card(Suit.DIAMONDS, Rank.TEN), new Card(Suit.SPADES, Rank.JACK),
+                  new Card(Suit.HEARTS, Rank.KING), new Card(Suit.SPADES, Rank.QUEEN));
+            expected = true;
+            actual = target.HasStraight();
+            Assert.AreEqual(expected, actual);
         }
 
         /// <summary>

@@ -82,7 +82,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
-    <None Include="ClassDiagram1.cd" />
     <None Include="Resources\ft_green_poker_skin2.png" />
   </ItemGroup>
   <ItemGroup>
