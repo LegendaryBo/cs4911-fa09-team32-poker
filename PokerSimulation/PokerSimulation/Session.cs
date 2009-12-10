@@ -70,7 +70,32 @@ namespace PokerSimulation
             {
                 string fileExt = Path.GetExtension(path);
 
-                if (fileExt == null || fileExt == string.Empty)
+                if (Path.GetFileName(path).Equals("batIn.txt"))
+                {
+                    //step through each file in the directory
+                    //Console.WriteLine(Directory.GetCurrentDirectory());
+                    DirectoryInfo dirinfo = new DirectoryInfo(Directory.GetCurrentDirectory());
+                    // for each file with .in extension, generate
+                    FileInfo[] inFiles = dirinfo.GetFiles("*.in");
+                    foreach (FileInfo f in inFiles)
+                    {
+                        //Console.WriteLine("Name: {0}", f.Name);
+                        String test = f.FullName;
+                        if (TryGenerateSimFile(f.FullName))
+                        {
+                            string filename = Path.GetFileNameWithoutExtension(f.FullName);
+                            filename += ".sim";
+                            TryLoadSimFile(filename);
+                        }
+                        else
+                        {
+                            return false;
+                        }
+                    }
+                    return false;
+                    
+                }
+                else if (fileExt == null || fileExt == string.Empty)
                 {
                     string error = "The specified file: " + path + " does not have an extension.\n" +
                                    "Supported extensions are: .txt, .in, and .sim.";
