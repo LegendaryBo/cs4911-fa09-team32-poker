@@ -393,8 +393,7 @@ namespace PokerSimulation
             Card card;
 
             //pick the beginRank of the TK
-            int rank = 0;
-            rank = _random.Next(Deck.NUMBER_OF_RANKS);
+            Rank rank = (Rank)_random.Next(Deck.NUMBER_OF_RANKS);
 
             //Get all four cards of that beginRank, and randomly choose one to remove from the straightFlush.
             //This takes care of finding that card later to remove it from the deck so you won't
@@ -402,9 +401,10 @@ namespace PokerSimulation
             for (int i = 0; i < REQ_CARDS[TK] + 1; i++)
             {
                 card = new Card((Suit)i, (Rank)rank);
-                if (i < 3) threeKind.InsertCard(card);
-                Deck.Instance.RemoveCard(card);
+                threeKind.InsertCard(card);
             }
+            Deck.Instance.RemoveCards(threeKind.ToArray());
+            threeKind.RemoveCard(new Card((Suit)_random.Next(4), rank));
 
             //Generate 4 cards, knowing that a Full House, 4-Kind of a different beginRank, straight, flush,
             //Straight flush and Royal Flush will beat 3-Kind.
@@ -426,7 +426,7 @@ namespace PokerSimulation
                 for (int j = 0; j < 12; j++)
                 {
                     //If there are 2 or more of a beginRank, and that beginRank is not the 3-Kind beginRank, straightFlush is invalid
-                    if ((randHand.CountOf((Rank)j) >= 2) && (j != rank))
+                    if ((randHand.CountOf((Rank)j) >= 2) && ((Rank)j != rank))
                     {
                         invalid = true;
                     }
