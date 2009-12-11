@@ -172,7 +172,7 @@ namespace PokerSimulationUI
         private void ShowPressAnyKey()
         {
             Grid_Ready.Visibility = Visibility.Visible;
-            Grid_Ready.Focus();
+            this.Focus();
         }
 
         private void HidePressAnyKey()
